@@ -1,0 +1,12 @@
+:: StoryData
+{
+    "ifid": "91DE2478-0580-4525-B945-68EB03861614",
+    "format": "SugarCube",
+    "format-version": "2.37.3",
+    "start": "Opening Credits",
+    "tag-colors": {
+        "script": "red"
+    },
+    "zoom": 1
+}
+

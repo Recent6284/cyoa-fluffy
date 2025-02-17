@@ -1,0 +1,8 @@
+:: Fluffy Start {"position":"775,550","size":"100,100"}
+This is the Fluffy Start page.
+
+You are $playerName, a $playerGender <<print $playerRace.toUpperFirst()>> pony, and you aren't a smarty.
+
+You're going to start in the <<cycle "$ponyStart">><<option "Safe Room" "saferoom">><<option "Daycare Room" "daycare">><<option "Alleyway" "alleyway">><<option "Factory Farm" "factoryfarm">><</cycle>>.
+
+

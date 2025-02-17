@@ -1,0 +1,21 @@
+:: Character Creation {"position":"900,400","size":"100,100"}
+Hey there. Make your choices for the character you'd like to play, then hit "Confirm Character."<<nobr>><<set $firstLoad to true>><</nobr>>
+
+Your name is <<textbox "$playerName" "Player Name">>.
+
+You are playing a <<cycle "$playerGender">><<option Male "male">><<option Female "female">><</cycle>>  <<cycle "$playerRace">><<option Human "human">><<option "Earthie Pony" "earthie">><<option "Pegasus Pony" "pegasus">><<option "Unicorn Pony" "unicorn">><<option "Alicorn Pony" "alicorn">><</cycle>>.
+\
+<<do>><<if $playerRace isnot "human">><<include "ponyQuestions">><</if>><</do>>\
+
+<<button "Confirm My Character">><<set $firstLoad to false>><<redo>><</button>>
+
+<<do>>''Confirmed'': You are $playerName, <<print $playerGender.toUpperFirst()>> <<print$playerRace.toUpperFirst()>>. <<if $playerSmarty is true>>You are a smarty.<<elseif $playerRace isnot "human">>You are not a smarty.<<elseif $playerRace is "human">><</if>>
+<</do>>
+<<nobr>>
+<<do>><<if $firstLoad is false>>
+<<if $playerSmarty is true and $playerRace isnot "human">><<button [[I'm ready to go!|Smarty Start]]>><</button>><</if>><<if $playerSmarty is false and $playerRace isnot "human">><<button [[I'm ready to go!|Fluffy Start]]>><</button>>
+<</if>><<if $playerRace is "human">><<button [[I'm ready to go!|Human Start]]>><</button>><</if>>
+<</if>><</do>>
+<</nobr>>
+
+

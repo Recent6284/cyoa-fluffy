@@ -1,13 +1,15 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Tweego",
+            "label": "Tweego (Branch-Specific)",
             "type": "shell",
             "isBackground": true,
-            "command": "tweego -w -o index.html source",
+            "command": "bash",
+            "args": [
+                "-c",
+                "if [ \"$(git branch --show-current)\" = \"main\" ]; then tweego -w -o index.html source; else mkdir -p test && tweego -w -o test/index.html source; fi"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true

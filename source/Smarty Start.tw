@@ -1,4 +1,4 @@
-:: Smarty Start {"position":"1025,550","size":"100,100"}
+:: Smarty Start
 This is the Smarty Start page.
 
 You are <<print $playerName.toUpperFirst()>>, a $playerGender <<print $playerRace.toUpperFirst()>> pony, and you are a //very// smart pony, indeed.

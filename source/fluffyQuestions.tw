@@ -1,0 +1,18 @@
+:: fluffyQuestions
+!!You chose a fluffy. Here's some more questions.
+!!!Appearance
+@@.optionbox;
+<<do>>Since you're a fluffy, pick the color of your mane and tail:
+Mane and Tail: <<cycle "$playerMane">><<option @@color:blue;Blue>><</cycle>>
+Fur: <<cycle "$playerFur">><<option Blue>><</cycle>>
+<</do>>
+@@\
+!!!The Smarty Option
+@@.optionbox;
+<<do>><<if $playerRace isnot "human">>I noticed you wanted to play a fluffy. Do you want to be a smarty?
+<label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a smarty.</label><</if>><</do>>
+@@
+@@color:red;
+Please make sure to click "Confirm Character" to lock in your choices.
+@@
+

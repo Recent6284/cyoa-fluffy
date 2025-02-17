@@ -1,0 +1,72 @@
+:: Story Stylesheet [stylesheet]
+body {
+ background-color: #343231;
+}
+
+.passage {
+        line-height: 1.5;
+}
+
+.startbutton{
+  background-color: #145b0e !important;
+  border-color: #145b0e !important;
+}
+
+.optionbox{
+  padding: 10px;
+  background-color: #575757;
+  font-weight: bold;
+  border-left: 6px solid #ccc;
+}
+
+/* Hide the footer initially */
+#footergray.hidden {
+  display: none;
+}
+
+/* Style the footer */
+#footergray {
+    opacity: 0.5;
+}
+
+
+#bug-icon:before {
+  content: "\f188";
+  opacity: 0.5;
+}
+
+#bug-icon{
+    font-family: sc-icons !important;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        line-height: 1;
+        speak: never;
+        text-rendering: auto;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+    font-size: 0.90em;
+    display: inline-block; /* Make it part of the flow */
+    margin: 0; /* Add some spacing */
+}
+
+#deadbug:before{
+    content: "\f188";
+    opacity: 0.5;
+}
+
+#deadbug{
+    font-size: 0.90em;
+    font-family: sc-icons !important;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        line-height: 1;
+        speak: never;
+        text-rendering: auto;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+}

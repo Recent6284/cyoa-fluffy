@@ -1,4 +1,4 @@
-:: Fluffy Start {"position":"775,550","size":"100,100"}
+:: Fluffy Start 
 This is the Fluffy Start page.
 
 You are $playerName, a $playerGender <<print $playerRace.toUpperFirst()>> pony, and you aren't a smarty.

@@ -1,6 +1,6 @@
 :: Smarty Start
 This is the Smarty Start page.
 
-You are <<print $playerName.toUpperFirst()>>, a $playerGender <<print $playerRace.toUpperFirst()>> pony, and you are a //very// smart pony, indeed.
+You are <<print $playerName.toUpperFirst()>>, a $playerGender <<print $playerRace.toUpperFirst()>> pony, and you are a //very// smart pony, indeed. You've been trying to make your way in the world, because well, the world owes you a lot.
 
 

@@ -9,8 +9,7 @@ body {
 
 .optionbox{
   padding: 10px;
-  background-color: #575757;
-  font-weight: bold;
+  background-color: #0000000d;
   border-left: 6px solid #ccc;
 }
 
@@ -27,6 +26,13 @@ body {
 .check::before{
   content: "\f00c";
   opacity: 0.9;
+}
+
+/* Option Style */
+
+.option-style {
+	background-color: white;
+	padding: 0px 3px;
 }
 
 /* Sugarcube Icons */

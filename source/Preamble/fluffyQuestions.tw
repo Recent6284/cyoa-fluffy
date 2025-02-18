@@ -2,17 +2,38 @@
 !!You chose a fluffy. Here's some more questions.
 !!!Appearance
 @@.optionbox;
+<<do>>
+
+:: fluffyQuestions
+!!You chose a fluffy. Here's some more questions.
+!!!Appearance
+@@.optionbox;
 <<do>>Since you're a fluffy, pick the color of your mane and tail:
-Mane and Tail: <<cycle "$playerMane">><<option @@color:blue;Blue>><<option @@color:red;Red>><<option @@color:green;Green>><<option @@color:purple;Purple>><<option @@color:pink;Pink>><<option @@color:yellow;Yellow>><</cycle>>
-Fur: <<cycle "$playerFur">><<option Blue>><</cycle>>
+Mane and Tail: <<cycle "$playerMane">>
+<<option @@.option-style;color:blue;Blue>>
+<<option @@.option-style;color:red;Red>>
+<<option @@.option-style;color:green;Green>>
+<<option @@.option-style;color:purple;Purple>>
+<<option @@.option-style;color:pink;Pink>>
+<<option @@.option-style;color:yellow;Yellow>>
+<</cycle>>
+Fur: <<cycle "$playerFur">>
+<<option @@.option-style;color:blue;Blue>>
+<<option @@.option-style;color:red;Red>>
+<<option @@.option-style;color:green;Green>>
+<<option @@.option-style;color:purple;Purple>>
+<<option @@.option-style;color:pink;Pink>>
+<<option @@.option-style;color:yellow;Yellow>>
+<</cycle>>
 <</do>>
 @@\
 !!!The Smarty Option
 @@.optionbox;
 <<do>><<if $playerRace isnot "human">>I noticed you wanted to play a fluffy. Do you want to be a smarty?
-<label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a smarty.</label><</if>><</do>>
+<label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a smarty.</label><</if>>
+<</do>>
 @@
-@@color:red;
+@@.optionbox;color:yellow;
 Please make sure to click "Confirm Character" to lock in your choices.
 @@
 

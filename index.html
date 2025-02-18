@@ -114,8 +114,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 .optionbox{
   padding: 10px;
-  background-color: #575757;
-  font-weight: bold;
+  background-color: #0000000d;
   border-left: 6px solid #ccc;
 }
 
@@ -132,6 +131,13 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .check::before{
   content: "\f00c";
   opacity: 0.9;
+}
+
+/* Option Style */
+
+.option-style {
+	background-color: white;
+	padding: 0px 3px;
 }
 
 /* Sugarcube Icons */
@@ -227,16 +233,31 @@ The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 Internat
 !!!Appearance
 @@.optionbox;
 &lt;&lt;do&gt;&gt;Since you&#39;re a fluffy, pick the color of your mane and tail:
-Mane and Tail: &lt;&lt;cycle &quot;$playerMane&quot;&gt;&gt;&lt;&lt;option @@color:blue;Blue&gt;&gt;&lt;&lt;option @@color:red;Red&gt;&gt;&lt;&lt;option @@color:green;Green&gt;&gt;&lt;&lt;option @@color:purple;Purple&gt;&gt;&lt;&lt;option @@color:pink;Pink&gt;&gt;&lt;&lt;option @@color:yellow;Yellow&gt;&gt;&lt;&lt;/cycle&gt;&gt;
-Fur: &lt;&lt;cycle &quot;$playerFur&quot;&gt;&gt;&lt;&lt;option Blue&gt;&gt;&lt;&lt;/cycle&gt;&gt;
+Mane and Tail: &lt;&lt;cycle &quot;$playerMane&quot;&gt;&gt;
+&lt;&lt;option @@.option-style;color:blue;Blue&gt;&gt;
+&lt;&lt;option @@.option-style;color:red;Red&gt;&gt;
+&lt;&lt;option @@.option-style;color:green;Green&gt;&gt;
+&lt;&lt;option @@.option-style;color:purple;Purple&gt;&gt;
+&lt;&lt;option @@.option-style;color:pink;Pink&gt;&gt;
+&lt;&lt;option @@.option-style;color:yellow;Yellow&gt;&gt;
+&lt;&lt;/cycle&gt;&gt;
+Fur: &lt;&lt;cycle &quot;$playerFur&quot;&gt;&gt;
+&lt;&lt;option @@.option-style;color:blue;Blue&gt;&gt;
+&lt;&lt;option @@.option-style;color:red;Red&gt;&gt;
+&lt;&lt;option @@.option-style;color:green;Green&gt;&gt;
+&lt;&lt;option @@.option-style;color:purple;Purple&gt;&gt;
+&lt;&lt;option @@.option-style;color:pink;Pink&gt;&gt;
+&lt;&lt;option @@.option-style;color:yellow;Yellow&gt;&gt;
+&lt;&lt;/cycle&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 @@\
 !!!The Smarty Option
 @@.optionbox;
 &lt;&lt;do&gt;&gt;&lt;&lt;if $playerRace isnot &quot;human&quot;&gt;&gt;I noticed you wanted to play a fluffy. Do you want to be a smarty?
-&lt;label&gt;&lt;&lt;checkbox &quot;$playerSmarty&quot; false true `$playerSmarty ? &#39;checked&#39; : &#39;&#39;`&gt;&gt; Click this box to enable being a smarty.&lt;/label&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
+&lt;label&gt;&lt;&lt;checkbox &quot;$playerSmarty&quot; false true `$playerSmarty ? &#39;checked&#39; : &#39;&#39;`&gt;&gt; Click this box to enable being a smarty.&lt;/label&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
 @@
-@@color:red;
+@@.optionbox;color:yellow;
 Please make sure to click &quot;Confirm Character&quot; to lock in your choices.
 @@</tw-passagedata><tw-passagedata pid="6" name="Smarty Start" tags="" position="725,100" size="100,100">This is the Smarty Start page.
 

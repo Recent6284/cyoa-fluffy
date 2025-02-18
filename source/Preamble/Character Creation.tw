@@ -11,9 +11,9 @@ You are playing a <<cycle "$playerGender">><<option Male "male">><<option Female
 <</do>>
 <<nobr>>
 <<do>><<if $firstLoad is false>>
-<<if $playerSmarty is true and $playerRace isnot "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Smarty Start">><</button>><</if>>
-<<if $playerSmarty is false and $playerRace isnot "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Fluffy Start">><</button>><</if>>
-<<if $playerRace is "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Human Start">><</button>><</if>>
+<<if $playerSmarty is true and $playerRace isnot "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Smarty Start">><</button>>
+<<elseif $playerSmarty is false and $playerRace isnot "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Fluffy Start">><</button>>
+<<elseif $playerRace is "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Human Start">><</button>><</if>>
 <</if>><</do>>
 <</nobr>>
 

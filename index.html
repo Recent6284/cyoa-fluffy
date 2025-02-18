@@ -204,9 +204,9 @@ You are playing a &lt;&lt;cycle &quot;$playerGender&quot;&gt;&gt;&lt;&lt;option 
 &lt;&lt;/do&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
 &lt;&lt;do&gt;&gt;&lt;&lt;if $firstLoad is false&gt;&gt;
-&lt;&lt;if $playerSmarty is true and $playerRace isnot &quot;human&quot;&gt;&gt;&lt;&lt;button [[I&#39;m ready to go!|Smarty Start]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $playerSmarty is false and $playerRace isnot &quot;human&quot;&gt;&gt;&lt;&lt;button [[I&#39;m ready to go!|Fluffy Start]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $playerRace is &quot;human&quot;&gt;&gt;&lt;&lt;button [[I&#39;m ready to go!|Human Start]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $playerSmarty is true and $playerRace isnot &quot;human&quot;&gt;&gt;&lt;&lt;button &quot;I&#39;m ready to go! @@.icon;.next-arrow;@@&quot; &quot;Smarty Start&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;&lt;elseif $playerSmarty is false and $playerRace isnot &quot;human&quot;&gt;&gt;&lt;&lt;button &quot;I&#39;m ready to go! @@.icon;.next-arrow;@@&quot; &quot;Fluffy Start&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;&lt;elseif $playerRace is &quot;human&quot;&gt;&gt;&lt;&lt;button &quot;I&#39;m ready to go! @@.icon;.next-arrow;@@&quot; &quot;Human Start&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="Opening Credits" tags="" position="475,100" size="100,100">Hey all. This is a fun little thing I used to try to learn how to make things in Twine. Don&#39;t take it too seriously. 
 

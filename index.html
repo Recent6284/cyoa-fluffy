@@ -208,7 +208,6 @@ Your name is &lt;&lt;textbox &quot;$playerName&quot; &quot;Player Name&quot;&gt;
 You are playing a &lt;&lt;cycle &quot;$playerGender&quot;&gt;&gt;&lt;&lt;option Male &quot;male&quot;&gt;&gt;&lt;&lt;option Female &quot;female&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;  &lt;&lt;cycle &quot;$playerRace&quot;&gt;&gt;&lt;&lt;option Human &quot;human&quot;&gt;&gt;&lt;&lt;option &quot;Earthie Pony&quot; &quot;earthie&quot;&gt;&gt;&lt;&lt;option &quot;Pegasus Pony&quot; &quot;pegasus&quot;&gt;&gt;&lt;&lt;option &quot;Unicorn Pony&quot; &quot;unicorn&quot;&gt;&gt;&lt;&lt;option &quot;Alicorn Pony&quot; &quot;alicorn&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;.
 &lt;&lt;nobr&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;if $playerRace isnot &quot;human&quot;&gt;&gt;&lt;&lt;include &quot;fluffyQuestions&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;&lt;button &quot;Confirm My Character&quot;&gt;&gt;&lt;&lt;set $firstLoad to false&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;
-
 &lt;&lt;do&gt;&gt;&lt;&lt;include &quot;Character Confirmation&quot;&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
@@ -263,7 +262,7 @@ Fur: &lt;&lt;cycle &quot;$playerFur&quot;&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 @@
 @@.cautionbox;
-Please make sure to click &quot;Confirm Character&quot; to lock in your choices.
+Please make sure to click &quot;Confirm Character&quot; to lock in your choices, please.
 @@</tw-passagedata><tw-passagedata pid="7" name="Smarty Start" tags="" position="850,100" size="100,100">This is the Smarty Start page.
 
 You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot.</tw-passagedata><tw-passagedata pid="8" name="PassageFooter" tags="" position="975,100" size="100,100">&lt;div id=&quot;bug-section&quot;&gt;

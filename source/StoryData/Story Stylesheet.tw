@@ -24,15 +24,12 @@ body {
     opacity: 0.5;
 }
 
-.next-arrow::before {
-  content: "\f138";
+.check::before{
+  content: "\f00c";
   opacity: 0.9;
 }
 
-.bug::before {
-  content: "\f188";
-  opacity: 0.5;
-}
+/* Sugarcube Icons */
 
 .icon{
     font-family: sc-icons !important;
@@ -51,21 +48,13 @@ body {
     margin: 0; /* Add some spacing */
 }
 
-#deadbug:before{
-    content: "\f188";
-    opacity: 0.5;
+.next-arrow::before {
+  content: "\f138";
+  opacity: 0.9;
 }
 
-#deadbug{
-    font-size: 0.90em;
-    font-family: sc-icons !important;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        line-height: 1;
-        speak: never;
-        text-rendering: auto;
-        text-transform: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+.bug::before {
+  content: "\f188";
+  opacity: 0.5;
 }
+

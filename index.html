@@ -129,15 +129,12 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     opacity: 0.5;
 }
 
-.next-arrow::before {
-  content: "\f138";
+.check::before{
+  content: "\f00c";
   opacity: 0.9;
 }
 
-.bug::before {
-  content: "\f188";
-  opacity: 0.5;
-}
+/* Sugarcube Icons */
 
 .icon{
     font-family: sc-icons !important;
@@ -156,23 +153,14 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     margin: 0; /* Add some spacing */
 }
 
-#deadbug:before{
-    content: "\f188";
-    opacity: 0.5;
+.next-arrow::before {
+  content: "\f138";
+  opacity: 0.9;
 }
 
-#deadbug{
-    font-size: 0.90em;
-    font-family: sc-icons !important;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        line-height: 1;
-        speak: never;
-        text-rendering: auto;
-        text-transform: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+.bug::before {
+  content: "\f188";
+  opacity: 0.5;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">$(document).on(':passagerender', function (ev) {
         if (passage() == "Character Creation") {
                 $(ev.content).find("#checkbox-playersmarty").on('propertychange change', function() { Engine.play(passage()); } );
@@ -253,7 +241,7 @@ Please make sure to click &quot;Confirm Character&quot; to lock in your choices.
 @@</tw-passagedata><tw-passagedata pid="6" name="Smarty Start" tags="" position="725,100" size="100,100">This is the Smarty Start page.
 
 You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot.</tw-passagedata><tw-passagedata pid="7" name="PassageFooter" tags="" position="850,100" size="100,100">&lt;div id=&quot;bug-section&quot;&gt;
-  &lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Submit it to &lt;a href=&quot;https://towering-anaconda-968.notion.site/19cdf831412581ebb360d700d24c7d6d?v=19cdf831412581768f19000c758d5cdb&amp;pvs=4&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
+  &lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Submit it to &lt;a href=&quot;https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   &lt;/div&gt;
 &lt;/div&gt;
 

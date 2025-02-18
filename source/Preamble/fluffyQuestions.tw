@@ -3,7 +3,7 @@
 !!!Appearance
 @@.optionbox;
 <<do>>Since you're a fluffy, pick the color of your mane and tail:
-Mane and Tail: <<cycle "$playerMane">><<option @@color:blue;Blue>><</cycle>>
+Mane and Tail: <<cycle "$playerMane">><<option @@color:blue;Blue>><<option @@color:red;Red>><<option @@color:green;Green>><<option @@color:purple;Purple>><<option @@color:pink;Pink>><<option @@color:yellow;Yellow>><</cycle>>
 Fur: <<cycle "$playerFur">><<option Blue>><</cycle>>
 <</do>>
 @@\

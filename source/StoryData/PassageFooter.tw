@@ -1,6 +1,6 @@
 :: PassageFooter 
 <div id="bug-section">
-  <span id="bug-icon"></span><div id="footergray" class="hidden">Page ID: <span id="page-id"><<print passage()>></span> <<link "(Copy to Clipboard)">><<run setup.copyToClipboard(passage())>><</link>><br>Submit it to <a href="https://towering-anaconda-968.notion.site/19cdf831412581ebb360d700d24c7d6d?v=19cdf831412581768f19000c758d5cdb&pvs=4" target="_none">the bug tracker</a>.
+  <span class="icon bug"></span><div id="footergray" class="hidden">Page ID: <span id="page-id"><<print passage()>></span> <<link "(Copy to Clipboard)">><<run setup.copyToClipboard(passage())>><</link>><br>Submit it to <a href="https://towering-anaconda-968.notion.site/19cdf831412581ebb360d700d24c7d6d?v=19cdf831412581768f19000c758d5cdb&pvs=4" target="_none">the bug tracker</a>.
   </div>
 </div>
 
@@ -8,7 +8,7 @@
 // Wait for the passage to finish rendering
 $(document).on(":passageend", function() {
   // Add a click event listener to the bug icon
-  document.getElementById("bug-icon").addEventListener("click", function() {
+  document.getElementById("bug-section").addEventListener("click", function() {
     // Toggle the visibility of the footer
     var footer = document.getElementById("footergray");
     footergray.classList.toggle("hidden");

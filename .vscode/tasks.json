@@ -8,7 +8,7 @@
             "command": "bash",
             "args": [
                 "-c",
-                "if [ \"$(git branch --show-current)\" = \"main\" ]; then tweego -w -o index.html source; else mkdir -p test && tweego -w -o test/index.html source; fi"
+                "while true; do if [ \"$(git branch --show-current)\" = \"main\" ]; then tweego -w -o index.html source; else mkdir -p test && tweego -w -o test/index.html source; fi; sleep 1; done"
             ],
             "group": {
                 "kind": "build",

@@ -7,11 +7,6 @@ body {
         line-height: 1.5;
 }
 
-.startbutton{
-  background-color: #145b0e !important;
-  border-color: #145b0e !important;
-}
-
 .optionbox{
   padding: 10px;
   background-color: #575757;
@@ -29,13 +24,17 @@ body {
     opacity: 0.5;
 }
 
+.next-arrow::before {
+  content: "\f138";
+  opacity: 0.9;
+}
 
-#bug-icon:before {
+.bug::before {
   content: "\f188";
   opacity: 0.5;
 }
 
-#bug-icon{
+.icon{
     font-family: sc-icons !important;
         font-style: normal;
         font-weight: normal;

@@ -112,11 +112,6 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
         line-height: 1.5;
 }
 
-.startbutton{
-  background-color: #145b0e !important;
-  border-color: #145b0e !important;
-}
-
 .optionbox{
   padding: 10px;
   background-color: #575757;
@@ -134,13 +129,17 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     opacity: 0.5;
 }
 
+.next-arrow::before {
+  content: "\f138";
+  opacity: 0.9;
+}
 
-#bug-icon:before {
+.bug::before {
   content: "\f188";
   opacity: 0.5;
 }
 
-#bug-icon{
+.icon{
     font-family: sc-icons !important;
         font-style: normal;
         font-weight: normal;
@@ -182,7 +181,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 /*
         Debug Settings.
-
+*/
 (function () {
         Setting.addHeader("Debug Settings");
 
@@ -198,8 +197,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
                         window.location.reload();
                 }
         });
-})();
-*/</script><tw-tag name="script" color="red"></tw-tag><tw-passagedata pid="1" name="Fluffy Start" tags="" position="100,100" size="100,100">This is the Fluffy Start page.
+})();</script><tw-tag name="script" color="red"></tw-tag><tw-passagedata pid="1" name="Fluffy Start" tags="" position="100,100" size="100,100">This is the Fluffy Start page.
 
 You are $playerName, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you aren&#39;t a smarty.
 
@@ -230,10 +228,13 @@ If you want to add any art to any of these pages, feel free to tag me on the boa
 I host the source for this [[on GitLab|https://gitlab.com/recent62841/cyoa-fluffy]], and auto-push the latest version I&#39;m working on to [[NeoCities|https://recent6284.neocities.org/]], where you might be reading this. I&#39;ll try to use the &lt;a href=&quot;https://gitlab.com/recent62841/cyoa-fluffy/-/tree/dev-testing&quot; target=&quot;_none&quot;&gt;&lt;code&gt;dev-testing&lt;/code&gt;  branch&lt;/a&gt; on GitLab before I publish anything game-breaking, but no guarantees.
 
 You can download the .html file from GitLab if you want to save this for offline play.
-
+!! A small guide
+* If there&#39;s &lt;&lt;cycle &quot;_examplelink&quot;&gt;&gt;&lt;&lt;option &quot;different colored text&quot;&gt;&gt;&lt;&lt;option &quot;a link&quot;&gt;&gt;&lt;&lt;option &quot;a button&quot;&gt;&gt;&lt;&lt;option &quot;a text field&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;, it&#39;s something to interact with.
+* I&#39;ll make it clear (either through link text or a button) when you&#39;ll be moving to the next page. 
+* I&#39;ll be using variables to track some choices, and some may matter! We&#39;ll see how ambitious I get.
 The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
 
-&lt;&lt;button [[Let&#39;s begin!|Character Creation]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="fluffyQuestions" tags="" position="600,100" size="100,100">!!You chose a fluffy. Here&#39;s some more questions.
+&lt;&lt;button &quot;Let&#39;s begin! @@.icon;.next-arrow;@@&quot; &quot;Character Creation&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="fluffyQuestions" tags="" position="600,100" size="100,100">!!You chose a fluffy. Here&#39;s some more questions.
 !!!Appearance
 @@.optionbox;
 &lt;&lt;do&gt;&gt;Since you&#39;re a fluffy, pick the color of your mane and tail:
@@ -251,7 +252,7 @@ Please make sure to click &quot;Confirm Character&quot; to lock in your choices.
 @@</tw-passagedata><tw-passagedata pid="6" name="Smarty Start" tags="" position="725,100" size="100,100">This is the Smarty Start page.
 
 You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot.</tw-passagedata><tw-passagedata pid="7" name="PassageFooter" tags="" position="850,100" size="100,100">&lt;div id=&quot;bug-section&quot;&gt;
-  &lt;span id=&quot;bug-icon&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Submit it to &lt;a href=&quot;https://towering-anaconda-968.notion.site/19cdf831412581ebb360d700d24c7d6d?v=19cdf831412581768f19000c758d5cdb&amp;pvs=4&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
+  &lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Submit it to &lt;a href=&quot;https://towering-anaconda-968.notion.site/19cdf831412581ebb360d700d24c7d6d?v=19cdf831412581768f19000c758d5cdb&amp;pvs=4&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -259,7 +260,7 @@ You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&l
 // Wait for the passage to finish rendering
 $(document).on(&quot;:passageend&quot;, function() {
   // Add a click event listener to the bug icon
-  document.getElementById(&quot;bug-icon&quot;).addEventListener(&quot;click&quot;, function() {
+  document.getElementById(&quot;bug-section&quot;).addEventListener(&quot;click&quot;, function() {
     // Toggle the visibility of the footer
     var footer = document.getElementById(&quot;footergray&quot;);
     footergray.classList.toggle(&quot;hidden&quot;);

@@ -25,7 +25,7 @@ Fur: <<cycle "$playerFur">>
 @@\
 !!!The Smarty Option
 @@.optionbox;
-<<do>><<if $playerRace isnot "human">>I noticed you wanted to play a fluffy. Do you want to be a smarty?
+<<do>><<if $playerRace isnot "human">>I noticed you wanted to play a fluffy. Do you want to be a Smarty?
 <label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a smarty.</label><</if>>
 <</do>>
 @@

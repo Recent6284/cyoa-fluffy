@@ -1,0 +1,2 @@
+:: Character Confirmation
+''Confirmed'': You are $playerName, <<print $playerGender.toUpperFirst()>> <<print $playerRace.toUpperFirst()>>. <<if $playerSmarty is true>>You are a Smarty.<<elseif $playerRace isnot "human">>You are not a Smarty.<<elseif $playerRace is "human">><</if>>

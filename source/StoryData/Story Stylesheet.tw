@@ -1,6 +1,7 @@
 :: Story Stylesheet [stylesheet]
+
 body {
- background-color: #343231;
+ background-color: #121212;
 }
 
 .passage {
@@ -9,8 +10,14 @@ body {
 
 .optionbox{
   padding: 10px;
-  background-color: #0000000d;
-  border-left: 6px solid #ccc;
+  border-left: 0.50em solid rgb(0, 119, 255);
+  max-width: 60%;
+}
+
+.cautionbox{
+  padding: 10px;
+  border-left: 0.50em solid red;
+  max-width: 60%;
 }
 
 /* Hide the footer initially */
@@ -26,13 +33,6 @@ body {
 .check::before{
   content: "\f00c";
   opacity: 0.9;
-}
-
-/* Option Style */
-
-.option-style {
-	background-color: white;
-	padding: 0px 3px;
 }
 
 /* Sugarcube Icons */
@@ -64,3 +64,6 @@ body {
   opacity: 0.5;
 }
 
+.square::before{
+  content: "\f04d";
+}

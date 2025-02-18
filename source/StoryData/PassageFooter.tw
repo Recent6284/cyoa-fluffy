@@ -1,6 +1,6 @@
 :: PassageFooter 
 <div id="bug-section">
-  <span class="icon bug"></span><div id="footergray" class="hidden">Page ID: <span id="page-id"><<print passage()>></span> <<link "(Copy to Clipboard)">><<run setup.copyToClipboard(passage())>><</link>><br>Submit it to <a href="https://towering-anaconda-968.notion.site/19cdf831412581ebb360d700d24c7d6d?v=19cdf831412581768f19000c758d5cdb&pvs=4" target="_none">the bug tracker</a>.
+  <span class="icon bug"></span><div id="footergray" class="hidden">Page ID: <span id="page-id"><<print passage()>></span> <<link "(Copy to Clipboard)">><<run setup.copyToClipboard(passage())>><</link>><br>Submit it to <a href="https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395" target="_none">the bug tracker</a>.
   </div>
 </div>
 

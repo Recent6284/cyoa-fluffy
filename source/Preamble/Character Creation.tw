@@ -5,7 +5,7 @@ Your name is <<textbox "$playerName" "Player Name">>.
 
 You are playing a <<cycle "$playerGender">><<option Male "male">><<option Female "female">><</cycle>>  <<cycle "$playerRace">><<option Human "human">><<option "Earthie Pony" "earthie">><<option "Pegasus Pony" "pegasus">><<option "Unicorn Pony" "unicorn">><<option "Alicorn Pony" "alicorn">><</cycle>>.
 <<nobr>><<do>><<if $playerRace isnot "human">><<include "fluffyQuestions">><</if>><</do>><</nobr>>
-<<button "Confirm My Character!">><<set $firstLoad to false>><<redo>><</button>>
+<<button "Confirm My Character">><<set $firstLoad to false>><<redo>><</button>>
 
 <<do>>''Confirmed'': You are $playerName, <<print $playerGender.toUpperFirst()>> <<print $playerRace.toUpperFirst()>>. <<if $playerSmarty is true>>You are a Smarty.<<elseif $playerRace isnot "human">>You are not a Smarty.<<elseif $playerRace is "human">><</if>>
 <</do>>

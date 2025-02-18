@@ -1,0 +1,18 @@
+:: Human Start 
+
+<<nobr>>
+    <<set $playerMoney to 1000>>
+    <<set $guidingEmotions to ["anger", "pity", "contempt", "indifferent", "joy", "delight (you find them cute)", "envy", "comfort", "challenged", "curious", "ambitious", "manipulative"]>>
+    <<set setup.guidingEmotions = {}>>
+    <<set setup.guidingEmotions.anger = "Fighter guy who fights!">>
+    <<set setup.guidingEmotions.pity = "Sneaky guy who sneaks!">>
+    <<set setup.guidingEmotions.contempt = "Magic guy who... magics.  Er, casts magic.">>
+<</nobr>>
+
+Oh hey there.
+
+You are $playerName, a $playerGender $playerRace. As a human, you're of an average size, weight and strength for your age. You've been decent at saving your money for most of your life, and a nice tax return finally gave you a comfortable amount in one specific category of your budget.
+
+You'd always had a bit of a curiosity towards Fluffies, and you weren't really sure why. 
+They mainly made you feel <<cycle "$guidingEmotion" autoselect>><<optionsfrom $guidingEmotions>><</cycle>>.
+

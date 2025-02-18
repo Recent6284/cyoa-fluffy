@@ -3,15 +3,14 @@ Hey all. This is a fun little thing I used to try to learn how to make things in
 
 A little about me: I'm <a href="https://fluffy-community.com/u/recent6284/activity" target="_blank">Recent6284 on Fluffy-Community</a> and I mostly want to experiment with Fluffy fiction as I can't draw for shit. 
 
-If you want to add any art to any of these pages, feel free to tag me on the boards. When I release an alpha copy of this I'll likely create a thread for it, and things can be tagged there too. I'd also like this to serve as a nice prototype for anyone else trying to use Twine for Fluffy stuff; this is using [[Sugarcube 2|https://www.motoslave.net/sugarcube/2/docs/]] as the Story Format in Twine, which I felt was apt.
+If you want to add any art to any of these pages, feel free to tag me on the boards. The thread for it [[on Fluffy-Community is here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]], and will be used as a bug tracker. I'd also like this to serve as a nice prototype for anyone else trying to use Twine for Fluffy stuff; this is using [[Sugarcube 2|https://www.motoslave.net/sugarcube/2/docs/]] as the Story Format in Twine, which I felt was apt.
 
-I host the source for this [[on GitLab|https://gitlab.com/recent62841/cyoa-fluffy]], and auto-push the latest version I'm working on to [[NeoCities|https://recent6284.neocities.org/]], where you might be reading this. I'll try to use the <a href="https://gitlab.com/recent62841/cyoa-fluffy/-/tree/dev-testing" target="_none"><code>dev-testing</code>  branch</a> on GitLab before I publish anything game-breaking, but no guarantees.
+I host the source for this [[on GitLab|https://gitlab.com/recent62841/cyoa-fluffy]], and auto-push the latest version I'm working on to [[NeoCities|https://recent6284.neocities.org/]], where you might be reading this.
 
 You can download the .html file from GitLab if you want to save this for offline play.
 !! A small guide
 * If there's <<cycle "_examplelink">><<option "different colored text">><<option "a link">><<option "a button">><<option "a text field">><</cycle>>, it's something to interact with.
 * Buttons that will make you leave the page will be marked with a "@@.icon;.next-arrow;@@".
 * I'll be using variables to track some choices, and some may matter! We'll see how ambitious I get.
-The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
 
 <<button "Let's begin! @@.icon;.next-arrow;@@" "Character Creation">><</button>>

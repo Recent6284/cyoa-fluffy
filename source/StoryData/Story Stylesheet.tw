@@ -67,3 +67,11 @@ body {
 .square::before{
   content: "\f04d";
 }
+
+#bug-button {
+  text-align: left;
+  font-size: 14px;
+  position: absolute; 
+  bottom: 0;
+  padding-bottom: 10px;
+}

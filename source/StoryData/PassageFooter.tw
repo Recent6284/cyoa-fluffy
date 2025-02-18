@@ -1,8 +1,4 @@
 :: PassageFooter 
-<div id="bug-section">
-  <span class="icon bug"></span><div id="footergray" class="hidden">Page ID: <span id="page-id"><<print passage()>></span> <<link "(Copy to Clipboard)">><<run setup.copyToClipboard(passage())>><</link>><br>Submit it to <a href="https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395" target="_none">the bug tracker</a>.
-  </div>
-</div>
 
 <<script>>
 // Wait for the passage to finish rendering

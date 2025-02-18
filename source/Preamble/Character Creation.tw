@@ -6,6 +6,7 @@ Your name is <<textbox "$playerName" "Player Name">>.
 You are playing a <<cycle "$playerGender">><<option Male "male">><<option Female "female">><</cycle>>  <<cycle "$playerRace">><<option Human "human">><<option "Earthie Pony" "earthie">><<option "Pegasus Pony" "pegasus">><<option "Unicorn Pony" "unicorn">><<option "Alicorn Pony" "alicorn">><</cycle>>.
 <<nobr>><<do>><<if $playerRace isnot "human">><<include "fluffyQuestions">><</if>><</do>><</nobr>>
 <<button "Confirm My Character">><<set $firstLoad to false>><<redo>><</button>>
+
 <<do>><<include "Character Confirmation">>
 <</do>>
 <<nobr>>

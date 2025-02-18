@@ -8,7 +8,10 @@ If you want to add any art to any of these pages, feel free to tag me on the boa
 I host the source for this [[on GitLab|https://gitlab.com/recent62841/cyoa-fluffy]], and auto-push the latest version I'm working on to [[NeoCities|https://recent6284.neocities.org/]], where you might be reading this. I'll try to use the <a href="https://gitlab.com/recent62841/cyoa-fluffy/-/tree/dev-testing" target="_none"><code>dev-testing</code>  branch</a> on GitLab before I publish anything game-breaking, but no guarantees.
 
 You can download the .html file from GitLab if you want to save this for offline play.
-
+!! A small guide
+* If there's <<cycle "_examplelink">><<option "different colored text">><<option "a link">><<option "a button">><<option "a text field">><</cycle>>, it's something to interact with.
+* I'll make it clear (either through link text or a button) when you'll be moving to the next page. 
+* I'll be using variables to track some choices, and some may matter! We'll see how ambitious I get.
 The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
 
-<<button [[Let's begin!|Character Creation]]>><</button>>
+<<button "Let's begin! @@.icon;.next-arrow;@@" "Character Creation">><</button>>

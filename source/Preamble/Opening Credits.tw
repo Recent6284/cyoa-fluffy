@@ -10,7 +10,7 @@ I host the source for this [[on GitLab|https://gitlab.com/recent62841/cyoa-fluff
 You can download the .html file from GitLab if you want to save this for offline play.
 !! A small guide
 * If there's <<cycle "_examplelink">><<option "different colored text">><<option "a link">><<option "a button">><<option "a text field">><</cycle>>, it's something to interact with.
-* I'll make it clear (either through link text or a button) when you'll be moving to the next page. 
+* Buttons that will make you leave the page will be marked with a <span="icon next-arrow"></span>.
 * I'll be using variables to track some choices, and some may matter! We'll see how ambitious I get.
 The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
 

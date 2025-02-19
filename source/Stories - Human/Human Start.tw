@@ -1,18 +1,20 @@
-:: Human Start 
-
 <<nobr>>
-    <<set $playerMoney to 1000>>
-    <<set $guidingEmotions to ["anger", "pity", "contempt", "indifferent", "joy", "delight (you find them cute)", "envy", "comfort", "challenged", "curious", "ambitious", "manipulative"]>>
-    <<set setup.guidingEmotions = {}>>
-    <<set setup.guidingEmotions.anger = "Fighter guy who fights!">>
-    <<set setup.guidingEmotions.pity = "Sneaky guy who sneaks!">>
-    <<set setup.guidingEmotions.contempt = "Magic guy who... magics.  Er, casts magic.">>
-<</nobr>>
-
+    <<set $playerBudget to 2000>>
+    <</nobr>>
 Oh hey there.
 
 You are $playerName, a $playerGender $playerRace. As a human, you're of an average size, weight and strength for your age. You've been decent at saving your money for most of your life, and a nice tax return finally gave you a comfortable amount in one specific category of your budget.
 
-You'd always had a bit of a curiosity towards Fluffies, and you weren't really sure why. 
-They mainly made you feel <<cycle "$guidingEmotion" autoselect>><<optionsfrom $guidingEmotions>><</cycle>>.
+You'd always had a bit of a curiosity towards Fluffies, and you weren't really sure why. Perhaps you'd find out in time.
+
+It's currently ''Day 1'' and you've got ''$<<print $playerBudget.toFixed(2)>>'' in your Fluffy budget. You have a job that you have to attend, but you may be able to negotiate work-from-home to be able to make living with your pet easier. Any money you earn won't automatically go toward your Fluffy budget; you can spend it on yourself, your Fluffy, other things, or just hoard it like a troll. You do what you want - I'm not a cop.
+
+As for your first Fluffy, you've got a couple options when it comes to finding them.
+
+You can:
+
+1. [[Visit the Fluffmart|Fluffmart]] to see what your options are. You're likely going to pay the most at Fluffmart, but if you're able to haggle, you might have more of a chance to get bundle deals with merchandise, or a Fluffy that's better-behaved, documented, or looks more aesthetically pleasing.
+2. [[Visit the local shelter|Shelter]] to see if there are any adoptables that look promising. They're a no-kill shelter, and take in Fluffies that either have been abandoned or given up by their owners. There are even some ferals there. You're likely to find much cheaper Fluffies there, but they'll likely have some asterisks when it comes to their health or behaviour.
+3. [[Visit the local forest|Forest]]. Your research on your local city's subreddit has come up with some sightings of Fluffies in the forested area that's due to be demolished for a new land development. Feral Fluffies will have their own set of problems, but there's nothing wrong with "free", right?
+4. [[Take your chances with a walk in the city|City]]. You've definitely seen your share of Fluffies wandering around and scavenging alleyways; this is a super long-shot, but who knows, you might find something interesting!
 

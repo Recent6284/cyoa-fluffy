@@ -1,4 +1,3 @@
-:: Opening Credits
 Hey all. This is a fun little thing I used to try to learn how to make things in Twine. Don't take it too seriously. 
 
 A little about me: I'm <a href="https://fluffy-community.com/u/recent6284/activity" target="_blank">Recent6284 on Fluffy-Community</a> and I mostly want to experiment with Fluffy fiction as I can't draw for shit. 
@@ -13,4 +12,4 @@ You can download the .html file from GitLab if you want to save this for offline
 * Buttons that will make you leave the page will be marked with a "@@.icon;.next-arrow;@@".
 * I'll be using variables to track some choices, and some may matter! We'll see how ambitious I get.
 
-<<button "Let's begin! @@.icon;.next-arrow;@@" "Character Creation">><</button>>
+<<button $arrowButton "Character Creation">><</button>>

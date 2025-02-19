@@ -1,3 +1,4 @@
+::CharacterCreation
 Hey there. Make your choices for the character you'd like to play, then hit "Confirm Character."<<nobr>><<set $firstLoad to true>><</nobr>>
 
 Your name is <<textbox "$playerName" "Player Name">>.

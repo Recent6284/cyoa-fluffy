@@ -1,0 +1,74 @@
+:: Opening Credits
+Hey all. This is a fun little thing I used to try to learn how to make things in Twine. Don't take it too seriously. 
+
+A little about me: I'm <a href="https://fluffy-community.com/u/recent6284/activity" target="_blank">Recent6284 on Fluffy-Community</a> and I mostly want to experiment with Fluffy fiction as I can't draw for shit. 
+
+If you want to add any art to any of these pages, feel free to tag me on the boards. The thread for it [[on Fluffy-Community is here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]], and will be used as a bug tracker. I'd also like this to serve as a nice prototype for anyone else trying to use Twine for Fluffy stuff; this is using [[Sugarcube 2|https://www.motoslave.net/sugarcube/2/docs/]] as the Story Format in Twine, which I felt was apt.
+
+I host the source for this [[on GitLab|https://gitlab.com/recent62841/cyoa-fluffy]], and auto-push the latest version I'm working on to [[NeoCities|https://recent6284.neocities.org/]], where you might be reading this.
+
+You can download the .html file from GitLab if you want to save this for offline play.
+!! A small guide
+* If there's <<cycle "_examplelink">><<option "different colored text">><<option "a link">><<option "a button">><<option "a text field">><</cycle>>, it's something to interact with.
+* Buttons that will make you leave the page will be marked with a "@@.icon;.next-arrow;@@".
+* I'll be using variables to track some choices, and some may matter! We'll see how ambitious I get.
+
+<<button $arrowButton "Character Creation">><</button>>
+
+:: Character Creation
+Hey there. Make your choices for the character you'd like to play, then hit "Confirm Character."<<nobr>><<set $firstLoad to true>><</nobr>>
+
+Your name is <<textbox "$playerName" "Player Name">>.
+
+You are playing a <<cycle "$playerGender">><<option Male "male">><<option Female "female">><</cycle>>  <<cycle "$playerRace">><<option Human "human">><<option "Earthie Pony" "earthie">><<option "Pegasus Pony" "pegasus">><<option "Unicorn Pony" "unicorn">><<option "Alicorn Pony" "alicorn">><</cycle>>.
+<<nobr>><<do>><<if $playerRace isnot "human">><<include "fluffyQuestions">><</if>><</do>><</nobr>>
+<<button "Confirm My Character">><<set $firstLoad to false>><<redo>><</button>>
+
+<<do>><<include "Character Confirmation">>
+<</do>>
+<<nobr>>
+<<do>><<if $firstLoad is false>>
+<<if $playerSmarty is true and $playerRace isnot "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Smarty Start">><</button>>
+<<elseif $playerSmarty is false and $playerRace isnot "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Fluffy Start">><</button>>
+<<elseif $playerRace is "human">><<button "I'm ready to go! @@.icon;.next-arrow;@@" "Human Start">><</button>><</if>>
+<</if>><</do>>
+<</nobr>>
+
+:: Character Confirmation
+''Confirmed'': You are $playerName, <<print $playerGender.toUpperFirst()>> <<print $playerRace.toUpperFirst()>>. <<if $playerSmarty is true>>You are a Smarty.<<elseif $playerRace isnot "human">>You are not a Smarty.<<elseif $playerRace is "human">><</if>>
+
+:: fluffyQuestions
+!!You chose a fluffy. Here's some more questions.
+!!!Appearance
+@@.optionbox;
+<<do>>Since you're a fluffy, pick the color of your mane and tail:
+Mane and Tail: <<cycle "$playerMane">>
+<<option "Blue @@.icon;.square;color:blue;@@">>
+<<option "Red @@.icon;.square;color:red;@@">>
+<<option "Green @@.icon;.square;color:green;@@">>
+<<option "Purple @@.icon;.square;color:purple;@@">>
+<<option "Pink @@.icon;.square;color:pink;@@">>
+<<option "Yellow @@.icon;.square;color:yellow;@@">>
+<<option "Orange @@.icon;.square;color:orange;@@">>
+<</cycle>>
+Fur: <<cycle "$playerFur">>
+<<option "Blue @@.icon;.square;color:blue;@@">>
+<<option "Red @@.icon;.square;color:red;@@">>
+<<option "Green @@.icon;.square;color:green;@@">>
+<<option "Purple @@.icon;.square;color:purple;@@">>
+<<option "Pink @@.icon;.square;color:pink;@@">>
+<<option "Yellow @@.icon;.square;color:yellow;@@">>
+<<option "Orange @@.icon;.square;color:orange;@@">>
+<</cycle>>
+<</do>>
+@@\
+!!!The Smarty Option
+@@.optionbox;
+<<do>><<if $playerRace isnot "human">>I noticed you wanted to play a fluffy. Do you want to be a Smarty?
+<label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a smarty.</label><</if>>
+<</do>>
+@@
+@@.cautionbox;
+Please make sure to click "Confirm Character" to lock in your choices, please.
+@@
+

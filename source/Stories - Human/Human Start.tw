@@ -2,7 +2,7 @@
 <<nobr>>
     <<set $playerBudget to 2000>>
     <<set $playerStatus to "firstvisit">>
-    <<set $tvThought to ['You decide to remember this for later', 'The thought floats out of your brain, however']>>
+    <<set $tvThought to ['You decide to remember this for later', 'The thought floats out of your brain, however', 'You might have to come back to that later.']>>
 <</nobr>>
 Oh hey there.
 
@@ -28,10 +28,34 @@ Your local Fluffmart is a bit of a zoo. There are always people milling about an
 
 You notice a couple employees in bright orange vests hosing down a large green dumpster in the alley beside the building; from the telltale swarming of flies you can tell there was probably some unpleasant things being disposed of; you weren't sure where you exactly stood on the "Fluffies aren't animals" thing, but it sure made it easier to deal with when it came to the law. 
 
-You're distracted by the bright colors of the advertising as you approach the automatic double doors, and in the back of your brain you can hear the //din// of the store already. Any place that Fluffies tend to congregate is marked by a loud wall of sound that's hard to ignore: the vocal register of the toys and the accompanying //advertising// also compounded the assault. @@color:orange;<<set _randomThought to $tvThought.random()>><<print _randomThought>>@@.
+You're distracted by the bright colors of the advertising as you approach the automatic double doors, and in the back of your brain you can hear the //din// of the store already. Any place that Fluffies tend to congregate is marked by a loud wall of sound that's hard to ignore: the vocal register of the toys and the accompanying //advertising// also compounded the assault. <<set _randomThought to $tvThought.random()>><<hovertip "Things underlined in @@color:orange;orange@@ will be randomly generated, and remembered to influence events.">><<print _randomThought>><</hovertip>>.
 
-<<if $tvThought.indexOf(_randomThought) === 0>><<set $tvMemory to "true">><</if>>
+You passed by the loudest and more pushy advertising, heading towards the back of the store, where the pens were. There was always at least one parent and child back here; it was easy entertainment, even if it spurred a lot of begging that the parent would (likely) resist.
 
+Here, you had a choice to make:
+
+Visiting ''the foal pen'' would be a good place to visit if you wanted a challenge, and you wanted the satisfaction of being able to mould a Fluffy from the ground up. It would also be a little easier on the wallet, but it would probably be less forgiving if you messed something up.
+
+<<button "Visit the Foal Pens @@.icon;.next-arrow;@@" "Fluffmart - Foals">><</button>>
+
+Visiting ''the adult area'' would be more expensive, but you'd get a wider range of experiences; your Fluffy has lived a decent amount of life so far, and might have good habits, or bad ones that you'd need to make sure got dealt with.
+
+<<button "Visit the Adult Pens @@.icon;.next-arrow;@@" "Fluffmart - Adults">>
+<</button>>
+
+Lastly, visiting ''the discount pen'' would probably be the cheapest option, but you'd likely not get something aesthetically pleasing. Fluffies there would be the traditional "bad colors" (if you chose to believe in that kind of thing) and would likely either have something physically or mentally keeping them from being kept with the rest of the adults.
+
+<<button "Visit the Discount Pens @@.icon;.next-arrow;@@" "Fluffmart - The Discounts">><</button>>
+
+Remember, you have ''$<<print $playerBudget.toFixed(2)>>'', and a prayer. Let's see where this leads.
+
+<<nobr>><<if $tvThought.indexOf(_randomThought) === 0>><<set $tvMemory to "0">><<elseif $tvThought.indexOf(_randomThought) === 2>><<set $tvMemory to "3">><</if>><</nobr>>
+
+:: Fluffmart - Foals
+
+:: Fluffmart - Adults
+
+:: Fluffmart - The Discounts
 :: Shelter
 
 :: Forest

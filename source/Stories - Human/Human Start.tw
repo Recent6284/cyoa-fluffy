@@ -16,11 +16,27 @@ As for your first Fluffy, you've got a couple options when it comes to finding t
 
 You can:
 
+1. @@color:#e600e6;''Go to Fluffmart''@@ to see what your options are. You're likely going to pay the most at Fluffmart, but if you're able to haggle, you might have more of a chance to get bundle deals with merchandise, or a Fluffy that's better-behaved, documented, or looks more aesthetically pleasing. 
 
-1. [[Visit the Fluffmart|Fluffmart]] to see what your options are. You're likely going to pay the most at Fluffmart, but if you're able to haggle, you might have more of a chance to get bundle deals with merchandise, or a Fluffy that's better-behaved, documented, or looks more aesthetically pleasing.
-2. [[Visit the local shelter|Shelter]] to see if there are any adoptables that look promising. They're a no-kill shelter, and take in Fluffies that either have been abandoned or given up by their owners. There are even some ferals there. You're likely to find much cheaper Fluffies there, but they'll likely have some asterisks when it comes to their health or behaviour.
-3. [[Visit the local forest|Forest]]. Your research on your local city's subreddit has come up with some sightings of Fluffies in the forested area that's due to be demolished for a new land development. Feral Fluffies will have their own set of problems, but there's nothing wrong with "free", right?
-4. [[Take your chances with a walk in the city|City]]. You've definitely seen your share of Fluffies wandering around and scavenging alleyways; this is a super long-shot, but who knows, you might find something interesting!
+<<button "Go to Fluffmart @@.icon;.next-arrow;@@" "Fluffmart">><</button>>
+
+2.  @@color:DarkTurquoise;''Visit the local shelter''@@ to see if there are any adoptables that look promising. They're a no-kill shelter, and take in Fluffies that either have been abandoned or given up by their owners. There are even some ferals there. You're likely to find much cheaper Fluffies there, but they'll likely have some asterisks when it comes to their health or behaviour. 
+
+<<button "Go to the shelter @@.icon;.next-arrow;@@" "Shelter">><</button>>
+
+3. @@color:green;''Visit the local forest''@@. Your research on your local city's subreddit has come up with some sightings of Fluffies in the forested area that's due to be demolished for a new land development. Feral Fluffies will have their own set of problems, but there's nothing wrong with "free", right? 
+
+<<button "Go to the forest @@.icon;.next-arrow;@@" "Forest">><</button>>
+
+4. @@color:SteelBlue;''Take your chances with a walk in the city''@@. You've definitely seen your share of Fluffies wandering around and scavenging alleyways; this is a super long-shot, but who knows, you might find something interesting! 
+
+<<button "Go for a walk downtown @@.icon;.next-arrow;@@" "City">><</button>>
+
+
+
+
+
+
 
 :: Fluffmart
 
@@ -53,9 +69,22 @@ Remember, you have ''$<<print $playerBudget.toFixed(2)>>'', and a prayer. Let's 
 
 :: Fluffmart - Foals
 
+The foal cases were away from the adult pens, for good reason; even if the foals weren't the biological children of the fluffies on sale, there would probably be endless enthusiasm about them, to the detriment of making good sales. The foal area was almost like a more traditional pet store's fish, reptile and amphibian section; walls lined with glass paneling, gentle lighting, and climate-controlled tanks that gave customers a good look at what they could buy.
+
+You noticed that there were milk feeders, audio speakers, and other ways of tricking the foal into thinking that they were still in a comfortable environment with their parents; there was a variety of them at different stages of life, mostly because some had spent more time waiting to be bought than others, and had opened their eyes, or started talking.
+
+Each cage had a descriptor of the foal, their colors, the colors of their parents, and a short description to help the sale along. You decided to do a small circuit, mostly just to see what was around, and on your second loop, you found yourself looking at the following foals:
+
 :: Fluffmart - Adults
 
+Managing a number of adult fluffies was difficult, and trying to put them in the best environment to entice prospective customers was even harder. With ages ranging from "just matured" to "a bit on the older side", Fluffies in the adult area were separated by gender, and in different pens to avoid overcrowding. You noticed that a couple of the dividers were clear, with a large sign proclaiming "~Special Friends!~"; some fluffies probably managed to pair bond despite Fluffmart's best efforts, and they probably were testing the profitability of selling twice the food, twice the equipment, and Fluffies that would have their own social entertainment.
+
+Fluffies of all colors were babbling, hugging, playing with balls and blocks, watching a FluffTV set, and generally doing what they did best. You could see a Fluffmart employee breaking up a scuffle between two males with a broom handle; even in this protected area, there were egos, jostling, and hierarchy. You <<cycle "$fluffyReaction">><<option "grinned at">><<option "rolled your eyes at">><<option "frowned at">><<option "rolled your eyes at">><<option "shook your head at">><</cycle>> the small micro-society; for many of the ponies, this was the only life they ever knew until their new Daddies and Mummies brought them to their "forever homes" 
+
 :: Fluffmart - The Discounts
+
+It was hard to s
+
 :: Shelter
 
 :: Forest

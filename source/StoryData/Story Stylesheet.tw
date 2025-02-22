@@ -142,3 +142,17 @@ a.explainer {
   bottom: 0;
   padding-bottom: 10px;
 }
+
+a.next-arrow::after {
+  content: "\f138";
+  opacity: 0.9;
+}
+
+a.bug::after {
+  content: "\f188";
+  opacity: 0.5;
+}
+
+a.square::after{
+  content: "\f04d";
+}

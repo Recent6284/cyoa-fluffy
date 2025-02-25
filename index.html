@@ -541,9 +541,31 @@ Remember, you have &#39;&#39;$&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;&#39
 
 You noticed that there were milk feeders, audio speakers, and other ways of tricking the foal into thinking that they were still in a comfortable environment with their parents; there was a variety of them at different stages of life, mostly because some had spent more time waiting to be bought than others, and had opened their eyes, or started talking.
 
+Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.
+
 Each cage had a descriptor of the foal, their colors, the colors of their parents, and a short description to help the sale along. You decided to do a small circuit, mostly just to see what was around, and on your second loop, you found yourself looking at the following foals:</tw-passagedata><tw-passagedata pid="10" name="Fluffmart - Adults" tags="" position="1225,100" size="100,100">Managing a number of adult fluffies was difficult, and trying to put them in the best environment to entice prospective customers was even harder. With ages ranging from &quot;just matured&quot; to &quot;a bit on the older side&quot;, Fluffies in the adult area were separated by gender, and in different pens to avoid overcrowding. You noticed that a couple of the dividers were clear, with a large sign proclaiming &quot;~Special Friends!~&quot;; some fluffies probably managed to pair bond despite Fluffmart&#39;s best efforts, and they probably were testing the profitability of selling twice the food, twice the equipment, and Fluffies that would have their own social entertainment.
 
-Fluffies of all colors were babbling, hugging, playing with balls and blocks, watching a FluffTV set, and generally doing what they did best. You could see a Fluffmart employee breaking up a scuffle between two males with a broom handle; even in this protected area, there were egos, jostling, and hierarchy. You &lt;&lt;cycle &quot;$fluffyReaction&quot;&gt;&gt;&lt;&lt;option &quot;grinned at&quot;&gt;&gt;&lt;&lt;option &quot;rolled your eyes at&quot;&gt;&gt;&lt;&lt;option &quot;frowned at&quot;&gt;&gt;&lt;&lt;option &quot;rolled your eyes at&quot;&gt;&gt;&lt;&lt;option &quot;shook your head at&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; the small micro-society; for many of the ponies, this was the only life they ever knew until their new Daddies and Mummies brought them to their &quot;forever homes&quot;</tw-passagedata><tw-passagedata pid="11" name="Fluffmart - The Discounts" tags="" position="100,225" size="100,100">It was hard to s</tw-passagedata><tw-passagedata pid="12" name="Shelter" tags="" position="225,225" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Forest" tags="" position="350,225" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="City" tags="" position="475,225" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="PassageHeader" tags="" position="600,225" size="100,100">&lt;&lt;set $arrowButton to &quot;Let&#39;s begin! &lt;span class=&#39;icon next-arrow&#39;&gt;&lt;/span&gt;&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="PassageFooter" tags="" position="725,225" size="100,100">&lt;&lt;script&gt;&gt;
+Fluffies of all colors were babbling, hugging, playing with balls and blocks, watching a FluffTV set, and generally doing what they did best. You could see a Fluffmart employee breaking up a scuffle between two males with a broom handle; even in this protected area, there were egos, jostling, and hierarchy. You &lt;&lt;cycle &quot;$fluffyReaction&quot;&gt;&gt;&lt;&lt;option &quot;grinned at&quot;&gt;&gt;&lt;&lt;option &quot;rolled your eyes at&quot;&gt;&gt;&lt;&lt;option &quot;frowned at&quot;&gt;&gt;&lt;&lt;option &quot;rolled your eyes at&quot;&gt;&gt;&lt;&lt;option &quot;shook your head at&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; the small micro-society; for many of the ponies, this was the only life they ever knew until their new Daddies and Mummies brought them to their &quot;forever homes&quot; 
+
+Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.
+&lt;&lt;nobr&gt;&gt;&lt;&lt;silent&gt;&gt;
+&lt;&lt;set $fluffies = []&gt;&gt;
+&lt;&lt;set $fluffyName = []&gt;&gt;
+&lt;&lt;set $fluffyMane = []&gt;&gt;
+&lt;&lt;set $fluffySkin = []&gt;&gt;
+&lt;&lt;for _i to 0; _i &lt; 3; _i++&gt;&gt;
+    &lt;&lt;generateFluffy&gt;&gt;
+    &lt;&lt;set $fluffyName[_i + 1] = $fluffies[_i].name&gt;&gt;
+    &lt;&lt;set $fluffyMane[_i + 1] = $fluffies[_i].maneColor&gt;&gt;
+    &lt;&lt;set $fluffySkin[_i + 1] = $fluffies[_i].skinColor&gt;&gt;
+&lt;&lt;/for&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+You saw three fluffies through the glass: &lt;&lt;= &quot;A fluffy named &quot; + $fluffyName[1] + &quot; with a &quot; + $fluffyMane[1] + &quot; mane and &quot; + $fluffySkin[1] + &quot; skin.&quot; &gt;&gt;&lt;&lt;= &quot; A fluffy named &quot; + $fluffyName[2] + &quot; with a &quot; + $fluffyMane[2] + &quot; mane and &quot; + $fluffySkin[2] + &quot; skin.&quot; &gt;&gt;&lt;&lt;= &quot; A fluffy named &quot; + $fluffyName[3] + &quot; with a &quot; + $fluffyMane[3] + &quot; mane and &quot; + $fluffySkin[3] + &quot; skin.&quot; &gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Fluffmart - The Discounts" tags="" position="100,225" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
+
+Perhaps it was a greater awareness of the consequences of not being adopted, but some Fluffies looked like they lacked a specific spark. Fluffmart was not bound by any kind of ethical concern (due to the &quot;toy&quot; status of Fluffies), so there definitely was some kind of &quot;disposal&quot; date - however, in an attempt to recoup some of their losses when it came to breeding, adoption, or acquisition, these Fluffies were heavily marked down.
+
+These pens weren&#39;t //garbage//, but it was clear there was something different about them compared to the Adult Room or the Foal Area; it&#39;s like the &quot;well-used&quot; fixtures found their way here, and everything seemed a little less well-presented. Of course, this wasn&#39;t enough to disuade a sale, and for many people, the discount aisle would be their first encounter with a Fluffy before graduating to something more expensive, or finding a good pet that would defy expectations the store had for them.
+
+Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="12" name="Shelter" tags="" position="225,225" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Forest" tags="" position="350,225" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="City" tags="" position="475,225" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="PassageHeader" tags="" position="600,225" size="100,100">&lt;&lt;set $arrowButton to &quot;Let&#39;s begin! &lt;span class=&#39;icon next-arrow&#39;&gt;&lt;/span&gt;&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="PassageFooter" tags="" position="725,225" size="100,100">&lt;&lt;script&gt;&gt;
 // Wait for the passage to finish rendering
 $(document).on(&quot;:passageend&quot;, function() {
   // Add a click event listener to the bug icon
@@ -557,7 +579,40 @@ $(document).on(&quot;:passageend&quot;, function() {
   &lt;div id=&quot;bug-button&quot;&gt;&lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Found a bug? Submit it to &lt;a href=&quot;https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
   &lt;/div&gt;&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="StoryInit" tags="" position="975,225" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="Fluffy Variables" tags="widget" position="975,225" size="100,100">&lt;&lt;widget &quot;generateFluffy&quot;&gt;&gt;
+    &lt;&lt;if !State.variables.fluffies&gt;&gt;&lt;&lt;set $fluffies = []&gt;&gt;&lt;&lt;/if&gt;&gt;
+    &lt;&lt;set _name = $Fluffyname.random()&gt;&gt;
+    &lt;&lt;set _maneColor = $Fluffymanecolor.random()&gt;&gt;
+    &lt;&lt;set _skinColor = $Fluffyskincolor.random()&gt;&gt;
+    &lt;&lt;set _fluffy = {
+        name: _name,
+        maneColor: _maneColor,
+        skinColor: _skinColor
+    }&gt;&gt;
+    &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="StoryInit" tags="" position="1100,225" size="100,100">&lt;&lt;set $fluffies = []&gt;&gt;
+&lt;&lt;set $fluffyName = []&gt;&gt;
+&lt;&lt;set $fluffyMane = []&gt;&gt;
+&lt;&lt;set $fluffySkin = []&gt;&gt;
+
+/* Initialize name pool */
+&lt;&lt;set $Fluffyname to [
+    &quot;Anne&quot;, &quot;Bob&quot;, &quot;Chuck&quot;, &quot;Daisy&quot;, &quot;Emma&quot;,
+    &quot;Fred&quot;, &quot;Grace&quot;, &quot;Henry&quot;, &quot;Iris&quot;, &quot;Jack&quot;
+]&gt;&gt;
+
+/* Initialize color pools */
+&lt;&lt;set $Fluffymanecolor to [
+    &quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Yellow&quot;, &quot;Purple&quot;,
+    &quot;Pink&quot;, &quot;Orange&quot;, &quot;White&quot;, &quot;Black&quot;, &quot;Brown&quot;
+]&gt;&gt;
+
+&lt;&lt;set $Fluffyskincolor to [
+    &quot;White&quot;, &quot;Brown&quot;, &quot;Black&quot;, &quot;Tan&quot;, &quot;Grey&quot;,
+    &quot;Pink&quot;, &quot;Cream&quot;, &quot;Golden&quot;, &quot;Chocolate&quot;, &quot;Beige&quot;
+]&gt;&gt;
+
+&lt;&lt;script&gt;&gt;
 setup.copyToClipboard = function(text) {
   // Add the &quot;Page ID: &quot; prefix to the text
   var fullText = &quot;Page ID: &quot; + text;

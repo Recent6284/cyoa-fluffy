@@ -1,0 +1,39 @@
+:: StoryInit
+
+<<set $fluffies = []>>
+<<set $fluffyName = []>>
+<<set $fluffyMane = []>>
+<<set $fluffySkin = []>>
+
+/* Initialize name pool */
+<<set $Fluffyname to [
+    "Anne", "Bob", "Chuck", "Daisy", "Emma",
+    "Fred", "Grace", "Henry", "Iris", "Jack"
+]>>
+
+/* Initialize color pools */
+<<set $Fluffymanecolor to [
+    "Red", "Blue", "Green", "Yellow", "Purple",
+    "Pink", "Orange", "White", "Black", "Brown"
+]>>
+
+<<set $Fluffyskincolor to [
+    "White", "Brown", "Black", "Tan", "Grey",
+    "Pink", "Cream", "Golden", "Chocolate", "Beige"
+]>>
+
+<<script>>
+setup.copyToClipboard = function(text) {
+  // Add the "Page ID: " prefix to the text
+  var fullText = "Page ID: " + text;
+  navigator.clipboard.writeText(fullText)
+    .then(() => {
+      alert("Copied to clipboard: " + fullText);
+    })
+    .catch((error) => {
+      alert("Failed to copy text: " + error);
+    });
+};
+<</script>>
+
+<<set $arrowButton to "Let's begin! <span class='icon next-arrow'></span>">>

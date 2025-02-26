@@ -1,0 +1,14 @@
+:: Human Home (First Visit)
+<<nobr>><<set $knobThought to ['This might be something you\'d think about later.', 'You thought nothing more of it', 'Perhaps this would be someting you\'d come back to another time. Or find out the hard way.']>><<set $playerFoodDish to "true">><<set $playerSketties to "true">><<set $playerLitterbox to "true">><<set $maneColor to "yellow">><<set $fluffyName to "@@color:" + $maneColor + ";Sparky@@">><</nobr>>
+! Welcome Home
+You arrive home to your <<cycle "$houseType">><<option "detached house">><<option "apartment">><<option "townhome">><</cycle>>, which was pretty modest, all things considered. You had previously used an office during the pandemic for a work-from-home environment, but you realized that it was spending a lot of time gathering dust. You decided to move your desk, bookshelves and your stuff for your <<cycle "$hobbyType">><<option "sewing">><<option "plants">><<option "guitar">><<option "language">><<option "calligraphy">><<option "leatherwork">><<option "yoga">><</cycle>> hobby out into the living room; it didn't cramp the space that much, and you had a good opportunity to make the room more suitable for your new Fluffy.
+
+You dumped all the things you got from Fluffmart into the room. 
+
+<<if $playerLitterbox is "true">>The litterbox fit comfortably into the corner, and you filled it up with the sand litter needed for $fluffyName to do its business without much odour. You hoped that they'd like it, because doing one's business is a sacred rite, and Fluffies were known to do it quite often. <<else>><</if>>
+
+<<if $playerFoodDish is "true">>$fluffyName's food dish went on the opposite side of the room, because you weren't enthusiastic to pay food bills for some cross-contamination. Your kibble bag would stay in the kitchen, with a giant plastic scoop to help you portion out things. While fat Fluffies were kind of funny to look at, you really didn't want to have to attempt to make one diet. <<else>><</if>>
+
+<<if $playerSketties is "true">>Your supply of canned spaghetti also went in one of your kitchen cupboards, which was starting to become "the one where all your Fluffy junk is going." You wondered if Fluffies could be strong enough to pull knobs. <<set _randomThought to $knobThought.random()>><<hovertip "Things underlined in @@color:orange;orange@@ will be randomly generated, and remembered to influence events.">><<print _randomThought>><</hovertip>>.<<else>><</if>>
+
+<<nobr>><<if $knobThought.indexOf(_randomThought) === 0>><<set $knobMemory to "0">><<elseif $knobThought.indexOf(_randomThought) === 2>><<set $knobMemory to "3">><</if>><</nobr>>

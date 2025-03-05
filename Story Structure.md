@@ -213,35 +213,30 @@ flowchart TD
 
     D1-M --> D1-1 & D1-2 & D1-3 & D1-4 & D1-5
     D1-1 & D1-2 & D1-3 & D1-4 & D1-5 --> D1-E
-
     D1-E -. (Optional) .-> D1-F
     D1-F --> D1-S
     D1-E --> D1-S
-
+    
     D2-M --> D2-1 & D2-2 & D2-3 & D2-4 & D2-5
     D2-1 & D2-2 & D2-3 & D2-4 & D2-5 --> D2-E
-
     D2-E -. (Optional) .-> D2-F
     D2-F --> D2-S
     D2-E --> D2-S
 
     D3-M --> D3-1 & D3-2 & D3-3 & D3-4 & D3-5
     D3-1 & D3-2 & D3-3 & D3-4 & D3-5 --> D3-E
-
     D3-E -. (Optional) .-> D3-F
     D3-F --> D3-S
     D3-E --> D3-S
 
     D4-M --> D4-1 & D4-2 & D4-3 & D4-4 & D4-5
     D4-1 & D4-2 & D4-3 & D4-4 & D4-5 --> D4-E
-
     D4-E -. (Optional) .-> D4-F
     D4-F --> D4-S
     D4-E --> D4-S
 
     D5-M --> D5-1 & D5-2 & D5-3 & D5-4 & D5-5
     D5-1 & D5-2 & D5-3 & D5-4 & D5-5 --> D5-E
-
     D5-E -. (Optional) .-> D5-F
     D5-F --> D5-S
     D5-E --> D5-S

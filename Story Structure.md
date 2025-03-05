@@ -1,4 +1,12 @@
+# Instructions
+
+To view this in a better Mermaid renderer, copy everything **after** the ` ```mermaid.js ` and **before** the end ` ``` ` into [a Mermaid renderer](https://mermaid.live/) (there are comments in the code telling you were to start and stop copying).
+
+---
+
 ```mermaid
+
+%%start copy after this line
 
 flowchart TD
     subgraph Character Creation
@@ -260,5 +268,5 @@ flowchart TD
     SM-D3EV--> SM-D3E
     SM-D3E --> SM-D3N
 
-    
+%% end copy before this line
 ```

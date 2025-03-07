@@ -8,11 +8,11 @@ Oh hey there.
 
 You are $playerName, a $playerGender $playerRace. As a human, you're of an average size, weight and strength for your age. You've been decent at saving your money for most of your life, and a nice tax return finally gave you a comfortable amount in one specific category of your budget.
 
-You'd always had a bit of a curiosity towards Fluffies, and you weren't really sure why. Perhaps you'd find out in time. 
+You'd always had a bit of a curiosity towards Fluffies, and you weren't really sure why. Perhaps you'd find out in time.
 
 It's currently ''Day 1'' and you've got ''$<<print $playerBudget.toFixed(2)>>'' in your Fluffy budget. You have a job that you have to attend, but you may be able to negotiate work-from-home to be able to make living with your pet easier. Any money you earn won't automatically go toward your Fluffy budget; you can spend it on yourself, your Fluffy, other things, or just hoard it like a troll. You do what you want - I'm not a cop.
 
-As for your first Fluffy, you've got a couple options when it comes to finding them. You can then head [[home->Human Home (First Visit)]].
+As for your first Fluffy, you've got a couple options when it comes to finding them. [[Bad Upsies]]
 
 You can:
 
@@ -32,19 +32,13 @@ You can:
 
 <<button "Go for a walk downtown @@.icon;.next-arrow;@@" "City">><</button>>
 
-
-
-
-
-
-
 :: Fluffmart
 
 Your local Fluffmart is a bit of a zoo. There are always people milling about and filing in and out, and it doesn't help that it's part of a bigger plaza that has a number of other stores. You always hate how hard it is to park, and you nearly get hit by a couple cars just trying to cross the parking lot.
 
 You notice a couple employees in bright orange vests hosing down a large green dumpster in the alley beside the building; from the telltale swarming of flies you can tell there was probably some unpleasant things being disposed of; you weren't sure where you exactly stood on the "Fluffies aren't animals" thing, but it sure made it easier to deal with when it came to the law. 
 
-You're distracted by the bright colors of the advertising as you approach the automatic double doors, and in the back of your brain you can hear the //din// of the store already. Any place that Fluffies tend to congregate is marked by a loud wall of sound that's hard to ignore: the vocal register of the toys and the accompanying //advertising// also compounded the assault. <<set _randomThought to $tvThought.random()>><<hovertip "Things underlined in @@color:orange;orange@@ will be randomly generated, and remembered to influence events.">><<print _randomThought>><</hovertip>>.
+You're distracted by the bright colors of the advertising as you approach the automatic double doors, and in the back of your brain you can hear the //din// of the store already. Any place that Fluffies tend to congregate is marked by a loud wall of sound that's hard to ignore: the vocal register of the toys and the accompanying //advertising// also compounded the assault. <<set _randomThought to $tvThought.random()>><<hovertip "Things underlined in @@color:orange;orange@@ will be randomly generated, and remembered to influence events">><<print _randomThought>><</hovertip>>.
 
 You passed by the loudest and more pushy advertising, heading towards the back of the store, where the pens were. There was always at least one parent and child back here; it was easy entertainment, even if it spurred a lot of begging that the parent would (likely) resist.
 

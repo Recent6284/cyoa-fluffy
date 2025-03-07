@@ -1,0 +1,28 @@
+This file is for the event pool for the Human character.
+
+:: Sorry Poopies [human event]
+
+:: Bad Upsies [human event]
+You notice that $fluffyName somehow got a piece of fibre from your carpet stuck in their hind leg fluff. You'll probably have to get that out, or it's going to be a problem.
+
+<div id="upsies1">You can <<hovertip "You can only choose one option.">>choose how to proceed<</hovertip>>:
+* You can <<link "try to call $fluffyName over">><<replace #upsies1 t8n>><<include [[UpsiesCall]]>><</replace>><</link>>.
+* You can <<link "try to grab $fluffyName without warning" >><<replace #upsies1 t8n>><<include [[UpsiesGrab]]>><</replace>><</link>>.
+* You can <<link "just ignore it">><<replace #upsies1 t8n>><<include [[UpsiesIgnore]]>><</replace>><</link>>.
+</div>
+
+:: UpsiesCall
+<<nobr>><<set _listenRoll to random(1,20)>><</nobr>>You try calling $fluffyName first, as they're on the other side of the $penType. 
+
+<<timed 2s t8n>><<if _listenRoll > 10>>Their ears perked up as <<hovertip "@@color:green;Rolled <<print _listenRoll>>@@, needed >10">>they heard you<</hovertip>>, and they came trotting over.<<set _listen to "true">><<else>> <<hovertip "@@color:red;Rolled <<print _listenRoll>>@@, needed >10">>Unfortunately<</hovertip>>, they were either unable to hear you, or something (likely the paint on the wall) was just that much more interesting than you. You saw them ignore you, and you were back to square one. 
+
+<div id="listenFailbuton"><<timed 2s t8n>><<button "Walk up to them and grab them">><<replace #listenFailbuton>><<include [[UpsiesGrab]]>><</replace>><</button>><</timed>></div>
+
+<</if>><</timed>>
+
+:: UpsiesGrab
+<<nobr>><<set _grabRoll to random(1,20)>><</nobr>>You decide to go for broke and just grab $fluffyName because it would take too long otherwise; it was one piece of string: how complicated could it be?
+
+:: UpsiesIgnore
+
+You decided to ignore this. Who cares?

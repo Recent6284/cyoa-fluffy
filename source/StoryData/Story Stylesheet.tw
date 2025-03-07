@@ -11,8 +11,8 @@ a.explainer {
 
 /* hovertip v2.0 - Start */
 .hoverTip {
-	display: inline-block;
-	top: 4px;
+	/*display: inline-block;
+	top: 4px;*/
 	border-width: 0px;
     border-bottom: 2px dotted orange;  /* If you want dots under the hoverable text */
 }

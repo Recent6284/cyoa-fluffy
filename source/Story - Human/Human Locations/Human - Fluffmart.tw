@@ -25,7 +25,7 @@ Lastly, visiting ''the discount pen'' would probably be the cheapest option, but
 
 Remember, you have ''$<<print $playerBudget.toFixed(2)>>'', and a prayer. Let's see where this leads.
 
-<<button "Change your mind, and go somewhere else @@.icon;.next-arrow;@@" "Human Start">><</button>>
+<<button "Change your mind, and go somewhere else @@.icon;.next-arrow;@@" "Day 1 Travel">><</button>>
 
 <<nobr>><<if $tvThought.indexOf(_randomThought) === 0>><<set $tvMemory to "0">><<elseif $tvThought.indexOf(_randomThought) === 2>><<set $tvMemory to "3">><</if>><</nobr>>
 

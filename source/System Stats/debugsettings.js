@@ -1,6 +1,3 @@
-/*
-        Debug Settings.
-
 (function () {
         Setting.addHeader("Debug Settings");
 
@@ -17,4 +14,3 @@
                 }
         });
 })();
-*/

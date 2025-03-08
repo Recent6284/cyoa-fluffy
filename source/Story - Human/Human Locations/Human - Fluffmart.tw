@@ -1,37 +1,3 @@
-:: Human Start
-<<nobr>>
-    <<set $playerBudget to 2000>>
-    <<set $playerStatus to "firstvisit">>
-    <<set $tvThought to ['You decide to remember this for later', 'The thought floats out of your brain, however', 'You might have to come back to that later.']>>
-<</nobr>>
-Oh hey there.
-
-You are $playerName, a $playerGender $playerRace. As a human, you're of an average size, weight and strength for your age. You've been decent at saving your money for most of your life, and a nice tax return finally gave you a comfortable amount in one specific category of your budget.
-
-You'd always had a bit of a curiosity towards Fluffies, and you weren't really sure why. Perhaps you'd find out in time.
-
-It's currently ''Day 1'' and you've got ''$<<print $playerBudget.toFixed(2)>>'' in your Fluffy budget. You have a job that you have to attend, but you may be able to negotiate work-from-home to be able to make living with your pet easier. Any money you earn won't automatically go toward your Fluffy budget; you can spend it on yourself, your Fluffy, other things, or just hoard it like a troll. You do what you want - I'm not a cop.
-
-As for your first Fluffy, you've got a couple options when it comes to finding them. [[Bad Upsies]]
-
-You can:
-
-1. @@color:#e600e6;''Go to Fluffmart''@@ to see what your options are. You're likely going to pay the most at Fluffmart, but if you're able to haggle, you might have more of a chance to get bundle deals with merchandise, or a Fluffy that's better-behaved, documented, or looks more aesthetically pleasing. 
-
-<<button "Go to Fluffmart @@.icon;.next-arrow;@@" "Fluffmart">><</button>>
-
-2.  @@color:DarkTurquoise;''Visit the local shelter''@@ to see if there are any adoptables that look promising. They're a no-kill shelter, and take in Fluffies that either have been abandoned or given up by their owners. There are even some ferals there. You're likely to find much cheaper Fluffies there, but they'll likely have some asterisks when it comes to their health or behaviour. 
-
-<<button "Go to the shelter @@.icon;.next-arrow;@@" "Shelter">><</button>>
-
-3. @@color:green;''Visit the local forest''@@. Your research on your local city's subreddit has come up with some sightings of Fluffies in the forested area that's due to be demolished for a new land development. Feral Fluffies will have their own set of problems, but there's nothing wrong with "free", right? 
-
-<<button "Go to the forest @@.icon;.next-arrow;@@" "Forest">><</button>>
-
-4. @@color:SteelBlue;''Take your chances with a walk in the city''@@. You've definitely seen your share of Fluffies wandering around and scavenging alleyways; this is a super long-shot, but who knows, you might find something interesting! 
-
-<<button "Go for a walk downtown @@.icon;.next-arrow;@@" "City">><</button>>
-
 :: Fluffmart
 
 Your local Fluffmart is a bit of a zoo. There are always people milling about and filing in and out, and it doesn't help that it's part of a bigger plaza that has a number of other stores. You always hate how hard it is to park, and you nearly get hit by a couple cars just trying to cross the parking lot.
@@ -58,6 +24,8 @@ Lastly, visiting ''the discount pen'' would probably be the cheapest option, but
 <<button "Visit the Discount Pens @@.icon;.next-arrow;@@" "Fluffmart - The Discounts">><</button>>
 
 Remember, you have ''$<<print $playerBudget.toFixed(2)>>'', and a prayer. Let's see where this leads.
+
+<<button "Change your mind, and go somewhere else @@.icon;.next-arrow;@@" "Human Start">><</button>>
 
 <<nobr>><<if $tvThought.indexOf(_randomThought) === 0>><<set $tvMemory to "0">><<elseif $tvThought.indexOf(_randomThought) === 2>><<set $tvMemory to "3">><</if>><</nobr>>
 
@@ -100,9 +68,3 @@ Perhaps it was a greater awareness of the consequences of not being adopted, but
 These pens weren't //garbage//, but it was clear there was something different about them compared to the Adult Room or the Foal Area; it's like the "well-used" fixtures found their way here, and everything seemed a little less well-presented. Of course, this wasn't enough to disuade a sale, and for many people, the discount aisle would be their first encounter with a Fluffy before graduating to something more expensive, or finding a good pet that would defy expectations the store had for them.
 
 Being seen as a potential "new parent" was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn't much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy "bonded" with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren't picked.
-
-:: Shelter
-
-:: Forest
-
-:: City

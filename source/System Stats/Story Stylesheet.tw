@@ -156,3 +156,42 @@ a.bug::after {
 a.square::after{
   content: "\f04d";
 }
+
+/* Replacement Colors*/
+
+/* Color Enhancements */
+[style*="color:pink"], [style*="color: pink"] {
+    color: hotpink !important;
+}
+[style*="color:blue"], [style*="color: blue"] {
+    color: dodgerblue !important;
+}
+[style*="color:red"], [style*="color: red"] {
+    color: crimson !important;
+}
+[style*="color:green"], [style*="color: green"] {
+    color: forestgreen !important;
+}
+[style*="color:purple"], [style*="color: purple"] {
+    color: mediumpurple !important;
+}
+[style*="color:orange"], [style*="color: orange"] {
+    color: darkorange !important;
+}
+[style*="color:brown"], [style*="color: brown"] {
+    color: saddlebrown !important;
+}
+[style*="color:yellow"], [style*="color: yellow"] {
+    color: gold !important;
+}
+[style*="color:gray"], [style*="color: gray"] {
+    color: darkgray !important;
+}
+[style*="color:black"], [style*="color: black"] {
+    color: #000 !important;
+    text-shadow: white 1px 0 5px;
+    font-weight: 500;
+}
+[style*="color:white"], [style*="color: white"] {
+    text-decoration: underline white wavy;
+}

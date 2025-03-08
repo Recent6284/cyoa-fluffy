@@ -1,0 +1,308 @@
+:: StoryInit
+
+<<print "Test">>
+<<set $arrowButton to "Let's begin! <span class='icon next-arrow'></span>">>
+
+<<set $fluffies = []>>
+<<set $fluffyName = []>>
+<<set $fluffyMane = []>>
+<<set $fluffySkin = []>>
+<<set $fluffyGender = []>>
+<<set $fluffyEyes = []>>
+<<set $fluffyRace = []>>
+
+<<set $fluffyObedience = []>>
+<<set $fluffyImpulsiveness = []>>
+<<set $fluffyCaution = []>>
+<<set $fluffyIgnorance = []>>
+
+<<set $randomNameMale = [
+    "Oak",
+    "Cedar",
+    "Birch",
+    "Ash",
+    "Thorn",
+    "Bramble",
+    "Flint",
+    "Stone",
+    "Boulder",
+    "Cliff",
+    "Storm",
+    "Thunder",
+    "Lightning",
+    "Blaze",
+    "Ember",
+    "Rusty",
+    "Copper",
+    "Bronze",
+    "Steel",
+    "Iron",
+    "Shadow",
+    "Midnight",
+    "Onyx",
+    "Jet",
+    "Coal",
+    "Gravel",
+    "Granite",
+    "Moss",
+    "Fern",
+    "Pine",
+    "Spruce",
+    "Timber",
+    "River",
+    "Brook",
+    "Lake",
+    "Ocean",
+    "Tide",
+    "Wave",
+    "Frost",
+    "Glacier",
+    "Comet",
+    "Meteor",
+    "Orion",
+    "Sol",
+    "Shade",
+    "Sandy",
+    "Shine",
+    "Gold",
+    "Silver",
+    "Platinum",
+    "Rowan",
+    "Hawthorn",
+    "Alder",
+    "Sycamore",
+    "Elm",
+    "Maple",
+    "Cypress",
+    "Redwood",
+    "Hickory",
+    "Juniper",
+    "Rex",
+    "Rover",
+    "Whistle",
+    "Rosemary",
+    "Coriander",
+    "Parsley",
+    "Dill",
+    "Trapper",
+    "Clove",
+    "Cumin",
+    "Cobalt",
+    "Mercury",
+    "Titanium",
+    "Nickel",
+    "Zinc",
+    "Quartz",
+    "Obsidian",
+    "Topaz",
+    "Garnet",
+    "Shale",
+    "Falcon",
+    "Eagle",
+    "Hawk",
+    "Raven",
+    "Crow",
+    "Phoenix",
+    "Griffin",
+    "Drake",
+    "Wolf",
+    "Bear",
+    "Fox",
+    "Lynx",
+    "Cougar",
+    "Panther",
+    "Leopard",
+    "Tiger",
+    "Lion",
+    "Falcon",
+    "Boulder",
+    "Slate"
+    ]>>
+
+<<set $randomNameFemale = [
+    "Rosebud",
+    "Daisy",
+    "Lilypad",
+    "Buttercup",
+    "Marigold",
+    "Petal",
+    "Blossom",
+    "Cherry",
+    "Peach",
+    "Berry",
+    "Honey",
+    "Sugar",
+    "Sparkle",
+    "Glimmer",
+    "Starflower",
+    "Moonbeam",
+    "Sunny",
+    "Skye",
+    "Raindrop",
+    "Dewdrop",
+    "Pearl",
+    "Coral",
+    "Sapphire",
+    "Ruby",
+    "Amber",
+    "Jade",
+    "Opal",
+    "Crystal",
+    "Velvet",
+    "Misty",
+    "Frosty",
+    "Snowflake",
+    "Cloudy",
+    "Breeze",
+    "Meadow",
+    "Willow",
+    "Clover",
+    "Tulip",
+    "Poppy",
+    "Lavender",
+    "Violet",
+    "Iris",
+    "Hazel",
+    "Maple",
+    "Autumn",
+    "Summer",
+    "Dawn",
+    "Twilight",
+    "Aurora",
+    "Starlight",
+    "Rosemary",
+    "Bluebell",
+    "Daffodil",
+    "Primrose",
+    "Sunflower",
+    "Cinnamon",
+    "Peppermint",
+    "Vanilla",
+    "Caramel",
+    "Toffee",
+    "Cupcake",
+    "Sprinkle",
+    "Glitter",
+    "Shimmer",
+    "Twinkle",
+    "Moonlight",
+    "Starshine",
+    "Sunbeam",
+    "Rainbow",
+    "Bubble",
+    "Feather",
+    "Swan",
+    "Dove",
+    "Robin",
+    "Wren",
+    "Sparrow",
+    "Lark",
+    "Finch",
+    "Nightingale",
+    "Canary",
+    "Marina",
+    "Seashell",
+    "Powder",
+    "Coraline",
+    "Aqua",
+    "Azure",
+    "Cerulean",
+    "Indigo",
+    "Lilac",
+    "Magnolia",
+    "Pansy",
+    "Dandelion",
+    "Cinnamon",
+    "Orchid",
+    "Peony",
+    "Tulip",
+    "Dahlia",
+    "Camellia",
+    "Aster",
+    "Snowdrop"
+    ]>>
+
+<<set $fluffyRace = [
+  "alicorn", "earthie", "pegasus", "unicorn"
+]>>
+
+<<set $randomMane = [
+    "red", "blue", "green", "yellow", "purple",
+    "pink", "orange", "white", "black", "brown"
+]>>
+
+<<set $randomSkin = [
+    "white", "brown", "black", "tan", "grey",
+    "pink", "cream", "gold", "chocolate", "beige"
+]>>
+
+<<set $randomGender = [
+    "male", "female"
+]>>
+
+<<widget "newFluffy">>
+  <<set _gender = $randomGender.random()>>
+  <<set _mane = $randomMane.random()>>
+  <<set _skin = $randomSkin.random()>>
+  <<if _gender is "male">>
+    <<set _name = $randomNameMale.random()>>
+    <<set _pronounIndex = 0>>
+  <<else>>
+    <<set _name = $randomNameFemale.random()>>
+    <<set _pronounIndex = 1>>
+  <</if>>
+  <<set _race = $fluffyRace.random()>>
+  
+  <<set _fluffy = {
+    name: _name,
+    mane: _mane,
+    skin: _skin,
+    gender: _gender,
+    pronounIndex: _pronounIndex,
+    race: _race
+  }>>
+
+  <<run $fluffies.push(_fluffy)>>
+<</widget>>
+
+<<set $playerBudget to 500>>
+<<set $haveFirstFluff to "false">>
+<<set $haveSecondFluff to "false">>
+<<set $firstTravel to "true">>
+<<set $dayNumber to "1">>
+
+<<set $playerStatus to "firstvisit">>
+
+<<set $tvThought to ['You decide to remember this for later', 'The thought floats out of your brain, however', 'You might have to come back to that later.']>>
+
+<<script>>
+// Define fluffy pronoun macros
+["0", "1"].forEach(function(index) {
+    Macro.add("f" + index + "they", {
+        handler: function() {
+            var pronouns = ["he", "she", "they", "it"];
+            var text = pronouns[State.variables.fluffies[index].pronounIndex];
+            $(this.output).append(this.args.includes("upper") ? 
+                text.charAt(0).toUpperCase() + text.slice(1) : text);
+        }
+    });
+
+    Macro.add("f" + index + "them", {
+        handler: function() {
+            var pronouns = ["him", "her", "them", "it"];
+            var text = pronouns[State.variables.fluffies[index].pronounIndex];
+            $(this.output).append(this.args.includes("upper") ? 
+                text.charAt(0).toUpperCase() + text.slice(1) : text);
+        }
+    });
+
+    Macro.add("f" + index + "their", {
+        handler: function() {
+            var pronouns = ["his", "her", "their", "its"];
+            var text = pronouns[State.variables.fluffies[index].pronounIndex];
+            $(this.output).append(this.args.includes("upper") ? 
+                text.charAt(0).toUpperCase() + text.slice(1) : text);
+        }
+    });
+});
+<</script>>

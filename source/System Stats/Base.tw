@@ -1,7 +1,3 @@
-:: PassageHeader
-
-<<set $arrowButton to "Let's begin! <span class='icon next-arrow'></span>">>
-
 :: PassageFooter
 <<script>>
 // Wait for the passage to finish rendering
@@ -36,4 +32,5 @@ $(document).on(":passageend", function() {
 }
 
 :: StoryTitle
+
 A Fluffy Story

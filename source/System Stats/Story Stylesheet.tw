@@ -163,6 +163,20 @@ a.square::after{
   content: "\f04d";
 }
 
+#ui-bar-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Position the #menu at the bottom of the #ui-bar */
+#menu {
+    align-self: flex-end; /* Align to the bottom */
+    width: 100%; /* Ensure it spans the full width */
+    margin-bottom: 5em;
+}
+
 /* Replacement Colors*/
 
 /* Color Enhancements */

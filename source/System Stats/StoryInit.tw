@@ -310,3 +310,15 @@
     });
 });
 <</script>>
+
+/* Item Definitions */
+<<item "foodbowl" "Food Bowl">>
+<<description>>
+This food bowl was similar to ones you've seen for more traditional pets, but still presented the problem of potentially getting kibble everywhere. This bowl would hold enough food for a full day's worth of kibble, and has a high enough lip to mitigate the problems of spillage. It was made of a durable, bright plastic, and had a "Nummies" label on it; it was careful to not promise anything specific, lest the Fluffy get disappointed in the process. 
+
+You saw that when it was empty, it had a nice, friendly graphic of the sun at the bottom of the bowl; perhaps this would be enough to quiet the disappointment of not having anything else to eat.
+<</item>>
+
+:: inventory.strings
+
+empty: Your inventory is empty!

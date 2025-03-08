@@ -8,7 +8,6 @@ You'd always had a bit of a curiosity towards Fluffies, and you weren't really s
 
 <<include "Day 1 Travel">>
 :: Day 1 Travel
-
 It's currently ''Day $dayNumber'' and you've got ''$<<print $playerBudget.toFixed(2)>>'' in your Fluffy budget.<<if $firstTravel is "true">> You have a job that you have to attend, but you may be able to negotiate a (provisional) work-from-home schedule to make living with your new pet easier. Any money you earn won't automatically go toward your Fluffy budget; you can spend it on yourself, your Fluffy, other things, or just hoard it like a troll. You do what you want - I'm not a cop.
 
 As for your first Fluffy, you've got a couple options when it comes to finding them. You can:<<else>>

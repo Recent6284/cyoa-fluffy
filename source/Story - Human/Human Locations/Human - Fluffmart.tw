@@ -46,18 +46,6 @@ Managing a number of adult fluffies was difficult, and trying to put them in the
 Fluffies of all colors were babbling, hugging, playing with balls and blocks, watching a FluffTV set, and generally doing what they did best. You could see a Fluffmart employee breaking up a scuffle between two males with a broom handle; even in this protected area, there were egos, jostling, and hierarchy. You <<cycle "$fluffyReaction">><<option "grinned at">><<option "rolled your eyes at">><<option "frowned at">><<option "rolled your eyes at">><<option "shook your head at">><</cycle>> the small micro-society; for many of the ponies, this was the only life they ever knew until their new Daddies and Mummies brought them to their "forever homes" 
 
 Being seen as a potential "new parent" was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn't much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy "bonded" with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren't picked.
-<<nobr>><<silent>>
-<<set $fluffies = []>>
-<<set $fluffyName = []>>
-<<set $fluffyMane = []>>
-<<set $fluffySkin = []>>
-<<for _i to 0; _i < 3; _i++>>
-    <<generateFluffy>>
-    <<set $fluffyName[_i + 1] = $fluffies[_i].name>>
-    <<set $fluffyMane[_i + 1] = $fluffies[_i].maneColor>>
-    <<set $fluffySkin[_i + 1] = $fluffies[_i].skinColor>>
-<</for>><</silent>><</nobr>>
-You saw three fluffies through the glass: <<= "A fluffy named " + $fluffyName[1] + " with a " + $fluffyMane[1] + " mane and " + $fluffySkin[1] + " skin." >><<= " A fluffy named " + $fluffyName[2] + " with a " + $fluffyMane[2] + " mane and " + $fluffySkin[2] + " skin." >><<= " A fluffy named " + $fluffyName[3] + " with a " + $fluffyMane[3] + " mane and " + $fluffySkin[3] + " skin." >>
 
 :: Fluffmart - The Discounts
 

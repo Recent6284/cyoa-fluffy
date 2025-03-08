@@ -1,6 +1,17 @@
 :: Character Confirmation
 ''Confirmed'': You are $playerName, <<print $playerGender.toUpperFirst()>> <<print $playerRace.toUpperFirst()>>. <<if $playerSmarty is true>>You are a Smarty.<<elseif $playerRace isnot "human">>You are not a Smarty.<<elseif $playerRace is "human">><</if>>
 
+:: Character Creation Next Button
+<<button "Next">>
+  <<if $playerRace is "human">>
+    <<goto "Human Start">>
+  <<else>>
+    <<replace "#nextButton1" t8n>><<include "fluffyQuestions" "div">><</replace>>
+  <</if>>
+<</button>>
+
+<label><<checkbox "$playerMature" false true `$playerSmarty ? 'checked' : ''`>> Check this box if you're fine with <<hovertip "Content involving any combination of: violence, sexuality, horror, cruelty, abuse, etc.">>Mature Content<</hovertip>>.</label>
+
 :: fluffyQuestions
 !!You chose a fluffy. Here's some more questions.
 !!!Appearance
@@ -15,7 +26,7 @@ Mane and Tail: <<cycle "$playerMane">>
 <<option "Yellow @@.icon;.square;color:yellow;@@">>
 <<option "Orange @@.icon;.square;color:orange;@@">>
 <</cycle>>
-Fur: <<cycle "$playerFur">>
+Fur: <<cycle "$playerColor">>
 <<option "Blue @@.icon;.square;color:blue;@@">>
 <<option "Red @@.icon;.square;color:red;@@">>
 <<option "Green @@.icon;.square;color:green;@@">>
@@ -28,11 +39,14 @@ Fur: <<cycle "$playerFur">>
 @@\
 !!!The Smarty Option
 @@.optionbox;
-<<do>><<if $playerRace isnot "human">>I noticed you wanted to play a fluffy. Do you want to be a Smarty?
-<label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a smarty.</label><</if>>
-<</do>>
-@@
-@@.cautionbox;
-Please make sure to click "Confirm Character" to lock in your choices, please.
-@@
+I noticed you wanted to play a fluffy. Do you want to be a Smarty?
+<label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a Smarty.</label>@@
+<<button "I'm done! $arrowButton">>
+<<if $playerSmarty>><<goto "Smarty Start">>
+<<else>><<goto "Fluffy Start">>
+<</if>>
+<</button>> 
+
+@@.backbutton;<<button "I changed my mind">>
+<<replace "#nextButton1" t8n>><<include "Character Creation Next Button">><</replace>><</button>>@@
 

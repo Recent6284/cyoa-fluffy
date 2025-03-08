@@ -102,6 +102,12 @@ a.explainer {
   opacity: 0.9;
 }
 
+.backbutton button {
+  background-color: firebrick;
+  border-style: dashed;
+  border-color: white;
+}
+
 /* Sugarcube Icons */
 
 .icon{

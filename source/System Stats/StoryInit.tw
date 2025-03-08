@@ -1,7 +1,6 @@
 :: StoryInit
 
-<<print "Test">>
-<<set $arrowButton to "Let's begin! <span class='icon next-arrow'></span>">>
+<<set $arrowButton to "<span class='icon next-arrow'></span>">>
 
 <<set $fluffies = []>>
 <<set $fluffyName = []>>

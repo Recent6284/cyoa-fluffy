@@ -239,6 +239,10 @@
     "male", "female"
 ]>>
 
+<<widget "reloadCaption">>
+    <<replace "#story-caption">><<include "StoryCaption">><</replace>>
+<</widget>>
+
 <<widget "newFluffy">>
   <<set _gender = $randomGender.random()>>
   <<set _mane = $randomMane.random()>>
@@ -269,6 +273,7 @@
 <<set $haveSecondFluff to "false">>
 <<set $firstTravel to "true">>
 <<set $dayNumber to "1">>
+<<newinv $items>>
 
 <<set $playerStatus to "firstvisit">>
 

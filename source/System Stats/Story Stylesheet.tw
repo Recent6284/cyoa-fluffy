@@ -146,7 +146,7 @@ a.explainer {
   font-size: 14px;
   position: absolute; 
   bottom: 0;
-  padding-bottom: 10px;
+  padding-bottom: 10px;*/
 }
 
 a.next-arrow::after {

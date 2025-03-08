@@ -251,7 +251,7 @@ a.explainer {
   font-size: 14px;
   position: absolute; 
   bottom: 0;
-  padding-bottom: 10px;
+  padding-bottom: 10px;*/
 }
 
 a.next-arrow::after {
@@ -567,6 +567,8 @@ You can download the .html file from GitLab if you want to save this for offline
 * Buttons that will make you leave the page will be marked with a &quot;@@.icon;.next-arrow;@@&quot;.
 * I&#39;ll be using variables to track some choices, and some may matter! We&#39;ll see how ambitious I get.
 
+&lt;&lt;link &quot;pick up an item&quot;&gt;&gt;&lt;&lt;pickup $items &quot;sorrystick&quot; 1&gt;&gt;&lt;&lt;/link&gt;&gt;
+
 &lt;&lt;button &quot;Let&#39;s begin! $arrowButton&quot; &quot;Character Creation&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Fluffy Start" tags="" position="725,100" size="100,100">This is the Fluffy Start page.
 
 You are $playerName, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you aren&#39;t a smarty.
@@ -700,7 +702,8 @@ $(document).on(&quot;:passageend&quot;, function() {
     footergray.classList.toggle(&quot;hidden&quot;);
   });
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="StoryCaption" tags="" position="600,350" size="100,100">&lt;div id=&quot;bug-section&quot;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="StoryCaption" tags="" position="600,350" size="100,100">&lt;&lt;if $items.isEmpty()&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;inv $items inspect all&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;div id=&quot;bug-section&quot;&gt;
   &lt;div id=&quot;bug-button&quot;&gt;&lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Found a bug? Submit it to &lt;a href=&quot;https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
   &lt;/div&gt;&lt;/div&gt;
@@ -943,6 +946,10 @@ $(document).on(&quot;:passageend&quot;, function() {
     &quot;male&quot;, &quot;female&quot;
 ]&gt;&gt;
 
+&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
+    &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
 &lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
@@ -973,6 +980,7 @@ $(document).on(&quot;:passageend&quot;, function() {
 &lt;&lt;set $haveSecondFluff to &quot;false&quot;&gt;&gt;
 &lt;&lt;set $firstTravel to &quot;true&quot;&gt;&gt;
 &lt;&lt;set $dayNumber to &quot;1&quot;&gt;&gt;
+&lt;&lt;newinv $items&gt;&gt;
 
 &lt;&lt;set $playerStatus to &quot;firstvisit&quot;&gt;&gt;
 

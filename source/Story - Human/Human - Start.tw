@@ -2,11 +2,11 @@
 
 <<if $firstTravel is "true">>Oh hey there.
 
-You are $playerName, a $playerGender $playerRace. As a human, you're of an average size, weight and strength for your age. You've been decent at saving your money for most of your life, and a nice tax return finally gave you a comfortable amount in one specific category of your budget. You've decided to set up a <<if $firstTravel is "true">><<cycle "$penType">><<option "Safe Room" "safe room">><<option "playpen in your living room" "playpen">><</cycle>><<else>>$penType<</if>> as the Fluffy's main living space.
+You are $playerName, a $playerGender $playerRace. As a human, you're of an average size, weight and strength for your age. You've been decent at saving your money for most of your life, and a nice tax return finally gave you a comfortable amount in one specific category of your budget. You've decided to set up a <<cycle "$penType">><<option "Safe Room" "safe room">><<option "playpen in your living room" "playpen">><</cycle>> as the Fluffy's main living space.
 
 You'd always had a bit of a curiosity towards Fluffies, and you weren't really sure why. Perhaps you'd find out in time.<<else>><</if>>
 
-It's currently ''Day $dayNumber'' and you've got ''$<<print $playerBudget.toFixed(2)>>'' in your Fluffy budget.<<if $firstTravel is "true">> You have a job that you have to attend, but you may be able to negotiate a (provisional) work-from-home schedule to be able to make living with your new pet easier. Any money you earn won't automatically go toward your Fluffy budget; you can spend it on yourself, your Fluffy, other things, or just hoard it like a troll. You do what you want - I'm not a cop.
+It's currently ''Day $dayNumber'' and you've got ''$<<print $playerBudget.toFixed(2)>>'' in your Fluffy budget.<<if $firstTravel is "true">> You have a job that you have to attend, but you may be able to negotiate a (provisional) work-from-home schedule to make living with your new pet easier. Any money you earn won't automatically go toward your Fluffy budget; you can spend it on yourself, your Fluffy, other things, or just hoard it like a troll. You do what you want - I'm not a cop.
 
 As for your first Fluffy, you've got a couple options when it comes to finding them. You can:<<else>>
 

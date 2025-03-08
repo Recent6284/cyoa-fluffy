@@ -35,3 +35,5 @@ $(document).on(":passageend", function() {
 :: StoryTitle
 
 A Fluffy Story
+
+:: StoryMenu

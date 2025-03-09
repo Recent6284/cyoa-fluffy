@@ -1,43 +1,36 @@
 :: Character Creation Next Button
-<<button "Next">>
-  <<if $playerRace is "human">>
-    <<goto "Human Start">><<unset $firstLoad>>
-  <<else>>
-    <<replace "#nextButton1" t8n>><<include "fluffyQuestions" "div">><</replace>>
-  <</if>>
-<</button>>
+<<button "Next">><<if $playerRace is "human">><<goto "Human Start">><<unset $firstLoad>><<else>><<replace "#nextButton1" t8n>><<include "fluffyQuestions">><</replace>><</if>><</button>>
 
 <label><<checkbox "$playerMature" false true `$playerSmarty ? 'checked' : ''`>> Check this box if you're fine with <<hovertip "Content involving any combination of: violence, sexuality, horror, cruelty, abuse, etc.">>Mature Content<</hovertip>>.</label>
 
 :: fluffyQuestions
-!!You chose a fluffy. Here's some more questions.
-!!!Appearance
+<br>You chose a fluffy. Here are some more questions.
+
 @@.optionbox;
-<<do>>Since you're a fluffy, pick the color of your mane and tail:
-Mane and Tail: <<cycle "$playerMane">>
+__Appearance__
+Since you're a fluffy, pick the color of your mane and tail:
+<label>Mane and Tail: <<cycle "$playerMane">>
 <<option "Blue @@.icon;.square;color:blue;@@">>
 <<option "Red @@.icon;.square;color:red;@@">>
 <<option "Green @@.icon;.square;color:green;@@">>
 <<option "Purple @@.icon;.square;color:purple;@@">>
 <<option "Pink @@.icon;.square;color:pink;@@">>
 <<option "Yellow @@.icon;.square;color:yellow;@@">>
-<<option "Orange @@.icon;.square;color:orange;@@">>
-<</cycle>>
-Fur: <<cycle "$playerColor">>
+<<option "Orange @@.icon;.square;color:orange;@@">><</cycle>></label>
+<label>Fur: <<cycle "$playerColor">>
 <<option "Blue @@.icon;.square;color:blue;@@">>
 <<option "Red @@.icon;.square;color:red;@@">>
 <<option "Green @@.icon;.square;color:green;@@">>
 <<option "Purple @@.icon;.square;color:purple;@@">>
 <<option "Pink @@.icon;.square;color:pink;@@">>
 <<option "Yellow @@.icon;.square;color:yellow;@@">>
-<<option "Orange @@.icon;.square;color:orange;@@">>
-<</cycle>>
-<</do>>
-@@\
-!!!The Smarty Option
-@@.optionbox;
+<<option "Orange @@.icon;.square;color:orange;@@">><</cycle>></label>
+
+__The Smarty Option__
 I noticed you wanted to play a fluffy. Do you want to be a Smarty?
-<label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a Smarty.</label>@@
+<label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a Smarty.</label>
+
+@@
 <<button "I'm done! $arrowButton">>
 <<if $playerSmarty>><<goto "Smarty Start">><<unset $firstLoad>>
 <<else>><<goto "Fluffy Start">><<unset $firstLoad>>

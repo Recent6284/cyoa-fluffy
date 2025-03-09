@@ -76,15 +76,28 @@ a.explainer {
 }
 
 .optionbox{
-  padding: 10px;
-  border-left: 0.50em solid rgb(0, 119, 255);
-  max-width: 60%;
+	diplay: inline-block;
+	padding: 0px 1em;
+	border-left: 0.50em solid rgb(0, 119, 255);
+	max-width: 60%;
 }
 
 .cautionbox{
-  padding: 10px;
-  border-left: 0.50em solid red;
-  max-width: 60%;
+	diplay: inline-block;
+	padding: 10px;
+	border-left: 0.50em solid red;
+	max-width: 60%;
+}
+
+.optionbox p, {
+	margin-block-start: 2em;
+	margin-block-end: 2em;
+}
+
+.optionbox h4 {
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+	text-decoration: underline;
 }
 
 /* Hide the footer initially */
@@ -104,7 +117,7 @@ a.explainer {
 
 .backbutton button {
   background-color: firebrick;
-  border-style: dashed;
+  border-style: solid;
   border-color: white;
 }
 
@@ -214,7 +227,10 @@ a.square::after{
     text-decoration: underline white wavy;
 }
 
-
+p, h2, h3, h4, h5 {
+	margin-block-start: 0.75em;
+	margin-block-end: 0.75em;
+}
 
 /* SugarCube's built-in Font Awesome icons - Start */
 .sc-fa {

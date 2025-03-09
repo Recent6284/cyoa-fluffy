@@ -3,6 +3,5 @@ Hey there. Make your choices for the character you'd like to play, then hit "Con
 
 Your name is <<textbox "$playerName" "Player Name">>.
 
-You are playing a <<cycle "$playerGender">><<option Male "male">><<option Female "female">><</cycle>>  <<cycle "$playerRace">><<option Human "human">><<option "Earthie Pony" "earthie">><<option "Pegasus Pony" "pegasus">><<option "Unicorn Pony" "unicorn">><<option "Alicorn Pony" "alicorn">><</cycle>>.
-
-<div id="nextButton1"><<include "Character Creation Next Button">></div>
+You are playing a <<cycle "$playerGender">><<option Male "male">><<option Female "female">><</cycle>>  <<cycle "$playerRace">><<option Human "human">><<option "Earthie Pony" "earthie">><<option "Pegasus Pony" "pegasus">><<option "Unicorn Pony" "unicorn">><<option "Alicorn Pony" "alicorn">><</cycle>>.<div id="nextButton1">
+<<include "Character Creation Next Button">></div> \

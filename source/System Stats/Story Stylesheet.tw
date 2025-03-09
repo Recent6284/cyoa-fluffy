@@ -172,9 +172,7 @@ a.square::after{
 
 /* Position the #menu at the bottom of the #ui-bar */
 #menu {
-    align-self: flex-end; /* Align to the bottom */
-    width: 100%; /* Ensure it spans the full width */
-    margin-bottom: 5em;
+    position: relative; /* Align to the bottom */
 }
 
 /* Replacement Colors*/
@@ -602,3 +600,9 @@ a.square::after{
 	content: "\f028";
 }
 /* SugarCube's built-in Font Awesome icons - End */
+
+#menu-core {
+	position: absolute; /* Position relative to the parent */
+	width: 100%;        /* Make it full width of the parent */
+	z-index: 1000;      /* Ensure it's above other content */
+}

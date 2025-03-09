@@ -12,12 +12,13 @@ $(document).on(":passageend", function() {
 <</script>>
 
 :: StoryCaption
-<<inv $items inspect>>
+<<if $playerRace is "human" and $firstLoad isnot true>><div class="simple-inventory-list" id="Inventory Title">
+<h3><u>Player Inventory</u></h3></div><<inv $bag inspect>><<else>><</if>>
+
 <div id="bug-section">
   <div id="bug-button"><span class="icon bug"></span><div id="footergray" class="hidden">Page ID: <span id="page-id"><<print passage()>></span> <<link "(Copy to Clipboard)">><<run setup.copyToClipboard(passage())>><</link>><br>Found a bug? Submit it to <a href="https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395" target="_none">the bug tracker</a>.
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
   </div></div>
-</div>
 
 
 :: StoryData
@@ -37,3 +38,5 @@ $(document).on(":passageend", function() {
 A Fluffy Story
 
 :: StoryMenu
+
+

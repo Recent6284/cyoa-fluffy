@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://91DE2478-0580-4525-B945-68EB03861614// --><tw-storydata name="A Fluffy Story" startnode="5" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="91DE2478-0580-4525-B945-68EB03861614" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "Story Stylesheet" */
+	<!-- UUID://91DE2478-0580-4525-B945-68EB03861614// --><tw-storydata name="A Fluffy Story" startnode="4" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="91DE2478-0580-4525-B945-68EB03861614" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "Story Stylesheet" */
 body {
  background-color: #121212;
 }
@@ -277,9 +277,7 @@ a.square::after{
 
 /* Position the #menu at the bottom of the #ui-bar */
 #menu {
-    align-self: flex-end; /* Align to the bottom */
-    width: 100%; /* Ensure it spans the full width */
-    margin-bottom: 5em;
+    position: relative; /* Align to the bottom */
 }
 
 /* Replacement Colors*/
@@ -707,18 +705,31 @@ a.square::after{
 	content: "\f028";
 }
 /* SugarCube's built-in Font Awesome icons - End */
+
+#menu-core {
+	position: absolute; /* Position relative to the parent */
+	width: 100%;        /* Make it full width of the parent */
+	z-index: 1000;      /* Ensure it's above other content */
+}
 /* twine-user-stylesheet #2: "simple-inventory.css" */
 /* Simple Inventory, for SugarCube 2, by Chapel
 v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
 ul.simple-inventory-list {
     margin: 0 auto;
     padding: 0;
-    height: 200px; /* Set a fixed height */
+    height:45vh; /* Set a fixed height */
     overflow-y: auto; /* Make it scrollable */
+}
+
+.simple-inventory-list {
+    text-align: left;
+    padding: 0 1rem;
 }
 
 .simple-inventory-listing {
     list-style: none;
+    text-align: left;
+    line-height: 0.8rem;
     padding: 0.3rem 1rem;
     display: block;
 }
@@ -944,15 +955,15 @@ Template.add("Pals", function () { return ["Dudes", "Chicks", "Pals", "Pals"][St
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
 ;"use strict";function _typeof(t){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},_typeof(t)}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function _defineProperties(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,_toPropertyKey(i.key),i)}}function _createClass(t,e,n){return e&&_defineProperties(t.prototype,e),n&&_defineProperties(t,n),Object.defineProperty(t,"prototype",{writable:!1}),t}function _toPropertyKey(t){var e=_toPrimitive(t,"string");return"symbol"==_typeof(e)?e:String(e)}function _toPrimitive(t,e){if("object"!=_typeof(t)||!t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,e||"default");if("object"!=_typeof(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}!function(){var t={description:"",handler:null,displayName:"",consumable:!0,unique:!1,permanent:!1},e=new Map,n=function(){function n(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:clone(t),r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];if(_classCallCheck(this,n),!e||"string"!=typeof e)throw new Error("invalid item ID");if("object"!==_typeof(i))throw new Error("invalid item definition");Object.assign(this,Object.assign({},t,i)),this.id=e,this._tags=r instanceof Array?r:"string"==typeof r?[r]:[]}return _createClass(n,[{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(t){return this._tags.includes(t)}},{key:"hasAllTags",value:function(){return this._tags.includesAll([].slice.call(arguments).flat(1/0))}},{key:"hasAnyTags",value:function(){return this._tags.includesAny([].slice.call(arguments).flat(1/0))}},{key:"name",get:function(){return this.displayName||this.id},set:function(t){this.displayName=t}},{key:"use",value:function(){return"string"==typeof this.handler?$.wiki(this.handler):"function"==typeof this.handler&&this.handler(this),this}},{key:"inspect",value:function(){return Dialog.setup(this.name,"simple-inventory item-description"),Dialog.wiki(this.description),Dialog.open(),this}}],[{key:"is",value:function(t){return t instanceof n}},{key:"add",value:function(t,i,r){var a=new n(t,i,r);return e.set(t,a),a}},{key:"get",value:function(t){return e.get(t)}},{key:"has",value:function(t){return e.has(t)}},{key:"list",get:function(){return e}}]),n}();setup.Item=n,window.Item=window.Item||n}(),function(){var t=setup.Item,e=!1,n="&hellip;",i={inspect:"Inspect",use:"Use",drop:"Drop",stack:"stack",take:"Take",give:"Give",stackPre:"&nbsp;&times;&nbsp;",stackPost:"&nbsp;"},r={};function a(e){return t.has(e)&&t.get(e).unique}var s=function(){function s(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[];_classCallCheck(this,s),this.data=clone(t),this._tags=e instanceof Array?e:"string"==typeof e?[e]:[]}return _createClass(s,[{key:"emit",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return s.emit(t,this,e),this}},{key:"array",get:function(){var t=this,e=[];return Object.keys(this.data).forEach((function(n){if(e.push(n),t.data[n]>1)for(var i=1;i<t.data[n];i++)e.push(n)})),e}},{key:"list",get:function(){return Object.keys(this.data)}},{key:"length",get:function(){return this.array.length}},{key:"uniqueLength",get:function(){return this.list.length}},{key:"table",get:function(){return this.data}},{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(t){return this._tags.includes(t)}},{key:"hasAllTags",value:function(){return this._tags.includesAll([].slice.call(arguments).flat(1/0))}},{key:"hasAnyTags",value:function(){return this._tags.includesAny([].slice.call(arguments).flat(1/0))}},{key:"count",value:function(t){return t?this.data[t]||0:this.length}},{key:"has",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1;return this.data[t]>=e}},{key:"hasAll",value:function(){var t=this;return[].slice.call(arguments).flat(1/0).every((function(e){return t.has(e)}))}},{key:"hasAny",value:function(){var t=this;return[].slice.call(arguments).flat(1/0).some((function(e){return t.has(e)}))}},{key:"compare",value:function(t){var e=this,n=s.itemset(t);return Object.keys(n).every((function(t){return e.has(t,n[t])}))}},{key:"merge",value:function(t){var e=this,n=s.itemset(t);return Object.keys(n).forEach((function(t){s.change(e,t,n[t])})),n}},{key:"unmerge",value:function(t){var e=this,n={},i=s.itemset(t);return Object.keys(i).forEach((function(t){e.has(t,i[t])?n[t]=i[t]:e.has(t)&&(n[t]=e.count(t)),s.change(e,t,i[t],!0)})),n}},{key:"pickup",value:function(){var t=this.merge(s.parseArgList.apply(null,arguments));return this.emit("update",{delta:t}),this}},{key:"drop",value:function(){var t=this.unmerge(s.parseArgList.apply(null,arguments));return this.emit("update",{delta:t}),this}},{key:"empty",value:function(){var t=clone(this.data);return this.data={},this.emit("update",{delta:t}),this}},{key:"transfer",value:function(t){var e=s.parseArgList.apply(null,[].slice.call(arguments).slice(1));if(!s.is(t))throw new TypeError("target inventory is not an inventory instance");var n=this.unmerge(e);return t.merge(n),this.emit("update",{target:t,delta:n}),this}},{key:"isEmpty",value:function(){return 0===this.length}},{key:"iterate",value:function(t){var e=this;return"function"!=typeof t||this.list.forEach((function(n){t(n,e.data[n])})),this}},{key:"use",value:function(e){if(t.has(e)){var n=t.get(e);if(n.use(),n.consumable){s.change(this,e,1,!0);var i={};i[e]=1,this.emit("update",{delta:i})}return this.emit("use",{item:n}),this}}},{key:"clone",value:function(){return new s(this.data||{},this._tags||[])}},{key:"toJSON",value:function(){return JSON.reviveWrapper("new setup.Inventory("+JSON.stringify(this.data)+", "+JSON.stringify(this._tags)+")")}}],[{key:"confirm",get:function(){return e},set:function(t){e="string"==typeof t&&"all"===t.trim().toLowerCase()?"all":"string"==typeof t&&"stack"===t.trim().toLowerCase()?"stack":!!t}},{key:"emptyMessage",get:function(){return n},set:function(t){"string"==typeof t&&(n=t)}},{key:"strings",get:function(){return Object.assign(clone(i),r)},set:function(t){"object"===_typeof(t)&&(r=Object.assign(r,clone(t)))}},{key:"change",value:function(e,n){var i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];if(0!==i){if(e instanceof s&&(e=e.data),"object"!==_typeof(e)){if(e)throw new TypeError("cannot access inventory data");e={}}if(!(o=n)||"string"!=typeof o||!o.trim())throw new TypeError("invalid item name/id");var o;if("number"==typeof i&&!Number.isNaN(i)&&Number.isInteger(i)||(i=1),r&&(i*=-1),i>0){if(Object.keys(e).includes(n)&&a(n))return;i>1&&a(n)&&(i=1),Object.keys(e).includes(n)||(e[n]=0),e[n]+=i}else{if(function(e){return t.has(e)&&t.get(e).permanent}(n))return;Object.keys(e).includes(n)&&"number"==typeof e[n]&&(e[n]+=i),e[n]<=0&&delete e[n]}return e}}},{key:"itemset",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(s.is(t)&&(t=t.data),"object"!==_typeof(t))return{};var e={};return Object.keys(t).forEach((function(n){"number"==typeof t[n]&&Number.isInteger(t[n])&&0!==t[n]&&(e[n]=t[n])})),e}},{key:"parseArgList",value:function(){var t=[].slice.call(arguments).flat(1/0);if(t.length%2!=0)throw new Error("item sets should be pairs of item IDs and numbers");var e={};return t.forEach((function(n,i){i%2==0&&(e[n]=t[i+1])})),e}},{key:"is",value:function(t){return t instanceof s}},{key:"emit",value:function(t,e){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};$(document).trigger(Object.assign({type:":inventory-"+t+".simple-inventory",inventory:e,target:null,delta:{},item:null},n))}},{key:"create",value:function(t,e){return new s(t,e)}}]),s}();setup.Inventory=s,window.Inventory=window.Inventory||s}(),function(){var t=setup.Item,e=setup.Inventory;function n(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,i=arguments.length>2&&void 0!==arguments[2]&&arguments[2],r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"Alert",a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:"Are you sure?";if(!t||"function"!=typeof t)throw new Error("Invalid confirmation callback!");if(e.confirm)if("all"!==e.confirm||"all"===i)if("stack"!==e.confirm||i){var s={display:"inline-block",float:"right"},o=$(document.createElement("div")),u=$(document.createElement("p")).append(a),l=$(document.createElement("div")).addClass("confirmation-buttons"),c=$(document.createElement("button")).append("Okay").addClass("confirm-yes").css(Object.assign(s,{"margin-right":"0.5rem"})),d=$(document.createElement("button")).append("Cancel").addClass("confirm-no").css(s);t&&"function"==typeof t&&c.ariaClick(t),n&&"function"==typeof n&&d.ariaClick(n),l.append(d,c),o.append(u,l),Dialog.setup(r,"simple-inventory confirmation"),Dialog.append(o),Dialog.open()}else t();else t();else t()}function i(t){var e=$(document.createElement("span")).addClass("spacer");return t&&e.wiki(""+t),e}function r(t,i){var r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:null;return"give"===String(i).toLowerCase().trim()?i=e.strings.give:"take"===String(i).toLowerCase().trim()?i=e.strings.take:i&&"drop"!==String(i).toLowerCase().trim()||(i=e.strings.drop),$(document.createElement(r?"button":"a")).addClass("all-link drop-link").wiki(i+" all").ariaClick((function(){t.isEmpty()||n((function(){a&&e.is(a)?(a.merge(t),t.empty()):t.empty(),Dialog.close()}),(function(){Dialog.close()}),!0)}))}function a(a){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{description:!0,use:!0,transfer:null,drop:!0,all:!0,stack:!0,dropActionText:"",classes:""},u=$(document.createElement("ul")).addClass("simple-inventory-list");if(a.length){if(s=a.list.map((function(r){var s=[],u=r;t.has(r)&&(u=t.get(r).name),o.description&&t.has(r)&&t.get(r).description?s.push(function(n,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return r=r||e.strings.inspect,$(document.createElement(a?"button":"a")).addClass("inspect-link").wiki(""+r).ariaClick((function(){t.get(i).inspect()}))}(a,r,u)):s.push($(document.createElement("span")).append(t.has(r)?t.get(r).name:r).addClass("item-name")),s.push(function(t,n,i,r){var a=$(document.createElement("span")),s=t.count(n);return i=i||e.strings.stackPre,r=r||e.strings.stackPost,1==s?a.addClass("item-count single"):a.addClass("item-count multi"),a.append(""+i+(s||0)+r)}(a,r)),o.use&&t.has(r)&&t.get(r).handler?s.push(function(t,n,i){var r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return i=i||e.strings.use,$(document.createElement(r?"button":"a")).addClass("use-link").wiki(""+i).ariaClick((function(){t.use(n)}))}(a,r)):s.push(i()),(o.transfer&&e.is(o.transfer)||o.drop)&&!function(e){return t.has(e)&&t.get(e).permanent}(r)?(s.push(function(t,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3],s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return"give"===String(r).toLowerCase().trim()?r=e.strings.give:"take"===String(r).toLowerCase().trim()?r=e.strings.take:r&&"drop"!==String(r).toLowerCase().trim()||(r=e.strings.drop),$(document.createElement(a?"button":"a")).addClass("drop-link").wiki(""+r).ariaClick((function(){n((function(){s&&e.is(s)?t.transfer(s,i,1):t.drop(i,1),Dialog.close()}),(function(){Dialog.close()}))}))}(a,r,o.dropActionText,!1,o.transfer||null)),a.count(r)>1&&o.stack?s.push(function(t,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3],s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return"give"===String(r).toLowerCase().trim()?r=e.strings.give:"take"===String(r).toLowerCase().trim()?r=e.strings.take:r&&"drop"!==String(r).toLowerCase().trim()||(r=e.strings.drop),r=r+"&nbsp;"+e.strings.stack,$(document.createElement(a?"button":"a")).addClass("stack-link drop-link").wiki(""+r).ariaClick((function(){n((function(){s&&e.is(s)?t.transfer(s,i,t.count(i)):t.drop(i,t.count(i)),Dialog.close()}),(function(){Dialog.close()}))}))}(a,r,o.dropActionText,!1,o.transfer||null)):s.push(i())):s.push(i());var l=r.normalize().toLowerCase().replace(/\s+/g,"-");return $(document.createElement("li")).append(s).addClass("simple-inventory-listing").attr({"data-item-id":l,"data-keyword":u})})),o.all){var l=$(document.createElement("li")).addClass("all-listing simple-inventory-listing").append([i("&mdash;"),i(),i(),r(a,o.dropActionText,!1,o.transfer||null)]);s.push(l)}}else s=$(document.createElement("li")).addClass("simple-inventory-listing").append($(document.createElement("span")).wiki(e.emptyMessage));return u.append(s),u}e.prototype.interface=function(){var t,e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,i=this,r=$(document.createElement("div")).addClass("simple-inventory-wrapper");return e.filter&&r.append(function(){var t=$(document.createElement("div")).addClass("simple-inventory-filter"),e=$(document.createElement("input")).attr({type:"text",placeholder:"Filter..."}).on("input",(function(){var n=e.val().trim().toLowerCase(),i=t.parent().find("ul.simple-inventory-list li.simple-inventory-listing:not(.all-listing)");n?i.each((function(t,e){var i=$(e);i&&i.length&&(i.attr("data-keyword").substring(0,n.length).trim().toLowerCase()!==n?i.hide():i.show())})):i.show()}));return t.append(e),t}()),r.append(a(this,e)),$(document).on(":inventory-update.simple-inventory.gui-built-in",(function(){r.length?r.empty().append(a(i,e)):$(document).off(":inventory-update.simple-inventory.gui-built-in")})),n&&n instanceof $?t=n:n&&(t=$(n)),t&&r.appendTo(t),r}}(),function(){setup.Inventory,setup.Item;var t=".simple-inventory-userland",e=":inventory-update.simple-inventory"+t,n=":inventory-use.simple-inventory"+t;function i(t){return t&&"function"==typeof t}Object.assign(setup.Inventory,{events:{update:{on:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).on(e+n,t)},one:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).one(e+n,t)},off:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";$(document).off(e+t)}},use:{on:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).on(n+e,t)},one:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).one(n+e,t)},off:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";$(document).off(n+t)}}}})}(),function(){var t=":";function e(e){var n=function(t){return t.replace(/\r+/g,"\n").replace(/\n+/,"\n").replace(/ +/g," ").trim().split(/\n/g)}(e),i={};return n.forEach((function(e){if(e&&e.trim()&&e.includes(t)){var n=e.trim().split(t);i[n[0].trim()]=n[1].trim()}})),i}var n=function(t){try{return Story.has(t)?e(Story.get(t).text):{}}catch(t){return console.error(t.message,t),{}}}("inventory.strings");n.empty&&"string"==typeof n.empty&&n.empty.trim()&&(setup.Inventory.emptyMessage=n.empty,delete n.empty),setup.Inventory.strings=n||{}}(),function(){var t=setup.Item,e=setup.Inventory;function n(t){return t&&"string"==typeof t&&t.length>=2&&("$"===t[0]||"_"===t[0])}function i(t){if(n(t)&&(t=State.getVar(t)),e.is(t))return t}Macro.add(["item","consumable"],{tags:["description","tags","unique","permanent"],handler:function(){var e,n,i,r,a=null,s=!1,o=!1,u=!1;if(State.length>0)return this.error("items must be defined in `StoryInit` or story JavaScript!");if(!this.args[0]||"string"!=typeof this.args[0]||!this.args[0].trim())return this.error("invalid item ID");if(e=this.args[0].trim(),"consumable"===this.name&&(a=this.payload[0].contents||null,s=!0),this.args[1]&&(n=this.args[1]),this.payload.length>1){var l=this.payload.find((function(t){return"description"===t.name})),c=this.payload.find((function(t){return"tags"===t.name})),d=this.payload.find((function(t){return"unique"===t.name})),f=this.payload.find((function(t){return"permanent"===t.name}));l&&(i=l.contents.trim()),c&&(r=c.args.flat(1/0)),d&&(o=!0),f&&(u=!0)}t.add(e,{displayName:n||"",description:i||"",handler:a,consumable:s,unique:o,permanent:u},r)}}),Macro.add("newinv",{handler:function(){var t=this.args.raw.trim().split(" ").first().replace(/["']/g,"").trim();if(!n(t))return this.error("argument must be a story or temporary variable!");State.setVar(t,new e({},this.args.flat(1/0).slice(1)))}}),Macro.add(["pickup","drop"],{handler:function(){var t=i(this.args[0]);return t?this.args.length<3?this.error("no items to pick up were provided"):void t[this.name](this.args.slice(1)):this.error("first argument must be a valid inventory!")}}),Macro.add("dropall",{handler:function(){var t=i(this.args[0]);if(!t)return this.error("first argument must be a valid inventory!");t.empty()}}),Macro.add(["transfer","merge","unmerge"],{handler:function(){var t=i(this.args[0]);if(!t)return this.error("first argument must be a valid inventory!");var e=i(this.args[1]);if(!e)return this.error("second argument must be a valid inventory!");if("transfer"===this.name){if(this.args.length<4)return this.error("no items to transfer were provided");t.transfer(e,this.args.slice(2))}else t[this.name](e)}}),Macro.add(["inv","take","give"],{handler:function(){var t=null,n=i(this.args[0]);if(!n)return this.error("first argument must be a valid inventory!");this.args[1]&&i(this.args[1])&&(t=i(this.args[1]));var r={description:this.args.includesAny("inspect","description"),use:this.args.includes("use"),transfer:t,drop:this.args.includes("drop"),all:this.args.includes("all"),stack:this.args.includes("stack"),filter:this.args.includes("filter"),dropActionText:"inv"===this.name?"Drop":e.strings[this.name.trim().toLowerCase()],classes:"macro-".concat(this.name)};n.interface(r,$(this.output))}})}(),function(){var t=setup.Item,e=setup.Inventory;function n(t,e,n){if("object"!==_typeof(e))throw new TypeError("the extension should be a plain generic object holding the properties and methods you want to add");Object.keys(e).forEach((function(i){if(t[i]&&!n)throw new Error('Cannot override existing property "'+i+'"!');t[i]=e[i]}))}Object.assign(e,{extend:function(t){n(e,t,arguments.length>1&&void 0!==arguments[1]&&arguments[1])},extendPrototype:function(t){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];n(e.prototype,t,i)}}),Object.assign(t,{extend:function(e){n(t,e,arguments.length>1&&void 0!==arguments[1]&&arguments[1])},extendPrototype:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];n(t.prototype,e,i)}})}();
-// End Simple Inventory</script><tw-tag name="script" color="red"></tw-tag><tw-passagedata pid="1" name="Character Confirmation" tags="" position="100,100" size="100,100">&#39;&#39;Confirmed&#39;&#39;: You are $playerName, &lt;&lt;print $playerGender.toUpperFirst()&gt;&gt; &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt;. &lt;&lt;if $playerSmarty is true&gt;&gt;You are a Smarty.&lt;&lt;elseif $playerRace isnot &quot;human&quot;&gt;&gt;You are not a Smarty.&lt;&lt;elseif $playerRace is &quot;human&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Character Creation Next Button" tags="" position="225,100" size="100,100">&lt;&lt;button &quot;Next&quot;&gt;&gt;
+// End Simple Inventory</script><tw-tag name="script" color="red"></tw-tag><tw-passagedata pid="1" name="Character Creation Next Button" tags="" position="100,100" size="100,100">&lt;&lt;button &quot;Next&quot;&gt;&gt;
   &lt;&lt;if $playerRace is &quot;human&quot;&gt;&gt;
-    &lt;&lt;goto &quot;Human Start&quot;&gt;&gt;
+    &lt;&lt;goto &quot;Human Start&quot;&gt;&gt;&lt;&lt;unset $firstLoad&gt;&gt;
   &lt;&lt;else&gt;&gt;
     &lt;&lt;replace &quot;#nextButton1&quot; t8n&gt;&gt;&lt;&lt;include &quot;fluffyQuestions&quot; &quot;div&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;label&gt;&lt;&lt;checkbox &quot;$playerMature&quot; false true `$playerSmarty ? &#39;checked&#39; : &#39;&#39;`&gt;&gt; Check this box if you&#39;re fine with &lt;&lt;hovertip &quot;Content involving any combination of: violence, sexuality, horror, cruelty, abuse, etc.&quot;&gt;&gt;Mature Content&lt;&lt;/hovertip&gt;&gt;.&lt;/label&gt;</tw-passagedata><tw-passagedata pid="3" name="fluffyQuestions" tags="" position="350,100" size="100,100">!!You chose a fluffy. Here&#39;s some more questions.
+&lt;label&gt;&lt;&lt;checkbox &quot;$playerMature&quot; false true `$playerSmarty ? &#39;checked&#39; : &#39;&#39;`&gt;&gt; Check this box if you&#39;re fine with &lt;&lt;hovertip &quot;Content involving any combination of: violence, sexuality, horror, cruelty, abuse, etc.&quot;&gt;&gt;Mature Content&lt;&lt;/hovertip&gt;&gt;.&lt;/label&gt;</tw-passagedata><tw-passagedata pid="2" name="fluffyQuestions" tags="" position="225,100" size="100,100">!!You chose a fluffy. Here&#39;s some more questions.
 !!!Appearance
 @@.optionbox;
 &lt;&lt;do&gt;&gt;Since you&#39;re a fluffy, pick the color of your mane and tail:
@@ -981,19 +992,19 @@ Fur: &lt;&lt;cycle &quot;$playerColor&quot;&gt;&gt;
 I noticed you wanted to play a fluffy. Do you want to be a Smarty?
 &lt;label&gt;&lt;&lt;checkbox &quot;$playerSmarty&quot; false true `$playerSmarty ? &#39;checked&#39; : &#39;&#39;`&gt;&gt; Click this box to enable being a Smarty.&lt;/label&gt;@@
 &lt;&lt;button &quot;I&#39;m done! $arrowButton&quot;&gt;&gt;
-&lt;&lt;if $playerSmarty&gt;&gt;&lt;&lt;goto &quot;Smarty Start&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;Fluffy Start&quot;&gt;&gt;
+&lt;&lt;if $playerSmarty&gt;&gt;&lt;&lt;goto &quot;Smarty Start&quot;&gt;&gt;&lt;&lt;unset $firstLoad&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;Fluffy Start&quot;&gt;&gt;&lt;&lt;unset $firstLoad&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/button&gt;&gt; 
 
 @@.backbutton;&lt;&lt;button &quot;I changed my mind&quot;&gt;&gt;
-&lt;&lt;replace &quot;#nextButton1&quot; t8n&gt;&gt;&lt;&lt;include &quot;Character Creation Next Button&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/button&gt;&gt;@@</tw-passagedata><tw-passagedata pid="4" name="Character Creation" tags="" position="475,100" size="100,100">Hey there. Make your choices for the character you&#39;d like to play, then hit &quot;Confirm Character.&quot;&lt;&lt;nobr&gt;&gt;&lt;&lt;set $firstLoad to true&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+&lt;&lt;replace &quot;#nextButton1&quot; t8n&gt;&gt;&lt;&lt;include &quot;Character Creation Next Button&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/button&gt;&gt;@@</tw-passagedata><tw-passagedata pid="3" name="Character Creation" tags="" position="350,100" size="100,100">Hey there. Make your choices for the character you&#39;d like to play, then hit &quot;Confirm Character.&quot;&lt;&lt;nobr&gt;&gt;&lt;&lt;set $firstLoad to true&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 
 Your name is &lt;&lt;textbox &quot;$playerName&quot; &quot;Player Name&quot;&gt;&gt;.
 
 You are playing a &lt;&lt;cycle &quot;$playerGender&quot;&gt;&gt;&lt;&lt;option Male &quot;male&quot;&gt;&gt;&lt;&lt;option Female &quot;female&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;  &lt;&lt;cycle &quot;$playerRace&quot;&gt;&gt;&lt;&lt;option Human &quot;human&quot;&gt;&gt;&lt;&lt;option &quot;Earthie Pony&quot; &quot;earthie&quot;&gt;&gt;&lt;&lt;option &quot;Pegasus Pony&quot; &quot;pegasus&quot;&gt;&gt;&lt;&lt;option &quot;Unicorn Pony&quot; &quot;unicorn&quot;&gt;&gt;&lt;&lt;option &quot;Alicorn Pony&quot; &quot;alicorn&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;.
 
-&lt;div id=&quot;nextButton1&quot;&gt;&lt;&lt;include &quot;Character Creation Next Button&quot;&gt;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="Opening Credits" tags="" position="600,100" size="100,100">Hey all. This is a fun little thing I used to try to learn how to make things in Twine. Don&#39;t take it too seriously. 
+&lt;div id=&quot;nextButton1&quot;&gt;&lt;&lt;include &quot;Character Creation Next Button&quot;&gt;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="4" name="Opening Credits" tags="" position="475,100" size="100,100">Hey all. This is a fun little thing I used to try to learn how to make things in Twine. Don&#39;t take it too seriously. 
 
 A little about me: I&#39;m &lt;a href=&quot;https://fluffy-community.com/u/recent6284/activity&quot; target=&quot;_blank&quot;&gt;Recent6284 on Fluffy-Community&lt;/a&gt; and I mostly want to experiment with Fluffy fiction as I can&#39;t draw for shit. 
 
@@ -1007,23 +1018,23 @@ You can download the .html file from GitLab if you want to save this for offline
 * Buttons that will make you leave the page will be marked with a &quot;@@.icon;.next-arrow;@@&quot;.
 * I&#39;ll be using variables to track some choices, and some may matter! We&#39;ll see how ambitious I get.
 
-&lt;&lt;button &quot;Let&#39;s begin! $arrowButton&quot; &quot;Character Creation&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Fluffy Start" tags="" position="725,100" size="100,100">This is the Fluffy Start page.
+&lt;&lt;button &quot;Let&#39;s begin! $arrowButton&quot; &quot;Character Creation&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Fluffy Start" tags="" position="600,100" size="100,100">This is the Fluffy Start page.
 
 You are $playerName, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you aren&#39;t a smarty.
 
-You&#39;re going to start in the &lt;&lt;cycle &quot;$ponyStart&quot;&gt;&gt;&lt;&lt;option &quot;Safe Room&quot; &quot;saferoom&quot;&gt;&gt;&lt;&lt;option &quot;Daycare Room&quot; &quot;daycare&quot;&gt;&gt;&lt;&lt;option &quot;Alleyway&quot; &quot;alleyway&quot;&gt;&gt;&lt;&lt;option &quot;Factory Farm&quot; &quot;factoryfarm&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;.</tw-passagedata><tw-passagedata pid="7" name="Sorry Poopies" tags="human event" position="850,100" size="100,100"></tw-passagedata><tw-passagedata pid="8" name="Bad Upsies" tags="human event" position="975,100" size="100,100">You notice that $fluffyName somehow got a piece of fibre from your carpet stuck in their hind leg fluff. You&#39;ll probably have to get that out, or it&#39;s going to be a problem.
+You&#39;re going to start in the &lt;&lt;cycle &quot;$ponyStart&quot;&gt;&gt;&lt;&lt;option &quot;Safe Room&quot; &quot;saferoom&quot;&gt;&gt;&lt;&lt;option &quot;Daycare Room&quot; &quot;daycare&quot;&gt;&gt;&lt;&lt;option &quot;Alleyway&quot; &quot;alleyway&quot;&gt;&gt;&lt;&lt;option &quot;Factory Farm&quot; &quot;factoryfarm&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;.</tw-passagedata><tw-passagedata pid="6" name="Sorry Poopies" tags="human event" position="725,100" size="100,100"></tw-passagedata><tw-passagedata pid="7" name="Bad Upsies" tags="human event" position="850,100" size="100,100">You notice that $fluffyName somehow got a piece of fibre from your carpet stuck in their hind leg fluff. You&#39;ll probably have to get that out, or it&#39;s going to be a problem.
 
 &lt;div id=&quot;upsies1&quot;&gt;You can &lt;&lt;hovertip &quot;You can only choose one option.&quot;&gt;&gt;choose how to proceed&lt;&lt;/hovertip&gt;&gt;:
 * You can &lt;&lt;link &quot;try to call $fluffyName over&quot;&gt;&gt;&lt;&lt;replace #upsies1 t8n&gt;&gt;&lt;&lt;include [[UpsiesCall]]&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/link&gt;&gt;.
 * You can &lt;&lt;link &quot;try to grab $fluffyName without warning&quot; &gt;&gt;&lt;&lt;replace #upsies1 t8n&gt;&gt;&lt;&lt;include [[UpsiesGrab]]&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/link&gt;&gt;.
 * You can &lt;&lt;link &quot;just ignore it&quot;&gt;&gt;&lt;&lt;replace #upsies1 t8n&gt;&gt;&lt;&lt;include [[UpsiesIgnore]]&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/link&gt;&gt;.
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="UpsiesCall" tags="" position="1100,100" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set _listenRoll to random(1,20)&gt;&gt;&lt;&lt;/nobr&gt;&gt;You try calling $fluffyName first, as they&#39;re on the other side of the $penType. 
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="UpsiesCall" tags="" position="975,100" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set _listenRoll to random(1,20)&gt;&gt;&lt;&lt;/nobr&gt;&gt;You try calling $fluffyName first, as they&#39;re on the other side of the $penType. 
 
 &lt;&lt;timed 2s t8n&gt;&gt;&lt;&lt;if _listenRoll &gt; 10&gt;&gt;Their ears perked up as &lt;&lt;hovertip &quot;@@color:green;Rolled &lt;&lt;print _listenRoll&gt;&gt;@@, needed &gt;10&quot;&gt;&gt;they heard you&lt;&lt;/hovertip&gt;&gt;, and they came trotting over.&lt;&lt;set _listen to &quot;true&quot;&gt;&gt;&lt;&lt;else&gt;&gt; &lt;&lt;hovertip &quot;@@color:red;Rolled &lt;&lt;print _listenRoll&gt;&gt;@@, needed &gt;10&quot;&gt;&gt;Unfortunately&lt;&lt;/hovertip&gt;&gt;, they were either unable to hear you, or something (likely the paint on the wall) was just that much more interesting than you. You saw them ignore you, and you were back to square one. 
 
 &lt;div id=&quot;listenFailbuton&quot;&gt;&lt;&lt;timed 2s t8n&gt;&gt;&lt;&lt;button &quot;Walk up to them and grab them&quot;&gt;&gt;&lt;&lt;replace #listenFailbuton&gt;&gt;&lt;&lt;include [[UpsiesGrab]]&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;/div&gt;
 
-&lt;&lt;/if&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="UpsiesGrab" tags="" position="1225,100" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set _grabRoll to random(1,20)&gt;&gt;&lt;&lt;/nobr&gt;&gt;You decide to go for broke and just grab $fluffyName because it would take too long otherwise; it was one piece of string: how complicated could it be?</tw-passagedata><tw-passagedata pid="11" name="UpsiesIgnore" tags="" position="100,225" size="100,100">You decided to ignore this. Who cares?</tw-passagedata><tw-passagedata pid="12" name="Human Start" tags="" position="225,225" size="100,100">Oh hey there.
+&lt;&lt;/if&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="UpsiesGrab" tags="" position="1100,100" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set _grabRoll to random(1,20)&gt;&gt;&lt;&lt;/nobr&gt;&gt;You decide to go for broke and just grab $fluffyName because it would take too long otherwise; it was one piece of string: how complicated could it be?</tw-passagedata><tw-passagedata pid="10" name="UpsiesIgnore" tags="" position="1225,100" size="100,100">You decided to ignore this. Who cares?</tw-passagedata><tw-passagedata pid="11" name="Item Test" tags="" position="100,225" size="100,100">&lt;&lt;button &quot;Pick Up Items&quot;&gt;&gt;&lt;&lt;pickup $bag &quot;litterbox&quot; 1 &quot;sorrybox&quot; 1 &quot;sorrystick&quot; 1 &quot;autofeeder&quot; 1 &quot;autolitter&quot; 1 &quot;stuffytoy&quot; 1 &quot;enfytoy&quot; 1 &quot;pillowkit&quot; 1 &quot;geldingkit&quot; 1 &quot;sketties24&quot; 1 &quot;sketties8&quot; 1 &quot;flufftv&quot; 1 &quot;smellstation&quot; 1 &quot;blocks&quot; 1 &quot;smallball&quot; 1 &quot;bigball&quot; 1&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Human Start" tags="" position="225,225" size="100,100">Oh hey there.
 
 You are $playerName, a $playerGender $playerRace. As a human, you&#39;re of an average size, weight and strength for your age. You&#39;ve been decent at saving your money for most of your life, and a nice tax return finally gave you a comfortable amount in one specific category of your budget. You&#39;ve decided to set up a &lt;&lt;cycle &quot;$penType&quot;&gt;&gt;&lt;&lt;option &quot;Safe Room&quot; &quot;safe room&quot;&gt;&gt;&lt;&lt;option &quot;playpen in your living room&quot; &quot;playpen&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; as the Fluffy&#39;s main living space.
 
@@ -1140,12 +1151,13 @@ $(document).on(&quot;:passageend&quot;, function() {
     footergray.classList.toggle(&quot;hidden&quot;);
   });
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="StoryCaption" tags="" position="600,350" size="100,100">&lt;&lt;inv $items inspect&gt;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="StoryCaption" tags="" position="600,350" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
+&lt;h3&gt;&lt;u&gt;Player Inventory&lt;/u&gt;&lt;/h3&gt;&lt;/div&gt;&lt;&lt;inv $bag inspect&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
+
 &lt;div id=&quot;bug-section&quot;&gt;
   &lt;div id=&quot;bug-button&quot;&gt;&lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Found a bug? Submit it to &lt;a href=&quot;https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
-  &lt;/div&gt;&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="26" name="StoryMenu" tags="" position="725,350" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="StoryInit" tags="" position="850,350" size="100,100">&lt;&lt;set $arrowButton to &quot;&lt;span class=&#39;icon next-arrow&#39;&gt;&lt;/span&gt;&quot;&gt;&gt;
+  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="26" name="StoryMenu" tags="" position="725,350" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="StoryInit" tags="" position="850,350" size="100,100">&lt;&lt;set $arrowButton to &quot;&lt;span class=&#39;icon next-arrow&#39;&gt;&lt;/span&gt;&quot;&gt;&gt;
 
 &lt;&lt;set $fluffies = []&gt;&gt;
 &lt;&lt;set $fluffyName = []&gt;&gt;
@@ -1412,13 +1424,13 @@ $(document).on(&quot;:passageend&quot;, function() {
 
   &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-
+&lt;&lt;set $firstLoad to &quot;true&quot;&gt;&gt;
 &lt;&lt;set $playerBudget to 500&gt;&gt;
 &lt;&lt;set $haveFirstFluff to &quot;false&quot;&gt;&gt;
 &lt;&lt;set $haveSecondFluff to &quot;false&quot;&gt;&gt;
 &lt;&lt;set $firstTravel to &quot;true&quot;&gt;&gt;
 &lt;&lt;set $dayNumber to &quot;1&quot;&gt;&gt;
-&lt;&lt;newinv $items&gt;&gt;
+&lt;&lt;newinv $bag&gt;&gt;
 
 &lt;&lt;set $playerStatus to &quot;firstvisit&quot;&gt;&gt;
 
@@ -1456,13 +1468,108 @@ $(document).on(&quot;:passageend&quot;, function() {
 });
 &lt;&lt;/script&gt;&gt;
 
-
 /* Item Definitions */
+
 &lt;&lt;item &quot;foodbowl&quot; &quot;Food Bowl&quot;&gt;&gt;
 &lt;&lt;description&gt;&gt;
 This food bowl was similar to ones you&#39;ve seen for more traditional pets, but still presented the problem of potentially getting kibble everywhere. This bowl would hold enough food for a full day&#39;s worth of kibble, and has a high enough lip to mitigate the problems of spillage. It was made of a durable, bright plastic, and had a &quot;Nummies&quot; label on it; it was careful to not promise anything specific, lest the Fluffy get disappointed in the process. 
 
 You saw that when it was empty, it had a nice, friendly graphic of the sun at the bottom of the bowl; perhaps this would be enough to quiet the disappointment of not having anything else to eat.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;litterbox&quot; &quot;Litter Box&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+This standard Fluffy litterbox was remarkably similar to a cat&#39;s, in that you would fill it with a sand-like litter. The Fluffy would relieve themselves in the litterbox, and the litter would clump around the waste in order to reduce its smell, dry it out, and make it easier to scoop out of the box for cleaning.
+
+The box was of a sturdy, hard plastic, with a handy &quot;fill to&quot; line in order to keep it from getting too full. If overfilled, it risked the problem of a Fluffy kicking sand outside of it when they walked in it, and no owner wants to deal with more mess than what&#39;s in front of them.
+
+This litterbox comes with an included jug of litter, but there were others that you could purchase with different scents, clumping reactions, or colors. If you had this much freedom in buying your own toilet paper, you&#39;d probably get a little wild, too.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;sorrybox&quot; &quot;Sorry Box&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+The Sorry Box is a classic punishment that deprives Fluffies of their favorite things: freedom, safety, and light. Fluffies placed in the Sorry Box will be distressed, and it&#39;s up to the owner to use it as either an effective punishment or deterrent.
+
+The box was made, like many other Fluffy tools, out of a hard plastic that resembled a pet carrier. The top opened like a sliding door, with a space big enough for a Fluffy to fit through. A //second// layer of sliding door allowed the owner to close off even more light, sound and heat from the Sorry Box; it would be up to their discretion as to limit what, and for how long.
+
+Inside, the Fluffy had enough room to sit, stand, or lay down. Varying levels of comfort could be provided by placing a blanket or food bowl inside; however, since Fluffies were likely to be vacating their faculties out of fear, it was probably designed to be hosed off easily, or washed in a bathtub.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;sorrystick&quot; &quot;Sorry Stick&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+The Sorry Stick was a method of corporal punishment that some owners didn&#39;t have the courage for: actually striking their Fluffy and hearing their cries of pain. Made out of a flexible, light rubber, the baton had a bit of flex and give to it, mostly to preserve the investment of the owner: no matter how much they wanted to in the moment, an owner would likely not want to break a limb permanently, or incur a hefty vet bill.
+
+However, at &quot;10 out of 10&quot; force, a blunt object is still a blunt object, and a Sorry Stick //could// be used to bludgeon a Fluffy to death. Most owners found that &quot;2-4 out of 10&quot; to be sufficient for punishing problem behavior, and in most cases, the //threat// of a Sorry Stick was more than enough deterrent.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;autofeeder&quot; &quot;Auto Feeder&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+The Hasbio AF2000 was a top-of-the-line model in laziness (or efficiency!), allowing for an owner to program a number of feedings over the course of the day. It had a built-in microphone, speaker and camera, perhaps serving as a nanny cam for a Fluffy in a Safe Room, all controlled from the user&#39;s smartphone. It could even be hooked into popular smart home systems, giving the owner command of powerful automations and statistics.
+
+In most cases, users just opted for knowing just how much their Fluffy was eating: it can be hard to deny the things, especially when they&#39;re begging in a language the owners understand.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;autolitter&quot; &quot;Auto Litter&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+A //bit// more practical than the Hasbio AF2000, the Hasbio SN2000 allowed for automatic sanitation of one of the worst parts of Fluffy ownership: urine and feces. The Auto-Litter detected a Fluffy&#39;s presence, with the optional ability to record praise that would reinforce good behavior automatically when used properly. It also could sense weight, making it a good training aid for foals and ferals: rewarding a parent for properly teaching or enforcing behavior meant a healthier relationship, and a room that was more sanitary in general. 
+
+Without a Fluffy inside, the Auto-Litter would softly vibrate the litter inside of it with small pulsing motors, helping it to do its job with clumping. It also had a grate which could be raised, separating the clumped waste from the litter and letting an owner remove the grate entirely to empty into a garbage can. No scoop, and less contact with poop: everyone wins.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;litterpal&quot; &quot;Litter Pal&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;stuffytoy&quot; &quot;Stuffy Toy&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+A simple stuffed toy, perhaps shaped in a crude fascimily of a foal, or perhaps a rabbit or non-threatening animal. The opposite of anything that could be considered a &quot;munstah&quot; to a fluffy. This stuffy toy is made for durability, and is posed in a way that allows for optimal hugging. Easily-cleaned with the laundry, and scented with a &quot;good enough&quot; scent of a real Fluffy: not enough to trick the fluffy into thinking it&#39;s real, but enough to feel comfortable, familiar, and lovable.
+&lt;&lt;/item&gt;&gt;
+
+&lt;&lt;item &quot;enfytoy&quot; &quot;Enfy Toy&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+Perhaps the same as stuffy toy, but with a greater emphasis on durability and cleanability. This toy is meant to aid with relief for Stallions who are working through some... difficult feelings. A bit bigger than a stuffy toy; still made for hugging, but a bit more sturdy to fascillitate mounting and leverage. Does not have any internal orifices or anything to penetrate: squooshy enough that your fluffy probably won&#39;t know the difference. Scented with the hint of a mare: again, enough to feel familiar, but not to the point your Fluffy will be treating it as real. Helps to reduce rebellion and pent-up energy, but you probably want to be dilligent about cleaning it.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;pillowkit&quot; &quot;Pillowing Kit&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+A set of sterilized tools and dressings to aid with the removal of your fluffy or foal&#39;s legs. Includes a mounting bracket and strap to keep your fluffy still, and tools to aid with treating the legs before amputation. Includes implements for teeth and tongue removal, as well as local, topical anesthetic. Includes instructions for eventual usage, but it&#39;s up to the user to use them. Also includes a handy booklet to help minimalize long-term trauma and psychological issues (optional).
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;geldingkit&quot; &quot;Gelding Kit&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+Similar to the Pillowing Kit, this kit provides tools and dressings to aid with the sterilization of a male Fluffy. Includes instructions and impliments to minimize blood loss, aid coagulation, and topical anesthetic. Includes a handy booklet to help minimalize long-term trauma and psychological issues (optional).
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;sketties8&quot; &quot;Sketties (8 Pack)&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+Cans of &quot;Fluffy&#39;s Choice Sketti;&quot; low-quality to humans, but Fluffies can&#39;t tell the difference, and also can&#39;t operate the pull-key without opposable thumbs. Some have gotten clever and tried various means to get the leverage to open it, but the sharp internal edges of the can have produced many a boo-boo juice and a kiss-better from mummeh or daddeh. Pack of 8, shrink-wrapped.
+`&lt;&lt;/item&gt;&gt;
+
+&lt;&lt;item &quot;sketties24&quot; &quot;Sketties (24 Pack)&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+Cans of &quot;Fluffy&#39;s Choice Sketti;&quot; low-quality to humans, but Fluffies can&#39;t tell the difference, and also can&#39;t operate the pull-key without opposable thumbs. Some have gotten clever and tried various means to get the leverage to open it, but the sharp internal edges of the can have produced many a boo-boo juice and a kiss-better from mummeh or daddeh; mummeh and daddeh have perhaps suffered the same fate, but they&#39;d never let their Fluffy know. Pack of 24, shrink-wrapped.
+&lt;&lt;/item&gt;&gt;
+
+&lt;&lt;item &quot;flufftv&quot; &quot;FluffTV Set&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+A standard flatscreen TV, sized more like a computer monitor - apparently the difference between a TV and a monitor is that the former has speakers.
+
+What&#39;s not-so-standard about it is the remote, which seems comically simple: a mute, an unmute, a power on/off, and what the box says is a //fake// up/down volume selector. Apparently your Fluffies like a sense of control, but the manufacturer realizzes that&#39;s playing with fire.
+
+It&#39;s nothing too fancy: you get a free subscription to FluffTV with it, and it connects to your WiFi. That subscription is probably the real value - you could sweat that this thing was probably just a Raspberry Pi in a fancy plastic shell.
+
+FluffTV puts on educational programming, and it&#39;s up to you to make sure that your Fluffy is learning the right lessons from it. It might calm your Fluffy down or give you some (perhaps much-needed) space when you want it, but it&#39;s also an outside force onto the life of your biotoy.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;smellstation&quot; &quot;Smell Station&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+Dirt simple, but apparently Fluffies like that. A couple different spongy textures with scents baked into them, allowing for your Fluffy to get some enrichment. Your Fluffy may enjoy the sensation, but also the sense of comfort; the box says that the scents are engineered to be long-lasting and provide familiarity to things Fluffies like best. 
+
+Scents listed on the box are Flowers, Pine, Lavender, and Sketties.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;blocks&quot; &quot;Blocks (4)&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+A set of four wooden blocks, each with their own color and sanded-down edges. Your Fluffy could possibly hold these between their front legs to provide enrichment by stacking and unstacking them. With four blocks, the possibilities of combinations are... about 24, actually. But you doubt any Fluffy could count that high.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;smallball&quot; &quot;Ball (Small)&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+It&#39;s a ball! This ball is about the size of a tennis ball, and is fuzzy like one, too. The ball has a small jingling bell inside of it to pique a Fluffy&#39;s attention: foals can nudge it around with their weight, and adults can kick it with much less effort than its bigger cousin.
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;bigball&quot; &quot;Ball (Big)&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;
+Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflated volleyball. Fluffies can find comfort in another object that&#39;s their relative size, and gain confidence from being able to impose their will on it. Not big or heavy enough to knock over anything it&#39;s pushed into, nor will it scuff up your baseboards if you decide to give it a good kick. 
+&lt;&lt;/item&gt;&gt;
+&lt;&lt;item &quot;brush&quot; &quot;Grooming Brush&quot;&gt;&gt;
+
 &lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="inventory.strings" tags="" position="975,350" size="100,100">empty: Your inventory is empty!</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */

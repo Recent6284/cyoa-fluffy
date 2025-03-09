@@ -267,13 +267,13 @@
 
   <<run $fluffies.push(_fluffy)>>
 <</widget>>
-
+<<set $firstLoad to "true">>
 <<set $playerBudget to 500>>
 <<set $haveFirstFluff to "false">>
 <<set $haveSecondFluff to "false">>
 <<set $firstTravel to "true">>
 <<set $dayNumber to "1">>
-<<newinv $items>>
+<<newinv $bag>>
 
 <<set $playerStatus to "firstvisit">>
 
@@ -359,29 +359,29 @@ Without a Fluffy inside, the Auto-Litter would softly vibrate the litter inside 
 <<item "stuffytoy" "Stuffy Toy">>
 <<description>>
 A simple stuffed toy, perhaps shaped in a crude fascimily of a foal, or perhaps a rabbit or non-threatening animal. The opposite of anything that could be considered a "munstah" to a fluffy. This stuffy toy is made for durability, and is posed in a way that allows for optimal hugging. Easily-cleaned with the laundry, and scented with a "good enough" scent of a real Fluffy: not enough to trick the fluffy into thinking it's real, but enough to feel comfortable, familiar, and lovable.
-<</item>
+<</item>>
 
 <<item "enfytoy" "Enfy Toy">>
 <<description>>
 Perhaps the same as stuffy toy, but with a greater emphasis on durability and cleanability. This toy is meant to aid with relief for Stallions who are working through some... difficult feelings. A bit bigger than a stuffy toy; still made for hugging, but a bit more sturdy to fascillitate mounting and leverage. Does not have any internal orifices or anything to penetrate: squooshy enough that your fluffy probably won't know the difference. Scented with the hint of a mare: again, enough to feel familiar, but not to the point your Fluffy will be treating it as real. Helps to reduce rebellion and pent-up energy, but you probably want to be dilligent about cleaning it.
-<</item>
+<</item>>
 <<item "pillowkit" "Pillowing Kit">>
 <<description>>
 A set of sterilized tools and dressings to aid with the removal of your fluffy or foal's legs. Includes a mounting bracket and strap to keep your fluffy still, and tools to aid with treating the legs before amputation. Includes implements for teeth and tongue removal, as well as local, topical anesthetic. Includes instructions for eventual usage, but it's up to the user to use them. Also includes a handy booklet to help minimalize long-term trauma and psychological issues (optional).
-<</item>
+<</item>>
 <<item "geldingkit" "Gelding Kit">>
 <<description>>
 Similar to the Pillowing Kit, this kit provides tools and dressings to aid with the sterilization of a male Fluffy. Includes instructions and impliments to minimize blood loss, aid coagulation, and topical anesthetic. Includes a handy booklet to help minimalize long-term trauma and psychological issues (optional).
-<</item>
+<</item>>
 <<item "sketties8" "Sketties (8 Pack)">>
 <<description>>
 Cans of "Fluffy's Choice Sketti;" low-quality to humans, but Fluffies can't tell the difference, and also can't operate the pull-key without opposable thumbs. Some have gotten clever and tried various means to get the leverage to open it, but the sharp internal edges of the can have produced many a boo-boo juice and a kiss-better from mummeh or daddeh. Pack of 8, shrink-wrapped.
-`<</item>
+`<</item>>
 
 <<item "sketties24" "Sketties (24 Pack)">>
 <<description>>
 Cans of "Fluffy's Choice Sketti;" low-quality to humans, but Fluffies can't tell the difference, and also can't operate the pull-key without opposable thumbs. Some have gotten clever and tried various means to get the leverage to open it, but the sharp internal edges of the can have produced many a boo-boo juice and a kiss-better from mummeh or daddeh; mummeh and daddeh have perhaps suffered the same fate, but they'd never let their Fluffy know. Pack of 24, shrink-wrapped.
-<</item>
+<</item>>
 
 <<item "flufftv" "FluffTV Set">>
 <<description>>
@@ -408,8 +408,14 @@ A set of four wooden blocks, each with their own color and sanded-down edges. Yo
 It's a ball! This ball is about the size of a tennis ball, and is fuzzy like one, too. The ball has a small jingling bell inside of it to pique a Fluffy's attention: foals can nudge it around with their weight, and adults can kick it with much less effort than its bigger cousin.
 <</item>>
 <<item "bigball" "Ball (Big)">>
+<<description>>
 Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflated volleyball. Fluffies can find comfort in another object that's their relative size, and gain confidence from being able to impose their will on it. Not big or heavy enough to knock over anything it's pushed into, nor will it scuff up your baseboards if you decide to give it a good kick. 
 <</item>>
+<<item "brush" "Grooming Brush">>
+
+<</item>>
+
 :: inventory.strings
 
 empty: Your inventory is empty!
+

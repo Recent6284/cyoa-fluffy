@@ -3,12 +3,19 @@ v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
 ul.simple-inventory-list {
     margin: 0 auto;
     padding: 0;
-    height: 200px; /* Set a fixed height */
+    height:45vh; /* Set a fixed height */
     overflow-y: auto; /* Make it scrollable */
+}
+
+.simple-inventory-list {
+    text-align: left;
+    padding: 0 1rem;
 }
 
 .simple-inventory-listing {
     list-style: none;
+    text-align: left;
+    line-height: 0.8rem;
     padding: 0.3rem 1rem;
     display: block;
 }

@@ -1,10 +1,7 @@
-:: Character Confirmation
-''Confirmed'': You are $playerName, <<print $playerGender.toUpperFirst()>> <<print $playerRace.toUpperFirst()>>. <<if $playerSmarty is true>>You are a Smarty.<<elseif $playerRace isnot "human">>You are not a Smarty.<<elseif $playerRace is "human">><</if>>
-
 :: Character Creation Next Button
 <<button "Next">>
   <<if $playerRace is "human">>
-    <<goto "Human Start">>
+    <<goto "Human Start">><<unset $firstLoad>>
   <<else>>
     <<replace "#nextButton1" t8n>><<include "fluffyQuestions" "div">><</replace>>
   <</if>>
@@ -42,8 +39,8 @@ Fur: <<cycle "$playerColor">>
 I noticed you wanted to play a fluffy. Do you want to be a Smarty?
 <label><<checkbox "$playerSmarty" false true `$playerSmarty ? 'checked' : ''`>> Click this box to enable being a Smarty.</label>@@
 <<button "I'm done! $arrowButton">>
-<<if $playerSmarty>><<goto "Smarty Start">>
-<<else>><<goto "Fluffy Start">>
+<<if $playerSmarty>><<goto "Smarty Start">><<unset $firstLoad>>
+<<else>><<goto "Fluffy Start">><<unset $firstLoad>>
 <</if>>
 <</button>> 
 

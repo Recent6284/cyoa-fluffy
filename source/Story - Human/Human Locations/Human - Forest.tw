@@ -19,7 +19,7 @@ You, however, weren't about to be dissuaded. Why pay $100 at Fluffmart when you 
 <<silent>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><</silent>>
 Approaching the creek, there was no sign of any humans or Fluffies: perfect.
 
-<<if $baitSet is "candy">><<set $fluffiesLeft to 3>><div id="forestactionbutton"><<button "Place your candy bar bait">><<drop $bag "candybar" 1>><<replace "#forestactionbutton" t8n>><<timed 1s t8n>><<include "Forest - Candy Bar Bait">><</timed>><</replace>><</button>></div><<else>><<set $fluffiesLeft to 2>><div id="forestactionbutton"><<button "Find a Place to Hide">><<replace "#forestactionbutton" t8n>><<timed 1s t8n>><<include "Forest - Wait For Fluffy">><</timed>><</replace>><</button>></div><</if>>
+<<if $baitSet is "candy">><<set $fluffiesLeft to 4>><div id="forestactionbutton"><<button "Place your candy bar bait">><<drop $bag "candybar" 1>><<replace "#forestactionbutton" t8n>><<timed 1s t8n>><<include "Forest - Candy Bar Bait">><</timed>><</replace>><</button>></div><<else>><<set $fluffiesLeft to 3>><div id="forestactionbutton"><<button "Find a Place to Hide">><<replace "#forestactionbutton" t8n>><<timed 1s t8n>><<include "Forest - Wait For Fluffy">><</timed>><</replace>><</button>></div><</if>>
 
 :: Forest - Candy Bar Bait
 You decided to place your candy bar, partially unwrapped, near a particularly shallow part of the creek, and sat down on a nearby log, behind a shrub that hid you from view.

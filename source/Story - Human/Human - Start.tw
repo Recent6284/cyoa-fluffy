@@ -6,26 +6,26 @@ You are $playerName, a $playerGender $playerRace. As a human, you're of an avera
 
 You'd always had a bit of a curiosity towards Fluffies, and you weren't really sure why. Perhaps you'd find out in time.
 
-<<include "Day 1 Travel">>
+<<timed 2s t8n>><<include "Day 1 Travel">><</timed>>
 :: Day 1 Travel
 It's currently ''Day $dayNumber'' and you've got ''$<<print $playerBudget.toFixed(2)>>'' in your Fluffy budget.<<if $firstTravel is "true">> You have a job that you have to attend, but you may be able to negotiate a (provisional) work-from-home schedule to make living with your new pet easier. Any money you earn won't automatically go toward your Fluffy budget; you can spend it on yourself, your Fluffy, other things, or just hoard it like a troll. You do what you want - I'm not a cop.
 
-As for your first Fluffy, you've got a couple options when it comes to finding them. You can:<<else>>
+<<timed 2s t8n>>As for your first Fluffy, you've got a couple options when it comes to finding them. You can:<</timed>><<else>>
 
-Your options are:<</if>>
+<<timed 2s t8n>>Your options are:<</timed>><</if>>
 
-@@color:#e600e6;''Go to Fluffmart''@@ to see what your options are. You're likely going to pay the most at Fluffmart, but if you're able to haggle, you might have more of a chance to get bundle deals with merchandise, or a Fluffy that's better-behaved, documented, or looks more aesthetically pleasing. 
+<<timed 4s t8n>>@@color:#e600e6;''Go to Fluffmart''@@ to see what your options are. You're likely going to pay the most at Fluffmart, but if you're able to haggle, you might have more of a chance to get bundle deals with merchandise, or a Fluffy that's better-behaved, documented, or looks more aesthetically pleasing. 
 
-<<button "Go to Fluffmart @@.icon;.next-arrow;@@" "Fluffmart">><<set $firstTravel to "false">><</button>>
+<<button "Go to Fluffmart @@.icon;.next-arrow;@@" "Fluffmart">><<set $firstTravel to "false">><</button>><</timed>>
 
-@@color:DarkTurquoise;''Visit the local shelter''@@ to see if there are any adoptables that look promising. They're a no-kill shelter, and take in Fluffies that either have been abandoned or given up by their owners. There are even some ferals there. You're likely to find much cheaper Fluffies there, but they'll likely have some asterisks when it comes to their health or behaviour. 
+<<timed 6s t8n>>@@color:DarkTurquoise;''Visit the local shelter''@@ to see if there are any adoptables that look promising. They're a no-kill shelter, and take in Fluffies that either have been abandoned or given up by their owners. There are even some ferals there. You're likely to find much cheaper Fluffies there, but they'll likely have some asterisks when it comes to their health or behaviour. 
 
-<<button "Go to the shelter @@.icon;.next-arrow;@@" "Shelter">><<set $firstTravel to "false">><</button>>
+<<button "Go to the shelter @@.icon;.next-arrow;@@" "Shelter">><<set $firstTravel to "false">><</button>><</timed>>
 
-@@color:green;''Visit the local forest''@@. Your research on your local city's subreddit has come up with some sightings of Fluffies in the forested area that's due to be demolished for a new land development. Feral Fluffies will have their own set of problems, but there's nothing wrong with "free", right? 
+<<timed 8s t8n>>@@color:green;''Visit the local forest''@@. Your research on your local city's subreddit has come up with some sightings of Fluffies in the forested area that's due to be demolished for a new land development. Feral Fluffies will have their own set of problems, but there's nothing wrong with "free", right? 
 
-<<button "Go to the forest @@.icon;.next-arrow;@@" "Forest">><<set $firstTravel to "false">><</button>>
+<<button "Go to the forest @@.icon;.next-arrow;@@" "Forest">><<set $firstTravel to "false">><</button>><</timed>>
 
-@@color:SteelBlue;''Take your chances with a walk in the city''@@. You've definitely seen your share of Fluffies wandering around and scavenging alleyways; this is a super long-shot, but who knows, you might find something interesting! 
+<<timed 10s t8n>>@@color:SteelBlue;''Take your chances with a walk in the city''@@. You've definitely seen your share of Fluffies wandering around and scavenging alleyways; this is a super long-shot, but who knows, you might find something interesting! 
 
-<<button "Go for a walk downtown @@.icon;.next-arrow;@@" "City">><<set $firstTravel to "false">><</button>>
+<<button "Go for a walk downtown @@.icon;.next-arrow;@@" "City">><<set $firstTravel to "false">><</button>><</timed>>

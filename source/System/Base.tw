@@ -20,7 +20,6 @@ $(document).on(":passageend", function() {
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
   </div></div>
 
-
 :: StoryData
 {
     "ifid": "91DE2478-0580-4525-B945-68EB03861614",

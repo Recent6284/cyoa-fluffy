@@ -256,17 +256,22 @@
   <</if>>
   <<set _race = $fluffyRace.random()>>
   
+  <!-- Add more stats here as needed 
+  <<set _newStat = "some value">>  Example of a new stat -->
+  
   <<set _fluffy = {
     name: _name,
     mane: _mane,
     skin: _skin,
     gender: _gender,
     pronounIndex: _pronounIndex,
-    race: _race
+    race: _race,
+    newStat: _newStat // Add new stats to the object
   }>>
 
   <<run $fluffies.push(_fluffy)>>
 <</widget>>
+
 <<set $firstLoad to "true">>
 <<set $playerBudget to 500>>
 <<set $haveFirstFluff to "false">>
@@ -279,37 +284,6 @@
 
 <<set $tvThought to ['You decide to remember this for later', 'The thought floats out of your brain, however', 'You might have to come back to that later.']>>
 
-<<script>>
-// Define fluffy pronoun macros
-["0", "1"].forEach(function(index) {
-    Macro.add("f" + index + "they", {
-        handler: function() {
-            var pronouns = ["he", "she", "they", "it"];
-            var text = pronouns[State.variables.fluffies[index].pronounIndex];
-            $(this.output).append(this.args.includes("upper") ? 
-                text.charAt(0).toUpperCase() + text.slice(1) : text);
-        }
-    });
-
-    Macro.add("f" + index + "them", {
-        handler: function() {
-            var pronouns = ["him", "her", "them", "it"];
-            var text = pronouns[State.variables.fluffies[index].pronounIndex];
-            $(this.output).append(this.args.includes("upper") ? 
-                text.charAt(0).toUpperCase() + text.slice(1) : text);
-        }
-    });
-
-    Macro.add("f" + index + "their", {
-        handler: function() {
-            var pronouns = ["his", "her", "their", "its"];
-            var text = pronouns[State.variables.fluffies[index].pronounIndex];
-            $(this.output).append(this.args.includes("upper") ? 
-                text.charAt(0).toUpperCase() + text.slice(1) : text);
-        }
-    });
-});
-<</script>>
 
 /* Item Definitions */
 
@@ -381,6 +355,11 @@ Cans of "Fluffy's Choice Sketti;" low-quality to humans, but Fluffies can't tell
 <<item "sketties24" "Sketties (24 Pack)">>
 <<description>>
 Cans of "Fluffy's Choice Sketti;" low-quality to humans, but Fluffies can't tell the difference, and also can't operate the pull-key without opposable thumbs. Some have gotten clever and tried various means to get the leverage to open it, but the sharp internal edges of the can have produced many a boo-boo juice and a kiss-better from mummeh or daddeh; mummeh and daddeh have perhaps suffered the same fate, but they'd never let their Fluffy know. Pack of 24, shrink-wrapped.
+<</item>>
+
+<<item "candybar" "Candy Bar">>
+<<description>>
+A cheap form of calories, but enough sugar to be heavenly for a Fluffy. You'd prefer some peanuts or almonds in it, but that would probably choke a Fluffy to death.
 <</item>>
 
 <<item "flufftv" "FluffTV Set">>

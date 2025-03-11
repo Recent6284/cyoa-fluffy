@@ -1,0 +1,16 @@
+:: ButtonReplace [widget]
+
+<<widget "buttonreplace" container>>
+<<set _buttonText to $args[0]>>
+<<set _targetId to $args[1] ?? "buttonreplace-" + $buttonreplaceCounter>>
+<<set _selector to "#" + _targetId>>
+<<set $buttonreplaceCounter to $buttonreplaceCounter + 1>> <!-- Increment the counter -->
+
+<<print '<span id="' + _targetId + '">' +
+    '<<button "' + _buttonText + '">>' +
+        '<<replace "' + _selector + '" t8n>>' +
+            '_contents' +
+        '<</replace>>' +
+    '<</button>>' +
+'</span>'>>
+<</widget>>

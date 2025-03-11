@@ -96,3 +96,13 @@ Will you introduce yourself to the <<print _fluffySkin.toLowerCase()>> <<dynamic
 <<button "Wait for others" "Forest - Interlude">><<set $fluffiesLeft to $fluffiesLeft - 1>><<set $currentFluffyIndex to 4 - $fluffiesLeft>><</button>>
 
 :: Forest - Fluffy Intro
+
+<<lockFluffy>>
+
+Congrats, your new Fluffy is:
+
+$fluffyName, the <span @style="'color:' + $fluffySkin">$fluffySkin</span> $fluffyRace with a <span @style="'color:' + $fluffyMane">$fluffyMane</span> mane.
+
+Do you want to rename your Fluffy?
+
+<<buttonreplace "Yes Please Test">>Test<</buttonreplace>>

@@ -1,6 +1,7 @@
 :: StoryInit
 
 <<set $arrowButton to "<span class='icon next-arrow'></span>">>
+<<set $buttonreplaceCounter to 0>>
 
 <<set $fluffies = []>>
 <<set $fluffyName = []>>

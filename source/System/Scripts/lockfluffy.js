@@ -20,7 +20,5 @@ Macro.add("lockFluffy", {
         
         // Optionally, store the entire Fluffy object for future reference
         State.variables.fluffy = chosenFluffy;
-        
-        $(this.output).append("Fluffy properties locked in!");
     }
 });

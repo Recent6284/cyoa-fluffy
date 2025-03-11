@@ -222,7 +222,10 @@
     ]>>
 
 <<set $fluffyRace = [
-  "alicorn", "earthie", "pegasus", "unicorn"
+    { name: "earthie", weight: 4 },
+    { name: "unicorn", weight: 3 },
+    { name: "pegasus", weight: 2 },
+    { name: "alicorn", weight: 1 }
 ]>>
 
 <<set $randomMane = [
@@ -241,35 +244,6 @@
 
 <<widget "reloadCaption">>
     <<replace "#story-caption">><<include "StoryCaption">><</replace>>
-<</widget>>
-
-<<widget "newFluffy">>
-  <<set _gender = $randomGender.random()>>
-  <<set _mane = $randomMane.random()>>
-  <<set _skin = $randomSkin.random()>>
-  <<if _gender is "male">>
-    <<set _name = $randomNameMale.random()>>
-    <<set _pronounIndex = 0>>
-  <<else>>
-    <<set _name = $randomNameFemale.random()>>
-    <<set _pronounIndex = 1>>
-  <</if>>
-  <<set _race = $fluffyRace.random()>>
-  
-  <!-- Add more stats here as needed 
-  <<set _newStat = "some value">>  Example of a new stat -->
-  
-  <<set _fluffy = {
-    name: _name,
-    mane: _mane,
-    skin: _skin,
-    gender: _gender,
-    pronounIndex: _pronounIndex,
-    race: _race,
-    newStat: _newStat // Add new stats to the object
-  }>>
-
-  <<run $fluffies.push(_fluffy)>>
 <</widget>>
 
 <<set $firstLoad to "true">>

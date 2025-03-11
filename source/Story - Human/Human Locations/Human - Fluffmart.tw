@@ -37,7 +37,12 @@ You noticed that there were milk feeders, audio speakers, and other ways of tric
 
 Being seen as a potential "new parent" was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn't much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy "bonded" with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren't picked.
 
-Each cage had a descriptor of the foal, their colors, the colors of their parents, and a short description to help the sale along. You decided to do a small circuit, mostly just to see what was around, and on your second loop, you found yourself looking at the following foals:
+Each cage had a descriptor of the foal, their colors, the colors of their parents, and a short description to help the sale along. While you think foals can be <<cycle "$foalReaction">><<option "cute" "hugbox">><<option "an interesting challenge" "neutral">><<option "a pet you could mold from scratch" "abuser">><</cycle>> <<hovertip "Foals will potentially be available at a later date; focusing on adult Fluffies will help get the Human route completed.">>you felt your time was best spent with an adult<</hovertip>>.
+
+<<button "Visit the Adult Pens @@.icon;.next-arrow;@@" "Fluffmart - Adults">>
+<</button>>
+
+<<button "Visit the Discount Pens @@.icon;.next-arrow;@@" "Fluffmart - The Discounts">><</button>>
 
 :: Fluffmart - Adults
 

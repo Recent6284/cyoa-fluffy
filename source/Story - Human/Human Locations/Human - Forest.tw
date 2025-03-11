@@ -29,7 +29,7 @@ You decided to place your candy bar, partially unwrapped, near a particularly sh
 :: Forest - Wait For Fluffy
 You saw a particularly shallow part of the stream, and figured that this was the best chance of finding a Fluffy who wasn't going to drown itself. You then sat down on a nearby log, behind a shrub that hid you from view. You also figured your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren't there to harm them, and making the best case you could for adopting them.
 
-<<timed 4s t8n>><<include "Forest - Fluffy Meet 1">><</timed>>
+<<include "Forest - Fluffy Meet 1">>
 
 :: Forest - Fluffy Meet 1
 <<silent>><<set $currentFluffyIndex to 4 - $fluffiesLeft>>
@@ -89,7 +89,7 @@ Based on their size, you made the guess that they were <<if _fluffyGender is "fe
 
 Like the fluffy before, <<dynamicPronoun $currentFluffyIndex "they">> approached the water, but this time, <<dynamicPronoun $currentFluffyIndex "they">> seemed a bit more observant. <<dynamicPronoun $currentFluffyIndex "they" "upper">> surveyed the scene in front of them, trying to see if something didn't feel quite right. After a small pause, it was almost like the caution left their head entirely: like the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> before, they went down to drink.
 
-Will you introduce yourself to the <span @style="'color:' + $fluffies[1].skin"><<print $fluffies[1].skin.toLowerCase()>></span> <<dynamicFluffyProperty $currentFluffyIndex "race">> Fluffy, or wait to see if any others show up? This Fluffy might not stick around for long.
+Will you introduce yourself to the <<print _fluffySkin.toLowerCase()>> <<dynamicFluffyProperty $currentFluffyIndex "race">> Fluffy, or wait to see if any others show up? This Fluffy might not stick around for long.
 
 <<button "Approach the Fluffy" "Forest - Fluffy Intro">><</button>>
 

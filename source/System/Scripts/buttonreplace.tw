@@ -1,6 +1,8 @@
 :: ButtonReplace [widget]
 
-<<widget "buttonreplace" container>>
+/* Use <<buttonreplace "Button Text">>What will show up in place of the button.<</buttonreplace>> in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
+
+<<widget "buttonreplace" container>><<nobr>>
 <<set _buttonText to $args[0]>>
 <<set _targetId to $args[1] ?? "buttonreplace-" + $buttonreplaceCounter>>
 <<set _selector to "#" + _targetId>>
@@ -13,4 +15,4 @@
         '<</replace>>' +
     '<</button>>' +
 '</span>'>>
-<</widget>>
+<</nobr>><</widget>>

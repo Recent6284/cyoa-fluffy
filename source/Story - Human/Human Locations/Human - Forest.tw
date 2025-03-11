@@ -105,4 +105,10 @@ $fluffyName, the <span @style="'color:' + $fluffySkin">$fluffySkin</span> $fluff
 
 Do you want to rename your Fluffy?
 
-<<buttonreplace "Yes Please Test">>Test<</buttonreplace>>
+<<buttonreplace "Yes Please">><<textbox "$fluffyName" $fluffyName>><br><br><<button [[Confirm|Confirm]]>><</button>><<remove #confirmbutton>><</buttonreplace>>
+
+<span id="confirmbutton"><<button [[Confirm|Confirm]]>><</button>></span>
+
+:: Confirm
+
+Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName, a <<colorname>>$fluffySkin<</colorname>> $fluffyRace with a <span @style="'color:' + $fluffyMane">$fluffyMane</span> mane.

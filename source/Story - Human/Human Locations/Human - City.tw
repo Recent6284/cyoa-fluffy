@@ -28,7 +28,7 @@ You kicked yourself a little bit for being stereotypical — really? @@color:gre
 
 You weren't sure if old man Pasquale was even //aware// of what Fluffies were, but you were sure they'd probably have something in the garbage that Fluffies would find delectable. From your research, almost all humans didn't think Fluffy "skettis" were appetizing, and it felt almost insulting to see a Fluffy-themed vending machine next door, hawking Fluffy merch. You saw a giant sticker, promising that "Foals in a Can will return!"; you'd heard some scuttlebutt on Reddit about the temperature units failing on the cans, and man, that can't be pleasant to clean up. You took a look at the rest of the products anyways.
 
-<<buttonreplace "Visit the Vending Machine">><<timed 1s t8n>><<include "City Vending Machine">><</timed>><</buttonreplace>>
+<<buttonreplace "Visit the Vending Machine">><<include "City Vending Machine">><</buttonreplace>>
 
 :: City Vending Machine
 !!!The City Vending Machine

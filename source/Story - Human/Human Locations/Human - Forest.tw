@@ -7,24 +7,24 @@ Fluffies' existence as toys //and// invasive species presents an interesting pro
 
 You, however, weren't about to be dissuaded. Why pay $100 at Fluffmart when you can possibly find something here?
 
-<<timed 5s t8n>>Fluffy hunting was an interesting art: you <<cycle "$baitSet">>
+Fluffy hunting was an interesting art: you <<cycle "$baitSet">>
 <<option "decided to test your luck" "luck">>
 <<option "<<print '<<hovertip \"This will cost you $5 from your budget (currently $<<print $playerBudget>>)\">>came prepared with a candy bar<</hovertip>>'>>" "candy">>
 <</cycle>> as you approach a common area that most Fluffies would need eventually: a babbling brook.
 
 <<button "Go to the creek @@.icon;.next-arrow;@@" "Forest Creek">><<if $baitSet is "candy">><<set $playerBudget to $playerBudget - 5>><<pickup $bag "candybar" 1>><</if>><</button>>
-<</timed>>
+
 
 :: Forest Creek
 <<silent>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><</silent>>
 Approaching the creek, there was no sign of any humans or Fluffies: perfect.
 
-<<if $baitSet is "candy">><<set $fluffiesLeft to 4>><div id="forestactionbutton"><<button "Place your candy bar bait">><<drop $bag "candybar" 1>><<replace "#forestactionbutton" t8n>><<timed 1s t8n>><<include "Forest - Candy Bar Bait">><</timed>><</replace>><</button>></div><<else>><<set $fluffiesLeft to 3>><div id="forestactionbutton"><<button "Find a Place to Hide">><<replace "#forestactionbutton" t8n>><<timed 1s t8n>><<include "Forest - Wait For Fluffy">><</timed>><</replace>><</button>></div><</if>>
+<<if $baitSet is "candy">><<set $fluffiesLeft to 4>><div id="forestactionbutton"><<button "Place your candy bar bait">><<drop $bag "candybar" 1>><<replace "#forestactionbutton" t8n>><<include "Forest - Candy Bar Bait">><</replace>><</button>></div><<else>><<set $fluffiesLeft to 3>><div id="forestactionbutton"><<button "Find a Place to Hide">><<replace "#forestactionbutton" t8n>><<include "Forest - Wait For Fluffy">><</replace>><</button>></div><</if>>
 
 :: Forest - Candy Bar Bait
 You decided to place your candy bar, partially unwrapped, near a particularly shallow part of the creek, and sat down on a nearby log, behind a shrub that hid you from view.
 
-<<timed 4s t8n>><<include "Forest - Wait For Fluffy">><</timed>>
+<<include "Forest - Wait For Fluffy">>
 
 :: Forest - Wait For Fluffy
 You saw a particularly shallow part of the stream, and figured that this was the best chance of finding a Fluffy who wasn't going to drown itself. You then sat down on a nearby log, behind a shrub that hid you from view. You also figured your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren't there to harm them, and making the best case you could for adopting them.
@@ -66,7 +66,7 @@ The pony unfurled its wings, almost to help slow itself; it wasn't going especia
 
 :: Forest - Interlude
 <<silent>><<set $currentFluffyIndex to 4 - $fluffiesLeft>><</silent>>
-<<timed 2s t8n>>You decided to pass on the Fluffy, and after a couple minutes, you saw <<dynamicPronoun $currentFluffyIndex-1 "them">> <<print either("get distracted by a passing butterfly, and trotted away in chase.","bolt away after hearing a bird take off by a nearby branch. Forest life must be scary for a fluffy.","test the temperature of the river, nearly slip and fall, and trot away with a few \"huu huus\" for good measure.")>><<if $fluffiesLeft > 0>>
+You decided to pass on the Fluffy, and after a couple minutes, you saw <<dynamicPronoun $currentFluffyIndex-1 "them">> <<print either("get distracted by a passing butterfly, and trotted away in chase.","bolt away after hearing a bird take off by a nearby branch. Forest life must be scary for a fluffy.","test the temperature of the river, nearly slip and fall, and trot away with a few \"huu huus\" for good measure.")>><<if $fluffiesLeft > 0>>
 <<include "Forest Fluffy Meet TwoThree">><<else>>
 
 After the Fluffy left, you sat in wait; minutes passed, and you took out your phone, scrolled a little, and looked up again. Things didn't seem like they were going to get much better in terms of finding any more Fluffies.
@@ -76,7 +76,7 @@ You had a couple choices from here:
 * You could [[head to your local shelter|Shelter]] to check out the options for Fluffies that were either pulled off the street or put up for adoption.
 * You could [[head downtown|City]] and see if you would have more luck with the more urban Fluffies
 * You could [[head home for the day]] and put off the decision until tomorrow.
-<</if>><</timed>>
+<</if>>
 
 :: Forest Fluffy Meet TwoThree
 <<silent>><<set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race>>

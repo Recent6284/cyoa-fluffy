@@ -14,11 +14,11 @@ You notice that $fluffyName somehow got a piece of fibre from your carpet stuck 
 :: UpsiesCall
 <<nobr>><<set _listenRoll to random(1,20)>><</nobr>>You try calling $fluffyName first, as they're on the other side of the $penType. 
 
-<<timed 2s t8n>><<if _listenRoll > 10>>Their ears perked up as <<hovertip "@@color:green;Rolled <<print _listenRoll>>@@, needed >10">>they heard you<</hovertip>>, and they came trotting over.<<set _listen to "true">><<else>> <<hovertip "@@color:red;Rolled <<print _listenRoll>>@@, needed >10">>Unfortunately<</hovertip>>, they were either unable to hear you, or something (likely the paint on the wall) was just that much more interesting than you. You saw them ignore you, and you were back to square one. 
+<<if _listenRoll > 10>>Their ears perked up as <<hovertip "@@color:green;Rolled <<print _listenRoll>>@@, needed >10">>they heard you<</hovertip>>, and they came trotting over.<<set _listen to "true">><<else>> <<hovertip "@@color:red;Rolled <<print _listenRoll>>@@, needed >10">>Unfortunately<</hovertip>>, they were either unable to hear you, or something (likely the paint on the wall) was just that much more interesting than you. You saw them ignore you, and you were back to square one. 
 
-<div id="listenFailbuton"><<timed 2s t8n>><<button "Walk up to them and grab them">><<replace #listenFailbuton>><<include [[UpsiesGrab]]>><</replace>><</button>><</timed>></div>
+<div id="listenFailbuton"><<button "Walk up to them and grab them">><<replace #listenFailbuton>><<include [[UpsiesGrab]]>><</replace>><</button>></div>
 
-<</if>><</timed>>
+<</if>>
 
 :: UpsiesGrab
 <<nobr>><<set _grabRoll to random(1,20)>><</nobr>>You decide to go for broke and just grab $fluffyName because it would take too long otherwise; it was one piece of string: how complicated could it be?

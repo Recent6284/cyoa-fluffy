@@ -1,0 +1,75 @@
+:: Roll Test
+<<silent>><<set $currentFluffyIndex to 0>><</silent>>
+!! <<hovertip "The button below generates a new Fluffy, and saves its stats to memory.">>Your Fluffy<</hovertip>>
+<<button "Click for Fluffy">><<silent>>
+    <<newFluffy>>
+    <<lockFluffy>>
+    <<redo>>
+    <<set $currentFluffyIndex to 1+$currentFluffyIndex>>
+<</silent>><</button>>
+
+<<nobr>><<do>>Name: <<if $fluffyName.length == 0 >>Roll first!<<else>>$fluffyName<</if>><br>
+Gender: <<if $fluffyGender.length == 0 >>Roll first!<<else>>$fluffyGender<</if>><br>
+Mane: <<if $fluffyMane.length == 0 >>Roll first!<<else>><<colorname $fluffyMane>><</if>><br>
+Skin: <<if $fluffySkin.length == 0 >>Roll first!<<else>><<colorname $fluffySkin>><</if>><br>
+Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>><br>
+<table class="shop"><thead>
+  <tr>
+    <th>Stat Name</th>
+    <th>Statistic</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td>Obedience</td>
+    <td><<print $fluffyOb>></td>
+  </tr>
+  <tr>
+    <td>Impulsiveness</td>
+    <td><<print $fluffyIm>></td>
+  </tr>  <tr>
+    <td>Caution</td>
+    <td><<print $fluffyCa>></td>
+  </tr>  <tr>
+    <td>Ignorance</td>
+    <td><<print $fluffyIg>></td>
+  </tr>
+</tbody>
+</table><</do>><</nobr>>
+!! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>
+
+<<nobr>><<listbox "$statBox" autoselect>>
+    <<option "Obedience" "ob">>
+    <<option "Impulsiveness" "im">>
+    <<option "Caution" "ca">>
+    <<option "Ignorance" "ig">>
+<</listbox>><</nobr>>
+
+
+<<button "Stat Check Test">><<silent>>
+    <<set _stat to $statBox>>
+    <<roll _stat "_test" "10">>
+    <<redo>>
+<</silent>><</button>>
+
+Statbox: $statBox
+Stat: <<do>>_stat<</do>>
+
+<<do>>Stat: _stat
+Roll: _roll
+Bonus: _bonus
+Total (roll + bonus): _total
+Goal Expression: _goalExpression
+Roll Math: _goalExpression + _bonus
+Goal: _goal
+PassFailCrit: _result
+
+Result: <<nobr>><!-- Roll for Obedience with a goal of 1 + $bonus -->
+<<if _test === "criticalpass">>
+  Critical success! The fluffy is exceptionally obedient.
+<<elseif _test === "criticalfail">>
+  Critical fail! The fluffy is completely out of control.
+<<elseif _test === "pass">>
+  Pass! The fluffy is obedient enough.
+<<else>>
+  Fail! The fluffy is too impulsive.
+<</if>><</nobr>><</do>>

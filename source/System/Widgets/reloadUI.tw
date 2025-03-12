@@ -1,0 +1,5 @@
+:: RefreshSidebar [widget nobr]
+
+<<widget "reloadCaption">>
+    <<replace "#story-caption">><<include "StoryCaption">><</replace>>
+<</widget>>

@@ -1,0 +1,34 @@
+:: New Fluffy [widget nobr]
+  
+<<widget "newFluffy">>
+  <<set _gender = $randomGender.random()>>
+  <<set _mane = $randomMane.random()>>
+  <<set _skin = $randomSkin.random()>>
+  <<if _gender is "Male">>
+    <<set _name = $randomNameMale.random()>>
+    <<set _pronounIndex = 0>>
+  <<else>>
+    <<set _name = $randomNameFemale.random()>>
+    <<set _pronounIndex = 1>>
+  <</if>>
+  <<set _race = weightedRandom($randomRace).name>> <!-- Use weightedRandom for race -->
+  <<set _obedience = random(1, 9)>> <!-- Random value between 1 and 9 for obedience -->
+  <<set _impulsiveness = 10 - _obedience>> <!-- Impulsiveness is 10 minus obedience -->
+  <<set _caution = random(1, 9)>> <!-- Random value between 1 and 9 for caution -->
+  <<set _ignorance = 10 - _caution>> <!-- Ignorance is 10 minus caution -->
+
+  <<set _fluffy = {
+    name: _name,
+    mane: _mane,
+    skin: _skin,
+    gender: _gender,
+    pronounIndex: _pronounIndex,
+    race: _race,
+    ob: _obedience,
+    im: _impulsiveness,
+    ca: _caution,
+    ig: _ignorance
+  }>>
+
+  <<run $fluffies.push(_fluffy)>>
+<</widget>>

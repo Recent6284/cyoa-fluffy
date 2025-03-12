@@ -1,0 +1,45 @@
+:: Roll [widget]
+
+<<widget "calcBonus">>
+  <<capture _stat>>
+  <<if _stat === "ob">>
+    <<set _bonus = Math.floor(($fluffyOb - $fluffyIm) /2 )>> <!-- Obedience - Impulsiveness -->
+  <<elseif _stat === "im">>
+    <<set _bonus = Math.floor(($fluffyIm - $fluffyOb) /2 )>> <!-- Impulsiveness - Obedience -->
+  <<elseif _stat === "ca">>
+    <<set _bonus = Math.floor(($fluffyCa - $fluffyIg) /2 )>> <!-- Caution - Ignorance -->
+  <<elseif _stat === "ig">>
+    <<set _bonus = Math.floor(($fluffyIg - $fluffyCa) /2 )>> <!-- Ignorance - Caution -->
+  <<else>>
+    <<set _bonus = 0>> <!-- Default bonus if the stat is invalid -->
+  <</if>>
+  <</capture>>
+<</widget>>
+
+<<widget "roll">><<silent>>
+
+  <<set _stat = $args[0]>> <!-- Primary stat (e.g., "ob", "im", "ca", "ig") -->
+  <<set _tempVarName = $args[1]>> <!-- Name of the temporary variable to store the result -->
+  <<set _goalExpression = $args[2]>> <!-- Dynamic goal expression (e.g., "1 + $variable") -->
+
+  <<set _goal = eval(_goalExpression)>> <!-- Evaluate the goal expression -->
+  <<print "Evaluated Goal: " + _goal>> <!-- Debug: Print the evaluated goal -->
+
+  <<set _roll = random(1, 20)>> <!-- Roll a d20 -->
+  <<calcBonus _stat>> <!-- Call the widget using macro syntax -->
+  <<capture _bonus>>
+    <<print "Captured Bonus: " + _bonus>> <!-- Debug: Print the captured bonus -->
+  <<set _total = _roll + _bonus>> <!-- Add the bonus to the roll -->
+  <</capture>>
+  <<if _roll === 20>>
+    <<set _result = "criticalpass">> <!-- Natural 20 is always a critical pass -->
+  <<elseif _roll === 1>>
+    <<set _result = "criticalfail">> <!-- Natural 1 is always a critical fail -->
+  <<elseif _total >= _goal>> <!-- Use the dynamic goal for pass/fail -->
+    <<set _result = "pass">> <!-- Total meets or exceeds the goal -->
+  <<else>>
+    <<set _result = "fail">> <!-- Total is below the goal -->
+  <</if>>
+
+  <<run State.setVar(_tempVarName, _result)>> <!-- Store the result in the specified temporary variable -->
+<</silent>><</widget>>

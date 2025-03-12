@@ -38,11 +38,11 @@ You saw a particularly shallow part of the stream, and figured that this was the
 <<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
 <<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>><</silent>>After a small wait, you saw a fluffy trot into view. <<if  _fluffyRace is "alicorn">><<include "Forest - Alicorn Intro">><<elseif  _fluffyRace is "unicorn">><<include "Forest - Unicorn Intro">><<elseif  _fluffyRace is "pegasus">><<include "Forest - Pegasus Intro">><<elseif  _fluffyRace is "earthie">><<include "Forest - Earthie Intro">><</if>>
 
-Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane"><<dynamicFluffyProperty $currentFluffyIndex "mane">></span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin"><<print _fluffySkin.toLowerCase()>></span> skin; you weren't sure how your felt about the color combination, but it was something to consider.
+Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname">_fluffyMane.name</span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin; you weren't sure how your felt about the color combination, but it was something to consider.
 
 <<dynamicPronoun $currentFluffyIndex "they" "upper">> lowered <<dynamicPronoun $currentFluffyIndex "their">> mane down to the water and began to sip thoughtfully; <<dynamicPronoun $currentFluffyIndex "they">> didn't seem to be aware of your presence, but you wouldn't hold that against <<dynamicPronoun $currentFluffyIndex "them">>. When they were hungry, thirsty or horny, Fluffies probably didn't care about much besides sating their needs.
 
-Will you introduce yourself to the <span @style="'color:' + _fluffySkin"><<print _fluffySkin.toLowerCase()>></span> <<print  _fluffyRace.toLowerCase()>> Fluffy, or wait to see if any others show up? This Fluffy might not stick around for long.
+Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> <<print  _fluffyRace.toLowerCase()>> Fluffy, or wait to see if any others show up? This Fluffy might not stick around for long.
 
 <<button "Introduce Yourself" "Forest - Fluffy Intro">><</button>>
 
@@ -62,7 +62,7 @@ You noticed the telltale horn of a unicorn, and a small part of your brain hoped
 
 :: Forest - Pegasus Intro
 
-The pony unfurled its wings, almost to help slow itself; it wasn't going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy.
+The pony unfurled its wings, almost to help slow itself; it wasn't going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy, and they could be found speeding around whatever environment they were in.
 
 :: Forest - Interlude
 <<silent>><<set $currentFluffyIndex to 4 - $fluffiesLeft>><</silent>>
@@ -85,11 +85,11 @@ You had a couple choices from here:
 <<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>><</silent>>
 As the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> disappeared into the forest, you saw another fluffy approach the creek after a brief wait. <<if _fluffyRace is "alicorn">><<include "Forest - Alicorn Intro">><<elseif _fluffyRace is "unicorn">><<include "Forest - Unicorn Intro">><<elseif _fluffyRace is "pegasus">><<include "Forest - Pegasus Intro">><<elseif _fluffyRace is "earthie">><<include "Forest - Earthie Intro">><</if>>
 
-Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane"><<print _fluffyMane.toLowerCase()>></span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin"><<print _fluffySkin.toLowerCase()>></span> skin.
+Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname"><<print _fluffyMane.name.toLowerCase()>></span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin.
 
 Like the fluffy before, <<dynamicPronoun $currentFluffyIndex "they">> approached the water, but this time, <<dynamicPronoun $currentFluffyIndex "they">> seemed a bit more observant. <<dynamicPronoun $currentFluffyIndex "they" "upper">> surveyed the scene in front of them, trying to see if something didn't feel quite right. After a small pause, it was almost like the caution left their head entirely: like the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> before, they went down to drink.
 
-Will you introduce yourself to the <<print _fluffySkin.toLowerCase()>> <<dynamicFluffyProperty $currentFluffyIndex "race">> Fluffy, or wait to see if any others show up? This Fluffy might not stick around for long.
+Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> <<dynamicFluffyProperty $currentFluffyIndex "race">>, or wait to see if any others show up? This Fluffy might not stick around for long.
 
 <<button "Approach the Fluffy" "Forest - Fluffy Intro">><</button>>
 
@@ -101,7 +101,7 @@ Will you introduce yourself to the <<print _fluffySkin.toLowerCase()>> <<dynamic
 
 Congrats, your new Fluffy is:
 
-$fluffyName, the <span @style="'color:' + $fluffySkin">$fluffySkin</span> $fluffyRace with a <span @style="'color:' + $fluffyMane">$fluffyMane</span> mane.
+$fluffyName, the <span @style="'color:' + $fluffySkin.colorname"><<print $fluffySkin.name.toLowerCase()>></span> $fluffyRace with a <span @style="'color:' + $fluffyMane.colorname"><<print $fluffyMane.name.toLowerCase()>></span> mane.
 
 Do you want to rename your Fluffy?
 
@@ -111,4 +111,15 @@ Do you want to rename your Fluffy?
 
 :: Confirm
 
-Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName, a <<colorname $fluffySkin>> $fluffyRace with a <span @style="'color:' + $fluffyMane">$fluffyMane</span> mane.
+Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName, a <<colorname $fluffySkin>> $fluffyRace with a <<colorname $fluffyMane>> mane.
+
+<<roll "ob" "_test" "1+1">>
+<<if _test === "criticalpass">>
+    Critical pass text goes here
+<<elseif _test === "criticalfail">>
+    Critical fail text goes here
+<<elseif _test === "pass">>
+    Pass text goes here
+<<else>>
+    Fail text goes here
+<</if>>

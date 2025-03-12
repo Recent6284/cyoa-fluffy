@@ -12,7 +12,6 @@ You can download the .html file from GitLab if you want to save this for offline
 * If there's <<cycle "_examplelink">><<option "different colored text">><<option "a link">><<option "a button">><<option "a text field">><</cycle>>, it's something to interact with.
 * Buttons that will make you leave the page will be marked with a "@@.icon;.next-arrow;@@".
 * I'll be using variables to track some choices, and some may matter! We'll see how ambitious I get.
-
 If you'd like to go to the Roll Test, [[click here|Roll Test]].
 
 <<button "Let's begin! $arrowButton" "Character Creation">><</button>>

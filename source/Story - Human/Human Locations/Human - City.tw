@@ -1,3 +1,56 @@
 :: City
 
-Nothing to see here, yet.
+Your city isn't anything special; you'd say that you probably pay too much in rent for the square footage you live in, and the public transit smells so bad that you don't really have a choice but to get a car. You're thankful for your cushy work-from-home office job, mostly because you can save a bunch of money from buying lunch at overpriced cafes that litter the downtown core.
+
+Like any major city, yours has had a problem with Fluffies and the feral population. Unlike their forest-bound cousins, there's a lot more to mess up; any garbage that's outside for pickup needs to be carefully secures, lest there be a horde of ferals enjoying the smorgasbord. 
+
+Many an alleyway and cardboard box has been used by Fluffies to live their entire misbegotten lives; even if they survive the rowdy 2 a.m. bar patrons in the summer, they've got to be able to contend with the snow, ice and road salt of the winter. When the ice and sludge finally thaw in April, many business owners have had to chip out the bright-colored corpses from their snowbanks - killing scavenging gulls and pigeons is illegal, after all.
+
+You've decided that a walk through downtown is worth the risk tonight, mostly because of the possibility of being able to.... commandeer... a good Fluffy from their otherwise difficult life on the streets. After some pondering, you've decided that there's only so many places that they could congregate.
+
+<<button [[Visit the Strip Mall|Alley]]>><<set $cityScape to "Strip Mall">><</button>>
+
+<<button [[Visit the Restaurant|Alley]]>><<set $cityScape to "Restaurant">><</button>>
+
+<<button [[Visit the Strip Mall|Alley]]>><<set $cityScape to "Industrial">><</button>>
+
+:: Alley
+
+This <<if $cityScape is "Strip Mall">>strip mall<<elseif $cityScape is "Restaurant">>restaurant<<elseif $cityScape is "Industrial">>Industrial Park<</if>> had seen better days, and that's probably why you thought you could find some Fluffies — eventually, with enough apathy, the circumstances for favorable feral festivities flourished.
+
+<<if $cityScape is "Strip Mall">><<include "Strip Mall">><<elseif $cityScape is "Restaurant">><<include "Restaurant">><<elseif $cityScape is "Industrial">><<include "Industrial Park">><</if>>
+
+:: Strip Mall
+
+:: Restaurant
+
+You kicked yourself a little bit for being stereotypical — really? @@color:green;An@@ Italian @@color:red;restaurant@@? You didn't know if it would be this easy, or a Fluffy's sense of smell would be that good. Pasquale's was a local joint that people either loved to death or turned their noses up at; the 90-year-old proprietor had lost his wife years ago, but there were weathered newspaper articles clipped and carefully preserved on the wall. You could've sworn you even saw a blessing from the Pope up there — an Italian wouldn't lie about that, would they?
+
+You weren't sure if old man Pasquale was even //aware// of what Fluffies were, but you were sure they'd probably have something in the garbage that Fluffies would find delectable. From your research, almost all humans didn't think Fluffy "skettis" were appetizing, and it felt almost insulting to see a Fluffy-themed vending machine next door, hawking Fluffy merch. You saw a giant sticker, promising that "Foals in a Can will return!"; you'd heard some scuttlebutt on Reddit about the temperature units failing on the cans, and man, that can't be pleasant to clean up. You took a look at the rest of the products anyways.
+
+<<buttonreplace "Visit the Vending Machine">><<timed 1s t8n>><<include "City Vending Machine">><</timed>><</buttonreplace>>
+
+:: City Vending Machine
+!!!The City Vending Machine
+<<nobr>>
+<table class="shop"><thead>
+  <tr>
+    <th>Item (Click to Buy)</th>
+    <th>Price</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td><<link "Can of Sketties (1)">><<pickup $bag "sketties1" 1>>
+            <<set $playerBudget to $playerBudget - 5>>
+            <<reloadCaption>><</link>></td>
+    <td>$5</td>
+  </tr>
+  <tr>
+    <td>Foal in a Can (Out of Order)</td>
+    <td>$25</td>
+  </tr>
+</tbody>
+</table>
+<</nobr>>
+
+:: Industrial Park

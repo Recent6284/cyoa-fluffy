@@ -226,6 +226,33 @@ a.explainer {
   border-color: white;
 }
 
+.shop {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+.shop th {
+	font-weight: bold;
+}
+
+.shop td {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  padding: 10px;  
+}
+
+.shop th {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+}
+
 /* Sugarcube Icons */
 
 .icon{
@@ -1125,7 +1152,45 @@ Your options are:&lt;&lt;/if&gt;&gt;
 
 @@color:SteelBlue;&#39;&#39;Take your chances with a walk in the city&#39;&#39;@@. You&#39;ve definitely seen your share of Fluffies wandering around and scavenging alleyways; this is a super long-shot, but who knows, you might find something interesting! 
 
-&lt;&lt;button &quot;Go for a walk downtown @@.icon;.next-arrow;@@&quot; &quot;City&quot;&gt;&gt;&lt;&lt;set $firstTravel to &quot;false&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="City" tags="" position="475,225" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="15" name="Fluffmart" tags="" position="600,225" size="100,100">Your local Fluffmart is a bit of a zoo. There are always people milling about and filing in and out, and it doesn&#39;t help that it&#39;s part of a bigger plaza that has a number of other stores. You always hate how hard it is to park, and you nearly get hit by a couple cars just trying to cross the parking lot.
+&lt;&lt;button &quot;Go for a walk downtown @@.icon;.next-arrow;@@&quot; &quot;City&quot;&gt;&gt;&lt;&lt;set $firstTravel to &quot;false&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="City" tags="" position="475,225" size="100,100">Your city isn&#39;t anything special; you&#39;d say that you probably pay too much in rent for the square footage you live in, and the public transit smells so bad that you don&#39;t really have a choice but to get a car. You&#39;re thankful for your cushy work-from-home office job, mostly because you can save a bunch of money from buying lunch at overpriced cafes that litter the downtown core.
+
+Like any major city, yours has had a problem with Fluffies and the feral population. Unlike their forest-bound cousins, there&#39;s a lot more to mess up; any garbage that&#39;s outside for pickup needs to be carefully secures, lest there be a horde of ferals enjoying the smorgasbord. 
+
+Many an alleyway and cardboard box has been used by Fluffies to live their entire misbegotten lives; even if they survive the rowdy 2 a.m. bar patrons in the summer, they&#39;ve got to be able to contend with the snow, ice and road salt of the winter. When the ice and sludge finally thaw in April, many business owners have had to chip out the bright-colored corpses from their snowbanks - killing scavenging gulls and pigeons is illegal, after all.
+
+You&#39;ve decided that a walk through downtown is worth the risk tonight, mostly because of the possibility of being able to.... commandeer... a good Fluffy from their otherwise difficult life on the streets. After some pondering, you&#39;ve decided that there&#39;s only so many places that they could congregate.
+
+&lt;&lt;button [[Visit the Strip Mall|Alley]]&gt;&gt;&lt;&lt;set $cityScape to &quot;Strip Mall&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+
+&lt;&lt;button [[Visit the Restaurant|Alley]]&gt;&gt;&lt;&lt;set $cityScape to &quot;Restaurant&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+
+&lt;&lt;button [[Visit the Strip Mall|Alley]]&gt;&gt;&lt;&lt;set $cityScape to &quot;Industrial&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="Alley" tags="" position="600,225" size="100,100">This &lt;&lt;if $cityScape is &quot;Strip Mall&quot;&gt;&gt;strip mall&lt;&lt;elseif $cityScape is &quot;Restaurant&quot;&gt;&gt;restaurant&lt;&lt;elseif $cityScape is &quot;Industrial&quot;&gt;&gt;Industrial Park&lt;&lt;/if&gt;&gt; had seen better days, and that&#39;s probably why you thought you could find some Fluffies — eventually, with enough apathy, the circumstances for favorable feral festivities flourished.
+
+&lt;&lt;if $cityScape is &quot;Strip Mall&quot;&gt;&gt;&lt;&lt;include &quot;Strip Mall&quot;&gt;&gt;&lt;&lt;elseif $cityScape is &quot;Restaurant&quot;&gt;&gt;&lt;&lt;include &quot;Restaurant&quot;&gt;&gt;&lt;&lt;elseif $cityScape is &quot;Industrial&quot;&gt;&gt;&lt;&lt;include &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="Strip Mall" tags="" position="725,225" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Restaurant" tags="" position="850,225" size="100,100">You kicked yourself a little bit for being stereotypical — really? @@color:green;An@@ Italian @@color:red;restaurant@@? You didn&#39;t know if it would be this easy, or a Fluffy&#39;s sense of smell would be that good. Pasquale&#39;s was a local joint that people either loved to death or turned their noses up at; the 90-year-old proprietor had lost his wife years ago, but there were weathered newspaper articles clipped and carefully preserved on the wall. You could&#39;ve sworn you even saw a blessing from the Pope up there — an Italian wouldn&#39;t lie about that, would they?
+
+You weren&#39;t sure if old man Pasquale was even //aware// of what Fluffies were, but you were sure they&#39;d probably have something in the garbage that Fluffies would find delectable. From your research, almost all humans didn&#39;t think Fluffy &quot;skettis&quot; were appetizing, and it felt almost insulting to see a Fluffy-themed vending machine next door, hawking Fluffy merch. You saw a giant sticker, promising that &quot;Foals in a Can will return!&quot;; you&#39;d heard some scuttlebutt on Reddit about the temperature units failing on the cans, and man, that can&#39;t be pleasant to clean up. You took a look at the rest of the products anyways.
+
+&lt;&lt;buttonreplace &quot;Visit the Vending Machine&quot;&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;include &quot;City Vending Machine&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;/buttonreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="City Vending Machine" tags="" position="975,225" size="100,100">!!!The City Vending Machine
+&lt;&lt;nobr&gt;&gt;
+&lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Item (Click to Buy)&lt;/th&gt;
+    &lt;th&gt;Price&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;&lt;link &quot;Can of Sketties (1)&quot;&gt;&gt;&lt;&lt;pickup $bag &quot;sketties1&quot; 1&gt;&gt;
+            &lt;&lt;set $playerBudget to $playerBudget - 5&gt;&gt;
+            &lt;&lt;reloadCaption&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/td&gt;
+    &lt;td&gt;$5&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Foal in a Can (Out of Order)&lt;/td&gt;
+    &lt;td&gt;$25&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Industrial Park" tags="" position="1100,225" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Fluffmart" tags="" position="1225,225" size="100,100">Your local Fluffmart is a bit of a zoo. There are always people milling about and filing in and out, and it doesn&#39;t help that it&#39;s part of a bigger plaza that has a number of other stores. You always hate how hard it is to park, and you nearly get hit by a couple cars just trying to cross the parking lot.
 
 You notice a couple employees in bright orange vests hosing down a large green dumpster in the alley beside the building; from the telltale swarming of flies you can tell there was probably some unpleasant things being disposed of; you weren&#39;t sure where you exactly stood on the &quot;Fluffies aren&#39;t animals&quot; thing, but it sure made it easier to deal with when it came to the law. 
 
@@ -1152,7 +1217,7 @@ Remember, you have &#39;&#39;$&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;&#39
 
 &lt;&lt;button &quot;Change your mind, and go somewhere else @@.icon;.next-arrow;@@&quot; &quot;Day 1 Travel&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;nobr&gt;&gt;&lt;&lt;if $tvThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $tvMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $tvThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $tvMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="Fluffmart - Foals" tags="" position="725,225" size="100,100">The foal cases were away from the adult pens, for good reason; even if the foals weren&#39;t the biological children of the fluffies on sale, there would probably be endless enthusiasm about them, to the detriment of making good sales. The foal area was almost like a more traditional pet store&#39;s fish, reptile and amphibian section; walls lined with glass paneling, gentle lighting, and climate-controlled tanks that gave customers a good look at what they could buy.
+&lt;&lt;nobr&gt;&gt;&lt;&lt;if $tvThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $tvMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $tvThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $tvMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Fluffmart - Foals" tags="" position="100,350" size="100,100">The foal cases were away from the adult pens, for good reason; even if the foals weren&#39;t the biological children of the fluffies on sale, there would probably be endless enthusiasm about them, to the detriment of making good sales. The foal area was almost like a more traditional pet store&#39;s fish, reptile and amphibian section; walls lined with glass paneling, gentle lighting, and climate-controlled tanks that gave customers a good look at what they could buy.
 
 You noticed that there were milk feeders, audio speakers, and other ways of tricking the foal into thinking that they were still in a comfortable environment with their parents; there was a variety of them at different stages of life, mostly because some had spent more time waiting to be bought than others, and had opened their eyes, or started talking.
 
@@ -1163,17 +1228,17 @@ Each cage had a descriptor of the foal, their colors, the colors of their parent
 &lt;&lt;button &quot;Visit the Adult Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - Adults&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Visit the Discount Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - The Discounts&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Fluffmart - Adults" tags="" position="850,225" size="100,100">Managing a number of adult fluffies was difficult, and trying to put them in the best environment to entice prospective customers was even harder. With ages ranging from &quot;just matured&quot; to &quot;a bit on the older side&quot;, Fluffies in the adult area were separated by gender, and in different pens to avoid overcrowding. You noticed that a couple of the dividers were clear, with a large sign proclaiming &quot;~Special Friends!~&quot;; some fluffies probably managed to pair bond despite Fluffmart&#39;s best efforts, and they probably were testing the profitability of selling twice the food, twice the equipment, and Fluffies that would have their own social entertainment.
+&lt;&lt;button &quot;Visit the Discount Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - The Discounts&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Fluffmart - Adults" tags="" position="225,350" size="100,100">Managing a number of adult fluffies was difficult, and trying to put them in the best environment to entice prospective customers was even harder. With ages ranging from &quot;just matured&quot; to &quot;a bit on the older side&quot;, Fluffies in the adult area were separated by gender, and in different pens to avoid overcrowding. You noticed that a couple of the dividers were clear, with a large sign proclaiming &quot;~Special Friends!~&quot;; some fluffies probably managed to pair bond despite Fluffmart&#39;s best efforts, and they probably were testing the profitability of selling twice the food, twice the equipment, and Fluffies that would have their own social entertainment.
 
 Fluffies of all colors were babbling, hugging, playing with balls and blocks, watching a FluffTV set, and generally doing what they did best. You could see a Fluffmart employee breaking up a scuffle between two males with a broom handle; even in this protected area, there were egos, jostling, and hierarchy. You &lt;&lt;cycle &quot;$fluffyReaction&quot;&gt;&gt;&lt;&lt;option &quot;grinned at&quot;&gt;&gt;&lt;&lt;option &quot;rolled your eyes at&quot;&gt;&gt;&lt;&lt;option &quot;frowned at&quot;&gt;&gt;&lt;&lt;option &quot;rolled your eyes at&quot;&gt;&gt;&lt;&lt;option &quot;shook your head at&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; the small micro-society; for many of the ponies, this was the only life they ever knew until their new Daddies and Mummies brought them to their &quot;forever homes&quot; 
 
-Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="18" name="Fluffmart - The Discounts" tags="" position="975,225" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
+Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="23" name="Fluffmart - The Discounts" tags="" position="350,350" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
 
 Perhaps it was a greater awareness of the consequences of not being adopted, but some Fluffies looked like they lacked a specific spark. Fluffmart was not bound by any kind of ethical concern (due to the &quot;toy&quot; status of Fluffies), so there definitely was some kind of &quot;disposal&quot; date - however, in an attempt to recoup some of their losses when it came to breeding, adoption, or acquisition, these Fluffies were heavily marked down.
 
 These pens weren&#39;t //garbage//, but it was clear there was something different about them compared to the Adult Room or the Foal Area; it&#39;s like the &quot;well-used&quot; fixtures found their way here, and everything seemed a little less well-presented. Of course, this wasn&#39;t enough to disuade a sale, and for many people, the discount aisle would be their first encounter with a Fluffy before graduating to something more expensive, or finding a good pet that would defy expectations the store had for them.
 
-Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="19" name="Forest" tags="" position="1100,225" size="100,100">Your local forest is adjacent to a nice park, and the government has decided that it should be a protected parcel of land. It doesn&#39;t keep the local developers from building housing to the millimeter of the boundary, and to Fluffies, this means both the safety and wonder of the forest, and some readily-available scrounging on construction sites. More than a few Fluffies have wound up drying cement overnight: if the Fluffy mafia existed, they&#39;d love to dispose some bodies there.
+Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="24" name="Forest" tags="" position="475,350" size="100,100">Your local forest is adjacent to a nice park, and the government has decided that it should be a protected parcel of land. It doesn&#39;t keep the local developers from building housing to the millimeter of the boundary, and to Fluffies, this means both the safety and wonder of the forest, and some readily-available scrounging on construction sites. More than a few Fluffies have wound up drying cement overnight: if the Fluffy mafia existed, they&#39;d love to dispose some bodies there.
 
 Fluffies have plenty of places to explore, forage and hide in the actual woods: they compete for burrowing space with other small game, and enjoy the occasional uprooting of a tree for safe shelter.
 
@@ -1187,14 +1252,14 @@ You, however, weren&#39;t about to be dissuaded. Why pay $100 at Fluffmart when 
 &lt;&lt;/cycle&gt;&gt; as you approach a common area that most Fluffies would need eventually: a babbling brook.
 
 &lt;&lt;button &quot;Go to the creek @@.icon;.next-arrow;@@&quot; &quot;Forest Creek&quot;&gt;&gt;&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;set $playerBudget to $playerBudget - 5&gt;&gt;&lt;&lt;pickup $bag &quot;candybar&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Forest Creek" tags="" position="1225,225" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Forest Creek" tags="" position="600,350" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;
 Approaching the creek, there was no sign of any humans or Fluffies: perfect.
 
-&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to 4&gt;&gt;&lt;div id=&quot;forestactionbutton&quot;&gt;&lt;&lt;button &quot;Place your candy bar bait&quot;&gt;&gt;&lt;&lt;drop $bag &quot;candybar&quot; 1&gt;&gt;&lt;&lt;replace &quot;#forestactionbutton&quot; t8n&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;include &quot;Forest - Candy Bar Bait&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $fluffiesLeft to 3&gt;&gt;&lt;div id=&quot;forestactionbutton&quot;&gt;&lt;&lt;button &quot;Find a Place to Hide&quot;&gt;&gt;&lt;&lt;replace &quot;#forestactionbutton&quot; t8n&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;include &quot;Forest - Wait For Fluffy&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Forest - Candy Bar Bait" tags="" position="100,350" size="100,100">You decided to place your candy bar, partially unwrapped, near a particularly shallow part of the creek, and sat down on a nearby log, behind a shrub that hid you from view.
+&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to 4&gt;&gt;&lt;div id=&quot;forestactionbutton&quot;&gt;&lt;&lt;button &quot;Place your candy bar bait&quot;&gt;&gt;&lt;&lt;drop $bag &quot;candybar&quot; 1&gt;&gt;&lt;&lt;replace &quot;#forestactionbutton&quot; t8n&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;include &quot;Forest - Candy Bar Bait&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $fluffiesLeft to 3&gt;&gt;&lt;div id=&quot;forestactionbutton&quot;&gt;&lt;&lt;button &quot;Find a Place to Hide&quot;&gt;&gt;&lt;&lt;replace &quot;#forestactionbutton&quot; t8n&gt;&gt;&lt;&lt;timed 1s t8n&gt;&gt;&lt;&lt;include &quot;Forest - Wait For Fluffy&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Forest - Candy Bar Bait" tags="" position="725,350" size="100,100">You decided to place your candy bar, partially unwrapped, near a particularly shallow part of the creek, and sat down on a nearby log, behind a shrub that hid you from view.
 
-&lt;&lt;timed 4s t8n&gt;&gt;&lt;&lt;include &quot;Forest - Wait For Fluffy&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Forest - Wait For Fluffy" tags="" position="225,350" size="100,100">You saw a particularly shallow part of the stream, and figured that this was the best chance of finding a Fluffy who wasn&#39;t going to drown itself. You then sat down on a nearby log, behind a shrub that hid you from view. You also figured your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
+&lt;&lt;timed 4s t8n&gt;&gt;&lt;&lt;include &quot;Forest - Wait For Fluffy&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Forest - Wait For Fluffy" tags="" position="850,350" size="100,100">You saw a particularly shallow part of the stream, and figured that this was the best chance of finding a Fluffy who wasn&#39;t going to drown itself. You then sat down on a nearby log, behind a shrub that hid you from view. You also figured your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
 
-&lt;&lt;include &quot;Forest - Fluffy Meet 1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Forest - Fluffy Meet 1" tags="" position="350,350" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;
+&lt;&lt;include &quot;Forest - Fluffy Meet 1&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Forest - Fluffy Meet 1" tags="" position="975,350" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;
 &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
 &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
 &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
@@ -1208,7 +1273,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &lt;&lt;button &quot;Introduce Yourself&quot; &quot;Forest - Fluffy Intro&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Wait for Another&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Forest - Alicorn Intro" tags="" position="475,350" size="100,100">You noticed the telltale horn of a unicorn, but also a pair of wings; you felt a bit lucky, since an alicorn in the wild either didn&#39;t live for long, or got snatched up by enterprising owners.</tw-passagedata><tw-passagedata pid="25" name="Forest - Earthie Intro" tags="" position="600,350" size="100,100">It had no horn, and no wings; earthie ponies tended to stand a little taller and stronger than their brothers and sisters. Someone could easily see an earthie as &quot;boring,&quot; but as a first-time owner, an earthie might be a little more... durable.</tw-passagedata><tw-passagedata pid="26" name="Forest - Unicorn Intro" tags="" position="725,350" size="100,100">You noticed the telltale horn of a unicorn, and a small part of your brain hoped to see a pair of wings. However, &quot;sadly&quot;, it was a unicorn Fluffy, which usually signalled a slightly higher intelligence, for however that counted among Fluffies.</tw-passagedata><tw-passagedata pid="27" name="Forest - Pegasus Intro" tags="" position="850,350" size="100,100">The pony unfurled its wings, almost to help slow itself; it wasn&#39;t going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy.</tw-passagedata><tw-passagedata pid="28" name="Forest - Interlude" tags="" position="975,350" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;&lt;button &quot;Wait for Another&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Forest - Alicorn Intro" tags="" position="1100,350" size="100,100">You noticed the telltale horn of a unicorn, but also a pair of wings; you felt a bit lucky, since an alicorn in the wild either didn&#39;t live for long, or got snatched up by enterprising owners.</tw-passagedata><tw-passagedata pid="30" name="Forest - Earthie Intro" tags="" position="1225,350" size="100,100">It had no horn, and no wings; earthie ponies tended to stand a little taller and stronger than their brothers and sisters. Someone could easily see an earthie as &quot;boring,&quot; but as a first-time owner, an earthie might be a little more... durable.</tw-passagedata><tw-passagedata pid="31" name="Forest - Unicorn Intro" tags="" position="100,475" size="100,100">You noticed the telltale horn of a unicorn, and a small part of your brain hoped to see a pair of wings. However, &quot;sadly&quot;, it was a unicorn Fluffy, which usually signalled a slightly higher intelligence, for however that counted among Fluffies.</tw-passagedata><tw-passagedata pid="32" name="Forest - Pegasus Intro" tags="" position="225,475" size="100,100">The pony unfurled its wings, almost to help slow itself; it wasn&#39;t going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy.</tw-passagedata><tw-passagedata pid="33" name="Forest - Interlude" tags="" position="350,475" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/silent&gt;&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;You decided to pass on the Fluffy, and after a couple minutes, you saw &lt;&lt;dynamicPronoun $currentFluffyIndex-1 &quot;them&quot;&gt;&gt; &lt;&lt;print either(&quot;get distracted by a passing butterfly, and trotted away in chase.&quot;,&quot;bolt away after hearing a bird take off by a nearby branch. Forest life must be scary for a fluffy.&quot;,&quot;test the temperature of the river, nearly slip and fall, and trot away with a few \&quot;huu huus\&quot; for good measure.&quot;)&gt;&gt;&lt;&lt;if $fluffiesLeft &gt; 0&gt;&gt;
 &lt;&lt;include &quot;Forest Fluffy Meet TwoThree&quot;&gt;&gt;&lt;&lt;else&gt;&gt;
 
@@ -1219,7 +1284,7 @@ You had a couple choices from here:
 * You could [[head to your local shelter|Shelter]] to check out the options for Fluffies that were either pulled off the street or put up for adoption.
 * You could [[head downtown|City]] and see if you would have more luck with the more urban Fluffies
 * You could [[head home for the day]] and put off the decision until tomorrow.
-&lt;&lt;/if&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Forest Fluffy Meet TwoThree" tags="" position="1100,350" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Forest Fluffy Meet TwoThree" tags="" position="475,475" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
 &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
 &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
 &lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;&lt;&lt;/silent&gt;&gt;
@@ -1233,7 +1298,7 @@ Will you introduce yourself to the &lt;&lt;print _fluffySkin.toLowerCase()&gt;&g
 
 &lt;&lt;button &quot;Approach the Fluffy&quot; &quot;Forest - Fluffy Intro&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="Forest - Fluffy Intro" tags="" position="1225,350" size="100,100">&lt;&lt;lockFluffy&gt;&gt;
+&lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="Forest - Fluffy Intro" tags="" position="600,475" size="100,100">&lt;&lt;lockFluffy&gt;&gt;
 
 Congrats, your new Fluffy is:
 
@@ -1243,7 +1308,7 @@ Do you want to rename your Fluffy?
 
 &lt;&lt;buttonreplace &quot;Yes Please&quot;&gt;&gt;&lt;&lt;textbox &quot;$fluffyName&quot; $fluffyName&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;remove #confirmbutton&gt;&gt;&lt;&lt;/buttonreplace&gt;&gt;
 
-&lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="31" name="Confirm" tags="" position="100,475" size="100,100">Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName, a &lt;&lt;colorname&gt;&gt;$fluffySkin&lt;&lt;/colorname&gt;&gt; $fluffyRace with a &lt;span @style=&quot;&#39;color:&#39; + $fluffyMane&quot;&gt;$fluffyMane&lt;/span&gt; mane.</tw-passagedata><tw-passagedata pid="32" name="Human Home (First Visit)" tags="" position="225,475" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+&lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="36" name="Confirm" tags="" position="725,475" size="100,100">Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName, a &lt;&lt;colorname&gt;&gt;$fluffySkin&lt;&lt;/colorname&gt;&gt; $fluffyRace with a &lt;span @style=&quot;&#39;color:&#39; + $fluffyMane&quot;&gt;$fluffyMane&lt;/span&gt; mane.</tw-passagedata><tw-passagedata pid="37" name="Human Home (First Visit)" tags="" position="850,475" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 ! Welcome Home
 You arrive home to your &lt;&lt;cycle &quot;$houseType&quot;&gt;&gt;&lt;&lt;option &quot;detached house&quot;&gt;&gt;&lt;&lt;option &quot;apartment&quot;&gt;&gt;&lt;&lt;option &quot;townhome&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;, which was pretty modest, all things considered. You had previously used an office during the pandemic for a work-from-home environment, but you realized that it was spending a lot of time gathering dust. You decided to move your desk, bookshelves and your stuff for your &lt;&lt;cycle &quot;$hobbyType&quot;&gt;&gt;&lt;&lt;option &quot;sewing&quot;&gt;&gt;&lt;&lt;option &quot;plants&quot;&gt;&gt;&lt;&lt;option &quot;guitar&quot;&gt;&gt;&lt;&lt;option &quot;language&quot;&gt;&gt;&lt;&lt;option &quot;calligraphy&quot;&gt;&gt;&lt;&lt;option &quot;leatherwork&quot;&gt;&gt;&lt;&lt;option &quot;yoga&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; hobby out into the living room; it didn&#39;t cramp the space that much, and you had a good opportunity to make the room more suitable for your new Fluffy.
 
@@ -1255,9 +1320,9 @@ You dumped all the things you got from Fluffmart into the room.
 
 &lt;&lt;if $playerSketties is &quot;true&quot;&gt;&gt;Your supply of canned spaghetti also went in one of your kitchen cupboards, which was starting to become &quot;the one where all your Fluffy junk is going.&quot; You wondered if Fluffies could be strong enough to pull knobs. &lt;&lt;set _randomThought to $knobThought.random()&gt;&gt;&lt;&lt;hovertip &quot;Things underlined in @@color:orange;orange@@ will be randomly generated, and remembered to influence events.&quot;&gt;&gt;&lt;&lt;print _randomThought&gt;&gt;&lt;&lt;/hovertip&gt;&gt;.&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;nobr&gt;&gt;&lt;&lt;if $knobThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $knobMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $knobThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $knobMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Shelter" tags="" position="350,475" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="34" name="Smarty Start" tags="" position="475,475" size="100,100">This is the Smarty Start page. 
+&lt;&lt;nobr&gt;&gt;&lt;&lt;if $knobThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $knobMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $knobThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $knobMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Shelter" tags="" position="975,475" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="39" name="Smarty Start" tags="" position="1100,475" size="100,100">This is the Smarty Start page. 
 
-You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot. Your mane is $playerMane, and your skin is $playerColor.</tw-passagedata><tw-passagedata pid="35" name="PassageFooter" tags="" position="600,475" size="100,100">&lt;&lt;script&gt;&gt;
+You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot. Your mane is $playerMane, and your skin is $playerColor.</tw-passagedata><tw-passagedata pid="40" name="PassageFooter" tags="" position="1225,475" size="100,100">&lt;&lt;script&gt;&gt;
 // Wait for the passage to finish rendering
 $(document).on(&quot;:passageend&quot;, function() {
   // Add a click event listener to the bug icon
@@ -1267,13 +1332,14 @@ $(document).on(&quot;:passageend&quot;, function() {
     footergray.classList.toggle(&quot;hidden&quot;);
   });
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="StoryCaption" tags="" position="725,475" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="StoryCaption" tags="" position="100,600" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
+&#39;&#39;Money&#39;&#39;: $&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;
 &lt;h3&gt;&lt;u&gt;Player Inventory&lt;/u&gt;&lt;/h3&gt;&lt;/div&gt;&lt;&lt;inv $bag inspect&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;div id=&quot;bug-section&quot;&gt;
   &lt;div id=&quot;bug-button&quot;&gt;&lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Found a bug? Submit it to &lt;a href=&quot;https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
-  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="37" name="StoryMenu" tags="" position="850,475" size="100,100"></tw-passagedata><tw-passagedata pid="38" name="ButtonReplace" tags="widget" position="975,475" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
+  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="42" name="StoryMenu" tags="" position="225,600" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="ButtonReplace" tags="widget" position="350,600" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
 
 &lt;&lt;widget &quot;buttonreplace&quot; container&gt;&gt;&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set _buttonText to $args[0]&gt;&gt;
@@ -1288,7 +1354,7 @@ $(document).on(&quot;:passageend&quot;, function() {
         &#39;&lt;&lt;/replace&gt;&gt;&#39; +
     &#39;&lt;&lt;/button&gt;&gt;&#39; +
 &#39;&lt;/span&gt;&#39;&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="inventory.strings" tags="" position="1100,475" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="40" name="New Fluffy" tags="widget" position="1225,475" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="inventory.strings" tags="" position="475,600" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="45" name="New Fluffy" tags="widget" position="600,600" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
   &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;
@@ -1311,7 +1377,7 @@ $(document).on(&quot;:passageend&quot;, function() {
   }&gt;&gt;
 
   &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="StoryInit" tags="" position="100,600" size="100,100">/* Widgets */
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="StoryInit" tags="" position="725,600" size="100,100">/* Widgets */
 
 &lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
     &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -1633,13 +1699,13 @@ $(document).on(&quot;:passageend&quot;, function() {
 /* Item Definitions */
 
 &lt;&lt;item &quot;foodbowl&quot; &quot;Food Bowl&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 This food bowl was similar to ones you&#39;ve seen for more traditional pets, but still presented the problem of potentially getting kibble everywhere. This bowl would hold enough food for a full day&#39;s worth of kibble, and has a high enough lip to mitigate the problems of spillage. It was made of a durable, bright plastic, and had a &quot;Nummies&quot; label on it; it was careful to not promise anything specific, lest the Fluffy get disappointed in the process. 
 
 You saw that when it was empty, it had a nice, friendly graphic of the sun at the bottom of the bowl; perhaps this would be enough to quiet the disappointment of not having anything else to eat.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;litterbox&quot; &quot;Litter Box&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 This standard Fluffy litterbox was remarkably similar to a cat&#39;s, in that you would fill it with a sand-like litter. The Fluffy would relieve themselves in the litterbox, and the litter would clump around the waste in order to reduce its smell, dry it out, and make it easier to scoop out of the box for cleaning.
 
 The box was of a sturdy, hard plastic, with a handy &quot;fill to&quot; line in order to keep it from getting too full. If overfilled, it risked the problem of a Fluffy kicking sand outside of it when they walked in it, and no owner wants to deal with more mess than what&#39;s in front of them.
@@ -1647,7 +1713,7 @@ The box was of a sturdy, hard plastic, with a handy &quot;fill to&quot; line in 
 This litterbox comes with an included jug of litter, but there were others that you could purchase with different scents, clumping reactions, or colors. If you had this much freedom in buying your own toilet paper, you&#39;d probably get a little wild, too.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;sorrybox&quot; &quot;Sorry Box&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 The Sorry Box is a classic punishment that deprives Fluffies of their favorite things: freedom, safety, and light. Fluffies placed in the Sorry Box will be distressed, and it&#39;s up to the owner to use it as either an effective punishment or deterrent.
 
 The box was made, like many other Fluffy tools, out of a hard plastic that resembled a pet carrier. The top opened like a sliding door, with a space big enough for a Fluffy to fit through. A //second// layer of sliding door allowed the owner to close off even more light, sound and heat from the Sorry Box; it would be up to their discretion as to limit what, and for how long.
@@ -1655,60 +1721,66 @@ The box was made, like many other Fluffy tools, out of a hard plastic that resem
 Inside, the Fluffy had enough room to sit, stand, or lay down. Varying levels of comfort could be provided by placing a blanket or food bowl inside; however, since Fluffies were likely to be vacating their faculties out of fear, it was probably designed to be hosed off easily, or washed in a bathtub.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;sorrystick&quot; &quot;Sorry Stick&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 The Sorry Stick was a method of corporal punishment that some owners didn&#39;t have the courage for: actually striking their Fluffy and hearing their cries of pain. Made out of a flexible, light rubber, the baton had a bit of flex and give to it, mostly to preserve the investment of the owner: no matter how much they wanted to in the moment, an owner would likely not want to break a limb permanently, or incur a hefty vet bill.
 
 However, at &quot;10 out of 10&quot; force, a blunt object is still a blunt object, and a Sorry Stick //could// be used to bludgeon a Fluffy to death. Most owners found that &quot;2-4 out of 10&quot; to be sufficient for punishing problem behavior, and in most cases, the //threat// of a Sorry Stick was more than enough deterrent.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;autofeeder&quot; &quot;Auto Feeder&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 The Hasbio AF2000 was a top-of-the-line model in laziness (or efficiency!), allowing for an owner to program a number of feedings over the course of the day. It had a built-in microphone, speaker and camera, perhaps serving as a nanny cam for a Fluffy in a Safe Room, all controlled from the user&#39;s smartphone. It could even be hooked into popular smart home systems, giving the owner command of powerful automations and statistics.
 
 In most cases, users just opted for knowing just how much their Fluffy was eating: it can be hard to deny the things, especially when they&#39;re begging in a language the owners understand.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;autolitter&quot; &quot;Auto Litter&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 A //bit// more practical than the Hasbio AF2000, the Hasbio SN2000 allowed for automatic sanitation of one of the worst parts of Fluffy ownership: urine and feces. The Auto-Litter detected a Fluffy&#39;s presence, with the optional ability to record praise that would reinforce good behavior automatically when used properly. It also could sense weight, making it a good training aid for foals and ferals: rewarding a parent for properly teaching or enforcing behavior meant a healthier relationship, and a room that was more sanitary in general. 
 
 Without a Fluffy inside, the Auto-Litter would softly vibrate the litter inside of it with small pulsing motors, helping it to do its job with clumping. It also had a grate which could be raised, separating the clumped waste from the litter and letting an owner remove the grate entirely to empty into a garbage can. No scoop, and less contact with poop: everyone wins.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;litterpal&quot; &quot;Litter Pal&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;stuffytoy&quot; &quot;Stuffy Toy&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 A simple stuffed toy, perhaps shaped in a crude fascimily of a foal, or perhaps a rabbit or non-threatening animal. The opposite of anything that could be considered a &quot;munstah&quot; to a fluffy. This stuffy toy is made for durability, and is posed in a way that allows for optimal hugging. Easily-cleaned with the laundry, and scented with a &quot;good enough&quot; scent of a real Fluffy: not enough to trick the fluffy into thinking it&#39;s real, but enough to feel comfortable, familiar, and lovable.
 &lt;&lt;/item&gt;&gt;
 
 &lt;&lt;item &quot;enfytoy&quot; &quot;Enfy Toy&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 Perhaps the same as stuffy toy, but with a greater emphasis on durability and cleanability. This toy is meant to aid with relief for Stallions who are working through some... difficult feelings. A bit bigger than a stuffy toy; still made for hugging, but a bit more sturdy to fascillitate mounting and leverage. Does not have any internal orifices or anything to penetrate: squooshy enough that your fluffy probably won&#39;t know the difference. Scented with the hint of a mare: again, enough to feel familiar, but not to the point your Fluffy will be treating it as real. Helps to reduce rebellion and pent-up energy, but you probably want to be dilligent about cleaning it.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;pillowkit&quot; &quot;Pillowing Kit&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 A set of sterilized tools and dressings to aid with the removal of your fluffy or foal&#39;s legs. Includes a mounting bracket and strap to keep your fluffy still, and tools to aid with treating the legs before amputation. Includes implements for teeth and tongue removal, as well as local, topical anesthetic. Includes instructions for eventual usage, but it&#39;s up to the user to use them. Also includes a handy booklet to help minimalize long-term trauma and psychological issues (optional).
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;geldingkit&quot; &quot;Gelding Kit&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 Similar to the Pillowing Kit, this kit provides tools and dressings to aid with the sterilization of a male Fluffy. Includes instructions and impliments to minimize blood loss, aid coagulation, and topical anesthetic. Includes a handy booklet to help minimalize long-term trauma and psychological issues (optional).
 &lt;&lt;/item&gt;&gt;
+
+&lt;&lt;item &quot;sketties1&quot; &quot;Skettie Can&quot;&gt;&gt;
+&lt;&lt;description&gt;&gt;\
+One can of &quot;Fluffy&#39;s Choice Sketti;&quot; low-quality to humans, but Fluffies can&#39;t tell the difference. Opens without a can opener (it&#39;s got its own key; don&#39;t knock it!), and thankfully Fluffies don&#39;t have the opposable thumbs to grip it. Enough sodium to make your heart palpatate. Getting caught with it around an Italian grandmother will probably risk your health.
+&lt;&lt;/item&gt;&gt;
+
 &lt;&lt;item &quot;sketties8&quot; &quot;Sketties (8 Pack)&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 Cans of &quot;Fluffy&#39;s Choice Sketti;&quot; low-quality to humans, but Fluffies can&#39;t tell the difference, and also can&#39;t operate the pull-key without opposable thumbs. Some have gotten clever and tried various means to get the leverage to open it, but the sharp internal edges of the can have produced many a boo-boo juice and a kiss-better from mummeh or daddeh. Pack of 8, shrink-wrapped.
-`&lt;&lt;/item&gt;&gt;
+&lt;&lt;/item&gt;&gt;
 
 &lt;&lt;item &quot;sketties24&quot; &quot;Sketties (24 Pack)&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 Cans of &quot;Fluffy&#39;s Choice Sketti;&quot; low-quality to humans, but Fluffies can&#39;t tell the difference, and also can&#39;t operate the pull-key without opposable thumbs. Some have gotten clever and tried various means to get the leverage to open it, but the sharp internal edges of the can have produced many a boo-boo juice and a kiss-better from mummeh or daddeh; mummeh and daddeh have perhaps suffered the same fate, but they&#39;d never let their Fluffy know. Pack of 24, shrink-wrapped.
 &lt;&lt;/item&gt;&gt;
 
 &lt;&lt;item &quot;candybar&quot; &quot;Candy Bar&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 A cheap form of calories, but enough sugar to be heavenly for a Fluffy. You&#39;d prefer some peanuts or almonds in it, but that would probably choke a Fluffy to death.
 &lt;&lt;/item&gt;&gt;
 
 &lt;&lt;item &quot;flufftv&quot; &quot;FluffTV Set&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 A standard flatscreen TV, sized more like a computer monitor - apparently the difference between a TV and a monitor is that the former has speakers.
 
 What&#39;s not-so-standard about it is the remote, which seems comically simple: a mute, an unmute, a power on/off, and what the box says is a //fake// up/down volume selector. Apparently your Fluffies like a sense of control, but the manufacturer realizzes that&#39;s playing with fire.
@@ -1718,21 +1790,21 @@ It&#39;s nothing too fancy: you get a free subscription to FluffTV with it, and 
 FluffTV puts on educational programming, and it&#39;s up to you to make sure that your Fluffy is learning the right lessons from it. It might calm your Fluffy down or give you some (perhaps much-needed) space when you want it, but it&#39;s also an outside force onto the life of your biotoy.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;smellstation&quot; &quot;Smell Station&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 Dirt simple, but apparently Fluffies like that. A couple different spongy textures with scents baked into them, allowing for your Fluffy to get some enrichment. Your Fluffy may enjoy the sensation, but also the sense of comfort; the box says that the scents are engineered to be long-lasting and provide familiarity to things Fluffies like best. 
 
 Scents listed on the box are Flowers, Pine, Lavender, and Sketties.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;blocks&quot; &quot;Blocks (4)&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 A set of four wooden blocks, each with their own color and sanded-down edges. Your Fluffy could possibly hold these between their front legs to provide enrichment by stacking and unstacking them. With four blocks, the possibilities of combinations are... about 24, actually. But you doubt any Fluffy could count that high.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;smallball&quot; &quot;Ball (Small)&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 It&#39;s a ball! This ball is about the size of a tennis ball, and is fuzzy like one, too. The ball has a small jingling bell inside of it to pique a Fluffy&#39;s attention: foals can nudge it around with their weight, and adults can kick it with much less effort than its bigger cousin.
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;bigball&quot; &quot;Ball (Big)&quot;&gt;&gt;
-&lt;&lt;description&gt;&gt;
+&lt;&lt;description&gt;&gt;\
 Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflated volleyball. Fluffies can find comfort in another object that&#39;s their relative size, and gain confidence from being able to impose their will on it. Not big or heavy enough to knock over anything it&#39;s pushed into, nor will it scuff up your baseboards if you decide to give it a good kick. 
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;brush&quot; &quot;Grooming Brush&quot;&gt;&gt;

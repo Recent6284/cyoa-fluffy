@@ -13,6 +13,7 @@ $(document).on(":passageend", function() {
 
 :: StoryCaption
 <<if $playerRace is "human" and $firstLoad isnot true>><div class="simple-inventory-list" id="Inventory Title">
+''Money'': $<<print $playerBudget.toFixed(2)>>
 <h3><u>Player Inventory</u></h3></div><<inv $bag inspect>><<else>><</if>>
 
 <div id="bug-section">

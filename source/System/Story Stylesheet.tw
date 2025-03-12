@@ -121,6 +121,33 @@ a.explainer {
   border-color: white;
 }
 
+.shop {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+.shop th {
+	font-weight: bold;
+}
+
+.shop td {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  padding: 10px;  
+}
+
+.shop th {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+}
+
 /* Sugarcube Icons */
 
 .icon{

@@ -251,7 +251,7 @@ a.explainer {
   font-size: 1.1em;
 }
 
-}
+
 
 /* Sugarcube Icons */
 
@@ -1308,7 +1308,7 @@ Do you want to rename your Fluffy?
 
 &lt;&lt;buttonreplace &quot;Yes Please&quot;&gt;&gt;&lt;&lt;textbox &quot;$fluffyName&quot; $fluffyName&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;remove #confirmbutton&gt;&gt;&lt;&lt;/buttonreplace&gt;&gt;
 
-&lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="36" name="Confirm" tags="" position="725,475" size="100,100">Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName, a &lt;&lt;colorname&gt;&gt;$fluffySkin&lt;&lt;/colorname&gt;&gt; $fluffyRace with a &lt;span @style=&quot;&#39;color:&#39; + $fluffyMane&quot;&gt;$fluffyMane&lt;/span&gt; mane.</tw-passagedata><tw-passagedata pid="37" name="Human Home (First Visit)" tags="" position="850,475" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+&lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="36" name="Confirm" tags="" position="725,475" size="100,100">Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName, a &lt;&lt;colorname $fluffySkin&gt;&gt; $fluffyRace with a &lt;span @style=&quot;&#39;color:&#39; + $fluffyMane&quot;&gt;$fluffyMane&lt;/span&gt; mane.</tw-passagedata><tw-passagedata pid="37" name="Human Home (First Visit)" tags="" position="850,475" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 ! Welcome Home
 You arrive home to your &lt;&lt;cycle &quot;$houseType&quot;&gt;&gt;&lt;&lt;option &quot;detached house&quot;&gt;&gt;&lt;&lt;option &quot;apartment&quot;&gt;&gt;&lt;&lt;option &quot;townhome&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;, which was pretty modest, all things considered. You had previously used an office during the pandemic for a work-from-home environment, but you realized that it was spending a lot of time gathering dust. You decided to move your desk, bookshelves and your stuff for your &lt;&lt;cycle &quot;$hobbyType&quot;&gt;&gt;&lt;&lt;option &quot;sewing&quot;&gt;&gt;&lt;&lt;option &quot;plants&quot;&gt;&gt;&lt;&lt;option &quot;guitar&quot;&gt;&gt;&lt;&lt;option &quot;language&quot;&gt;&gt;&lt;&lt;option &quot;calligraphy&quot;&gt;&gt;&lt;&lt;option &quot;leatherwork&quot;&gt;&gt;&lt;&lt;option &quot;yoga&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; hobby out into the living room; it didn&#39;t cramp the space that much, and you had a good opportunity to make the room more suitable for your new Fluffy.
 
@@ -1383,8 +1383,8 @@ $(document).on(&quot;:passageend&quot;, function() {
     &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-&lt;&lt;widget &quot;colorname&quot; container&gt;&gt;
-    &lt;&lt;nobr&gt;&gt;&lt;span style=&quot;color: &lt;&lt;= _contents &gt;&gt;;&quot;&gt;&lt;&lt;= _contents &gt;&gt;&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color + &#39;;&#39;&quot;&gt;_color&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
 
 /* Player Variables */
 

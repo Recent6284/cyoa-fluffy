@@ -6,8 +6,8 @@
     <<replace "#story-caption">><<include "StoryCaption">><</replace>>
 <</widget>>
 
-<<widget "colorname" container>>
-    <<nobr>><span style="color: <<= _contents >>;"><<= _contents >></span><</nobr>><</widget>>
+<<widget "colorname">><<nobr>><<set _color to _args[0]>><span @style="'color: ' + _color + ';'">_color</span><</nobr>><</widget>>
+
 
 /* Player Variables */
 

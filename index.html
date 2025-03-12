@@ -1910,7 +1910,6 @@ Race: &lt;&lt;if $fluffyRace.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 !! &lt;&lt;hovertip &quot;This uses the above stats once rolled.&quot;&gt;&gt;Stat Check Test&lt;&lt;/hovertip&gt;&gt;
-
 &lt;&lt;nobr&gt;&gt;&lt;&lt;listbox &quot;$statBox&quot; autoselect&gt;&gt;
     &lt;&lt;option &quot;Obedience&quot; &quot;ob&quot;&gt;&gt;
     &lt;&lt;option &quot;Impulsiveness&quot; &quot;im&quot;&gt;&gt;
@@ -1918,15 +1917,11 @@ Race: &lt;&lt;if $fluffyRace.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;
     &lt;&lt;option &quot;Ignorance&quot; &quot;ig&quot;&gt;&gt;
 &lt;&lt;/listbox&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 
-
 &lt;&lt;button &quot;Stat Check Test&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
     &lt;&lt;set _stat to $statBox&gt;&gt;
     &lt;&lt;roll _stat &quot;_test&quot; &quot;10&quot;&gt;&gt;
     &lt;&lt;redo&gt;&gt;
 &lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;
-
-Statbox: $statBox
-Stat: &lt;&lt;do&gt;&gt;_stat&lt;&lt;/do&gt;&gt;
 
 &lt;&lt;do&gt;&gt;Stat: _stat
 Roll: _roll

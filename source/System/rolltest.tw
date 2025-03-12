@@ -36,7 +36,6 @@ Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>><br>
 </tbody>
 </table><</do>><</nobr>>
 !! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>
-
 <<nobr>><<listbox "$statBox" autoselect>>
     <<option "Obedience" "ob">>
     <<option "Impulsiveness" "im">>
@@ -44,15 +43,11 @@ Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>><br>
     <<option "Ignorance" "ig">>
 <</listbox>><</nobr>>
 
-
 <<button "Stat Check Test">><<silent>>
     <<set _stat to $statBox>>
     <<roll _stat "_test" "10">>
     <<redo>>
 <</silent>><</button>>
-
-Statbox: $statBox
-Stat: <<do>>_stat<</do>>
 
 <<do>>Stat: _stat
 Roll: _roll

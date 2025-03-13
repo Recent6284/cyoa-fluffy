@@ -143,7 +143,7 @@
     background-color: white;
     left: 30px;
     top: 25px;
-    border: 1px solid black;
+    border: 1px solid #00000085;
     z-index: 3; /* Base layer */
   }
   
@@ -154,7 +154,7 @@
     background-color: white;
     left: 45px;
     top: 25px;
-    border: 1px solid black;
+    border: 1px solid #00000085;
     z-index: 3; /* Base layer */
   }
   
@@ -162,7 +162,7 @@
     position: absolute;
     width:3px;
     height:5px;
-    background-color: red;
+    background-color: black;
     left: 32px;
     top: 29px;
     z-index: 4; /* Base layer */
@@ -172,7 +172,7 @@
     position: absolute;
     width:3px;
     height:5px;
-    background-color: red;
+    background-color: black;
     left: 47px;
     top: 29px;
     z-index: 4; /* Base layer */

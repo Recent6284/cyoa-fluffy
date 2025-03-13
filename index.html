@@ -519,7 +519,7 @@ p, h2, h3, h4, h5 {
     background-color: white;
     left: 30px;
     top: 25px;
-    border: 1px solid black;
+    border: 1px solid #00000085;
     z-index: 3; /* Base layer */
   }
   
@@ -530,7 +530,7 @@ p, h2, h3, h4, h5 {
     background-color: white;
     left: 45px;
     top: 25px;
-    border: 1px solid black;
+    border: 1px solid #00000085;
     z-index: 3; /* Base layer */
   }
   
@@ -538,7 +538,7 @@ p, h2, h3, h4, h5 {
     position: absolute;
     width:3px;
     height:5px;
-    background-color: red;
+    background-color: black;
     left: 32px;
     top: 29px;
     z-index: 4; /* Base layer */
@@ -548,7 +548,7 @@ p, h2, h3, h4, h5 {
     position: absolute;
     width:3px;
     height:5px;
-    background-color: red;
+    background-color: black;
     left: 47px;
     top: 29px;
     z-index: 4; /* Base layer */
@@ -1307,11 +1307,12 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;&lt;set $manecss to $fluffyMane.colorname&gt;&gt;
     &lt;&lt;set $skincss to $fluffySkin.colorname&gt;&gt;
 &lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;nobr&gt;&gt;&lt;&lt;do&gt;&gt;Name: &lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyName&lt;&lt;/if&gt;&gt;&lt;br&gt;
-Gender: &lt;&lt;if $fluffyGender.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyGender&lt;&lt;/if&gt;&gt;&lt;br&gt;
-Skin: &lt;&lt;if $fluffySkin.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;colorname $fluffySkin&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;br&gt;
-Mane: &lt;&lt;if $fluffyMane.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;colorname $fluffyMane&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;br&gt;
-Race: &lt;&lt;if $fluffyRace.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyRace&lt;&lt;/if&gt;&gt;&lt;br&gt;
+
+&lt;&lt;do&gt;&gt;Name: &lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyName&lt;&lt;/if&gt;&gt;
+Gender: &lt;&lt;if $fluffyGender.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyGender&lt;&lt;/if&gt;&gt;
+Skin: &lt;&lt;if $fluffySkin.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;colorname $fluffySkin&gt;&gt;&lt;&lt;/if&gt;&gt;
+Mane: &lt;&lt;if $fluffyMane.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;colorname $fluffyMane&gt;&gt;&lt;&lt;/if&gt;&gt;
+Race: &lt;&lt;if $fluffyRace.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyRace&lt;&lt;/if&gt;&gt;
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
     &lt;th&gt;Stat Name&lt;/th&gt;
@@ -1333,8 +1334,7 @@ Race: &lt;&lt;if $fluffyRace.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;
     &lt;td&gt;&lt;&lt;print $fluffyIg&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;FluffArt &quot;_skincss&quot; &quot;_manecss&quot; &quot;blue&quot;&gt;&gt;&lt;&lt;/do&gt;&gt;
-
+&lt;/table&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;FluffArt &quot;_skincss&quot; &quot;_manecss&quot; &quot;blue&quot;&gt;&gt;&lt;&lt;/do&gt;&gt;
 !! &lt;&lt;hovertip &quot;This uses the above stats once rolled.&quot;&gt;&gt;Stat Check Test&lt;&lt;/hovertip&gt;&gt;
 &lt;&lt;nobr&gt;&gt;&lt;&lt;listbox &quot;$statBox&quot; autoselect&gt;&gt;
     &lt;&lt;option &quot;Obedience&quot; &quot;ob&quot;&gt;&gt;
@@ -2049,15 +2049,12 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;brush&quot; &quot;Grooming Brush&quot;&gt;&gt;
 
-&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="ColorName" tags="widget nobr" position="725,600" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="FluffyCSS" tags="widget nobr" position="850,600" size="100,100">&lt;&lt;set $manecss to $manecss&gt;&gt;
-&lt;&lt;set $skincss to $skincss&gt;&gt;
-
-&lt;&lt;widget &quot;FluffArt&quot;&gt;&gt;
+&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="ColorName" tags="widget nobr" position="725,600" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="FluffyCSS" tags="widget" position="850,600" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;widget &quot;FluffArt&quot;&gt;&gt;
   &lt;div class=&quot;fluffy&quot;&gt;
     &lt;div class=&quot;smile&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;belly&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;pupil1&quot; @style=&quot;&#39;background-color: &#39; + $manecss +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;pupil2&quot; @style=&quot;&#39;background-color: &#39; + $manecss +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;pupil1&quot; @style=&quot;&#39;background-color: &#39; + $manecss +&#39;;border: 1px solid #0000003b;&#39;&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;pupil2&quot; @style=&quot;&#39;background-color: &#39; + $manecss +&#39;;border: 1px solid #0000003b;&#39;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;eye1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;eye2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;head&quot; @style=&quot;&#39;background-color: &#39; + $skincss +&#39;;&#39;&quot;&gt;&lt;/div&gt;
@@ -2075,8 +2072,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;div class=&quot;mane2&quot; @style=&quot;&#39;background-color: &#39; + $manecss +&#39;;&#39;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;snout&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
-  
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="inventory.strings" tags="" position="975,600" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="49" name="New Fluffy" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="inventory.strings" tags="" position="975,600" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="49" name="New Fluffy" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
   &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;

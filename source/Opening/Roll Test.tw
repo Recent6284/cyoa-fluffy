@@ -10,11 +10,12 @@
     <<set $manecss to $fluffyMane.colorname>>
     <<set $skincss to $fluffySkin.colorname>>
 <</silent>><</button>>
-<<nobr>><<do>>Name: <<if $fluffyName.length == 0 >>Roll first!<<else>>$fluffyName<</if>><br>
-Gender: <<if $fluffyGender.length == 0 >>Roll first!<<else>>$fluffyGender<</if>><br>
-Skin: <<if $fluffySkin.length == 0 >>Roll first!<<else>><<colorname $fluffySkin>><</if>><br>
-Mane: <<if $fluffyMane.length == 0 >>Roll first!<<else>><<colorname $fluffyMane>><</if>><br>
-Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>><br>
+
+<<do>>Name: <<if $fluffyName.length == 0 >>Roll first!<<else>>$fluffyName<</if>>
+Gender: <<if $fluffyGender.length == 0 >>Roll first!<<else>>$fluffyGender<</if>>
+Skin: <<if $fluffySkin.length == 0 >>Roll first!<<else>><<colorname $fluffySkin>><</if>>
+Mane: <<if $fluffyMane.length == 0 >>Roll first!<<else>><<colorname $fluffyMane>><</if>>
+Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>>
 <table class="shop"><thead>
   <tr>
     <th>Stat Name</th>
@@ -36,8 +37,7 @@ Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>><br>
     <td><<print $fluffyIg>></td>
   </tr>
 </tbody>
-</table><</do>><</nobr>><<do>><<FluffArt "_skincss" "_manecss" "blue">><</do>>
-
+</table><</do>><<do>><<FluffArt "_skincss" "_manecss" "blue">><</do>>
 !! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>
 <<nobr>><<listbox "$statBox" autoselect>>
     <<option "Obedience" "ob">>

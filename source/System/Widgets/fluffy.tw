@@ -1,13 +1,11 @@
-:: FluffyCSS [widget nobr]
-<<set $manecss to $manecss>>
-<<set $skincss to $skincss>>
+:: FluffyCSS [widget]
 
-<<widget "FluffArt">>
+<<nobr>><<widget "FluffArt">>
   <div class="fluffy">
     <div class="smile"></div>
     <div class="belly"></div>
-    <div class="pupil1" @style="'background-color: ' + $manecss +';'"></div>
-    <div class="pupil2" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="pupil1" @style="'background-color: ' + $manecss +';border: 1px solid #0000003b;'"></div>
+    <div class="pupil2" @style="'background-color: ' + $manecss +';border: 1px solid #0000003b;'"></div>
     <div class="eye1"></div>
     <div class="eye2"></div>
     <div class="head" @style="'background-color: ' + $skincss +';'"></div>
@@ -25,5 +23,4 @@
     <div class="mane2" @style="'background-color: ' + $manecss +';'"></div>
     <div class="snout"></div>
   </div>
-  
-<</widget>>
+<</widget>><</nobr>>

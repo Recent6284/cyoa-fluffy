@@ -1,14 +1,32 @@
 :: FluffyCSS [widget]
 <<nobr>><<widget "FluffyArt">>
   <div class="fluffy">
+    <<if $fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
+      <<elseif $fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
+      <<elseif $fluffyRace is "Pegasus">><<set _hornhide to "display:none;">><<unset _wingshide>>
+      <<else>><<set _wingshide to "display:none;">><<set _hornhide to "display:none;">>
+    <</if>>
+    <div class="horn-container" @style='_hornhide'>
+      <div class="horn"></div>
+      <div class="horn-border" @style="'background-color: ' + _args[0] +';'"></div>
+    </div>
+    <div class="wings-container" @style='_wingshide'>
+      <div class="line line-1"></div>
+      <div class="line line-2"></div>
+      <div class="line line-3"></div>
+      <div class="wings-border"></div>
+      <div class="wings" @style="'background-color: ' + _args[0] +';'"></div>
+    </div>
     <div class="smile"></div>
     <div class="belly"></div>
-    <div class="pupil1" @style="'background-color: ' + _args[1] +';border: 1px solid #0000003b;'"></div>
-    <div class="pupil2" @style="'background-color: ' + _args[1] +';border: 1px solid #0000003b;'"></div>
+    <div class="pupil1" @style="'background-color: ' + _args[1] +';'"></div>
+    <div class="pupil2" @style="'background-color: ' + _args[1] +';'"></div>
     <div class="eye1"></div>
     <div class="eye2"></div>
     <div class="head" @style="'background-color: ' + _args[0] +';'"></div>
+    <div class="head-shadow"></div>
     <div class="mane1" @style="'background-color: ' + _args[1] +';'"></div>
+    <div class="mane2" @style="'background-color: ' + _args[1] +';'"></div>
     <div class="body" @style="'background-color: ' + _args[0] +';'"></div>
     <div class="leg leg1" @style="'background-color: ' + _args[0] +';'"></div>
     <div class="leg leg2" @style="'background-color: ' + _args[0] +';'"></div>
@@ -19,7 +37,7 @@
     <div class="foot foot2" @style="'background-color: ' + _args[1] +';'"></div>
     <div class="foot foot3" @style="'background-color: ' + _args[1] +';'"></div>
     <div class="foot foot4" @style="'background-color: ' + _args[1] +';'"></div>
-    <div class="mane2" @style="'background-color: ' + _args[1] +';'"></div>
     <div class="snout"></div>
+    <div class="snout-shadow"></div>
   </div>
 <</widget>><</nobr>>

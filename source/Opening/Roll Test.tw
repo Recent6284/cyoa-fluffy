@@ -3,8 +3,6 @@
 <<button "Click for Fluffy">><<silent>>
     <<newFluffy>>
     <<lockFluffy>>
-    <<set $manecss to $fluffyMane.colorname>>
-    <<set $skincss to $fluffySkin.colorname>>
     <<redo>>
     <<set $currentFluffyIndex to $currentFluffyIndex + 1>>
 <</silent>>><</button>>

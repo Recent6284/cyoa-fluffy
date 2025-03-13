@@ -1,0 +1,180 @@
+
+  .fluffy{
+    position: relative;
+    width: 200px;
+    height: 100px;
+    z-index: 0;
+  }
+  
+  .belly {
+    position: absolute;
+    top: 75px;
+    left: 60px;
+    background-color: Peru;
+    width: 90px;
+    height: 5px;
+    z-index: 3;
+    border-top: none;
+    border-radius: 0px 0px 100px 100px; /* Top half is rounded */
+  }
+  
+  .head {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    left: 25px;
+    top: 20px;
+    z-index: 0; /* Base layer */
+  }
+  
+  .mane1 {
+    position: absolute;
+    width: 55px;
+    height: 40px;
+    background-color: red;
+    left: 26px;
+    transform: rotate(5deg);
+    top: -17px;
+    z-index: 2;
+    clip-path: polygon(0 100%, 24% 49%, 26% 72%, 46% 51%, 43% 71%, 60% 57%, 61% 70%, 74% 63%, 74% 74%, 98% 66%, 85% 74%, 100% 74%, 79% 89%, 53% 98%, 24% 100%);
+  
+  }
+  
+  
+  .mane2 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    left: 65px;
+    top: -10px;
+    transform: rotate(55deg);
+    z-index: 2;
+    clip-path: polygon(0 100%, 32% 65%, 21% 84%, 47% 64%, 34% 83%, 65% 62%, 49% 80%, 79% 63%, 59% 81%, 98% 66%, 72% 81%, 100% 74%, 69% 90%, 53% 98%, 24% 100%);
+  }
+  
+  .body {
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    background-color: black;
+    left: 50px;
+    top: 20px;
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  .leg {
+    width: 20px;
+    background-color: black;
+    border-radius: 5px;
+    position: absolute;
+  }
+  
+  .smile {
+    width: 5px;  /* Adjust for size */
+    height: 5px;  /* Half of width for a semi-circle */
+    top: 60px;
+    left: 25px;
+    position: absolute;
+    opacity: 0.5;
+    border: 1px solid black; /* 1px border */
+    border-bottom: none;  /* Remove bottom border */
+    border-radius: 100px 100px 0 0; /* Top half is rounded */
+    background: transparent; /* No fill */
+    transform: rotate(180deg);
+    z-index: 10;
+  }
+  
+  .snout {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background-color: Peru;
+    left: 20px;
+    top: 40px;
+    border-radius: 5px;
+    z-index: 0;
+  }
+  
+  .foot {
+    position: absolute;
+    width: 20px;
+    height: 5px;
+    background-color: red;
+    z-index: 5; /* Above body */
+  }
+  
+  .leg1, .leg3 { 
+    top: 75px;
+    height: 30px;
+    z-index: 0; 
+  }
+  
+  .leg2, .leg4 { 
+    top: 55px;
+    height: 50px;
+    z-index: 3; 
+  }
+  
+  .foot1, .foot2, .foot3, .foot4 { position: absolute;top: 102px }
+  .foot1, .leg1 { left: 55px }
+  .foot2, .leg2 { left: 80px }
+  .foot3, .leg3 { left: 120px }
+  .foot4, .leg4 { left: 145px }
+  
+  .tail {
+    position: absolute;
+    width: 65px;
+    height: 70px;
+    background-color: red;
+    left: 175px;
+    top: -5px;
+    transform: rotate(60deg);
+    z-index: 1;
+    clip-path: polygon(0 100%, 32% 65%, 21% 84%, 47% 64%, 34% 83%, 65% 62%, 49% 80%, 79% 63%, 59% 81%, 98% 66%, 72% 81%, 100% 74%, 69% 90%, 53% 98%, 24% 100%);
+  }
+  
+  .eye1 {
+    position: absolute;
+    width:8px;
+    height:12px;
+    background-color: white;
+    left: 30px;
+    top: 25px;
+    border: 1px solid black;
+    z-index: 3; /* Base layer */
+  }
+  
+  .eye2 {
+    position: absolute;
+    width:8px;
+    height:12px;
+    background-color: white;
+    left: 45px;
+    top: 25px;
+    border: 1px solid black;
+    z-index: 3; /* Base layer */
+  }
+  
+  .pupil1 {
+    position: absolute;
+    width:3px;
+    height:5px;
+    background-color: red;
+    left: 32px;
+    top: 29px;
+    z-index: 4; /* Base layer */
+  }
+  
+  .pupil2 {
+    position: absolute;
+    width:3px;
+    height:5px;
+    background-color: red;
+    left: 47px;
+    top: 29px;
+    z-index: 4; /* Base layer */
+  }
+  

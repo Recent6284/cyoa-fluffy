@@ -1,0 +1,29 @@
+:: FluffyCSS [widget nobr]
+<<set $manecss to $manecss>>
+<<set $skincss to $skincss>>
+
+<<widget "FluffArt">>
+  <div class="fluffy">
+    <div class="smile"></div>
+    <div class="belly"></div>
+    <div class="pupil1" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="pupil2" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="eye1"></div>
+    <div class="eye2"></div>
+    <div class="head" @style="'background-color: ' + $skincss +';'"></div>
+    <div class="mane1" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="body" @style="'background-color: ' + $skincss +';'"></div>
+    <div class="leg leg1" @style="'background-color: ' + $skincss +';'"></div>
+    <div class="leg leg2" @style="'background-color: ' + $skincss +';'"></div>
+    <div class="leg leg3" @style="'background-color: ' + $skincss +';'"></div>
+    <div class="leg leg4" @style="'background-color: ' + $skincss +';'"></div>
+    <div class="tail" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="foot foot1" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="foot foot2" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="foot foot3" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="foot foot4" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="mane2" @style="'background-color: ' + $manecss +';'"></div>
+    <div class="snout"></div>
+  </div>
+  
+<</widget>>

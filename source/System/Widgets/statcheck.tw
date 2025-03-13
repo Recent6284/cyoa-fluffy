@@ -34,7 +34,8 @@
   <<if _roll === 20>>
     <<set _result = "criticalpass">> <!-- Natural 20 is always a critical pass -->
   <<elseif _roll === 1>>
-    <<set _result = "criticalfail">> <!-- Natural 1 is always a critical fail -->
+    <<set _criticalFail = random(1, 20)>><<if _criticalFail === 1>>
+    <<set _result = "criticalfail">><<else>><<set _result = "fail">><</if>> <!-- Natural 1 is always a critical fail -->
   <<elseif _total >= _goal>> <!-- Use the dynamic goal for pass/fail -->
     <<set _result = "pass">> <!-- Total meets or exceeds the goal -->
   <<else>>

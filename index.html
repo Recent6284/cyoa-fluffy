@@ -1296,17 +1296,15 @@ You can download the .html file from GitLab if you want to save this for offline
 * I&#39;ll be using variables to track some choices, and some may matter! We&#39;ll see how ambitious I get.
 If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 
-&lt;&lt;button &quot;Let&#39;s begin! $arrowButton&quot; &quot;Character Creation&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Roll Test" tags="" position="600,100" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 0&gt;&gt;&lt;&lt;/silent&gt;&gt;
-!! &lt;&lt;hovertip &quot;The button below generates a new Fluffy, and saves its stats to memory.&quot;&gt;&gt;Your Fluffy&lt;&lt;/hovertip&gt;&gt;
+&lt;&lt;button &quot;Let&#39;s begin! $arrowButton&quot; &quot;Character Creation&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Roll Test" tags="" position="600,100" size="100,100">!! &lt;&lt;hovertip &quot;The button below generates a new Fluffy, and saves its stats to memory.&quot;&gt;&gt;Your Fluffy&lt;&lt;/hovertip&gt;&gt;
 &lt;&lt;button &quot;Click for Fluffy&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
     &lt;&lt;newFluffy&gt;&gt;
     &lt;&lt;lockFluffy&gt;&gt;
-    &lt;&lt;redo&gt;&gt;
-    &lt;&lt;redo div&gt;&gt;
-    &lt;&lt;set $currentFluffyIndex to 1+$currentFluffyIndex&gt;&gt;
     &lt;&lt;set $manecss to $fluffyMane.colorname&gt;&gt;
     &lt;&lt;set $skincss to $fluffySkin.colorname&gt;&gt;
-&lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;
+    &lt;&lt;redo&gt;&gt;
+    &lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;
+&lt;&lt;/silent&gt;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;&lt;do&gt;&gt;Name: &lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyName&lt;&lt;/if&gt;&gt;
 Gender: &lt;&lt;if $fluffyGender.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyGender&lt;&lt;/if&gt;&gt;
@@ -1334,7 +1332,9 @@ Race: &lt;&lt;if $fluffyRace.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;
     &lt;td&gt;&lt;&lt;print $fluffyIg&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;FluffArt &quot;_skincss&quot; &quot;_manecss&quot; &quot;blue&quot;&gt;&gt;&lt;&lt;/do&gt;&gt;
+&lt;/table&gt;
+&lt;&lt;FluffArt &quot;$skincss&quot; &quot;$manecss&quot;&gt;&gt;&lt;&lt;/do&gt;&gt;
+
 !! &lt;&lt;hovertip &quot;This uses the above stats once rolled.&quot;&gt;&gt;Stat Check Test&lt;&lt;/hovertip&gt;&gt;
 &lt;&lt;nobr&gt;&gt;&lt;&lt;listbox &quot;$statBox&quot; autoselect&gt;&gt;
     &lt;&lt;option &quot;Obedience&quot; &quot;ob&quot;&gt;&gt;
@@ -1638,8 +1638,8 @@ $(document).on(&quot;:passageend&quot;, function() {
 /* ID Replacement Variable (Dynamic ID for &lt;&lt;buttonreplacement) */
 
 &lt;&lt;set $buttonreplaceCounter to 0&gt;&gt;
-
 &lt;&lt;set $arrowButton to &quot;&lt;span class=&#39;icon next-arrow&#39;&gt;&lt;/span&gt;&quot;&gt;&gt;
+&lt;&lt;set $currentFluffyIndex to 0&gt;&gt;
 
 /* Initial Fluffy Variables */
 

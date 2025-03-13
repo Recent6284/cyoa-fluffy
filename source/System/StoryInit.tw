@@ -17,8 +17,8 @@
 /* ID Replacement Variable (Dynamic ID for <<buttonreplacement) */
 
 <<set $buttonreplaceCounter to 0>>
-
 <<set $arrowButton to "<span class='icon next-arrow'></span>">>
+<<set $currentFluffyIndex to 0>>
 
 /* Initial Fluffy Variables */
 

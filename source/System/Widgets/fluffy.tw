@@ -1,5 +1,4 @@
 :: FluffyCSS [widget]
-
 <<nobr>><<widget "FluffArt">>
   <div class="fluffy">
     <div class="smile"></div>

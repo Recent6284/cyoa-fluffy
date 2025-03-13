@@ -1,15 +1,13 @@
 :: Roll Test
-<<silent>><<set $currentFluffyIndex to 0>><</silent>>
 !! <<hovertip "The button below generates a new Fluffy, and saves its stats to memory.">>Your Fluffy<</hovertip>>
 <<button "Click for Fluffy">><<silent>>
     <<newFluffy>>
     <<lockFluffy>>
-    <<redo>>
-    <<redo div>>
-    <<set $currentFluffyIndex to 1+$currentFluffyIndex>>
     <<set $manecss to $fluffyMane.colorname>>
     <<set $skincss to $fluffySkin.colorname>>
-<</silent>><</button>>
+    <<redo>>
+    <<set $currentFluffyIndex to $currentFluffyIndex + 1>>
+<</silent>>><</button>>
 
 <<do>>Name: <<if $fluffyName.length == 0 >>Roll first!<<else>>$fluffyName<</if>>
 Gender: <<if $fluffyGender.length == 0 >>Roll first!<<else>>$fluffyGender<</if>>
@@ -37,7 +35,9 @@ Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>>
     <td><<print $fluffyIg>></td>
   </tr>
 </tbody>
-</table><</do>><<do>><<FluffArt "_skincss" "_manecss" "blue">><</do>>
+</table>
+<<FluffArt "$skincss" "$manecss">><</do>>
+
 !! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>
 <<nobr>><<listbox "$statBox" autoselect>>
     <<option "Obedience" "ob">>

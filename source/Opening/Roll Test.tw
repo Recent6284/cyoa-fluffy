@@ -1,4 +1,5 @@
 :: Roll Test
+
 !! <<hovertip "The button below generates a new Fluffy, and saves its stats to memory.">>Your Fluffy<</hovertip>>
 <<button "Click for Fluffy">><<silent>>
     <<newFluffy>>
@@ -34,7 +35,7 @@ Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>>
   </tr>
 </tbody>
 </table>
-<<FluffArt "$skincss" "$manecss">><</do>>
+<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname>><</do>>
 
 !! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>
 <<nobr>><<listbox "$statBox" autoselect>>

@@ -1,25 +1,25 @@
 :: FluffyCSS [widget]
-<<nobr>><<widget "FluffArt">>
+<<nobr>><<widget "FluffyArt">>
   <div class="fluffy">
     <div class="smile"></div>
     <div class="belly"></div>
-    <div class="pupil1" @style="'background-color: ' + $fluffyMane.colorname +';border: 1px solid #0000003b;'"></div>
-    <div class="pupil2" @style="'background-color: ' + $fluffyMane.colorname +';border: 1px solid #0000003b;'"></div>
+    <div class="pupil1" @style="'background-color: ' + _args[1] +';border: 1px solid #0000003b;'"></div>
+    <div class="pupil2" @style="'background-color: ' + _args[1] +';border: 1px solid #0000003b;'"></div>
     <div class="eye1"></div>
     <div class="eye2"></div>
-    <div class="head" @style="'background-color: ' + $fluffySkin.colorname +';'"></div>
-    <div class="mane1" @style="'background-color: ' + $fluffyMane.colorname +';'"></div>
-    <div class="body" @style="'background-color: ' + $fluffySkin.colorname +';'"></div>
-    <div class="leg leg1" @style="'background-color: ' + $fluffySkin.colorname +';'"></div>
-    <div class="leg leg2" @style="'background-color: ' + $fluffySkin.colorname +';'"></div>
-    <div class="leg leg3" @style="'background-color: ' + $fluffySkin.colorname +';'"></div>
-    <div class="leg leg4" @style="'background-color: ' + $fluffySkin.colorname +';'"></div>
-    <div class="tail" @style="'background-color: ' + $fluffyMane.colorname +';'"></div>
-    <div class="foot foot1" @style="'background-color: ' + $fluffyMane.colorname +';'"></div>
-    <div class="foot foot2" @style="'background-color: ' + $fluffyMane.colorname +';'"></div>
-    <div class="foot foot3" @style="'background-color: ' + $fluffyMane.colorname +';'"></div>
-    <div class="foot foot4" @style="'background-color: ' + $fluffyMane.colorname +';'"></div>
-    <div class="mane2" @style="'background-color: ' + $fluffyMane.colorname +';'"></div>
+    <div class="head" @style="'background-color: ' + _args[0] +';'"></div>
+    <div class="mane1" @style="'background-color: ' + _args[1] +';'"></div>
+    <div class="body" @style="'background-color: ' + _args[0] +';'"></div>
+    <div class="leg leg1" @style="'background-color: ' + _args[0] +';'"></div>
+    <div class="leg leg2" @style="'background-color: ' + _args[0] +';'"></div>
+    <div class="leg leg3" @style="'background-color: ' + _args[0] +';'"></div>
+    <div class="leg leg4" @style="'background-color: ' + _args[0] +';'"></div>
+    <div class="tail" @style="'background-color: ' + _args[1] +';'"></div>
+    <div class="foot foot1" @style="'background-color: ' + _args[1] +';'"></div>
+    <div class="foot foot2" @style="'background-color: ' + _args[1] +';'"></div>
+    <div class="foot foot3" @style="'background-color: ' + _args[1] +';'"></div>
+    <div class="foot foot4" @style="'background-color: ' + _args[1] +';'"></div>
+    <div class="mane2" @style="'background-color: ' + _args[1] +';'"></div>
     <div class="snout"></div>
   </div>
 <</widget>><</nobr>>

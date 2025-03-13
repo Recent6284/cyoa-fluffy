@@ -17,6 +17,19 @@
     border-top: none;
     border-radius: 0px 0px 100px 100px; /* Top half is rounded */
   }
+
+  .horn {
+    clip-path: polygon(50% 0%, 26% 100%, 73% 100%);
+    background-color:white;
+    width:10px;
+    height:20px;
+    left:25px;
+    top:8px;
+    position: absolute;
+    border: 1px solid black;
+    transform: rotate(-70deg);
+    z-index:99;
+  }
   
   .head {
     position: absolute;

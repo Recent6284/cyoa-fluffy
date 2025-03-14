@@ -23,7 +23,6 @@ You've decided that a walk through downtown is worth the risk tonight, mostly be
 :: Strip Mall
 
 :: Restaurant
-
 You kicked yourself a little bit for being stereotypical — really? @@color:green;An@@ Italian @@color:red;restaurant@@? You didn't know if it would be this easy, or a Fluffy's sense of smell would be that good. Pasquale's was a local joint that people either loved to death or turned their noses up at; the 90-year-old proprietor had lost his wife years ago, but there were weathered newspaper articles clipped and carefully preserved on the wall. You could've sworn you even saw a blessing from the Pope up there — an Italian wouldn't lie about that, would they?
 
 You weren't sure if old man Pasquale was even //aware// of what Fluffies were, but you were sure they'd probably have something in the garbage that Fluffies would find delectable. From your research, almost all humans didn't think Fluffy "skettis" were appetizing, and it felt almost insulting to see a Fluffy-themed vending machine next door, hawking Fluffy merch. You saw a giant sticker, promising that "Foals in a Can will return!"; you'd heard some scuttlebutt on Reddit about the temperature units failing on the cans, and man, that can't be pleasant to clean up. You took a look at the rest of the products anyways.
@@ -57,7 +56,6 @@ You weren't sure if old man Pasquale was even //aware// of what Fluffies were, b
 
 :: Industrial Park
 <<silent>><<set _luckyRoll to 0>><</silent>>
-
 This industrial park was a wasteland; it never quite recovered from a recession that started and finished long before you were born. Sprawling derelic warehouses and empty assembly lines were kind of a perfect Venn Diagram for Fluffies to find their homes: dangerous enough that the homeless wouldn't want to squat there, and enough nooks and crannies for a nest to be made out of fluff, discarded blankets, a forgotten work shirt, or exposed (perhaps toxic!) insulation.
 
 Long stripped for copper or anything of value, the industrial park was just a series of shadowy buildings that were waiting for redevelopment. As usual, permits, bureaucracy and greed kept them from getting anywhere: Party A, B and C were all convinced that //their// real estate was the more valuable parcel, and they weren't budging.

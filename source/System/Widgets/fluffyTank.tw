@@ -3,57 +3,71 @@
 <<widget "FluffTank">>
 <<capture _fluffyMane>>
 <<capture _fluffySkin>>
-<div class="tank">
-  <div class="tank-outline">
-    <div class="tank-bottom metal"><div class="tank-grass"></div>
-      <div class="nametag"><div class="nameinfo"><ul><li>Name: Apple</li></ul>
-      </div>
-  <div class="fluffy">    
-    <div class="horn-container">
-      <div class="horn"></div>
-      <div class="horn-shadow" ></div>
-    </div>
-    <div class="wings-container">
-      <div class="line line-1"></div>
-      <div class="line line-2"></div>
-      <div class="line line-3"></div>
-      <div class="wings-border"></div>
-      <div class="wings" ></div>
-    </div>
-    <div class="head-container">
-      <div class="mane1" ></div>
-      <div class="mane2" ></div>
-      <div class="head" >
-        <div class="eye1">
-          <div class="pupil1"></div>
-        </div>
-        <div class="eye2">
-          <div class="pupil2"></div>
-        </div>
-        <div class="snout-container">
-          <div class="snout">
-            <div class="smile"></div>
+      <div class="tank">
+        <div class="tank-outline">
+          <div class="tank-bottom metal">
+            <div class="tank-grass"></div>
+            <div class="nametag">
+              <div class="nameinfo">
+                <ul>
+                  <li>Name: Apple</li>
+                </ul>
+              </div>
+                <div class="fluffy">
+                <<if $fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
+                <<elseif $fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
+                <<elseif $fluffyRace is "Pegasus">><<set _hornhide to "display:none;">><<unset _wingshide>>
+                <<else>><<set _wingshide to "display:none;">><<set _hornhide to "display:none;">>
+                <</if>>
+                <!-- Horn -->
+                <div class="horn-container" @style='_hornhide'>
+                <div class="horn"></div>
+                <div class="horn-shadow" @style="'background-color: ' + _args[0] +';'"></div>
+                </div>
+                <!-- Wings -->
+                <div class="wings-container" @style='_wingshide'>
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+                <div class="line line-3"></div>
+                <div class="wings-border"></div>
+                <div class="wings" @style="'background-color: ' + _args[0] +';'"></div>
+                </div>
+                <!-- Head -->
+                <div class="head-container">
+                <div class="mane1" @style="'background-color: ' + _args[1] +';'"></div>
+                <div class="mane2" @style="'background-color: ' + _args[1] +';'"></div>
+                <div class="head" @style="'background-color: ' + _args[0] +';'">
+                <div class="eye1">
+                <div class="pupil1"></div>
+                </div>
+                <div class="eye2">
+                <div class="pupil2"></div>
+                </div>
+                <div class="snout-container">
+                <div class="snout">
+                <div class="smile"></div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <!-- Body -->
+                <div class="body-container">
+                <div class="fluffbody" @style="'background-color: ' + _args[0] +';'">
+                <div class="leg leg1" @style="'background-color: ' + _args[0] +';'"></div>
+                <div class="foot foot1" @style="'background-color: ' + _args[1] +';'"></div>
+                <div class="leg leg2" @style="'background-color: ' + _args[0] +';'"></div>
+                <div class="foot foot2" @style="'background-color: ' + _args[1] +';'"></div>
+                <div class="leg leg3" @style="'background-color: ' + _args[0] +';'"></div>
+                <div class="foot foot3" @style="'background-color: ' + _args[1] +';'"></div>
+                <div class="leg leg4" @style="'background-color: ' + _args[0] +';'"></div>
+                <div class="foot foot4" @style="'background-color: ' + _args[1] +';'"></div>
+                <div class="belly"></div>
+                </div>
+                <div class="tail" @style="'background-color: ' + _args[1] +';'"></div>
+                </div>
+                </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="body-container">
-      <div class="fluffbody" >
-        <div class="leg leg1" ></div>
-        <div class="foot foot1" ></div>
-        <div class="leg leg2" ></div>
-        <div class="foot foot2" ></div>
-        <div class="leg leg3" ></div>
-        <div class="foot foot3" ></div>
-        <div class="leg leg4" ></div>
-        <div class="foot foot4" ></div>
-        <div class="belly"></div>
-      </div>
-      <div class="tail" ></div>
-    </div>
-  </div>
-      </div>
-  </div>
 <</capture>>
 <</capture>>
 <</widget>>

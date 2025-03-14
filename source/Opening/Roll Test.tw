@@ -35,8 +35,10 @@ Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>>
   </tr>
 </tbody>
 </table>
+
 <<FluffyArt $fluffySkin.colorname $fluffyMane.colorname>>
-<<FluffTank>>$fluffySkin.colorname $fluffyMane.colorname<</FluffTank>><</do>>
+
+<<FluffTank $fluffySkin.colorname $fluffyMane.colorname>><</do>>
 
 
 !! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>

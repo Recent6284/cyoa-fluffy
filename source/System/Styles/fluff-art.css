@@ -61,6 +61,7 @@
 .tank .fluffy {
   position: absolute;
   display: inline-block;
+  transform-origin: center;
   bottom: 47px; /* Align with the top of tank-bottom */
   left: 50px;
   animation: gallop 30s ease-in-out infinite;
@@ -101,10 +102,8 @@
 
 .fluffy {
   position: absolute;
-  left: 0px;
   height: 100px;
   width: 185px;
-  animation: gallop 30s ease-in-out infinite;
   transform-origin: center;
   z-index: 3;
 }

@@ -1,17 +1,18 @@
-:: FluffyCSS [widget]
-<<nobr>><<widget "FluffyArt">>
+:: Fluffy in Tank [widget nobr]
+<<widget "FluffTank">>
+<div class="tank">
+  <div class="tank-outline">
+    <div class="tank-bottom">
   <div class="fluffy">
     <<if $fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
       <<elseif $fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
       <<elseif $fluffyRace is "Pegasus">><<set _hornhide to "display:none;">><<unset _wingshide>>
       <<else>><<set _wingshide to "display:none;">><<set _hornhide to "display:none;">>
     <</if>>
-    <!-- Horn -->
     <div class="horn-container" @style='_hornhide'>
       <div class="horn"></div>
       <div class="horn-shadow" @style="'background-color: ' + _args[0] +';'"></div>
     </div>
-    <!-- Wings -->
     <div class="wings-container" @style='_wingshide'>
       <div class="line line-1"></div>
       <div class="line line-2"></div>
@@ -19,7 +20,6 @@
       <div class="wings-border"></div>
       <div class="wings" @style="'background-color: ' + _args[0] +';'"></div>
     </div>
-    <!-- Head -->
     <div class="head-container">
       <div class="mane1" @style="'background-color: ' + _args[1] +';'"></div>
       <div class="mane2" @style="'background-color: ' + _args[1] +';'"></div>
@@ -37,7 +37,6 @@
         </div>
       </div>
     </div>
-    <!-- Body -->
     <div class="body-container">
       <div class="fluffbody" @style="'background-color: ' + _args[0] +';'">
         <div class="leg leg1" @style="'background-color: ' + _args[0] +';'"></div>
@@ -53,4 +52,7 @@
       <div class="tail" @style="'background-color: ' + _args[1] +';'"></div>
     </div>
   </div>
-<</widget>><</nobr>>
+      </div>
+  </div>
+</div>
+<</widget>>

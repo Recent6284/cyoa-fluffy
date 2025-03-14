@@ -37,7 +37,7 @@ You noticed that there were milk feeders, audio speakers, and other ways of tric
 
 Being seen as a potential "new parent" was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn't much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy "bonded" with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren't picked.
 
-Each cage had a descriptor of the foal, their colors, the colors of their parents, and a short description to help the sale along. While you think foals can be <<cycle "$foalReaction">><<option "cute" "hugbox">><<option "an interesting challenge" "neutral">><<option "a pet you could mold from scratch" "abuser">><</cycle>> <<hovertip "Foals will potentially be available at a later date; focusing on adult Fluffies will help get the Human route completed.">>you felt your time was best spent with an adult<</hovertip>>.
+Each cage had a descriptor of the foal, their colors, the colors of their parents, and a short description to help the sale along. While you think foals can be <<cycle "$foalReaction">><<option "cute" "hugbox">><<option "an interesting challenge" "neutral">><<option "a pet you could mold from scratch" "abuser">><</cycle>>, <<hovertip "Foals will potentially be available at a later date; focusing on adult Fluffies will help get the Human route completed.">>you felt your time was best spent with an adult<</hovertip>>.
 
 <<button "Visit the Adult Pens @@.icon;.next-arrow;@@" "Fluffmart - Adults">>
 <</button>>
@@ -48,9 +48,29 @@ Each cage had a descriptor of the foal, their colors, the colors of their parent
 
 Managing a number of adult fluffies was difficult, and trying to put them in the best environment to entice prospective customers was even harder. With ages ranging from "just matured" to "a bit on the older side", Fluffies in the adult area were separated by gender, and in different pens to avoid overcrowding. You noticed that a couple of the dividers were clear, with a large sign proclaiming "~Special Friends!~"; some fluffies probably managed to pair bond despite Fluffmart's best efforts, and they probably were testing the profitability of selling twice the food, twice the equipment, and Fluffies that would have their own social entertainment.
 
-Fluffies of all colors were babbling, hugging, playing with balls and blocks, watching a FluffTV set, and generally doing what they did best. You could see a Fluffmart employee breaking up a scuffle between two males with a broom handle; even in this protected area, there were egos, jostling, and hierarchy. You <<cycle "$fluffyReaction">><<option "grinned at">><<option "rolled your eyes at">><<option "frowned at">><<option "rolled your eyes at">><<option "shook your head at">><</cycle>> the small micro-society; for many of the ponies, this was the only life they ever knew until their new Daddies and Mummies brought them to their "forever homes" 
+Fluffies of all colors were babbling, hugging, playing with balls and blocks, watching a FluffTV set, and generally doing what they did best. You could see a Fluffmart employee breaking up a scuffle between two males with a broom handle; even in this protected area, there were egos, jostling, and hierarchy. 
 
-Being seen as a potential "new parent" was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn't much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy "bonded" with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren't picked.
+You <<cycle "$fluffyReaction">><<option "grinned at" "happy">><<option "rolled your eyes at" "impatience">><<option "frowned at" "annoyed">><<option "shook your head at" "disapproval">><</cycle>> the small micro-society; for many of the ponies, this was the only life they ever knew until their new Daddies and Mummies brought them to their "forever homes." You <<cycle "$fluffyReaction2">><<option "wondered how your new Fluffy would get along with others" "curious">><<option "didn't think you had bandwidth for more than one Fluffy in your life" "busy">><<option "wondered how you might survive as a Fluffy in a herd" "daydream">><<option "couldn't imagine a worse hell, living with a group of Fluffies" "hellscape">><</cycle>>.
+
+Being seen as a potential "new parent" was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn't much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. 
+
+If you were a parent and a Fluffy "bonded" with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren't picked.
+
+<<button [[Take a look at the Fluffies on sale|Fluffmart - Adult Options]]>><</button>>
+
+:: Fluffmart - Adult Options
+
+<div id="option"><<silent>><<set $currentFluffyIndex to 0>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
+<<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
+<<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>><</silent>>
+
+In each pen, you saw one Adult Fluffy who was oblivious to you judging them.
+
+Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname">_fluffyMane.name</span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin; you weren't sure how your felt about the color combination, but it was something to consider.
+
+<<FluffyArt _fluffySkin.colorname _fluffyMane.colorname>></div>
+
+<<FluffTank>>
 
 :: Fluffmart - The Discounts
 

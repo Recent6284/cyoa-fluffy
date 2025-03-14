@@ -16,10 +16,9 @@ You've decided that a walk through downtown is worth the risk tonight, mostly be
 
 :: Alley
 
-<<capture $cityScape>>This <<if $cityScape is "strip">>strip mall<<elseif $cityScape is "restaurant">>restaurant<<elseif $cityScape is "industrial">>Industrial Park<</if>> had seen better days, and that's probably why you thought you could find some Fluffies — eventually, with enough apathy, the circumstances for favorable feral festivities flourished.
+This <<if $cityScape is "strip">>strip mall<<elseif $cityScape is "restaurant">>restaurant<<elseif $cityScape is "industrial">>Industrial Park<</if>> had seen better days, and that's probably why you thought you could find some Fluffies — eventually, with enough apathy, the circumstances for favorable feral festivities flourished.
 
-<<if $cityScape is "strip">><<include [[Strip Mall]]>><<elseif $cityScape is "restaurant">><<include [[Restaurant]]>><<elseif $cityScape is "industrial">><<include [[Industrial Park]]>><</if>><</capture>>
-
+<<if $cityScape is "strip">><<nobr>><<include [[Strip Mall]]>><</nobr>><<elseif $cityScape is "restaurant">><<nobr>><<include [[Restaurant]]>><</nobr>><<elseif $cityScape is "industrial">><<nobr>><<include [[Industrial Park]]>><</nobr>><</if>>
 :: Strip Mall
 
 :: Restaurant
@@ -55,17 +54,16 @@ You weren't sure if old man Pasquale was even //aware// of what Fluffies were, b
 <<button [[Back to the Restaurant|Restaurant]]>><</button>>
 
 :: Industrial Park
-<<silent>><<set _luckyRoll to 0>><</silent>>
-This industrial park was a wasteland; it never quite recovered from a recession that started and finished long before you were born. Sprawling derelic warehouses and empty assembly lines were kind of a perfect Venn Diagram for Fluffies to find their homes: dangerous enough that the homeless wouldn't want to squat there, and enough nooks and crannies for a nest to be made out of fluff, discarded blankets, a forgotten work shirt, or exposed (perhaps toxic!) insulation.
 
-Long stripped for copper or anything of value, the industrial park was just a series of shadowy buildings that were waiting for redevelopment. As usual, permits, bureaucracy and greed kept them from getting anywhere: Party A, B and C were all convinced that //their// real estate was the more valuable parcel, and they weren't budging.
+This industrial park was a wasteland; it never quite recovered from a recession that started and finished long before you were born. Sprawling derelic warehouses and empty assembly lines were kind of a perfect Venn Diagram for Fluffies to find their homes: dangerous enough that the homeless wouldn't want to squat there, and enough nooks and crannies for a nest to be made out of fluff, discarded blankets, a forgotten work shirt, or exposed (perhaps @@color:lime;toxic@@!) @@color:pink;insulation@@.
+
+Long-stripped for copper or anything of value, the industrial park was just a series of shadowy buildings that were waiting for redevelopment. As usual, permits, bureaucracy and greed kept them from getting anywhere: Parties A, B and C were all convinced that //their// lot was the more valuable parcel, and they weren't budging. This was their retirement packages, after all.
 
 Security guards patrolled the grounds, but this was mostly for insurance reasons; shift-long phone calls with their loved ones were much more important. They often sat in their comfortable, air-conditioned tollbooth, and really had no reason to leave.
 
-You'd never actually //been// to this industrial park before, but you knew that there was multiple ways to just walk up and explore. You were prepared for the worst; at worst, you'd get mugged, just to save a few bucks.
+You'd never actually //been// to this industrial park before, but you knew that there was multiple ways to just walk up and explore. You were prepared for the worst; at worst, you'd get mugged, just to save a few bucks. At best, you'd find a new Fluffy friend. In the middle, you might get a beer by the union hall: they've always had some pretty cheap brews and sports on the TV.
 
-You had a few options:
-
+Your choices:
 * <<link "Check the fence around the old assembly line">>
     <<set _luckyRoll to random(1, 20)>>
     <<if _luckyRoll >= 8>>
@@ -90,5 +88,3 @@ You had a few options:
         <<replace "#answer">>Unfortunately, you weren't able to find anything.<</replace>>
     <</if>>
 <</link>>
-
-<div id="answer"></div>

@@ -57,7 +57,7 @@
 
 <<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace>><</do>>
 
-!! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>
+!! <<hovertip "This uses the stats once rolled.">>Stat Check Test<</hovertip>>
 <<nobr>><<listbox "$statBox" autoselect>>
     <<option "Obedience" "ob">>
     <<option "Impulsiveness" "im">>

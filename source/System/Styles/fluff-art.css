@@ -1,9 +1,114 @@
-.fluffy {
-  position: relative;
-  display: inline-block;
-  height: 100px;
-  vertical-align: middle; /* Aligns it properly with surrounding text */
+/* Tank */
+
+.tank {
+  height: 300px;
+  width: 500px;
+  background-color: #1b1b1b;
 }
+.tank-outline {
+  position: relative;
+  width: 95%;
+  height: 95%;
+  margin: auto;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-color:dodgerblue;
+  border: 2px solid white;
+  z-index:0;
+}
+.tank-bottom{
+  position: absolute;
+  height: 50px;
+  width: 475px;
+  bottom: 0px;
+  background-color: #1b1b1b;
+  z-index:2;
+  display:flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.metal {
+  font-weight: 400;
+  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+  padding: 0 0;
+  Xheight: 50px;
+  width: 475px;
+  text-align: center;
+  border: none;
+  background: #1b1b1b;
+  box-shadow: inset hsla(0,0%,15%, 1) 0 0px 0px 4px,
+    /* border */ inset hsla(0,0%,15%, .9) 0 -1px 5px 4px,
+    /* soft SD */ inset hsla(0,0%,0%, .50) 0 -1px 0px 7px,
+    /* bottom SD */ inset hsla(0,0%,0%,.7) 0 2px 1px 7px,
+    /* top HL */ hsla(0,0%, 0%,.15) 0 -5px 6px 4px,
+    /* outer SD */ hsla(0,0%,0%,.5) 0 5px 6px 4px;
+}
+
+.tank-grass{
+  background-color: limegreen;
+  display: flex;
+  position: absolute;
+  left:0;
+  width: 475px;
+  height: 5px;
+  top: -5px;
+  z-index:3;
+}
+
+/* Special styling only when .fluffy is inside .tank */
+.tank .fluffy {
+  position: absolute;
+  display: inline-block;
+  bottom: 47px; /* Align with the top of tank-bottom */
+  left: 50px;
+  animation: gallop 30s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Nametag */
+
+.nametag {
+  display: flex;
+  justify-content: flex-start; /* Align content to the left */
+  align-items: center; /* Center items vertically */
+  width: 150px;
+  height: 60%;
+  margin-left: 3%;
+  background-color: white;
+  color: #000;
+  box-shadow: 2px 2px slategray;
+
+}
+
+.nameinfo {
+  display: flex;
+  line-height: 80%;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  text-align: left; /* Center text within each line */
+}
+
+.nameinfo ul {
+  padding-inline-start: 10px; /* Adjust list padding */
+  margin: 0; /* Remove default margin */
+  list-style-type: none; /* Remove bullet points */
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Cantarell,Ubuntu,"Helvetica Neue",Helvetica,Arial,sans-serif,color-emoji;
+  font-weight: 500;
+  font-size: 1.2vh;
+}
+
+.fluffy {
+  position: absolute;
+  left: 0px;
+  height: 100px;
+  width: 185px;
+  animation: gallop 30s ease-in-out infinite;
+  transform-origin: center;
+  z-index: 3;
+}
+
 .horn-container {
 	display: flex;
 	position: absolute;
@@ -227,7 +332,10 @@
 .leg2, .leg4 {
   z-index: 85; 
 }
-.leg1, .leg2, .leg3, .leg4, .foot1, .foot2, .foot3, .foot4 {position: absolute;bottom:-17px;}
+.leg1, .leg2, .leg3, .leg4, .foot1, .foot2, .foot3, .foot4 {
+  position: absolute;
+  bottom: -17px;
+}
 .foot1, .leg1 { left: 2px }
 .foot2, .leg2 { left: 24px }
 .foot3, .leg3 { right: 26px }
@@ -294,43 +402,6 @@
 }
 
 
-/* Tank */
-
-.tank {
-  height: 300px;
-  width: 500px;
-  background-color: #1b1b1b;
-}
-.tank-outline {
-  position: relative;
-  width: 95%;
-  height: 95%;
-  margin: auto;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background-color:dodgerblue;
-  border: 2px solid white;
-  z-index:0;
-}
-.tank-bottom{
-  position: absolute;
-  height: 50px;
-  width: 475px;
-  bottom: 0px;
-  background-color: #1b1b1b;
-  z-index:2;
-}
-
-.tank .fluffy {
-  position: relative;
-  bottom: 92px;
-  left: 50px;
-  height: 100px;
-  width: 185px;
-  animation: gallop  30s ease-in-out infinite; /* Slow, natural movement */
-  transform-origin: center;
-}
 
 @keyframes gallop {
   0% {

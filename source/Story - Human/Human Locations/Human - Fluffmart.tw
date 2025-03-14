@@ -60,17 +60,18 @@ If you were a parent and a Fluffy "bonded" with your kid, it would probably be h
 
 :: Fluffmart - Adult Options
 
-<div id="option"><<silent>><<set $currentFluffyIndex to 0>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
+<<silent>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<set $currentFluffyIndex to 0>>
+<<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
 <<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
-<<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>><</silent>>
+<<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>>
+<<set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race>>
+<<set _fluffyName = State.variables.fluffies[$currentFluffyIndex].name>><<redo "tank" div>><</silent>>
 
 In each pen, you saw one Adult Fluffy who was oblivious to you judging them.
 
 Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname">_fluffyMane.name</span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin; you weren't sure how your felt about the color combination, but it was something to consider.
 
-<<FluffyArt _fluffySkin.colorname _fluffyMane.colorname>></div>
-
-<<FluffTank>>
+<<FluffTank _fluffySkin.colorname _fluffyMane.colorname>>
 
 :: Fluffmart - The Discounts
 

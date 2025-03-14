@@ -374,12 +374,117 @@ p, h2, h3, h4, h5 {
     text-decoration: underline white wavy;
 }
 /* twine-user-stylesheet #3: "fluff-art.css" */
-.fluffy {
-  position: relative;
-  display: inline-block;
-  height: 100px;
-  vertical-align: middle; /* Aligns it properly with surrounding text */
+/* Tank */
+
+.tank {
+  height: 300px;
+  width: 500px;
+  background-color: #1b1b1b;
 }
+.tank-outline {
+  position: relative;
+  width: 95%;
+  height: 95%;
+  margin: auto;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-color:dodgerblue;
+  border: 2px solid white;
+  z-index:0;
+}
+.tank-bottom{
+  position: absolute;
+  height: 50px;
+  width: 475px;
+  bottom: 0px;
+  background-color: #1b1b1b;
+  z-index:2;
+  display:flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.metal {
+  font-weight: 400;
+  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+  padding: 0 0;
+  Xheight: 50px;
+  width: 475px;
+  text-align: center;
+  border: none;
+  background: #1b1b1b;
+  box-shadow: inset hsla(0,0%,15%, 1) 0 0px 0px 4px,
+    /* border */ inset hsla(0,0%,15%, .9) 0 -1px 5px 4px,
+    /* soft SD */ inset hsla(0,0%,0%, .50) 0 -1px 0px 7px,
+    /* bottom SD */ inset hsla(0,0%,0%,.7) 0 2px 1px 7px,
+    /* top HL */ hsla(0,0%, 0%,.15) 0 -5px 6px 4px,
+    /* outer SD */ hsla(0,0%,0%,.5) 0 5px 6px 4px;
+}
+
+.tank-grass{
+  background-color: limegreen;
+  display: flex;
+  position: absolute;
+  left:0;
+  width: 475px;
+  height: 5px;
+  top: -5px;
+  z-index:3;
+}
+
+/* Special styling only when .fluffy is inside .tank */
+.tank .fluffy {
+  position: absolute;
+  display: inline-block;
+  bottom: 47px; /* Align with the top of tank-bottom */
+  left: 50px;
+  animation: gallop 30s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Nametag */
+
+.nametag {
+  display: flex;
+  justify-content: flex-start; /* Align content to the left */
+  align-items: center; /* Center items vertically */
+  width: 150px;
+  height: 60%;
+  margin-left: 3%;
+  background-color: white;
+  color: #000;
+  box-shadow: 2px 2px slategray;
+
+}
+
+.nameinfo {
+  display: flex;
+  line-height: 80%;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  text-align: left; /* Center text within each line */
+}
+
+.nameinfo ul {
+  padding-inline-start: 10px; /* Adjust list padding */
+  margin: 0; /* Remove default margin */
+  list-style-type: none; /* Remove bullet points */
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Cantarell,Ubuntu,"Helvetica Neue",Helvetica,Arial,sans-serif,color-emoji;
+  font-weight: 500;
+  font-size: 1.2vh;
+}
+
+.fluffy {
+  position: absolute;
+  left: 0px;
+  height: 100px;
+  width: 185px;
+  animation: gallop 30s ease-in-out infinite;
+  transform-origin: center;
+  z-index: 3;
+}
+
 .horn-container {
 	display: flex;
 	position: absolute;
@@ -603,7 +708,10 @@ p, h2, h3, h4, h5 {
 .leg2, .leg4 {
   z-index: 85; 
 }
-.leg1, .leg2, .leg3, .leg4, .foot1, .foot2, .foot3, .foot4 {position: absolute;bottom:-17px;}
+.leg1, .leg2, .leg3, .leg4, .foot1, .foot2, .foot3, .foot4 {
+  position: absolute;
+  bottom: -17px;
+}
 .foot1, .leg1 { left: 2px }
 .foot2, .leg2 { left: 24px }
 .foot3, .leg3 { right: 26px }
@@ -670,43 +778,6 @@ p, h2, h3, h4, h5 {
 }
 
 
-/* Tank */
-
-.tank {
-  height: 300px;
-  width: 500px;
-  background-color: #1b1b1b;
-}
-.tank-outline {
-  position: relative;
-  width: 95%;
-  height: 95%;
-  margin: auto;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background-color:dodgerblue;
-  border: 2px solid white;
-  z-index:0;
-}
-.tank-bottom{
-  position: absolute;
-  height: 50px;
-  width: 475px;
-  bottom: 0px;
-  background-color: #1b1b1b;
-  z-index:2;
-}
-
-.tank .fluffy {
-  position: relative;
-  bottom: 92px;
-  left: 50px;
-  height: 100px;
-  width: 185px;
-  animation: gallop  30s ease-in-out infinite; /* Slow, natural movement */
-  transform-origin: center;
-}
 
 @keyframes gallop {
   0% {
@@ -1532,8 +1603,7 @@ Race: &lt;&lt;if $fluffyRace.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;
-
-&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;&lt;&lt;/do&gt;&gt;
+&lt;&lt;FluffTank&gt;&gt;$fluffySkin.colorname $fluffyMane.colorname&lt;&lt;/FluffTank&gt;&gt;&lt;&lt;/do&gt;&gt;
 
 
 !! &lt;&lt;hovertip &quot;This uses the above stats once rolled.&quot;&gt;&gt;Stat Check Test&lt;&lt;/hovertip&gt;&gt;
@@ -1731,17 +1801,18 @@ Being seen as a potential &quot;new parent&quot; was a daunting thing for most o
 
 If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.
 
-&lt;&lt;button [[Take a look at the Fluffies on sale|Fluffmart - Adult Options]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Fluffmart - Adult Options" tags="" position="475,350" size="100,100">&lt;div id=&quot;option&quot;&gt;&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 0&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
+&lt;&lt;button [[Take a look at the Fluffies on sale|Fluffmart - Adult Options]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Fluffmart - Adult Options" tags="" position="475,350" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;set $currentFluffyIndex to 0&gt;&gt;
+&lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
 &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
-&lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;
+&lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
+&lt;&lt;set _fluffyName = State.variables.fluffies[$currentFluffyIndex].name&gt;&gt;&lt;&lt;redo &quot;tank&quot; div&gt;&gt;&lt;&lt;/silent&gt;&gt;
 
 In each pen, you saw one Adult Fluffy who was oblivious to you judging them.
 
 Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender is &quot;female&quot;&gt;&gt;@@color:pink;&lt;&lt;print  _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;else&gt;&gt;@@color:blue;&lt;&lt;print  _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;/if&gt;&gt;. &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot; &quot;upper&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffyMane.colorname&quot;&gt;_fluffyMane.name&lt;/span&gt; mane accented &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffySkin.colorname&quot;&gt;&lt;&lt;print _fluffySkin.name.toLowerCase()&gt;&gt;&lt;/span&gt; skin; you weren&#39;t sure how your felt about the color combination, but it was something to consider.
 
-&lt;&lt;FluffyArt _fluffySkin.colorname _fluffyMane.colorname&gt;&gt;&lt;/div&gt;
-
-&lt;&lt;FluffTank&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Fluffmart - The Discounts" tags="" position="600,350" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
+&lt;&lt;FluffTank _fluffySkin.colorname _fluffyMane.colorname&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Fluffmart - The Discounts" tags="" position="600,350" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
 
 Perhaps it was a greater awareness of the consequences of not being adopted, but some Fluffies looked like they lacked a specific spark. Fluffmart was not bound by any kind of ethical concern (due to the &quot;toy&quot; status of Fluffies), so there definitely was some kind of &quot;disposal&quot; date - however, in an attempt to recoup some of their losses when it came to breeding, adoption, or acquisition, these Fluffies were heavily marked down.
 
@@ -2361,30 +2432,29 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Fluffy in Tank" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
+&lt;&lt;capture _fluffyMane&gt;&gt;
+&lt;&lt;capture _fluffySkin&gt;&gt;
 &lt;div class=&quot;tank&quot;&gt;
   &lt;div class=&quot;tank-outline&quot;&gt;
-    &lt;div class=&quot;tank-bottom&quot;&gt;
-  &lt;div class=&quot;fluffy&quot;&gt;
-    &lt;&lt;if $fluffyRace is &quot;Unicorn&quot;&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
-      &lt;&lt;elseif $fluffyRace is &quot;Alicorn&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
-      &lt;&lt;elseif $fluffyRace is &quot;Pegasus&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;
-      &lt;&lt;else&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;
-    &lt;&lt;/if&gt;&gt;
-    &lt;div class=&quot;horn-container&quot; @style=&#39;_hornhide&#39;&gt;
+    &lt;div class=&quot;tank-bottom metal&quot;&gt;&lt;div class=&quot;tank-grass&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;nametag&quot;&gt;&lt;div class=&quot;nameinfo&quot;&gt;&lt;ul&gt;&lt;li&gt;Name: Apple&lt;/li&gt;&lt;/ul&gt;
+      &lt;/div&gt;
+  &lt;div class=&quot;fluffy&quot;&gt;    
+    &lt;div class=&quot;horn-container&quot;&gt;
       &lt;div class=&quot;horn&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;horn-shadow&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;horn-shadow&quot; &gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;wings-container&quot; @style=&#39;_wingshide&#39;&gt;
+    &lt;div class=&quot;wings-container&quot;&gt;
       &lt;div class=&quot;line line-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;line line-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;line line-3&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;wings-border&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;wings&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;wings&quot; &gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class=&quot;head-container&quot;&gt;
-      &lt;div class=&quot;mane1&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;mane2&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;head&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;
+      &lt;div class=&quot;mane1&quot; &gt;&lt;/div&gt;
+      &lt;div class=&quot;mane2&quot; &gt;&lt;/div&gt;
+      &lt;div class=&quot;head&quot; &gt;
         &lt;div class=&quot;eye1&quot;&gt;
           &lt;div class=&quot;pupil1&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
@@ -2399,23 +2469,24 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class=&quot;body-container&quot;&gt;
-      &lt;div class=&quot;fluffbody&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;
-        &lt;div class=&quot;leg leg1&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-        &lt;div class=&quot;foot foot1&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-        &lt;div class=&quot;leg leg2&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-        &lt;div class=&quot;foot foot2&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-        &lt;div class=&quot;leg leg3&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-        &lt;div class=&quot;foot foot3&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-        &lt;div class=&quot;leg leg4&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-        &lt;div class=&quot;foot foot4&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;fluffbody&quot; &gt;
+        &lt;div class=&quot;leg leg1&quot; &gt;&lt;/div&gt;
+        &lt;div class=&quot;foot foot1&quot; &gt;&lt;/div&gt;
+        &lt;div class=&quot;leg leg2&quot; &gt;&lt;/div&gt;
+        &lt;div class=&quot;foot foot2&quot; &gt;&lt;/div&gt;
+        &lt;div class=&quot;leg leg3&quot; &gt;&lt;/div&gt;
+        &lt;div class=&quot;foot foot3&quot; &gt;&lt;/div&gt;
+        &lt;div class=&quot;leg leg4&quot; &gt;&lt;/div&gt;
+        &lt;div class=&quot;foot foot4&quot; &gt;&lt;/div&gt;
         &lt;div class=&quot;belly&quot;&gt;&lt;/div&gt;
       &lt;/div&gt;
-      &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;tail&quot; &gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
       &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
+&lt;&lt;/capture&gt;&gt;
+&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="inventory.strings" tags="" position="1225,600" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="51" name="New Fluffy" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;

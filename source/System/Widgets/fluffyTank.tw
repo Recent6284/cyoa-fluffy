@@ -11,7 +11,7 @@
             <div class="nametag">
               <div class="nameinfo">
                 <ul>
-                  <li>$args[2] ($args[3])</li>
+                  <li><<if $fluffyName.length == 0 >>Nameless :(<<else>>$args[2] ($args[3])<</if>></li>
                 </ul>
               </div>
                 <div class="fluffy">

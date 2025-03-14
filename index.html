@@ -1576,11 +1576,11 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 &lt;&lt;button &quot;Click for Fluffy&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
     &lt;&lt;newFluffy&gt;&gt;
     &lt;&lt;lockFluffy&gt;&gt;
-    &lt;&lt;redo&gt;&gt;
+    &lt;&lt;redo &quot;upper&quot;&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;
 &lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;do&gt;&gt;
+&lt;&lt;do tag &quot;upper&quot;&gt;&gt;
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
     &lt;th&gt;Stat&lt;/th&gt;
@@ -1629,7 +1629,6 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 
 &lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace&gt;&gt;&lt;&lt;/do&gt;&gt;
 
-
 !! &lt;&lt;hovertip &quot;This uses the above stats once rolled.&quot;&gt;&gt;Stat Check Test&lt;&lt;/hovertip&gt;&gt;
 &lt;&lt;nobr&gt;&gt;&lt;&lt;listbox &quot;$statBox&quot; autoselect&gt;&gt;
     &lt;&lt;option &quot;Obedience&quot; &quot;ob&quot;&gt;&gt;
@@ -1641,10 +1640,10 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 &lt;&lt;button &quot;Stat Check Test&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
     &lt;&lt;set _stat to $statBox&gt;&gt;
     &lt;&lt;roll _stat &quot;_test&quot; &quot;10&quot;&gt;&gt;
-    &lt;&lt;redo&gt;&gt;
+    &lt;&lt;redo &quot;statblock&quot;&gt;&gt;
 &lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;do&gt;&gt;Stat: _stat
+&lt;&lt;do tag &quot;statblock&quot;&gt;&gt;Stat: _stat
 Roll: _roll
 Bonus: _bonus
 Total (roll + bonus): _total
@@ -1655,13 +1654,13 @@ PassFailCrit: _result
 
 Result: &lt;&lt;nobr&gt;&gt;&lt;!-- Roll for Obedience with a goal of 1 + $bonus --&gt;
 &lt;&lt;if _test === &quot;criticalpass&quot;&gt;&gt;
-  Critical success! The fluffy is exceptionally obedient.
+  @@color:gold;Critical success! The fluffy is exceptionally obedient.@@
 &lt;&lt;elseif _test === &quot;criticalfail&quot;&gt;&gt;
-  Critical fail! The fluffy is completely out of control.
+  @@color:red;Critical fail! The fluffy is completely out of control.@@
 &lt;&lt;elseif _test === &quot;pass&quot;&gt;&gt;
-  Pass! The fluffy is obedient enough.
+  @@color:green;Pass! The fluffy is obedient enough.@@
 &lt;&lt;else&gt;&gt;
-  Fail! The fluffy is too impulsive.
+  @@color:orange;Fail! The fluffy is too impulsive.@@
 &lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Fluffy Start" tags="" position="725,100" size="100,100">This is the Fluffy Start page.
 
 You are $playerName, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you aren&#39;t a smarty.
@@ -2466,7 +2465,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;div class=&quot;nametag&quot;&gt;
               &lt;div class=&quot;nameinfo&quot;&gt;
                 &lt;ul&gt;
-                  &lt;li&gt;$args[2] ($args[3])&lt;/li&gt;
+                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Nameless :(&lt;&lt;else&gt;&gt;$args[2] ($args[3])&lt;&lt;/if&gt;&gt;&lt;/li&gt;
                 &lt;/ul&gt;
               &lt;/div&gt;
                 &lt;div class=&quot;fluffy&quot;&gt;

@@ -4,11 +4,11 @@
 <<button "Click for Fluffy">><<silent>>
     <<newFluffy>>
     <<lockFluffy>>
-    <<redo>>
+    <<redo "upper">>
     <<set $currentFluffyIndex to $currentFluffyIndex + 1>>
 <</silent>><</button>>
 
-<<do>>
+<<do tag "upper">>
 <table class="shop"><thead>
   <tr>
     <th>Stat</th>
@@ -57,7 +57,6 @@
 
 <<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace>><</do>>
 
-
 !! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>
 <<nobr>><<listbox "$statBox" autoselect>>
     <<option "Obedience" "ob">>
@@ -69,10 +68,10 @@
 <<button "Stat Check Test">><<silent>>
     <<set _stat to $statBox>>
     <<roll _stat "_test" "10">>
-    <<redo>>
+    <<redo "statblock">>
 <</silent>><</button>>
 
-<<do>>Stat: _stat
+<<do tag "statblock">>Stat: _stat
 Roll: _roll
 Bonus: _bonus
 Total (roll + bonus): _total
@@ -83,11 +82,11 @@ PassFailCrit: _result
 
 Result: <<nobr>><!-- Roll for Obedience with a goal of 1 + $bonus -->
 <<if _test === "criticalpass">>
-  Critical success! The fluffy is exceptionally obedient.
+  @@color:gold;Critical success! The fluffy is exceptionally obedient.@@
 <<elseif _test === "criticalfail">>
-  Critical fail! The fluffy is completely out of control.
+  @@color:red;Critical fail! The fluffy is completely out of control.@@
 <<elseif _test === "pass">>
-  Pass! The fluffy is obedient enough.
+  @@color:green;Pass! The fluffy is obedient enough.@@
 <<else>>
-  Fail! The fluffy is too impulsive.
+  @@color:orange;Fail! The fluffy is too impulsive.@@
 <</if>><</nobr>><</do>>

@@ -88,3 +88,5 @@ Your choices:
         <<replace "#answer">>Unfortunately, you weren't able to find anything.<</replace>>
     <</if>>
 <</link>>
+
+<div id="answer"></div>

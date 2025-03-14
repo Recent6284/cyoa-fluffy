@@ -67,25 +67,25 @@ Your choices:
 * <<link "Check the fence around the old assembly line">>
     <<set _luckyRoll to random(1, 20)>>
     <<if _luckyRoll >= 8>>
-        <<replace "#answer">>Wow, this was a success!<</replace>>
+        <<replace "#answer">>Wow, this was a success! (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
     <<else>>
-        <<replace "#answer">>Unfortunately, you weren't able to find anything.<</replace>>
+        <<replace "#answer">>Unfortunately, you weren't able to find anything. (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
     <</if>>
 <</link>>
 * <<link "Check around the union office">>
     <<set _luckyRoll to random(1, 20)>>
     <<if _luckyRoll >= 8>>
-        <<replace "#answer">>Wow, this was a success!<</replace>>
+        <<replace "#answer">>Wow, this was a success! (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
     <<else>>
-        <<replace "#answer">>Unfortunately, you weren't able to find anything.<</replace>>
+        <<replace "#answer">>Unfortunately, you weren't able to find anything. (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
     <</if>>
 <</link>>
 * <<link "Watch, wait and listen">>
     <<set _luckyRoll to random(1, 20)>>
     <<if _luckyRoll >= 8>>
-        <<replace "#answer">>Wow, this was a success!<</replace>>
+        <<replace "#answer">>Wow, this was a success! (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
     <<else>>
-        <<replace "#answer">>Unfortunately, you weren't able to find anything.<</replace>>
+        <<replace "#answer">>Unfortunately, you weren't able to find anything. (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
     <</if>>
 <</link>>
 <div id="answer"></div>

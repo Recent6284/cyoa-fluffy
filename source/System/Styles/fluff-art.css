@@ -59,13 +59,13 @@
 
 /* Special styling only when .fluffy is inside .tank */
 .tank .fluffy {
-  position: absolute;
+  position: absolute; /* Keep as absolute inside the tank */
   display: inline-block;
   transform-origin: center;
   bottom: 47px; /* Align with the top of tank-bottom */
   left: 50px;
   animation: gallop 30s ease-in-out infinite;
-  transform-origin: center;
+  margin-bottom: 0; /* Reset the margin */
 }
 
 /* Nametag */
@@ -100,12 +100,18 @@
   font-size: 1.2vh;
 }
 
+.right .fluffy {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
 .fluffy {
-  position: absolute;
+  position: relative; /* Change from absolute to relative */
   height: 100px;
   width: 185px;
   transform-origin: center;
   z-index: 3;
+  display: inline-block; /* Make it behave like a block element */
 }
 
 .horn-container {

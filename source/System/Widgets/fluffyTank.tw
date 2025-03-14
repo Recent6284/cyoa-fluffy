@@ -3,6 +3,7 @@
 <<widget "FluffTank">>
 <<capture _fluffyMane>>
 <<capture _fluffySkin>>
+<<capture _fluffyName>>
       <div class="tank">
         <div class="tank-outline">
           <div class="tank-bottom metal">
@@ -10,7 +11,7 @@
             <div class="nametag">
               <div class="nameinfo">
                 <ul>
-                  <li>Name: Apple</li>
+                  <li>$args[2] ($args[3])</li>
                 </ul>
               </div>
                 <div class="fluffy">
@@ -68,6 +69,7 @@
                 </div>
             </div>
           </div>
+<</capture>>
 <</capture>>
 <</capture>>
 <</widget>>

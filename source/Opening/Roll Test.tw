@@ -6,39 +6,56 @@
     <<lockFluffy>>
     <<redo>>
     <<set $currentFluffyIndex to $currentFluffyIndex + 1>>
-<</silent>>><</button>>
+<</silent>><</button>>
 
-<<do>>Name: <<if $fluffyName.length == 0 >>Roll first!<<else>>$fluffyName<</if>>
-Gender: <<if $fluffyGender.length == 0 >>Roll first!<<else>>$fluffyGender<</if>>
-Skin: <<if $fluffySkin.length == 0 >>Roll first!<<else>><<colorname $fluffySkin>><</if>>
-Mane: <<if $fluffyMane.length == 0 >>Roll first!<<else>><<colorname $fluffyMane>><</if>>
-Race: <<if $fluffyRace.length == 0 >>Roll first!<<else>>$fluffyRace<</if>>
+<<do>>
 <table class="shop"><thead>
   <tr>
-    <th>Stat Name</th>
-    <th>Statistic</th>
+    <th>Stat</th>
+    <th>Value</th>
   </tr></thead>
 <tbody>
   <tr>
+    <td>Name</td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyName>><</if>></td>
+  </tr>
+  <tr>
+    <td>Gender</td>
+    <td><<if $fluffyGender.length == 0 >>Roll first!<<else>><<print $fluffyGender>><</if>></td>
+  </tr>
+  <tr>
+    <td>Skin Color</td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<colorname $fluffySkin>><</if>></td>
+  </tr>
+  <tr>
+    <td>Mane Color</td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<colorname $fluffyMane>><</if>></td>
+  </tr>
+  <tr>
+    <td>Race</td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyRace>><</if>></td>
+  </tr>
+  <tr>
     <td>Obedience</td>
-    <td><<print $fluffyOb>></td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyOb>><</if>></td>
   </tr>
   <tr>
     <td>Impulsiveness</td>
-    <td><<print $fluffyIm>></td>
-  </tr>  <tr>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyIm>><</if>></td>
+  </tr>  
+  <tr>
     <td>Caution</td>
-    <td><<print $fluffyCa>></td>
-  </tr>  <tr>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyCa>><</if>></td>
+  </tr>
+  <tr>
     <td>Ignorance</td>
-    <td><<print $fluffyIg>></td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyIg>><</if>></td>
   </tr>
 </tbody>
 </table>
+@@.right;<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname>>@@
 
-<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname>>
-
-<<FluffTank $fluffySkin.colorname $fluffyMane.colorname>><</do>>
+<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace>><</do>>
 
 
 !! <<hovertip "This uses the above stats once rolled.">>Stat Check Test<</hovertip>>

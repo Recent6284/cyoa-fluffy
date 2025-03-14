@@ -435,13 +435,13 @@ p, h2, h3, h4, h5 {
 
 /* Special styling only when .fluffy is inside .tank */
 .tank .fluffy {
-  position: absolute;
+  position: absolute; /* Keep as absolute inside the tank */
   display: inline-block;
   transform-origin: center;
   bottom: 47px; /* Align with the top of tank-bottom */
   left: 50px;
   animation: gallop 30s ease-in-out infinite;
-  transform-origin: center;
+  margin-bottom: 0; /* Reset the margin */
 }
 
 /* Nametag */
@@ -476,12 +476,18 @@ p, h2, h3, h4, h5 {
   font-size: 1.2vh;
 }
 
+.right .fluffy {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
 .fluffy {
-  position: absolute;
+  position: relative; /* Change from absolute to relative */
   height: 100px;
   width: 185px;
   transform-origin: center;
   z-index: 3;
+  display: inline-block; /* Make it behave like a block element */
 }
 
 .horn-container {
@@ -1572,39 +1578,56 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;&lt;lockFluffy&gt;&gt;
     &lt;&lt;redo&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;
-&lt;&lt;/silent&gt;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;do&gt;&gt;Name: &lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyName&lt;&lt;/if&gt;&gt;
-Gender: &lt;&lt;if $fluffyGender.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyGender&lt;&lt;/if&gt;&gt;
-Skin: &lt;&lt;if $fluffySkin.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;colorname $fluffySkin&gt;&gt;&lt;&lt;/if&gt;&gt;
-Mane: &lt;&lt;if $fluffyMane.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;colorname $fluffyMane&gt;&gt;&lt;&lt;/if&gt;&gt;
-Race: &lt;&lt;if $fluffyRace.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;$fluffyRace&lt;&lt;/if&gt;&gt;
+&lt;&lt;do&gt;&gt;
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
-    &lt;th&gt;Stat Name&lt;/th&gt;
-    &lt;th&gt;Statistic&lt;/th&gt;
+    &lt;th&gt;Stat&lt;/th&gt;
+    &lt;th&gt;Value&lt;/th&gt;
   &lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
+    &lt;td&gt;Name&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyName&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Gender&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyGender.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyGender&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Skin Color&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;colorname $fluffySkin&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Mane Color&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;colorname $fluffyMane&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Race&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyRace&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
     &lt;td&gt;Obedience&lt;/td&gt;
-    &lt;td&gt;&lt;&lt;print $fluffyOb&gt;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyOb&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Impulsiveness&lt;/td&gt;
-    &lt;td&gt;&lt;&lt;print $fluffyIm&gt;&gt;&lt;/td&gt;
-  &lt;/tr&gt;  &lt;tr&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyIm&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;  
+  &lt;tr&gt;
     &lt;td&gt;Caution&lt;/td&gt;
-    &lt;td&gt;&lt;&lt;print $fluffyCa&gt;&gt;&lt;/td&gt;
-  &lt;/tr&gt;  &lt;tr&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyCa&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
     &lt;td&gt;Ignorance&lt;/td&gt;
-    &lt;td&gt;&lt;&lt;print $fluffyIg&gt;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyIg&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+@@.right;&lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;@@
 
-&lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;
-
-&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;&lt;&lt;/do&gt;&gt;
+&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace&gt;&gt;&lt;&lt;/do&gt;&gt;
 
 
 !! &lt;&lt;hovertip &quot;This uses the above stats once rolled.&quot;&gt;&gt;Stat Check Test&lt;&lt;/hovertip&gt;&gt;
@@ -2435,6 +2458,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 &lt;&lt;/widget&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Fluffy in Tank" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
 &lt;&lt;capture _fluffyMane&gt;&gt;
 &lt;&lt;capture _fluffySkin&gt;&gt;
+&lt;&lt;capture _fluffyName&gt;&gt;
       &lt;div class=&quot;tank&quot;&gt;
         &lt;div class=&quot;tank-outline&quot;&gt;
           &lt;div class=&quot;tank-bottom metal&quot;&gt;
@@ -2442,7 +2466,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;div class=&quot;nametag&quot;&gt;
               &lt;div class=&quot;nameinfo&quot;&gt;
                 &lt;ul&gt;
-                  &lt;li&gt;Name: Apple&lt;/li&gt;
+                  &lt;li&gt;$args[2] ($args[3])&lt;/li&gt;
                 &lt;/ul&gt;
               &lt;/div&gt;
                 &lt;div class=&quot;fluffy&quot;&gt;
@@ -2500,6 +2524,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
                 &lt;/div&gt;
             &lt;/div&gt;
           &lt;/div&gt;
+&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="inventory.strings" tags="" position="1225,600" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="51" name="New Fluffy" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;

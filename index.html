@@ -450,7 +450,7 @@ p, h2, h3, h4, h5 {
   display: flex;
   justify-content: flex-start; /* Align content to the left */
   align-items: center; /* Center items vertically */
-  width: 150px;
+  width: 200px;
   height: 60%;
   margin-left: 3%;
   background-color: white;
@@ -2012,6 +2012,10 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyRace&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
+    &lt;td&gt;Fertility&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyFertility&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
     &lt;td&gt;Obedience&lt;/td&gt;
     &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyOb&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
@@ -2030,8 +2034,8 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 &lt;/tbody&gt;
 &lt;/table&gt;
 @@.right;&lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;@@
-
-&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace&gt;&gt;&lt;&lt;/do&gt;&gt;
+&lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility&gt;&gt;&lt;&lt;/do&gt;&gt;
 
 &lt;&lt;do&gt;&gt;
 &lt;&lt;animatedroll &quot;Strength&quot; &quot;d20&quot; 10 15 2 4000&gt;&gt;
@@ -2402,6 +2406,7 @@ $(document).on(&quot;:passageend&quot;, function() {
 &lt;&lt;set $fluffyImpulsiveness = []&gt;&gt;
 &lt;&lt;set $fluffyCaution = []&gt;&gt;
 &lt;&lt;set $fluffyIgnorance = []&gt;&gt;
+&lt;&lt;set $fluffySterile = []&gt;&gt;
 
 /* Attribute Arrays */
 
@@ -2412,6 +2417,8 @@ $(document).on(&quot;:passageend&quot;, function() {
 &lt;&lt;set $randomNameFemale = [
     &quot;Rosebud&quot;,&quot;Daisy&quot;,&quot;Lilypad&quot;,&quot;Buttercup&quot;,&quot;Marigold&quot;,&quot;Petal&quot;,&quot;Blossom&quot;,&quot;Cherry&quot;,&quot;Peach&quot;,&quot;Berry&quot;,&quot;Honey&quot;,&quot;Sugar&quot;,&quot;Sparkle&quot;,&quot;Glimmer&quot;,&quot;Starflower&quot;,&quot;Moonbeam&quot;,&quot;Sunny&quot;,&quot;Skye&quot;,&quot;Raindrop&quot;,&quot;Dewdrop&quot;,&quot;Pearl&quot;,&quot;Coral&quot;,&quot;Sapphire&quot;,&quot;Ruby&quot;,&quot;Amber&quot;,&quot;Jade&quot;,&quot;Opal&quot;,&quot;Crystal&quot;,&quot;Velvet&quot;,&quot;Misty&quot;,&quot;Frosty&quot;,&quot;Snowflake&quot;,&quot;Cloudy&quot;,&quot;Breeze&quot;,&quot;Meadow&quot;,&quot;Willow&quot;,&quot;Clover&quot;,&quot;Tulip&quot;,&quot;Poppy&quot;,&quot;Lavender&quot;,&quot;Violet&quot;,&quot;Iris&quot;,&quot;Hazel&quot;,&quot;Maple&quot;,&quot;Autumn&quot;,&quot;Summer&quot;,&quot;Dawn&quot;,&quot;Twilight&quot;,&quot;Aurora&quot;,&quot;Starlight&quot;,&quot;Rosemary&quot;,&quot;Bluebell&quot;,&quot;Daffodil&quot;,&quot;Primrose&quot;,&quot;Sunflower&quot;,&quot;Cinnamon&quot;,&quot;Peppermint&quot;,&quot;Vanilla&quot;,&quot;Caramel&quot;,&quot;Toffee&quot;,&quot;Cupcake&quot;,&quot;Sprinkle&quot;,&quot;Glitter&quot;,&quot;Shimmer&quot;,&quot;Twinkle&quot;,&quot;Moonlight&quot;,&quot;Starshine&quot;,&quot;Sunbeam&quot;,&quot;Rainbow&quot;,&quot;Bubble&quot;,&quot;Feather&quot;,&quot;Swan&quot;,&quot;Dove&quot;,&quot;Robin&quot;,&quot;Wren&quot;,&quot;Sparrow&quot;,&quot;Lark&quot;,&quot;Finch&quot;,&quot;Nightingale&quot;,&quot;Canary&quot;,&quot;Marina&quot;,&quot;Seashell&quot;,&quot;Powder&quot;,&quot;Coraline&quot;,&quot;Aqua&quot;,&quot;Azure&quot;,&quot;Cerulean&quot;,&quot;Indigo&quot;,&quot;Lilac&quot;,&quot;Magnolia&quot;,&quot;Pansy&quot;,&quot;Dandelion&quot;,&quot;Cinnamon&quot;,&quot;Orchid&quot;,&quot;Peony&quot;,&quot;Tulip&quot;,&quot;Dahlia&quot;,&quot;Camellia&quot;,&quot;Aster&quot;,&quot;Snowdrop&quot;
 ]&gt;&gt;
+
+&lt;&lt;set $fertilityRoll =[ &quot;Sterile&quot;, &quot;Fertile&quot;, &quot;Neutered&quot;]&gt;&gt;
 
 &lt;&lt;set $randomRace = [
     { name: &quot;Earthie&quot;, weight: 4 },
@@ -2877,7 +2884,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;div class=&quot;nametag&quot;&gt;
               &lt;div class=&quot;nameinfo&quot;&gt;
                 &lt;ul&gt;
-                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Nameless :(&lt;&lt;else&gt;&gt;$args[2] ($args[3])&lt;&lt;/if&gt;&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Nameless :(&lt;&lt;else&gt;&gt;$args[2] ($args[3]) - $args[4]&lt;&lt;/if&gt;&gt;&lt;/li&gt;
                 &lt;/ul&gt;
               &lt;/div&gt;
                 &lt;div class=&quot;fluffy&quot;&gt;
@@ -2949,6 +2956,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;&lt;set _name = $randomNameFemale.random()&gt;&gt;
     &lt;&lt;set _pronounIndex = 1&gt;&gt;
   &lt;&lt;/if&gt;&gt;
+  &lt;&lt;set _fertility = $fertilityRoll.random()&gt;&gt;
   &lt;&lt;set _race = weightedRandom($randomRace).name&gt;&gt; &lt;!-- Use weightedRandom for race --&gt;
   &lt;&lt;set _obedience = random(1, 9)&gt;&gt; &lt;!-- Random value between 1 and 9 for obedience --&gt;
   &lt;&lt;set _impulsiveness = 10 - _obedience&gt;&gt; &lt;!-- Impulsiveness is 10 minus obedience --&gt;
@@ -2965,7 +2973,8 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     ob: _obedience,
     im: _impulsiveness,
     ca: _caution,
-    ig: _ignorance
+    ig: _ignorance,
+    fertility: _fertility
   }&gt;&gt;
 
   &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt;

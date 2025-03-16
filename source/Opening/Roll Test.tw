@@ -36,6 +36,10 @@
     <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyRace>><</if>></td>
   </tr>
   <tr>
+    <td>Fertility</td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyFertility>><</if>></td>
+  </tr>
+  <tr>
     <td>Obedience</td>
     <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyOb>><</if>></td>
   </tr>
@@ -54,8 +58,8 @@
 </tbody>
 </table>
 @@.right;<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname>>@@
-
-<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace>><</do>>
+<<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
+<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility>><</do>>
 
 <<do>>
 <<animatedroll "Strength" "d20" 10 15 2 4000>>

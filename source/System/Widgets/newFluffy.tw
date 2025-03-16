@@ -11,6 +11,7 @@
     <<set _name = $randomNameFemale.random()>>
     <<set _pronounIndex = 1>>
   <</if>>
+  <<set _fertility = $fertilityRoll.random()>>
   <<set _race = weightedRandom($randomRace).name>> <!-- Use weightedRandom for race -->
   <<set _obedience = random(1, 9)>> <!-- Random value between 1 and 9 for obedience -->
   <<set _impulsiveness = 10 - _obedience>> <!-- Impulsiveness is 10 minus obedience -->
@@ -27,7 +28,8 @@
     ob: _obedience,
     im: _impulsiveness,
     ca: _caution,
-    ig: _ignorance
+    ig: _ignorance,
+    fertility: _fertility
   }>>
 
   <<run $fluffies.push(_fluffy)>>

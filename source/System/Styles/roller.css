@@ -1,0 +1,27 @@
+.animated-roll-stat, .dice-roll-stat {
+    display: inline;
+}
+
+.stat-name {
+    font-weight: bold;
+}
+
+.stat-value {
+    font-weight: normal;
+    transition: color 0.2s ease-in-out;
+}
+
+.stat-value.animating {
+    color: white;
+    font-weight: normal;
+}
+
+.stat-value.success {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.stat-value.failure {
+    color: #f44336;
+    font-weight: bold;
+}

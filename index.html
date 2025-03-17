@@ -109,18 +109,6 @@ body {
  background-color: #121212;
 }
 
-#fluffy {
-	  position: relative;
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  transform-origin: top left;
-  line-height: 1;
-  vertical-align: middle;
-}
-
 a.explainer {
   text-decoration: none;
   color: orange;
@@ -347,9 +335,27 @@ p, h2, h3, h4, h5 {
 	z-index: 1000;      /* Ensure it's above other content */
 }
 /* twine-user-stylesheet #2: "SVG.css" */
-#SVGleg1, #SVGleg2, #SVGleg3, #SVGleg4 {
-    fill: "'_SVGfluffySkin'";
-}
+/* SVG fluffy styling */
+.fluffy-svg {
+    display: inline-block;
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+  
+  /* Make SVG more responsive */
+  .fluffy-svg svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 180px;         /* Match viewBox width */
+  }
+  
+  /* Better scale transform handling */
+  #fluffy {
+    transform-origin: top left;
+    display: inline-block;
+    margin: 0 auto;
+  }
 /* twine-user-stylesheet #3: "clouds.css" */
 cloud-body {
     display: flex;
@@ -604,29 +610,27 @@ div.ray8 {
 
 .tank {
   height: 300px;
-  width: 500px;
+  width: 100%;              /* Responsive width */
+  max-width: 500px;         /* Maximum width */
+  margin: 1rem auto;        /* Center with spacing */
   background-color: #1b1b1b;
+  position: relative;       /* Create stacking context */
+  overflow: hidden;         /* Contain animated elements */
 }
 .tank-outline {
   position: relative;
   width: 95%;
   height: 95%;
-  margin: auto;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background-color:dodgerblue;
-  border: 2px solid white;
-  z-index:0;
+  margin: auto;             /* Center properly */
+  top: 2.5%;                /* Better vertical centering */
 }
-.tank-bottom{
+.tank-bottom {
   position: absolute;
   height: 50px;
-  width: 475px;
-  bottom: 0px;
-  background-color: #1b1b1b;
-  z-index:2;
-  display:flex;
+  width: 95%;               /* Match parent width % */
+  left: 2.5%;               /* Center horizontally */
+  bottom: 0;
+  display: flex;
   justify-content: left;
   align-items: center;
 }
@@ -661,13 +665,11 @@ div.ray8 {
 
 /* Special styling only when .fluffy is inside .tank */
 .tank .fluffy {
-  position: absolute; /* Keep as absolute inside the tank */
-  display: inline-block;
-  transform-origin: center;
-  bottom: 47px; /* Align with the top of tank-bottom */
+  position: absolute;
+  bottom: 47px;
   left: 50px;
-  animation: gallop 30s ease-in-out infinite;
-  margin-bottom: 0; /* Reset the margin */
+  margin: 0;                /* Reset margins inside tank */
+  z-index: 5;               /* Ensure above other elements */
 }
 
 /* Nametag */
@@ -706,15 +708,21 @@ div.ray8 {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   transform-origin: center;
+  max-width: 100%;          /* Ensure it doesn't exceed container width */
+  overflow: visible;        /* Allow the fluffy to be visible */
+  margin: 0 auto;           /* Center within container */
+  position: relative;       /* Establish positioning context */
+  display: inline-block;    /* Maintain inline flow */
 }
 
+
 .fluffy {
-  position: relative; /* Change from absolute to relative */
-  height: 100px;
-  width: 185px;
-  transform-origin: center;
+  position: relative;       /* Change from absolute */
+  height: auto;             /* Allow natural height */
+  width: 185px;             /* Keep width consistent */
+  margin: 0 auto;           /* Center in container */
   z-index: 3;
-  display: inline-block; /* Make it behave like a block element */
+  transform-origin: center; /* Better scaling behavior */
 }
 
 .horn-container {
@@ -809,6 +817,10 @@ div.ray8 {
   left:80px;
 }
 
+.head-container, .body-container, .horn-container, .wings-container {
+  position: absolute;
+  transform: translateZ(0); /* Helps with rendering */
+}
 
 .head-container {
 	position:absolute;
@@ -1056,7 +1068,11 @@ div.ray8 {
     left: 0;
     transform: scaleX(-1) translateY(0);
   }
+  from, to {
+    transform-style: preserve-3d;
+  }
 }
+
 
 /* Food Bowl */
 
@@ -1067,7 +1083,31 @@ div.ray8 {
   /* Smoother arc for the top curve */
   clip-path: path('M60,0 Q150,30 240,0 L300,100 L0,100 Z');
 }
-/* twine-user-stylesheet #6: "roller.css" */
+/* twine-user-stylesheet #6: "fluffy-common.css" */
+/* Base fluffy styling for all types */
+.fluffy-component {
+    display: inline-block;
+    margin: 1rem 0;           /* Consistent vertical spacing */
+    vertical-align: middle;
+    position: relative;
+    box-sizing: border-box;   /* More predictable sizing */
+    max-width: 100%;          /* Prevent overflow */
+    clear: both;              /* Prevent wrapping issues */
+  }
+  
+  /* Direction control - keeps this in common file */
+  .right .fluffy {
+    transform: scaleX(-1);
+    transform-origin: center;
+  }
+  
+  /* Better container sizing */
+  .fluffy-wrapper {
+    overflow: hidden;         /* Contains transforms */
+    padding: 0.5rem;          /* Breathing room */
+    border-radius: 0.25rem;   /* Optional: nicer appearance */
+  }
+/* twine-user-stylesheet #7: "roller.css" */
 .animated-roll-stat, .dice-roll-stat {
     display: inline;
 }
@@ -1095,7 +1135,7 @@ div.ray8 {
     color: #f44336;
     font-weight: bold;
 }
-/* twine-user-stylesheet #7: "sc-icons.css" */
+/* twine-user-stylesheet #8: "sc-icons.css" */
 /* SugarCube's built-in Font Awesome icons - Start */
 .sc-fa {
 	font-family: sc-icons;
@@ -1480,7 +1520,7 @@ div.ray8 {
 	content: "\f028";
 }
 /* SugarCube's built-in Font Awesome icons - End */
-/* twine-user-stylesheet #8: "simple-inventory.css" */
+/* twine-user-stylesheet #9: "simple-inventory.css" */
 /* Simple Inventory, for SugarCube 2, by Chapel
 v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26 */
 ul.simple-inventory-list {
@@ -2270,13 +2310,14 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-@@.right;&lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname &quot;3&quot;&gt;&gt;@@
+&lt;&lt;/do&gt;&gt;
+&lt;&lt;do tag &quot;upper&quot;&gt;&gt;
+&lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname &quot;3&quot;&gt;&gt;
 &lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility&gt;&gt;
-
 &lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2&gt;&gt;&lt;&lt;/do&gt;&gt;
 
-&lt;&lt;do&gt;&gt;&lt;&lt;animatedroll &quot;Strength&quot; &quot;d20&quot; 10 15 2 4000&gt;&gt;&lt;&lt;/do&gt;&gt;
+&lt;&lt;animatedroll &quot;Strength&quot; &quot;d20&quot; 10 15 2 4000&gt;&gt;
 
 Arguments: (stat name, dice type, [stat value], [goal], [bonus], [duration])
 
@@ -3093,11 +3134,12 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;/div&gt;
     &lt;/div&gt;
     &lt;/cloud-body&gt;
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="ColorName" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="FluffyCSS" tags="widget" position="1225,600" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;widget &quot;FluffyArt&quot;&gt;&gt;
-  &lt;&lt;set _scale to _args[2] || 1&gt;&gt; &lt;!-- Default scale is 1 if not provided --&gt;
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="ColorName" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="FluffyCSS" tags="widget nobr" position="1225,600" size="100,100">&lt;&lt;widget &quot;FluffyArt&quot;&gt;&gt;
+  &lt;&lt;set _scale to _args[2] || 1&gt;&gt;
   &lt;&lt;set _width to _args[3] || &quot;auto&quot;&gt;&gt; &lt;!-- Optional explicit width --&gt;
   &lt;&lt;set _height to _args[4] || &quot;auto&quot;&gt;&gt; &lt;!-- Optional explicit height --&gt;
-  &lt;div class=&quot;fluffy&quot; style=&quot;transform: scale(&lt;&lt;print _scale&gt;&gt;); transform-origin: top left; width: &lt;&lt;print _width&gt;&gt;; height: &lt;&lt;print _height&gt;&gt;;&quot;&gt;
+&lt;div class=&quot;fluffy-component fluffy-wrapper&quot;&gt;
+  &lt;div class=&quot;fluffy&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;);&#39;&quot;&gt;
     &lt;&lt;if $fluffyRace is &quot;Unicorn&quot;&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
       &lt;&lt;elseif $fluffyRace is &quot;Alicorn&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
       &lt;&lt;elseif $fluffyRace is &quot;Pegasus&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;
@@ -3148,171 +3190,14 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;div class=&quot;belly&quot;&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
   &lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Fluffy in Tank" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
-&lt;&lt;capture _fluffyMane&gt;&gt;
-&lt;&lt;capture _fluffySkin&gt;&gt;
-&lt;&lt;capture _fluffyName&gt;&gt;
-      &lt;div class=&quot;tank&quot;&gt;
-        &lt;div class=&quot;tank-outline&quot;&gt;
-          &lt;&lt;clouds&gt;&gt;
-            &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;
-                &lt;svg width=&quot;70&quot; height=&quot;20&quot;&gt;
-                &lt;path stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;deeppink&quot; d=&quot;M10,0 Q35,4 60,0 L70,20 L0,20, L10,0 &quot; /&gt;
-                &lt;g stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M69,18 L1,18&quot; /&gt;&lt;path d=&quot;M9,2 Q35,6 61,2&quot; /&gt;
-              &lt;/g&gt;
-            &lt;/svg&gt;
-            &lt;/div&gt;
-          &lt;div class=&quot;tank-bottom metal&quot;&gt;
-            &lt;div class=&quot;tank-grass&quot;&gt;&lt;/div&gt;
-            &lt;div class=&quot;nametag&quot;&gt;
-              &lt;div class=&quot;nameinfo&quot;&gt;
-                &lt;ul&gt;
-                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Nameless :(&lt;&lt;else&gt;&gt;$args[2] ($args[3]) - $args[4]&lt;&lt;/if&gt;&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/div&gt;
-                &lt;div class=&quot;fluffy&quot;&gt;
-                &lt;&lt;if $fluffyRace is &quot;Unicorn&quot;&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
-                &lt;&lt;elseif $fluffyRace is &quot;Alicorn&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
-                &lt;&lt;elseif $fluffyRace is &quot;Pegasus&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;
-                &lt;&lt;else&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;
-                &lt;&lt;/if&gt;&gt;
-                &lt;!-- Horn --&gt;
-                &lt;div class=&quot;horn-container&quot; @style=&#39;_hornhide&#39;&gt;
-                &lt;div class=&quot;horn&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;horn-shadow&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;!-- Wings --&gt;
-                &lt;div class=&quot;wings-container&quot; @style=&#39;_wingshide&#39;&gt;
-                &lt;div class=&quot;line line-1&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;line line-2&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;line line-3&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;wings-border&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;wings&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;!-- Head --&gt;
-                &lt;div class=&quot;head-container&quot;&gt;
-                &lt;div class=&quot;mane1&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;mane2&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;head&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;
-                &lt;div class=&quot;eye1&quot;&gt;
-                &lt;div class=&quot;pupil1&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;eye2&quot;&gt;
-                &lt;div class=&quot;pupil2&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;snout-container&quot;&gt;
-                &lt;div class=&quot;snout&quot;&gt;
-                &lt;div class=&quot;smile&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;!-- Body --&gt;
-                &lt;div class=&quot;body-container&quot;&gt;
-                &lt;div class=&quot;fluffbody&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;
-                &lt;div class=&quot;leg leg1&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;foot foot1&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;leg leg2&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;foot foot2&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;leg leg3&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;foot foot3&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;leg leg4&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;foot foot4&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;belly&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-&lt;&lt;/capture&gt;&gt;
-&lt;&lt;/capture&gt;&gt;
-&lt;&lt;/capture&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="inventory.strings" tags="" position="225,725" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="53" name="New Fluffy" tags="widget nobr" position="350,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
-  &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
-  &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
-  &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;
-  &lt;&lt;if _gender is &quot;Male&quot;&gt;&gt;
-    &lt;&lt;set _name = $randomNameMale.random()&gt;&gt;
-    &lt;&lt;set _pronounIndex = 0&gt;&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set _name = $randomNameFemale.random()&gt;&gt;
-    &lt;&lt;set _pronounIndex = 1&gt;&gt;
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;set _fertility = $fertilityRoll.random()&gt;&gt;
-  &lt;&lt;set _race = weightedRandom($randomRace).name&gt;&gt; &lt;!-- Use weightedRandom for race --&gt;
-  &lt;&lt;set _obedience = random(1, 9)&gt;&gt; &lt;!-- Random value between 1 and 9 for obedience --&gt;
-  &lt;&lt;set _impulsiveness = 10 - _obedience&gt;&gt; &lt;!-- Impulsiveness is 10 minus obedience --&gt;
-  &lt;&lt;set _caution = random(1, 9)&gt;&gt; &lt;!-- Random value between 1 and 9 for caution --&gt;
-  &lt;&lt;set _ignorance = 10 - _caution&gt;&gt; &lt;!-- Ignorance is 10 minus caution --&gt;
-
-  &lt;&lt;set _fluffy = {
-    name: _name,
-    mane: _mane,
-    skin: _skin,
-    gender: _gender,
-    pronounIndex: _pronounIndex,
-    race: _race,
-    ob: _obedience,
-    im: _impulsiveness,
-    ca: _caution,
-    ig: _ignorance,
-    fertility: _fertility
-  }&gt;&gt;
-
-  &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="RefreshSidebar" tags="widget nobr" position="475,725" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
-    &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="Roll" tags="widget" position="600,725" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
-  &lt;&lt;capture _stat&gt;&gt;
-  &lt;&lt;if _stat === &quot;ob&quot;&gt;&gt;
-    &lt;&lt;set _bonus = Math.floor(($fluffyOb - $fluffyIm) /2 )&gt;&gt; &lt;!-- Obedience - Impulsiveness --&gt;
-  &lt;&lt;elseif _stat === &quot;im&quot;&gt;&gt;
-    &lt;&lt;set _bonus = Math.floor(($fluffyIm - $fluffyOb) /2 )&gt;&gt; &lt;!-- Impulsiveness - Obedience --&gt;
-  &lt;&lt;elseif _stat === &quot;ca&quot;&gt;&gt;
-    &lt;&lt;set _bonus = Math.floor(($fluffyCa - $fluffyIg) /2 )&gt;&gt; &lt;!-- Caution - Ignorance --&gt;
-  &lt;&lt;elseif _stat === &quot;ig&quot;&gt;&gt;
-    &lt;&lt;set _bonus = Math.floor(($fluffyIg - $fluffyCa) /2 )&gt;&gt; &lt;!-- Ignorance - Caution --&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set _bonus = 0&gt;&gt; &lt;!-- Default bonus if the stat is invalid --&gt;
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;/capture&gt;&gt;
-&lt;&lt;/widget&gt;&gt;
-
-&lt;&lt;widget &quot;roll&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
-
-  &lt;&lt;set _stat = $args[0]&gt;&gt; &lt;!-- Primary stat (e.g., &quot;ob&quot;, &quot;im&quot;, &quot;ca&quot;, &quot;ig&quot;) --&gt;
-  &lt;&lt;set _tempVarName = $args[1]&gt;&gt; &lt;!-- Name of the temporary variable to store the result --&gt;
-  &lt;&lt;set _goalExpression = $args[2]&gt;&gt; &lt;!-- Dynamic goal expression (e.g., &quot;1 + $variable&quot;) --&gt;
-
-  &lt;&lt;set _goal = eval(_goalExpression)&gt;&gt; &lt;!-- Evaluate the goal expression --&gt;
-  &lt;&lt;print &quot;Evaluated Goal: &quot; + _goal&gt;&gt; &lt;!-- Debug: Print the evaluated goal --&gt;
-
-  &lt;&lt;set _roll = random(1, 20)&gt;&gt; &lt;!-- Roll a d20 --&gt;
-  &lt;&lt;calcBonus _stat&gt;&gt; &lt;!-- Call the widget using macro syntax --&gt;
-  &lt;&lt;capture _bonus&gt;&gt;
-    &lt;&lt;print &quot;Captured Bonus: &quot; + _bonus&gt;&gt; &lt;!-- Debug: Print the captured bonus --&gt;
-  &lt;&lt;set _total = _roll + _bonus&gt;&gt; &lt;!-- Add the bonus to the roll --&gt;
-  &lt;&lt;/capture&gt;&gt;
-  &lt;&lt;if _roll === 20&gt;&gt;
-    &lt;&lt;set _result = &quot;criticalpass&quot;&gt;&gt; &lt;!-- Natural 20 is always a critical pass --&gt;
-  &lt;&lt;elseif _roll === 1&gt;&gt;
-    &lt;&lt;set _criticalFail = random(1, 20)&gt;&gt;&lt;&lt;if _criticalFail === 1&gt;&gt;
-    &lt;&lt;set _result = &quot;criticalfail&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _result = &quot;fail&quot;&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;!-- Natural 1 is always a critical fail --&gt;
-  &lt;&lt;elseif _total &gt;= _goal&gt;&gt; &lt;!-- Use the dynamic goal for pass/fail --&gt;
-    &lt;&lt;set _result = &quot;pass&quot;&gt;&gt; &lt;!-- Total meets or exceeds the goal --&gt;
-  &lt;&lt;else&gt;&gt;
-    &lt;&lt;set _result = &quot;fail&quot;&gt;&gt; &lt;!-- Total is below the goal --&gt;
-  &lt;&lt;/if&gt;&gt;
-
-  &lt;&lt;run State.setVar(_tempVarName, _result)&gt;&gt; &lt;!-- Store the result in the specified temporary variable --&gt;
-&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="Fluffy SVG" tags="widget nobr" position="725,725" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;
+&lt;/div&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Fluffy SVG" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;
 &lt;&lt;set _SVGfluffySkin to _args[0] || &quot;red&quot;&gt;&gt;
 &lt;&lt;set _SVGfluffyMane to _args[1] || &quot;blue&quot;&gt;&gt;
 &lt;&lt;set _SVGfluffyName to _args[2] || &quot;Unnamed&quot;&gt;&gt;
 &lt;&lt;set _SVGfluffyRace to _args[3] || &quot;Earthie&quot;&gt;&gt;
+&lt;&lt;set _scale to _args[4] || 1&gt;&gt;
 
 &lt;&lt;set _earthieSVG to `
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
@@ -3534,8 +3419,9 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 
 &lt;&lt;set _scale to _args[4] || 1&gt;&gt; &lt;!-- Default scale factor of 1 --&gt;
 
-&lt;div id=&quot;fluffy&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;); transform-origin: top left;&#39;&quot;&gt;
-&lt;div id=&quot;SVGfluffy-container&quot;&gt;
+&lt;div class=&quot;fluffy-component fluffy-svg&quot;&gt;
+  &lt;div id=&quot;fluffy&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;);&#39;&quot;&gt;
+
   &lt;&lt;if _SVGfluffyRace is &quot;Earthie&quot;&gt;&gt;
     &lt;&lt;print _earthieSVG&gt;&gt;
   &lt;&lt;elseif _SVGfluffyRace is &quot;Unicorn&quot;&gt;&gt;
@@ -3547,8 +3433,163 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;&lt;else&gt;&gt;
     &lt;&lt;print _earthieSVG&gt;&gt;
   &lt;&lt;/if&gt;&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="Test Widget SVG" tags="widget" position="850,725" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Fluffy in Tank" tags="widget nobr" position="225,725" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
+&lt;div class=&quot;fluffy-component tank-wrapper&quot;&gt;
+  &lt;div class=&quot;tank&quot;&gt;
+        &lt;div class=&quot;tank-outline&quot;&gt;
+          &lt;&lt;clouds&gt;&gt;
+            &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;
+                &lt;svg width=&quot;70&quot; height=&quot;20&quot;&gt;
+                &lt;path stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;deeppink&quot; d=&quot;M10,0 Q35,4 60,0 L70,20 L0,20, L10,0 &quot; /&gt;
+                &lt;g stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M69,18 L1,18&quot; /&gt;&lt;path d=&quot;M9,2 Q35,6 61,2&quot; /&gt;
+              &lt;/g&gt;
+            &lt;/svg&gt;
+            &lt;/div&gt;
+          &lt;div class=&quot;tank-bottom metal&quot;&gt;
+            &lt;div class=&quot;tank-grass&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;nametag&quot;&gt;
+              &lt;div class=&quot;nameinfo&quot;&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Nameless :(&lt;&lt;else&gt;&gt;$args[2] ($args[3]) - $args[4]&lt;&lt;/if&gt;&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+                &lt;div class=&quot;fluffy&quot;&gt;
+                &lt;&lt;if $fluffyRace is &quot;Unicorn&quot;&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
+                &lt;&lt;elseif $fluffyRace is &quot;Alicorn&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
+                &lt;&lt;elseif $fluffyRace is &quot;Pegasus&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;
+                &lt;&lt;else&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;
+                &lt;&lt;/if&gt;&gt;
+                &lt;!-- Horn --&gt;
+                &lt;div class=&quot;horn-container&quot; @style=&#39;_hornhide&#39;&gt;
+                &lt;div class=&quot;horn&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;horn-shadow&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- Wings --&gt;
+                &lt;div class=&quot;wings-container&quot; @style=&#39;_wingshide&#39;&gt;
+                &lt;div class=&quot;line line-1&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;line line-2&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;line line-3&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;wings-border&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;wings&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- Head --&gt;
+                &lt;div class=&quot;head-container&quot;&gt;
+                &lt;div class=&quot;mane1&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;mane2&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;head&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;
+                &lt;div class=&quot;eye1&quot;&gt;
+                &lt;div class=&quot;pupil1&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;eye2&quot;&gt;
+                &lt;div class=&quot;pupil2&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;snout-container&quot;&gt;
+                &lt;div class=&quot;snout&quot;&gt;
+                &lt;div class=&quot;smile&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- Body --&gt;
+                &lt;div class=&quot;body-container&quot;&gt;
+                &lt;div class=&quot;fluffbody&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;
+                &lt;div class=&quot;leg leg1&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;foot foot1&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;leg leg2&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;foot foot2&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;leg leg3&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;foot foot3&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;leg leg4&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;foot foot4&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;belly&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="inventory.strings" tags="" position="350,725" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="54" name="New Fluffy" tags="widget nobr" position="475,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
+  &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
+  &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
+  &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;
+  &lt;&lt;if _gender is &quot;Male&quot;&gt;&gt;
+    &lt;&lt;set _name = $randomNameMale.random()&gt;&gt;
+    &lt;&lt;set _pronounIndex = 0&gt;&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;set _name = $randomNameFemale.random()&gt;&gt;
+    &lt;&lt;set _pronounIndex = 1&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;set _fertility = $fertilityRoll.random()&gt;&gt;
+  &lt;&lt;set _race = weightedRandom($randomRace).name&gt;&gt; &lt;!-- Use weightedRandom for race --&gt;
+  &lt;&lt;set _obedience = random(1, 9)&gt;&gt; &lt;!-- Random value between 1 and 9 for obedience --&gt;
+  &lt;&lt;set _impulsiveness = 10 - _obedience&gt;&gt; &lt;!-- Impulsiveness is 10 minus obedience --&gt;
+  &lt;&lt;set _caution = random(1, 9)&gt;&gt; &lt;!-- Random value between 1 and 9 for caution --&gt;
+  &lt;&lt;set _ignorance = 10 - _caution&gt;&gt; &lt;!-- Ignorance is 10 minus caution --&gt;
+
+  &lt;&lt;set _fluffy = {
+    name: _name,
+    mane: _mane,
+    skin: _skin,
+    gender: _gender,
+    pronounIndex: _pronounIndex,
+    race: _race,
+    ob: _obedience,
+    im: _impulsiveness,
+    ca: _caution,
+    ig: _ignorance,
+    fertility: _fertility
+  }&gt;&gt;
+
+  &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="RefreshSidebar" tags="widget nobr" position="600,725" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
+    &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="Roll" tags="widget" position="725,725" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
+  &lt;&lt;capture _stat&gt;&gt;
+  &lt;&lt;if _stat === &quot;ob&quot;&gt;&gt;
+    &lt;&lt;set _bonus = Math.floor(($fluffyOb - $fluffyIm) /2 )&gt;&gt; &lt;!-- Obedience - Impulsiveness --&gt;
+  &lt;&lt;elseif _stat === &quot;im&quot;&gt;&gt;
+    &lt;&lt;set _bonus = Math.floor(($fluffyIm - $fluffyOb) /2 )&gt;&gt; &lt;!-- Impulsiveness - Obedience --&gt;
+  &lt;&lt;elseif _stat === &quot;ca&quot;&gt;&gt;
+    &lt;&lt;set _bonus = Math.floor(($fluffyCa - $fluffyIg) /2 )&gt;&gt; &lt;!-- Caution - Ignorance --&gt;
+  &lt;&lt;elseif _stat === &quot;ig&quot;&gt;&gt;
+    &lt;&lt;set _bonus = Math.floor(($fluffyIg - $fluffyCa) /2 )&gt;&gt; &lt;!-- Ignorance - Caution --&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;set _bonus = 0&gt;&gt; &lt;!-- Default bonus if the stat is invalid --&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;/capture&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;roll&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
+
+  &lt;&lt;set _stat = $args[0]&gt;&gt; &lt;!-- Primary stat (e.g., &quot;ob&quot;, &quot;im&quot;, &quot;ca&quot;, &quot;ig&quot;) --&gt;
+  &lt;&lt;set _tempVarName = $args[1]&gt;&gt; &lt;!-- Name of the temporary variable to store the result --&gt;
+  &lt;&lt;set _goalExpression = $args[2]&gt;&gt; &lt;!-- Dynamic goal expression (e.g., &quot;1 + $variable&quot;) --&gt;
+
+  &lt;&lt;set _goal = eval(_goalExpression)&gt;&gt; &lt;!-- Evaluate the goal expression --&gt;
+  &lt;&lt;print &quot;Evaluated Goal: &quot; + _goal&gt;&gt; &lt;!-- Debug: Print the evaluated goal --&gt;
+
+  &lt;&lt;set _roll = random(1, 20)&gt;&gt; &lt;!-- Roll a d20 --&gt;
+  &lt;&lt;calcBonus _stat&gt;&gt; &lt;!-- Call the widget using macro syntax --&gt;
+  &lt;&lt;capture _bonus&gt;&gt;
+    &lt;&lt;print &quot;Captured Bonus: &quot; + _bonus&gt;&gt; &lt;!-- Debug: Print the captured bonus --&gt;
+  &lt;&lt;set _total = _roll + _bonus&gt;&gt; &lt;!-- Add the bonus to the roll --&gt;
+  &lt;&lt;/capture&gt;&gt;
+  &lt;&lt;if _roll === 20&gt;&gt;
+    &lt;&lt;set _result = &quot;criticalpass&quot;&gt;&gt; &lt;!-- Natural 20 is always a critical pass --&gt;
+  &lt;&lt;elseif _roll === 1&gt;&gt;
+    &lt;&lt;set _criticalFail = random(1, 20)&gt;&gt;&lt;&lt;if _criticalFail === 1&gt;&gt;
+    &lt;&lt;set _result = &quot;criticalfail&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _result = &quot;fail&quot;&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;!-- Natural 1 is always a critical fail --&gt;
+  &lt;&lt;elseif _total &gt;= _goal&gt;&gt; &lt;!-- Use the dynamic goal for pass/fail --&gt;
+    &lt;&lt;set _result = &quot;pass&quot;&gt;&gt; &lt;!-- Total meets or exceeds the goal --&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;set _result = &quot;fail&quot;&gt;&gt; &lt;!-- Total is below the goal --&gt;
+  &lt;&lt;/if&gt;&gt;
+
+  &lt;&lt;run State.setVar(_tempVarName, _result)&gt;&gt; &lt;!-- Store the result in the specified temporary variable --&gt;
+&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="Test Widget SVG" tags="widget" position="850,725" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
 &lt;&lt;set _fill to &quot;blue&quot;&gt;&gt;
 &lt;&lt;= &#39;&lt;svg viewBox=&quot;0 0 10 10&quot; height=&quot;120px&quot; width=&quot;120px&quot; fill=&quot;&#39; + _fill + &#39;&quot;&gt;&lt;circle cx=&quot;5&quot; cy=&quot;5&quot; r=&quot;4&quot; /&gt;&lt;/svg&gt;&#39;&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>

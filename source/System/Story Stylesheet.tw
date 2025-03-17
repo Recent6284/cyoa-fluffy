@@ -4,18 +4,6 @@ body {
  background-color: #121212;
 }
 
-#fluffy {
-	  position: relative;
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  transform-origin: top left;
-  line-height: 1;
-  vertical-align: middle;
-}
-
 a.explainer {
   text-decoration: none;
   color: orange;

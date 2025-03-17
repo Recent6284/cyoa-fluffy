@@ -1,3 +1,21 @@
-#SVGleg1, #SVGleg2, #SVGleg3, #SVGleg4 {
-    fill: "'_SVGfluffySkin'";
-}
+/* SVG fluffy styling */
+.fluffy-svg {
+    display: inline-block;
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+  
+  /* Make SVG more responsive */
+  .fluffy-svg svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 180px;         /* Match viewBox width */
+  }
+  
+  /* Better scale transform handling */
+  #fluffy {
+    transform-origin: top left;
+    display: inline-block;
+    margin: 0 auto;
+  }

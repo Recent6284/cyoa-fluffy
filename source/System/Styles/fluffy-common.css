@@ -1,0 +1,23 @@
+/* Base fluffy styling for all types */
+.fluffy-component {
+    display: inline-block;
+    margin: 1rem 0;           /* Consistent vertical spacing */
+    vertical-align: middle;
+    position: relative;
+    box-sizing: border-box;   /* More predictable sizing */
+    max-width: 100%;          /* Prevent overflow */
+    clear: both;              /* Prevent wrapping issues */
+  }
+  
+  /* Direction control - keeps this in common file */
+  .right .fluffy {
+    transform: scaleX(-1);
+    transform-origin: center;
+  }
+  
+  /* Better container sizing */
+  .fluffy-wrapper {
+    overflow: hidden;         /* Contains transforms */
+    padding: 0.5rem;          /* Breathing room */
+    border-radius: 0.25rem;   /* Optional: nicer appearance */
+  }

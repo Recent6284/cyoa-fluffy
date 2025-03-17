@@ -2,29 +2,27 @@
 
 .tank {
   height: 300px;
-  width: 500px;
+  width: 100%;              /* Responsive width */
+  max-width: 500px;         /* Maximum width */
+  margin: 1rem auto;        /* Center with spacing */
   background-color: #1b1b1b;
+  position: relative;       /* Create stacking context */
+  overflow: hidden;         /* Contain animated elements */
 }
 .tank-outline {
   position: relative;
   width: 95%;
   height: 95%;
-  margin: auto;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background-color:dodgerblue;
-  border: 2px solid white;
-  z-index:0;
+  margin: auto;             /* Center properly */
+  top: 2.5%;                /* Better vertical centering */
 }
-.tank-bottom{
+.tank-bottom {
   position: absolute;
   height: 50px;
-  width: 475px;
-  bottom: 0px;
-  background-color: #1b1b1b;
-  z-index:2;
-  display:flex;
+  width: 95%;               /* Match parent width % */
+  left: 2.5%;               /* Center horizontally */
+  bottom: 0;
+  display: flex;
   justify-content: left;
   align-items: center;
 }
@@ -59,13 +57,11 @@
 
 /* Special styling only when .fluffy is inside .tank */
 .tank .fluffy {
-  position: absolute; /* Keep as absolute inside the tank */
-  display: inline-block;
-  transform-origin: center;
-  bottom: 47px; /* Align with the top of tank-bottom */
+  position: absolute;
+  bottom: 47px;
   left: 50px;
-  animation: gallop 30s ease-in-out infinite;
-  margin-bottom: 0; /* Reset the margin */
+  margin: 0;                /* Reset margins inside tank */
+  z-index: 5;               /* Ensure above other elements */
 }
 
 /* Nametag */
@@ -104,15 +100,21 @@
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   transform-origin: center;
+  max-width: 100%;          /* Ensure it doesn't exceed container width */
+  overflow: visible;        /* Allow the fluffy to be visible */
+  margin: 0 auto;           /* Center within container */
+  position: relative;       /* Establish positioning context */
+  display: inline-block;    /* Maintain inline flow */
 }
 
+
 .fluffy {
-  position: relative; /* Change from absolute to relative */
-  height: 100px;
-  width: 185px;
-  transform-origin: center;
+  position: relative;       /* Change from absolute */
+  height: auto;             /* Allow natural height */
+  width: 185px;             /* Keep width consistent */
+  margin: 0 auto;           /* Center in container */
   z-index: 3;
-  display: inline-block; /* Make it behave like a block element */
+  transform-origin: center; /* Better scaling behavior */
 }
 
 .horn-container {
@@ -207,6 +209,10 @@
   left:80px;
 }
 
+.head-container, .body-container, .horn-container, .wings-container {
+  position: absolute;
+  transform: translateZ(0); /* Helps with rendering */
+}
 
 .head-container {
 	position:absolute;
@@ -454,7 +460,11 @@
     left: 0;
     transform: scaleX(-1) translateY(0);
   }
+  from, to {
+    transform-style: preserve-3d;
+  }
 }
+
 
 /* Food Bowl */
 

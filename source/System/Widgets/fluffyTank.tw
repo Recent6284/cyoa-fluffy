@@ -1,10 +1,8 @@
 :: Fluffy in Tank [widget nobr]
 
 <<widget "FluffTank">>
-<<capture _fluffyMane>>
-<<capture _fluffySkin>>
-<<capture _fluffyName>>
-      <div class="tank">
+<div class="fluffy-component tank-wrapper">
+  <div class="tank">
         <div class="tank-outline">
           <<clouds>>
             <div id="bowl" style="position:absolute; left:30px; bottom:50px;">
@@ -77,7 +75,5 @@
                 </div>
             </div>
           </div>
-<</capture>>
-<</capture>>
-<</capture>>
+
 <</widget>>

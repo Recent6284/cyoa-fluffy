@@ -57,13 +57,14 @@
   </tr>
 </tbody>
 </table>
-@@.right;<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname "3">>@@
+<</do>>
+<<do tag "upper">>
+<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname "3">>
 <<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
 <<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility>>
-
 <<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>><</do>>
 
-<<do>><<animatedroll "Strength" "d20" 10 15 2 4000>><</do>>
+<<animatedroll "Strength" "d20" 10 15 2 4000>>
 
 Arguments: (stat name, dice type, [stat value], [goal], [bonus], [duration])
 

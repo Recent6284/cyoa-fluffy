@@ -1,9 +1,10 @@
-:: FluffyCSS [widget]
-<<nobr>><<widget "FluffyArt">>
-  <<set _scale to _args[2] || 1>> <!-- Default scale is 1 if not provided -->
+:: FluffyCSS [widget nobr]
+<<widget "FluffyArt">>
+  <<set _scale to _args[2] || 1>>
   <<set _width to _args[3] || "auto">> <!-- Optional explicit width -->
   <<set _height to _args[4] || "auto">> <!-- Optional explicit height -->
-  <div class="fluffy" style="transform: scale(<<print _scale>>); transform-origin: top left; width: <<print _width>>; height: <<print _height>>;">
+<div class="fluffy-component fluffy-wrapper">
+  <div class="fluffy" @style="'transform: scale(' + _scale + ');'">
     <<if $fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
       <<elseif $fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
       <<elseif $fluffyRace is "Pegasus">><<set _hornhide to "display:none;">><<unset _wingshide>>
@@ -54,6 +55,6 @@
         <div class="belly"></div>
       </div>
       <div class="tail" @style="'background-color: ' + _args[1] +';'"></div>
-    </div>
   </div>
-<</widget>><</nobr>>
+</div>
+<</widget>>

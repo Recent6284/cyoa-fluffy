@@ -1,0 +1,23 @@
+/* Base styling that applies to all fluffy types */
+.fluffy-component {
+  display: inline-block;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.fluffy-component.tank-wrapper {
+  height: 300px ;
+  min-height: 300px ;
+  width: 100% ;
+  max-width: 500px ;
+  display: block ;
+}
+
+/* Optional utility classes */
+.fluffy-block {
+  margin: 1rem 0;
+}
+
+.right .fluffy {
+  transform: scaleX(-1);
+}

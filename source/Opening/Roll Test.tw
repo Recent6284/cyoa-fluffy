@@ -57,12 +57,16 @@
   </tr>
 </tbody>
 </table>
-<</do>>
-<<do tag "upper">>
-<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname "3">>
 <<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
+<</do>>
+
+<<do tag "upper">>
+<<FluffyCSS $fluffySkin.colorname $fluffyMane.colorname "1">>
+
+<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 1>>
+
 <<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility>>
-<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>><</do>>
+<</do>>
 
 <<animatedroll "Strength" "d20" 10 15 2 4000>>
 

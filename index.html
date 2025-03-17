@@ -334,295 +334,41 @@ p, h2, h3, h4, h5 {
 	width: 100%;        /* Make it full width of the parent */
 	z-index: 1000;      /* Ensure it's above other content */
 }
-/* twine-user-stylesheet #2: "SVG.css" */
-/* SVG fluffy styling */
-.fluffy-svg {
-    display: inline-block;
-    margin: 1rem 0;
-    max-width: 100%;
-  }
-  
-  /* Make SVG more responsive */
-  .fluffy-svg svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 180px;         /* Match viewBox width */
-  }
-  
-  /* Better scale transform handling */
-  #fluffy {
-    transform-origin: top left;
-    display: inline-block;
-    margin: 0 auto;
-  }
-/* twine-user-stylesheet #3: "clouds.css" */
-cloud-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
-.clouds-container {
-
-}
-.cloud1 {
-    position: absolute;
-    scale: 30%;
-    left: -75px;
-    top: 50px;
-
-}
-.cloud2 {
-    position: absolute;
-    scale: 40%;
-    left: -35px;
-    top: -80px;
-
-
-}
-
-.base1 {
-    position: relative;
-    top: 50px;
-    width: 300px;
-    height: 20px;
-    background: #ddd4d0;
-    border-radius: 100px;
-    /* background: radial-gradient(75% 110% at bottom, #ddd4d0 80%, #fff 100%); */
-    background: linear-gradient(#fff, #ddd4d0 40%);
-
-}
-
-.one {
-    content: '';
-    position: absolute;
-    top: -100px;
-    left: 40px;
-    width: 120px;
-    height: 120px;
-    background: #ddd4d0;
-    border-radius: 50%;
-    background: radial-gradient(100% 80% at bottom right, #ddd4d0 110%, #fff 130%);
-    /* box-shadow: 100px -30px 0 30px #fff; */
-}
-
-.two {
-    content: '';
-    position: absolute;
-    top: -170px;
-    left: 135px;
-    width: 150px;
-    height: 190px;
-    background: #ddd4d0;
-    border-top-left-radius: 45%;
-    border-top-right-radius: 60%;
-    border-bottom-right-radius: 40%;
-    background: radial-gradient(75% 110% at bottom, #ddd4d0 85%, #fff 90%);
-    /* background: linear-gradient( 145deg, #fff 10.5%, #ddd4d0 30%); */
-}
-
-.base2 {
-    position: relative;
-    top: 500px;
-    width: 450px;
-    height: 20px;
-    background: #ddd4d0;
-    border-radius: 100px;
-    background: linear-gradient(#fff, #ddd4d0 40%);
-}
-
-.base2half {
-    position: absolute;
-    top: -13px;
-    right: 6px;
-    width: 400px;
-    height: 30px;
-    background: #ddd4d0;
-    border-radius: 50% 50% 50% 50%;
-    background: linear-gradient(#fff, #ddd4d0 50%);
-}
-
-.three {
-    content: '';
-    position: absolute;
-    top: -110px;
-    left: 110px;
-    width: 120px;
-    height: 120px;
-    background: #ddd4d0;
-    border-radius: 200% 200% 0% 200%;
-
-    background: radial-gradient(90% 90% at bottom right, #ddd4d0 110%, #fff 130%);
-
-    /* box-shadow: 100px -30px 0 30px #fff; */
-}
-
-.four {
-    content: '';
-    position: absolute;
-    top: -250px;
-    left: 180px;
-    width: 170px;
-    height: 255px;
-    background: #ddd4d0;
-    border-radius: 50% 50% 0% 0%;
-
-    background: radial-gradient(70% 100% at bottom, #ddd4d0 90%, #fff 100%);
-
-}
-
-.five {
-    content: '';
-    position: absolute;
-    top: -180px;
-    left: 310px;
-    width: 120px;
-    height: 200px;
-    background: #ddd4d0;
-    border-radius: 90% 100% 100% 100%;
-    transform: rotate(20deg);
-    /* background: radial-gradient(75% 110% at bottom, #ddd4d0 85%, #fff 90%); */
-
-}
-
-.six {
-    content: '';
-    position: absolute;
-    top: -180px;
-    left: 180px;
-    width: 160px;
-    height: 160px;
-    background: #ddd4d0;
-    border-radius: 50%;
-    background: radial-gradient(95% 85% at bottom right, #ddd4d0 120%, #fff 130%);
-    /* box-shadow: 100px -30px 0 30px #fff;  */
-}
-
-
-.seven {
-    content: '';
-    position: absolute;
-    top: -115px;
-    left: 240px;
-    width: 100px;
-    height: 100px;
-    background: #ddd4d0;
-    border-radius: 50%;
-    background: radial-gradient(110% 90% at bottom right, #ddd4d0 100%, #fff 130%);
-    /* box-shadow: 100px -30px 0 30px #fff; */
-
-}
-
-div.sunholder {
-    display: inline-block;
-    position: absolute;
-    top: 30px;
-    right: 40px;
-}
-div.sun {
-    display: block;
-    height: 50px;
-    width: 50px;
-    background-color: yellow;
-    border-radius: 50%;
-}
-div.raybase {
-    position: absolute;
-    top: 19px; /*50px/2-6px*/
-    left: 19px; /*(50px-12px)/2*/
-}
-div.ray {
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    border-left: 12px solid yellow;
-    animation: shine 1s linear 0s infinite alternate;
-}
-div.ray1 {
-    transform: translate(35px,0px); /*(50px+6px)/2*/
-}
-div.ray2 {
-    transform: rotate(45deg) translate(35px,0px) ;
-}
-div.ray3 {
-    transform: rotate(90deg) translate(35px,0px) ;
-}
-div.ray4 {
-    transform: rotate(135deg) translate(35px,0px) ;
-}
-div.ray5 {
-    transform: rotate(180deg) translate(35px,0px) ;
-}
-div.ray6 {
-    transform: rotate(225deg) translate(35px,0px) ;
-}
-div.ray7 {
-    transform: rotate(270deg) translate(35px,0px) ;
-}
-div.ray8 {
-    transform: rotate(315deg) translate(35px,0px) ;
-}
-/* twine-user-stylesheet #4: "color-css.css" */
-/* Replacement Colors*/
-
-/* Color Enhancements */
-[style*="color:pink"], [style*="color: pink"] {
-    color: hotpink !important;
-}
-[style*="color:blue"], [style*="color: blue"] {
-    color: dodgerblue !important;
-}
-[style*="color:red"], [style*="color: red"] {
-    color: crimson !important;
-}
-[style*="color:green"], [style*="color: green"] {
-    color: forestgreen !important;
-}
-[style*="color:purple"], [style*="color: purple"] {
-    color: mediumpurple !important;
-}
-[style*="color:orange"], [style*="color: orange"] {
-    color: darkorange !important;
-}
-[style*="color:brown"], [style*="color: brown"] {
-    color: saddlebrown !important;
-}
-[style*="color:yellow"], [style*="color: yellow"] {
-    color: gold !important;
-}
-[style*="color:gray"], [style*="color: gray"] {
-    color: darkgray !important;
-}
-[style*="color:black"], [style*="color: black"] {
-    color: #000 !important;
-    text-shadow: white 1px 0 5px;
-    font-weight: 500;
-}
-[style*="color:white"], [style*="color: white"] {
-    text-decoration: underline white wavy;
-}
-/* twine-user-stylesheet #5: "fluff-art.css" */
+/* twine-user-stylesheet #2: "art-CSS.css" */
 /* Tank */
 
 .tank {
+  display: inline-block;
   height: 300px;
-  width: 100%;              /* Responsive width */
-  max-width: 500px;         /* Maximum width */
-  margin: 1rem auto;        /* Center with spacing */
+  width: 100%;
+  max-width: 500px;
   background-color: #1b1b1b;
-  position: relative;       /* Create stacking context */
-  overflow: hidden;         /* Contain animated elements */
-}
-.tank-outline {
   position: relative;
+  margin: 0.5rem;
+}
+
+.tank-outline {
+  position: absolute; /* Changed from relative to absolute */
   width: 95%;
   height: 95%;
-  margin: auto;             /* Center properly */
-  top: 2.5%;                /* Better vertical centering */
+  left: 2.5%; /* Added explicit left positioning */
+  top: 2.5%;
+  background-color: dodgerblue;
+  border: 2px solid white;
+  z-index: 1; /* Increased z-index */
+  display: block;
+}
+
+/* Tank wrapper specifically */
+.tank-wrapper {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  min-height: 300px !important;
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 2rem auto !important;
+  overflow: visible !important;
 }
 .tank-bottom {
   position: absolute;
@@ -717,12 +463,11 @@ div.ray8 {
 
 
 .fluffy {
-  position: relative;       /* Change from absolute */
-  height: auto;             /* Allow natural height */
-  width: 185px;             /* Keep width consistent */
-  margin: 0 auto;           /* Center in container */
+  position: relative;
+  width: 185px;
+  height: auto;
   z-index: 3;
-  transform-origin: center; /* Better scaling behavior */
+  transform-origin: center;
 }
 
 .horn-container {
@@ -820,6 +565,7 @@ div.ray8 {
 .head-container, .body-container, .horn-container, .wings-container {
   position: absolute;
   transform: translateZ(0); /* Helps with rendering */
+
 }
 
 .head-container {
@@ -828,6 +574,7 @@ div.ray8 {
 	height: 50px;
 	left: 10px;
 	top: 20px;
+  z-index: 90;
 }
 .head {
   position: absolute;
@@ -836,7 +583,7 @@ div.ray8 {
   margin: auto;
   background-color: red;
   border-radius: 5px;
-  z-index: 90; /* Base layer */
+  z-index: 90;
   box-shadow: 0.5px 0.5px rgb(0,0,0,0.3);
 }
 
@@ -1083,30 +830,290 @@ div.ray8 {
   /* Smoother arc for the top curve */
   clip-path: path('M60,0 Q150,30 240,0 L300,100 L0,100 Z');
 }
-/* twine-user-stylesheet #6: "fluffy-common.css" */
-/* Base fluffy styling for all types */
+/* twine-user-stylesheet #3: "art-common.css" */
+/* Base styling that applies to all fluffy types */
 .fluffy-component {
-    display: inline-block;
-    margin: 1rem 0;           /* Consistent vertical spacing */
-    vertical-align: middle;
+  display: inline-block;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.fluffy-component.tank-wrapper {
+  height: 300px ;
+  min-height: 300px ;
+  width: 100% ;
+  max-width: 500px ;
+  display: block ;
+}
+
+/* Optional utility classes */
+.fluffy-block {
+  margin: 1rem 0;
+}
+
+.right .fluffy {
+  transform: scaleX(-1);
+}
+/* twine-user-stylesheet #4: "art-svg.css" */
+/* SVG fluffy styling */
+.fluffy-svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.fluffy-svg svg {
+  display: block;
+  max-width: 100%;
+}
+/* twine-user-stylesheet #5: "clouds.css" */
+cloud-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.clouds-container {
+
+}
+.cloud1 {
+    position: absolute;
+    scale: 30%;
+    left: -75px;
+    top: 50px;
+
+}
+.cloud2 {
+    position: absolute;
+    scale: 40%;
+    left: -35px;
+    top: -80px;
+
+
+}
+
+.base1 {
     position: relative;
-    box-sizing: border-box;   /* More predictable sizing */
-    max-width: 100%;          /* Prevent overflow */
-    clear: both;              /* Prevent wrapping issues */
-  }
-  
-  /* Direction control - keeps this in common file */
-  .right .fluffy {
-    transform: scaleX(-1);
-    transform-origin: center;
-  }
-  
-  /* Better container sizing */
-  .fluffy-wrapper {
-    overflow: hidden;         /* Contains transforms */
-    padding: 0.5rem;          /* Breathing room */
-    border-radius: 0.25rem;   /* Optional: nicer appearance */
-  }
+    top: 50px;
+    width: 300px;
+    height: 20px;
+    background: #ddd4d0;
+    border-radius: 100px;
+    /* background: radial-gradient(75% 110% at bottom, #ddd4d0 80%, #fff 100%); */
+    background: linear-gradient(#fff, #ddd4d0 40%);
+
+}
+
+.one {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 40px;
+    width: 120px;
+    height: 120px;
+    background: #ddd4d0;
+    border-radius: 50%;
+    background: radial-gradient(100% 80% at bottom right, #ddd4d0 110%, #fff 130%);
+    /* box-shadow: 100px -30px 0 30px #fff; */
+}
+
+.two {
+    content: '';
+    position: absolute;
+    top: -170px;
+    left: 135px;
+    width: 150px;
+    height: 190px;
+    background: #ddd4d0;
+    border-top-left-radius: 45%;
+    border-top-right-radius: 60%;
+    border-bottom-right-radius: 40%;
+    background: radial-gradient(75% 110% at bottom, #ddd4d0 85%, #fff 90%);
+    /* background: linear-gradient( 145deg, #fff 10.5%, #ddd4d0 30%); */
+}
+
+.base2 {
+    position: relative;
+    top: 500px;
+    width: 450px;
+    height: 20px;
+    background: #ddd4d0;
+    border-radius: 100px;
+    background: linear-gradient(#fff, #ddd4d0 40%);
+}
+
+.base2half {
+    position: absolute;
+    top: -13px;
+    right: 6px;
+    width: 400px;
+    height: 30px;
+    background: #ddd4d0;
+    border-radius: 50% 50% 50% 50%;
+    background: linear-gradient(#fff, #ddd4d0 50%);
+}
+
+.three {
+    content: '';
+    position: absolute;
+    top: -110px;
+    left: 110px;
+    width: 120px;
+    height: 120px;
+    background: #ddd4d0;
+    border-radius: 200% 200% 0% 200%;
+
+    background: radial-gradient(90% 90% at bottom right, #ddd4d0 110%, #fff 130%);
+
+    /* box-shadow: 100px -30px 0 30px #fff; */
+}
+
+.four {
+    content: '';
+    position: absolute;
+    top: -250px;
+    left: 180px;
+    width: 170px;
+    height: 255px;
+    background: #ddd4d0;
+    border-radius: 50% 50% 0% 0%;
+
+    background: radial-gradient(70% 100% at bottom, #ddd4d0 90%, #fff 100%);
+
+}
+
+.five {
+    content: '';
+    position: absolute;
+    top: -180px;
+    left: 310px;
+    width: 120px;
+    height: 200px;
+    background: #ddd4d0;
+    border-radius: 90% 100% 100% 100%;
+    transform: rotate(20deg);
+    /* background: radial-gradient(75% 110% at bottom, #ddd4d0 85%, #fff 90%); */
+
+}
+
+.six {
+    content: '';
+    position: absolute;
+    top: -180px;
+    left: 180px;
+    width: 160px;
+    height: 160px;
+    background: #ddd4d0;
+    border-radius: 50%;
+    background: radial-gradient(95% 85% at bottom right, #ddd4d0 120%, #fff 130%);
+    /* box-shadow: 100px -30px 0 30px #fff;  */
+}
+
+
+.seven {
+    content: '';
+    position: absolute;
+    top: -115px;
+    left: 240px;
+    width: 100px;
+    height: 100px;
+    background: #ddd4d0;
+    border-radius: 50%;
+    background: radial-gradient(110% 90% at bottom right, #ddd4d0 100%, #fff 130%);
+    /* box-shadow: 100px -30px 0 30px #fff; */
+
+}
+
+div.sunholder {
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    right: 40px;
+}
+div.sun {
+    display: block;
+    height: 50px;
+    width: 50px;
+    background-color: yellow;
+    border-radius: 50%;
+}
+div.raybase {
+    position: absolute;
+    top: 19px; /*50px/2-6px*/
+    left: 19px; /*(50px-12px)/2*/
+}
+div.ray {
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 12px solid yellow;
+    animation: shine 1s linear 0s infinite alternate;
+}
+div.ray1 {
+    transform: translate(35px,0px); /*(50px+6px)/2*/
+}
+div.ray2 {
+    transform: rotate(45deg) translate(35px,0px) ;
+}
+div.ray3 {
+    transform: rotate(90deg) translate(35px,0px) ;
+}
+div.ray4 {
+    transform: rotate(135deg) translate(35px,0px) ;
+}
+div.ray5 {
+    transform: rotate(180deg) translate(35px,0px) ;
+}
+div.ray6 {
+    transform: rotate(225deg) translate(35px,0px) ;
+}
+div.ray7 {
+    transform: rotate(270deg) translate(35px,0px) ;
+}
+div.ray8 {
+    transform: rotate(315deg) translate(35px,0px) ;
+}
+/* twine-user-stylesheet #6: "color-css.css" */
+/* Replacement Colors*/
+
+/* Color Enhancements */
+[style*="color:pink"], [style*="color: pink"] {
+    color: hotpink !important;
+}
+[style*="color:blue"], [style*="color: blue"] {
+    color: dodgerblue !important;
+}
+[style*="color:red"], [style*="color: red"] {
+    color: crimson !important;
+}
+[style*="color:green"], [style*="color: green"] {
+    color: forestgreen !important;
+}
+[style*="color:purple"], [style*="color: purple"] {
+    color: mediumpurple !important;
+}
+[style*="color:orange"], [style*="color: orange"] {
+    color: darkorange !important;
+}
+[style*="color:brown"], [style*="color: brown"] {
+    color: saddlebrown !important;
+}
+[style*="color:yellow"], [style*="color: yellow"] {
+    color: gold !important;
+}
+[style*="color:gray"], [style*="color: gray"] {
+    color: darkgray !important;
+}
+[style*="color:black"], [style*="color: black"] {
+    color: #000 !important;
+    text-shadow: white 1px 0 5px;
+    font-weight: 500;
+}
+[style*="color:white"], [style*="color: white"] {
+    text-decoration: underline white wavy;
+}
 /* twine-user-stylesheet #7: "roller.css" */
 .animated-roll-stat, .dice-roll-stat {
     display: inline;
@@ -2310,12 +2317,16 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;&lt;/do&gt;&gt;
-&lt;&lt;do tag &quot;upper&quot;&gt;&gt;
-&lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname &quot;3&quot;&gt;&gt;
 &lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+&lt;&lt;do tag &quot;upper&quot;&gt;&gt;
+&lt;&lt;FluffyCSS $fluffySkin.colorname $fluffyMane.colorname &quot;1&quot;&gt;&gt;
+
+&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 1&gt;&gt;
+
 &lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility&gt;&gt;
-&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2&gt;&gt;&lt;&lt;/do&gt;&gt;
+&lt;&lt;/do&gt;&gt;
 
 &lt;&lt;animatedroll &quot;Strength&quot; &quot;d20&quot; 10 15 2 4000&gt;&gt;
 
@@ -3084,62 +3095,12 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;brush&quot; &quot;Grooming Brush&quot;&gt;&gt;
 
-&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="ButtonReplace" tags="widget" position="850,600" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
-
-&lt;&lt;widget &quot;buttonreplace&quot; container&gt;&gt;&lt;&lt;nobr&gt;&gt;
-&lt;&lt;set _buttonText to $args[0]&gt;&gt;
-&lt;&lt;set _targetId to $args[1] ?? &quot;buttonreplace-&quot; + $buttonreplaceCounter&gt;&gt;
-&lt;&lt;set _selector to &quot;#&quot; + _targetId&gt;&gt;
-&lt;&lt;set $buttonreplaceCounter to $buttonreplaceCounter + 1&gt;&gt; &lt;!-- Increment the counter --&gt;
-
-&lt;&lt;print &#39;&lt;span id=&quot;&#39; + _targetId + &#39;&quot;&gt;&#39; +
-    &#39;&lt;&lt;button &quot;&#39; + _buttonText + &#39;&quot;&gt;&gt;&#39; +
-        &#39;&lt;&lt;replace &quot;&#39; + _selector + &#39;&quot; t8n&gt;&gt;&#39; +
-            &#39;_contents&#39; +
-        &#39;&lt;&lt;/replace&gt;&gt;&#39; +
-    &#39;&lt;&lt;/button&gt;&gt;&#39; +
-&#39;&lt;/span&gt;&#39;&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="Clouds" tags="widget nobr" position="975,600" size="100,100">&lt;&lt;widget &quot;clouds&quot;&gt;&gt;
-            &lt;div class=&quot;sunholder&quot;&gt;
-            &lt;div class=&quot;sun&quot;&gt;
-            &lt;div class=&quot;raybase ray1&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class=&quot;raybase ray2&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class=&quot;raybase ray3&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class=&quot;raybase ray4&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class=&quot;raybase ray5&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class=&quot;raybase ray6&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class=&quot;raybase ray7&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;div class=&quot;raybase ray8&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;cloud-body&gt;
-    &lt;div class=&quot;clouds-container&quot;&gt;
-
-        &lt;div class=&quot;cloud1&quot;&gt;
-            &lt;div class=&quot;base1&quot;&gt;
-                &lt;div class=&quot;shape one&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;shape two&quot;&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;cloud2&quot;&gt;
-            &lt;div class=&quot;base2&quot;&gt;
-                &lt;div class=&quot;base2half&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;shape three&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;shape four&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;shape five&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;shape six&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;shape seven&quot;&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/cloud-body&gt;
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="ColorName" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="FluffyCSS" tags="widget nobr" position="1225,600" size="100,100">&lt;&lt;widget &quot;FluffyArt&quot;&gt;&gt;
+&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="FluffyCSS" tags="widget" position="850,600" size="100,100">&lt;&lt;widget &quot;FluffyCSS&quot;&gt;&gt;
   &lt;&lt;set _scale to _args[2] || 1&gt;&gt;
-  &lt;&lt;set _width to _args[3] || &quot;auto&quot;&gt;&gt; &lt;!-- Optional explicit width --&gt;
-  &lt;&lt;set _height to _args[4] || &quot;auto&quot;&gt;&gt; &lt;!-- Optional explicit height --&gt;
-&lt;div class=&quot;fluffy-component fluffy-wrapper&quot;&gt;
-  &lt;div class=&quot;fluffy&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;);&#39;&quot;&gt;
+  &lt;&lt;set _width to _args[3] || &quot;auto&quot;&gt;&gt;
+  &lt;&lt;set _height to _args[4] || &quot;auto&quot;&gt;&gt;
+  &lt;div class=&quot;fluffy-component&quot;&gt;
+    &lt;div class=&quot;fluffy&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;);&#39;&quot;&gt;
     &lt;&lt;if $fluffyRace is &quot;Unicorn&quot;&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
       &lt;&lt;elseif $fluffyRace is &quot;Alicorn&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
       &lt;&lt;elseif $fluffyRace is &quot;Pegasus&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;
@@ -3190,14 +3151,14 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;div class=&quot;belly&quot;&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Fluffy SVG" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;
-&lt;&lt;set _SVGfluffySkin to _args[0] || &quot;red&quot;&gt;&gt;
-&lt;&lt;set _SVGfluffyMane to _args[1] || &quot;blue&quot;&gt;&gt;
-&lt;&lt;set _SVGfluffyName to _args[2] || &quot;Unnamed&quot;&gt;&gt;
-&lt;&lt;set _SVGfluffyRace to _args[3] || &quot;Earthie&quot;&gt;&gt;
-&lt;&lt;set _scale to _args[4] || 1&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="Fluffy SVG" tags="widget" position="975,600" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;
+  &lt;&lt;set _SVGfluffySkin to _args[0] || &quot;red&quot;&gt;&gt;
+  &lt;&lt;set _SVGfluffyMane to _args[1] || &quot;blue&quot;&gt;&gt;
+  &lt;&lt;set _SVGfluffyName to _args[2] || &quot;Unnamed&quot;&gt;&gt;
+  &lt;&lt;set _SVGfluffyRace to _args[3] || &quot;Earthie&quot;&gt;&gt;
+  &lt;&lt;set _scale to _args[4] || 1&gt;&gt;
 
 &lt;&lt;set _earthieSVG to `
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
@@ -3419,8 +3380,8 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 
 &lt;&lt;set _scale to _args[4] || 1&gt;&gt; &lt;!-- Default scale factor of 1 --&gt;
 
-&lt;div class=&quot;fluffy-component fluffy-svg&quot;&gt;
-  &lt;div id=&quot;fluffy&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;);&#39;&quot;&gt;
+  &lt;div class=&quot;fluffy-component fluffy-svg&quot;&gt;
+    &lt;div @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;);&#39;&quot;&gt;
 
   &lt;&lt;if _SVGfluffyRace is &quot;Earthie&quot;&gt;&gt;
     &lt;&lt;print _earthieSVG&gt;&gt;
@@ -3435,9 +3396,9 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;&lt;/if&gt;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Fluffy in Tank" tags="widget nobr" position="225,725" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
-&lt;div class=&quot;fluffy-component tank-wrapper&quot;&gt;
-  &lt;div class=&quot;tank&quot;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Fluffy in Tank" tags="widget" position="1100,600" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
+  &lt;div class=&quot;fluffy-component tank-wrapper&quot;&gt;
+    &lt;div class=&quot;tank&quot;&gt;
         &lt;div class=&quot;tank-outline&quot;&gt;
           &lt;&lt;clouds&gt;&gt;
             &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;
@@ -3511,7 +3472,57 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;/div&gt;
           &lt;/div&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="inventory.strings" tags="" position="350,725" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="54" name="New Fluffy" tags="widget nobr" position="475,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="ButtonReplace" tags="widget" position="1225,600" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
+
+&lt;&lt;widget &quot;buttonreplace&quot; container&gt;&gt;&lt;&lt;nobr&gt;&gt;
+&lt;&lt;set _buttonText to $args[0]&gt;&gt;
+&lt;&lt;set _targetId to $args[1] ?? &quot;buttonreplace-&quot; + $buttonreplaceCounter&gt;&gt;
+&lt;&lt;set _selector to &quot;#&quot; + _targetId&gt;&gt;
+&lt;&lt;set $buttonreplaceCounter to $buttonreplaceCounter + 1&gt;&gt; &lt;!-- Increment the counter --&gt;
+
+&lt;&lt;print &#39;&lt;span id=&quot;&#39; + _targetId + &#39;&quot;&gt;&#39; +
+    &#39;&lt;&lt;button &quot;&#39; + _buttonText + &#39;&quot;&gt;&gt;&#39; +
+        &#39;&lt;&lt;replace &quot;&#39; + _selector + &#39;&quot; t8n&gt;&gt;&#39; +
+            &#39;_contents&#39; +
+        &#39;&lt;&lt;/replace&gt;&gt;&#39; +
+    &#39;&lt;&lt;/button&gt;&gt;&#39; +
+&#39;&lt;/span&gt;&#39;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Clouds" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;clouds&quot;&gt;&gt;
+            &lt;div class=&quot;sunholder&quot;&gt;
+            &lt;div class=&quot;sun&quot;&gt;
+            &lt;div class=&quot;raybase ray1&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;raybase ray2&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;raybase ray3&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;raybase ray4&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;raybase ray5&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;raybase ray6&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;raybase ray7&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;raybase ray8&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;cloud-body&gt;
+    &lt;div class=&quot;clouds-container&quot;&gt;
+
+        &lt;div class=&quot;cloud1&quot;&gt;
+            &lt;div class=&quot;base1&quot;&gt;
+                &lt;div class=&quot;shape one&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;shape two&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;cloud2&quot;&gt;
+            &lt;div class=&quot;base2&quot;&gt;
+                &lt;div class=&quot;base2half&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;shape three&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;shape four&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;shape five&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;shape six&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;shape seven&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/cloud-body&gt;
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="ColorName" tags="widget nobr" position="225,725" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="inventory.strings" tags="" position="350,725" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="54" name="New Fluffy" tags="widget nobr" position="475,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
   &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;

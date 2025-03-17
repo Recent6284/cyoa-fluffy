@@ -1,11 +1,11 @@
-:: Fluffy SVG [widget nobr]
+:: Fluffy SVG [widget]
 
 <<widget "FluffySVG">>
-<<set _SVGfluffySkin to _args[0] || "red">>
-<<set _SVGfluffyMane to _args[1] || "blue">>
-<<set _SVGfluffyName to _args[2] || "Unnamed">>
-<<set _SVGfluffyRace to _args[3] || "Earthie">>
-<<set _scale to _args[4] || 1>>
+  <<set _SVGfluffySkin to _args[0] || "red">>
+  <<set _SVGfluffyMane to _args[1] || "blue">>
+  <<set _SVGfluffyName to _args[2] || "Unnamed">>
+  <<set _SVGfluffyRace to _args[3] || "Earthie">>
+  <<set _scale to _args[4] || 1>>
 
 <<set _earthieSVG to `
 <svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
@@ -227,8 +227,8 @@
 
 <<set _scale to _args[4] || 1>> <!-- Default scale factor of 1 -->
 
-<div class="fluffy-component fluffy-svg">
-  <div id="fluffy" @style="'transform: scale(' + _scale + ');'">
+  <div class="fluffy-component fluffy-svg">
+    <div @style="'transform: scale(' + _scale + ');'">
 
   <<if _SVGfluffyRace is "Earthie">>
     <<print _earthieSVG>>

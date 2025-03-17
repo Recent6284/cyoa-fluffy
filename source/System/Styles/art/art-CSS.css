@@ -1,20 +1,37 @@
 /* Tank */
 
 .tank {
+  display: inline-block;
   height: 300px;
-  width: 100%;              /* Responsive width */
-  max-width: 500px;         /* Maximum width */
-  margin: 1rem auto;        /* Center with spacing */
+  width: 100%;
+  max-width: 500px;
   background-color: #1b1b1b;
-  position: relative;       /* Create stacking context */
-  overflow: hidden;         /* Contain animated elements */
-}
-.tank-outline {
   position: relative;
+  margin: 0.5rem;
+}
+
+.tank-outline {
+  position: absolute; /* Changed from relative to absolute */
   width: 95%;
   height: 95%;
-  margin: auto;             /* Center properly */
-  top: 2.5%;                /* Better vertical centering */
+  left: 2.5%; /* Added explicit left positioning */
+  top: 2.5%;
+  background-color: dodgerblue;
+  border: 2px solid white;
+  z-index: 1; /* Increased z-index */
+  display: block;
+}
+
+/* Tank wrapper specifically */
+.tank-wrapper {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  min-height: 300px !important;
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 2rem auto !important;
+  overflow: visible !important;
 }
 .tank-bottom {
   position: absolute;
@@ -109,12 +126,11 @@
 
 
 .fluffy {
-  position: relative;       /* Change from absolute */
-  height: auto;             /* Allow natural height */
-  width: 185px;             /* Keep width consistent */
-  margin: 0 auto;           /* Center in container */
+  position: relative;
+  width: 185px;
+  height: auto;
   z-index: 3;
-  transform-origin: center; /* Better scaling behavior */
+  transform-origin: center;
 }
 
 .horn-container {
@@ -212,6 +228,7 @@
 .head-container, .body-container, .horn-container, .wings-container {
   position: absolute;
   transform: translateZ(0); /* Helps with rendering */
+
 }
 
 .head-container {
@@ -220,6 +237,7 @@
 	height: 50px;
 	left: 10px;
 	top: 20px;
+  z-index: 90;
 }
 .head {
   position: absolute;
@@ -228,7 +246,7 @@
   margin: auto;
   background-color: red;
   border-radius: 5px;
-  z-index: 90; /* Base layer */
+  z-index: 90;
   box-shadow: 0.5px 0.5px rgb(0,0,0,0.3);
 }
 

@@ -1,0 +1,10 @@
+/* SVG fluffy styling */
+.fluffy-svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.fluffy-svg svg {
+  display: block;
+  max-width: 100%;
+}

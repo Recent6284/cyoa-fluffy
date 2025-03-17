@@ -1,5 +1,0 @@
-sugarcube-2:
-  macros:
-    hovertip:
-      name: hovertip
-      container: true

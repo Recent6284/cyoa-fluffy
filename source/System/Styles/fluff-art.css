@@ -454,3 +454,13 @@
     transform: scaleX(-1) translateY(0);
   }
 }
+
+/* Food Bowl */
+
+.bowl {
+  width: 300px;
+  height: 100px;
+  background-color: #333;
+  /* Smoother arc for the top curve */
+  clip-path: path('M60,0 Q150,30 240,0 L300,100 L0,100 Z');
+}

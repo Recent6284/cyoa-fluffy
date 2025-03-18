@@ -1,0 +1,5 @@
+:: Print Player Budget [widget nobr]
+
+<<widget "budget">>
+    ''$<<print $playerBudget.toFixed(2)>>''
+    <</widget>>

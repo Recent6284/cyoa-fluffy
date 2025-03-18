@@ -1,13 +1,14 @@
 :: Fluffy in Tank [widget nobr]
 
 <<widget "FluffTank">>
+  <<set _fluffyRace to _args[3]>>
   <div class="tank-wrapper">
     <div class="tank">
         <div class="tank-outline">
         <div class="fluffy">
-                <<if $fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
-                <<elseif $fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
-                <<elseif $fluffyRace is "Pegasus">><<set _hornhide to "display:none;">><<unset _wingshide>>
+                <<if _fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
+                <<elseif _fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
+                <<elseif _fluffyRace is "Pegasus">><<set _hornhide to "display:none;">><<unset _wingshide>>
                 <<else>><<set _wingshide to "display:none;">><<set _hornhide to "display:none;">>
                 <</if>>
                 <!-- Horn -->
@@ -70,7 +71,7 @@
             <div class="nametag">
               <div class="nameinfo">
                 <ul>
-                  <li><<if $fluffyName.length == 0 >>Nameless :(<<else>>$args[2] ($args[3]) - $args[4]<</if>></li>
+                  <li>$args[2] ($args[3]) - $args[4]</li>
                 </ul>
               </div>
             </div>

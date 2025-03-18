@@ -23,7 +23,7 @@ Lastly, visiting ''the discount pen'' would probably be the cheapest option, but
 
 <<button "Visit the Discount Pens @@.icon;.next-arrow;@@" "Fluffmart - The Discounts">><</button>>
 
-Remember, you have ''$<<print $playerBudget.toFixed(2)>>'', and a prayer. Let's see where this leads.
+Remember, you have <<budget>>, and a prayer. Let's see where this leads.
 
 <<button "Change your mind, and go somewhere else @@.icon;.next-arrow;@@" "Day 1 Travel">><</button>>
 
@@ -46,6 +46,8 @@ Each cage had a descriptor of the foal, their colors, the colors of their parent
 
 :: Fluffmart - Adults
 
+<<silent>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><</silent>>
+
 Managing a number of adult fluffies was difficult, and trying to put them in the best environment to entice prospective customers was even harder. With ages ranging from "just matured" to "a bit on the older side", Fluffies in the adult area were separated by gender, and in different pens to avoid overcrowding. You noticed that a couple of the dividers were clear, with a large sign proclaiming "~Special Friends!~"; some fluffies probably managed to pair bond despite Fluffmart's best efforts, and they probably were testing the profitability of selling twice the food, twice the equipment, and Fluffies that would have their own social entertainment.
 
 Fluffies of all colors were babbling, hugging, playing with balls and blocks, watching a FluffTV set, and generally doing what they did best. You could see a Fluffmart employee breaking up a scuffle between two males with a broom handle; even in this protected area, there were egos, jostling, and hierarchy. 
@@ -60,18 +62,30 @@ If you were a parent and a Fluffy "bonded" with your kid, it would probably be h
 
 :: Fluffmart - Adult Options
 
-<<silent>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<set $currentFluffyIndex to 0>>
+<<silent>>
 <<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
 <<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
 <<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>>
 <<set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race>>
-<<set _fluffyName = State.variables.fluffies[$currentFluffyIndex].name>><<redo "tank" div>><</silent>>
+<<set _fluffyName = State.variables.fluffies[$currentFluffyIndex].name>>
+<<set _fluffyFertility = State.variables.fluffies[$currentFluffyIndex].fertility>><redo "tank">>
+<</silent>>
+
+<<if typeof $fluffies[$currentFluffyIndex + 1] === "undefined">><<print "No more fluffies!">><<else>><<print $fluffies[$currentFluffyIndex + 1].name>><</if>>
 
 In each pen, you saw one Adult Fluffy who was oblivious to you judging them.
 
-Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname">_fluffyMane.name</span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin; you weren't sure how your felt about the color combination, but it was something to consider.
+Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname"><<print _fluffyMane.name.toLowerCase()>></span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin; you weren't sure how your felt about the color combination, but it was something to consider.
 
-<<FluffTank _fluffySkin.colorname _fluffyMane.colorname>>
+<<FluffTank _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace _fluffyFertility>>
+
+<<button "Look at another">><<if typeof $fluffies[$currentFluffyIndex + 1] === "undefined">><<goto "Fluffmart - No More Fluffies">><<else>><<goto "Fluffmart - Adult Options">><</if>><<set $currentFluffyIndex to $currentFluffyIndex + 1>><</button>>
+
+:: Fluffmart - No More Fluffies
+
+<<set $playerBudget to $playerBudget - 10>>
+
+After doing a circuit, you didn't see any other Fluffies you liked. With the gas it took you to get to Fluffmart, you're down to <<budget>> in your Fluffy budget.
 
 :: Fluffmart - The Discounts
 

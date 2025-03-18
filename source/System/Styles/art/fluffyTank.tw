@@ -1,13 +1,30 @@
 :: Fluffy in Tank [widget nobr]
 
 <<widget "FluffTank">>
+  <<set _fluffyRace to _args[3]>>
   <div class="tank-wrapper">
     <div class="tank">
         <div class="tank-outline">
+            <div id="waterbottle" style="position:absolute; right:0px; bottom:75px;display:flex;justify-content:center;">
+              <svg width="50" height="90" style="display: block;margin: auto;" viewBox="-5 0 56 95">
+                <rect width="50px" height="50px" fill="blue" y="30px" ry="5px" rx="5px"/>
+                <rect width="50px" height="80px" rx="5px" stroke="lightgray" stroke-width="3px" fill="none" />
+                <g id="bubbles" fill="white" opacity="0.5" transform="translate(0,30)">
+                  <circle cx="35px" cy="15px" r="1px" />
+                  <circle cx="32px" cy="10px" r="1px" />
+                  <circle cx="30px" cy="20px" r="1px" />
+                  <circle cx="32px" cy="25px" r="1px" />
+                </g>
+                <g fill="silver" transform="rotate(180, 5, 7.5) translate(0,-71)">
+                  <rect width="3px" height="7px" ry="5px" rx="5px" />
+                  <rect width="15px" height="3px" />
+                </g>
+              </svg>
+            </div>
         <div class="fluffy">
-                <<if $fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
-                <<elseif $fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
-                <<elseif $fluffyRace is "Pegasus">><<set _hornhide to "display:none;">><<unset _wingshide>>
+                <<if _fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
+                <<elseif _fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
+                <<elseif _fluffyRace is "Pegasus">><<set _hornhide to "display:none;">><<unset _wingshide>>
                 <<else>><<set _wingshide to "display:none;">><<set _hornhide to "display:none;">>
                 <</if>>
                 <!-- Horn -->
@@ -70,10 +87,11 @@
             <div class="nametag">
               <div class="nameinfo">
                 <ul>
-                  <li><<if $fluffyName.length == 0 >>Nameless :(<<else>>$args[2] ($args[3]) - $args[4]<</if>></li>
+                  <li>$args[2] ($args[3]) - $args[4]</li>
                 </ul>
               </div>
             </div>
+          </div>
           </div>
 
 <</widget>>

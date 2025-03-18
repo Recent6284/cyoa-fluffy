@@ -25,12 +25,16 @@
     position: absolute; /* Changed from relative to absolute */
     width: 95%;
     height: 95%;
-    left: 2.5%; /* Added explicit left positioning */
-    top: 2.5%;
     background-color: dodgerblue;
-    border: 2px solid white;
+    border: 10px solid lightgray;
     z-index: 1; /* Increased z-index */
     display: block;
+    box-shadow: inset -5px -5px 50px 0px rgba(0, 0, 0, 0.50);
+    /* hsla(0,0%,15%, .9) 0 -1px 5px 4px,
+    inset hsla(0,0%,0%, .50) 0 -1px 0px 7px,
+    inset hsla(0,0%,0%,.7) 0 2px 1px 7px,
+     hsla(0,0%, 0%,.15) 0 -5px 6px 4px,
+    hsla(0,0%,0%,.5) 0 5px 6px 4px; */
 }
 
 .tank-bottom {
@@ -52,12 +56,6 @@
     text-align: center;
     border: none;
     background: #1b1b1b;
-    box-shadow: inset hsla(0,0%,15%, 1) 0 0px 0px 4px,
-      /* border */ inset hsla(0,0%,15%, .9) 0 -1px 5px 4px,
-      /* soft SD */ inset hsla(0,0%,0%, .50) 0 -1px 0px 7px,
-      /* bottom SD */ inset hsla(0,0%,0%,.7) 0 2px 1px 7px,
-      /* top HL */ hsla(0,0%, 0%,.15) 0 -5px 6px 4px,
-      /* outer SD */ hsla(0,0%,0%,.5) 0 5px 6px 4px;
 }
   
 .tank-grass{

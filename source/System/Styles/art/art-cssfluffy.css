@@ -448,22 +448,11 @@
   box-shadow: -0.5px -0.5px rgb(0, 0, 0, 0.5);
 }
 
-.pupil1 {
+.pupil {
   position: absolute;
   width: 3px;
   height: 5px;
-  left: 1px;
+  left: 2px;
   background-color: blue;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  z-index: 99; /* Base layer */
-}
-
-.pupil2 {
-  position: absolute;
-  width: 3px;
-  height: 5px;
-  left: 1px;
-  background-color: blue;
-  border: 1px solid rgba(0, 0, 0, 0.3);
   z-index: 99; /* Base layer */
 }

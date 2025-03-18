@@ -1,21 +1,18 @@
 /* Base styling that applies to all fluffy types */
-.fluffy-component {
-  display: inline-block;
-  margin: 0.5rem;
+
+.fluffy {
   position: relative;
+  display: inline-block;
+  transform-origin: center;
+  min-height: 100px;
 }
 
-.fluffy-component.tank-wrapper {
-  height: 300px ;
-  min-height: 300px ;
-  width: 100% ;
-  max-width: 500px ;
-  display: block ;
-}
-
-/* Optional utility classes */
-.fluffy-block {
-  margin: 1rem 0;
+.tank .fluffy {
+  position: absolute;
+  bottom: 47px;
+  left: 50px;
+  margin: 0;               
+  z-index: 5;               
 }
 
 .right .fluffy {

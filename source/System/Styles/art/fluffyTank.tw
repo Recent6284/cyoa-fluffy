@@ -1,7 +1,7 @@
-:: Fluffy in Tank [widget]
+:: Fluffy in Tank [widget nobr]
 
 <<widget "FluffTank">>
-  <div class="fluffy-component tank-wrapper">
+  <div class="tank-wrapper">
     <div class="tank">
         <div class="tank-outline">
           <<clouds>>

@@ -1,8 +1,8 @@
 :: Clouds [widget nobr]
 
     <<widget "clouds">>
-            <div class="sunholder">
-            <div class="sun">
+    <div class="sunholder">
+        <div class="sun">
             <div class="raybase ray1"><div class="ray"></div></div>
             <div class="raybase ray2"><div class="ray"></div></div>
             <div class="raybase ray3"><div class="ray"></div></div>
@@ -11,11 +11,9 @@
             <div class="raybase ray6"><div class="ray"></div></div>
             <div class="raybase ray7"><div class="ray"></div></div>
             <div class="raybase ray8"><div class="ray"></div></div>
-            </div>
         </div>
-    <cloud-body>
+    </div>
     <div class="clouds-container">
-
         <div class="cloud1">
             <div class="base1">
                 <div class="shape one"></div>
@@ -34,5 +32,5 @@
             </div>
         </div>
     </div>
-    </cloud-body>
+
     <</widget>>

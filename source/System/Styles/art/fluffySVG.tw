@@ -1,12 +1,11 @@
-:: Fluffy SVG [widget]
+:: Fluffy SVG [widget nobr]
 
-<<widget "FluffySVG">>
+<<widget "FluffySVG">><<silent>>
   <<set _SVGfluffySkin to _args[0] || "red">>
   <<set _SVGfluffyMane to _args[1] || "blue">>
   <<set _SVGfluffyName to _args[2] || "Unnamed">>
   <<set _SVGfluffyRace to _args[3] || "Earthie">>
   <<set _scale to _args[4] || 1>>
-
 <<set _earthieSVG to `
 <svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
   <defs>
@@ -56,7 +55,6 @@
     </g>
   </g>
 </svg>`>>
-
 <<set _unicornSVG to `
 <svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
   <defs>
@@ -109,7 +107,6 @@
     </g>
   </g>
 </svg>`>>
-
 <<set _pegasusSVG to `
 <svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
   <defs>
@@ -137,7 +134,7 @@
         <rect id="SVGfoot4" x="90" y="65" width="20" height="7" fill="` + _SVGfluffyMane + `" />
       </g>
     </g>
-    <g id="SVGwings-container" transform="translate(65,20)" fill="` + _SVGfluffyMane + `">
+    <g id="SVGwings-container" transform="translate(65,20)" fill="` + _SVGfluffySkin + `">
       <path id="SVGwings-border" d="M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0" filter="url(#SVGf2)" />
       <line id="SVGwing-line-1" stroke="black" opacity="0.5" stroke-width="0.5" x1="53.5" y1="10" x2="38" y2="12" />
       <line id="SVGwing-line-2" stroke="black" opacity="0.5" stroke-width="0.5" x1="55" y1="13" x2="36" y2="15" />
@@ -165,7 +162,6 @@
     </g>
   </g>
 </svg>`>>
-
 <<set _alicornSVG to `
 <svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
   <defs>
@@ -223,24 +219,18 @@
       <line id="SVGwing-line-3" stroke="black" opacity="0.5" stroke-width="0.5" x1="52.5" y1="17" x2="38" y2="18" />
     </g>
   </g>
-</svg>`>>
-
-<<set _scale to _args[4] || 1>> <!-- Default scale factor of 1 -->
-
-  <div class="fluffy-component fluffy-svg">
-    <div @style="'transform: scale(' + _scale + ');'">
-
-  <<if _SVGfluffyRace is "Earthie">>
-    <<print _earthieSVG>>
-  <<elseif _SVGfluffyRace is "Unicorn">>
-    <<print _unicornSVG>>
-  <<elseif _SVGfluffyRace is "Pegasus">>
-    <<print _pegasusSVG>>
-  <<elseif _SVGfluffyRace is "Alicorn">>
-    <<print _alicornSVG>>
-  <<else>>
-    <<print _earthieSVG>>
-  <</if>>
-  </div>
-</div>
+</svg>`>><</silent>>
+<<nobr>><div class="fluffy-svg" @style="'transform: scale(' + _scale + ');'">
+    <<if _SVGfluffyRace is "Earthie">>
+      <<print _earthieSVG>>
+    <<elseif _SVGfluffyRace is "Unicorn">>
+      <<print _unicornSVG>>
+    <<elseif _SVGfluffyRace is "Pegasus">>
+      <<print _pegasusSVG>>
+    <<elseif _SVGfluffyRace is "Alicorn">>
+      <<print _alicornSVG>>
+    <<else>>
+      <<print _earthieSVG>>
+    <</if>>
+  </div><</nobr>>
 <</widget>>

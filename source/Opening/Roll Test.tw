@@ -1,14 +1,19 @@
 :: Roll Test
 
 !! <<hovertip "The button below generates a new Fluffy, and saves its stats to memory.">>Your Fluffy<</hovertip>>
-<<button "Click for Fluffy">><<silent>>
+<<nobr>><<button "Click for Fluffy">><<silent>>
     <<newFluffy>>
     <<lockFluffy>>
     <<redo "upper">>
-    <<set $currentFluffyIndex to $currentFluffyIndex + 1>>
-<</silent>><</button>>
-
+    <<set $currentFluffyIndex to $currentFluffyIndex + 1>><</silent>><</button>><</nobr>>
 <<do tag "upper">>
+!!! CSS Fluffy
+<<FluffyCSS $fluffySkin.colorname $fluffyMane.colorname 2>>
+!!! SVG Fluffy
+<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>>
+!!! Tank CSS Fluffy
+<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility>>
+<<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
 <table class="shop"><thead>
   <tr>
     <th>Stat</th>
@@ -56,20 +61,9 @@
     <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyIg>><</if>></td>
   </tr>
 </tbody>
-</table>
-<<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
-<</do>>
-
-<<do tag "upper">>
-<<FluffyCSS $fluffySkin.colorname $fluffyMane.colorname "1">>
-
-<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 1>>
-
-<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility>>
-<</do>>
-
+</table><</do>>
+!! Roll Animation Test
 <<animatedroll "Strength" "d20" 10 15 2 4000>>
-
 Arguments: (stat name, dice type, [stat value], [goal], [bonus], [duration])
 
 <<button "Click to roll">><<rollwidgets>><</button>>

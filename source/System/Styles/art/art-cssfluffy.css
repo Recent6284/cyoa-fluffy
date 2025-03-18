@@ -1,0 +1,469 @@
+/* Horn */
+
+.horn-container {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  top: 10px;
+  left: 12px;
+  z-index: 99;
+}
+
+.horn {
+  position: absolute;
+  height: 85%;
+  width: 75%;
+  background-color: white;
+  z-index: 99;
+  clip-path: polygon(50% 0%, 26% 100%, 73% 100%);
+  transform: rotate(-52deg);
+}
+.horn-shadow {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  z-index: 98;
+  clip-path: polygon(50% 0%, 26% 100%, 73% 100%);
+  transform: rotate(-52deg);
+}
+
+.horn-border {
+  display: none;
+  position: relative;
+  clip-path: polygon(49% 0%, 25% 99%, 72% 99%);
+  background-color: red;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-52deg);
+  z-index: 98;
+}
+
+/* Wing Lines */
+
+.line {
+  border-bottom: 1px solid rgb(0, 0, 0, 0.4); /* Creates the line */
+  position: absolute; /* Allows you to position the lines freely */
+  z-index: 999; /* Ensures the lines are on top of other content */
+  transform: rotate(-10deg);
+}
+
+.line-1 {
+  width: 15px;
+  top: 14px;
+  left: 26px;
+}
+
+.line-2 {
+  width: 17px;
+  top: 17px;
+  left: 28px;
+}
+
+.line-3 {
+  width: 17px;
+  top: 20px;
+  left: 30px;
+}
+
+/* Wings */
+
+.wings-container {
+  position: absolute;
+  height: 50px;
+  top: 15px;
+  left: 80px;
+  z-index: 100;
+}
+
+.wings {
+  background-color: red;
+  position: absolute;
+  z-index: 86;
+  height: 40px;
+  width: 50px;
+  clip-path: polygon(
+    22% 25%,
+    21% 25%,
+    18% 25%,
+    14% 27%,
+    11% 30%,
+    10% 34%,
+    8% 40%,
+    8% 47%,
+    12% 58%,
+    15% 63%,
+    17% 64%,
+    19% 65%,
+    23% 66%,
+    26% 66%,
+    30% 66%,
+    38% 67%,
+    43% 67%,
+    52% 66%,
+    57% 65%,
+    77% 61%,
+    88% 57%,
+    98% 51%,
+    94% 47%,
+    91% 41%,
+    89% 38%,
+    84% 33%,
+    79% 31%,
+    74% 28%,
+    71% 26%,
+    66% 25%,
+    61% 24%,
+    53% 24%,
+    43% 23%,
+    40% 24%,
+    32% 25%,
+    28% 26%,
+    26% 27%
+  );
+}
+
+.wings-border {
+  background-color: rgb(0, 0, 0, 0.4);
+  position: absolute;
+  z-index: 85;
+  height: 45px;
+  width: 55px;
+  clip-path: polygon(
+    22% 25%,
+    21% 25%,
+    18% 25%,
+    14% 27%,
+    11% 30%,
+    10% 34%,
+    8% 40%,
+    8% 47%,
+    12% 58%,
+    15% 63%,
+    17% 64%,
+    19% 65%,
+    23% 66%,
+    26% 66%,
+    30% 66%,
+    38% 67%,
+    43% 67%,
+    52% 66%,
+    57% 65%,
+    77% 61%,
+    88% 57%,
+    98% 51%,
+    94% 47%,
+    91% 41%,
+    89% 38%,
+    84% 33%,
+    79% 31%,
+    74% 28%,
+    71% 26%,
+    66% 25%,
+    61% 24%,
+    53% 24%,
+    43% 23%,
+    40% 24%,
+    32% 25%,
+    28% 26%,
+    26% 27%
+  );
+}
+
+/* Head */
+
+.head-container,
+.body-container,
+.horn-container,
+.wings-container {
+  position: absolute;
+  transform: translateZ(0); /* Helps with rendering */
+}
+
+.head-container {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 10px;
+  top: 20px;
+  z-index: 90;
+}
+.head {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: red;
+  border-radius: 5px;
+  z-index: 90;
+  box-shadow: 0.5px 0.5px rgb(0, 0, 0, 0.3);
+}
+
+/* Mane */
+
+.mane1 {
+  position: absolute;
+  width: 65px;
+  height: 38px;
+  background-color: blue;
+  left: 2px;
+  top: -35px;
+  transform: rotate(4 deg);
+  z-index: 85;
+  clip-path: polygon(
+    0 100%,
+    24% 49%,
+    26% 72%,
+    46% 51%,
+    43% 71%,
+    60% 57%,
+    61% 70%,
+    74% 63%,
+    74% 74%,
+    98% 66%,
+    85% 74%,
+    100% 74%,
+    79% 89%,
+    53% 98%,
+    24% 100%
+  );
+}
+
+.mane2 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+  left: 50px;
+  top: -35px;
+  transform: rotate(30deg);
+  z-index: 85;
+  clip-path: polygon(
+    0 100%,
+    32% 65%,
+    21% 84%,
+    47% 64%,
+    34% 83%,
+    65% 62%,
+    49% 80%,
+    79% 63%,
+    59% 81%,
+    98% 66%,
+    72% 81%,
+    100% 74%,
+    69% 90%,
+    53% 98%,
+    24% 100%
+  );
+}
+
+/* Body */
+
+.body-container {
+  position: absolute;
+  width: 120px;
+  height: 55px;
+  left: 30px;
+  top: 20px;
+  z-index: 80;
+}
+
+.fluffbody {
+  position: absolute;
+  width: 120px;
+  height: 55px;
+  background-color: red;
+  border-radius: 15px;
+  z-index: 80;
+}
+
+/* Belly */
+
+.belly {
+  position: absolute;
+  margin: 0 0px 0 5px;
+  right: 3px;
+  bottom: 1px;
+  background-color: Peru;
+  width: 75%;
+  height: 5px;
+  z-index: 83;
+  border-top: none;
+  border-radius: 0px 0px 15px 15px; /* Top half is rounded */
+}
+
+/* Snout */
+
+.snout-container {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  left: -5px;
+  bottom: 0px;
+}
+.snout {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 100%;
+  background-color: Peru;
+  border-radius: 5px;
+  z-index: 95;
+  box-shadow: 1px 0px rgb(0, 0, 0, 0.3);
+}
+
+.smile {
+  position: absolute;
+  width: 5px; /* Adjust for size */
+  height: 5px; /* Half of width for a semi-circle */
+  position: absolute;
+  bottom: 20%;
+  border: 1px solid rgb(0, 0, 0, 0.5); /* 1px border */
+  border-bottom: none; /* Remove bottom border */
+  border-radius: 100px 100px 0 0; /* Top half is rounded */
+  transform: rotate(180deg);
+  z-index: 99;
+}
+
+/* Feet and Legs */
+
+.foot {
+  position: absolute;
+  height: 7px;
+  background-color: blue;
+  z-index: 86; /* Above body */
+  width: 20px;
+}
+
+.foot1,
+.leg1 {
+  left: 2px;
+}
+.foot2,
+.leg2 {
+  left: 24px;
+}
+.foot3,
+.leg3 {
+  right: 26px;
+}
+.foot4,
+.leg4 {
+  right: 2px;
+}
+
+.leg {
+  width: 20px;
+  background-color: red;
+  border-radius: 5px;
+  position: absolute;
+  bottom: -10px;
+  height: 35px;
+}
+
+.leg1,
+.leg3 {
+  z-index: 80;
+}
+
+.leg2,
+.leg4 {
+  z-index: 85;
+}
+.leg1,
+.leg2,
+.leg3,
+.leg4,
+.foot1,
+.foot2,
+.foot3,
+.foot4 {
+  position: absolute;
+  bottom: -17px;
+}
+
+/* Tail */
+
+.tail {
+  position: absolute;
+  width: 65px;
+  height: 70px;
+  background-color: blue;
+  right: -65px;
+  top: -24px;
+  transform: rotate(60deg);
+  z-index: 50;
+  clip-path: polygon(
+    0 100%,
+    32% 65%,
+    21% 84%,
+    47% 64%,
+    34% 83%,
+    65% 62%,
+    49% 80%,
+    79% 63%,
+    59% 81%,
+    98% 66%,
+    72% 81%,
+    100% 74%,
+    69% 90%,
+    53% 98%,
+    24% 100%
+  );
+}
+
+/* Eyes and Pupils */
+
+.eye1 {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 10%;
+  width: 8px;
+  height: 12px;
+  left: 4px;
+  background-color: white;
+  z-index: 98; /* Base layer */
+  box-shadow: -0.5px -0.5px rgb(0, 0, 255, 0.5);
+}
+
+.eye2 {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 10%;
+  width: 8px;
+  height: 12px;
+  left: 15px;
+  background-color: white;
+  z-index: 98; /* Base layer */
+  box-shadow: -0.5px -0.5px rgb(0, 0, 0, 0.5);
+}
+
+.pupil1 {
+  position: absolute;
+  width: 3px;
+  height: 5px;
+  left: 1px;
+  background-color: blue;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  z-index: 99; /* Base layer */
+}
+
+.pupil2 {
+  position: absolute;
+  width: 3px;
+  height: 5px;
+  left: 1px;
+  background-color: blue;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  z-index: 99; /* Base layer */
+}

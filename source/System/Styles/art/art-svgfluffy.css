@@ -2,6 +2,7 @@
 .fluffy-svg {
   display: inline-block;
   vertical-align: middle;
+  margin: 1em 0;
 }
 
 .fluffy-svg svg {

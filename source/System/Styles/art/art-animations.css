@@ -1,0 +1,49 @@
+@keyframes gallop {
+    0% {
+      left: 0;
+      transform: scaleX(-1) translateY(0);
+    }
+    10% {
+      left: 72px;
+      transform: scaleX(-1) translateY(0px);
+    }
+    20% {
+      left: 107px;
+      transform: scaleX(-1) translateY(0px);
+    }
+    30% {
+      left: 142px;
+      transform: scaleX(-1) translateY(0px);
+    }
+    40% {
+      left: 227px;
+      transform: scaleX(-1) translateY(0);
+    }
+    50% {
+      left: 250px;
+      transform: scaleX(1) translateY(0);
+    }
+    60% {
+      left: 242px;
+      transform: scaleX(1) translateY(0px);
+    }
+    70% {
+      left: 187px;
+      transform: scaleX(1) translateY(0px);
+    }
+    80% {
+      left: 132px;
+      transform: scaleX(1) translateY(0px);
+    }
+    90% {
+      left: 72px;
+      transform: scaleX(1) translateY(0px);
+    }
+    100% {
+      left: 0;
+      transform: scaleX(-1) translateY(0);
+    }
+    from, to {
+      transform-style: preserve-3d;
+    }
+  }

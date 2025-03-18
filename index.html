@@ -390,16 +390,20 @@ p, h2, h3, h4, h5 {
 .fluffy {
   position: relative;
   display: inline-block;
-  transform-origin: top left;
   min-height: 100px;
 }
 
 .tank .fluffy {
   position: absolute;
   bottom: 47px;
-  left: 50px;
+  left: 60%;
   margin: 0;               
-  z-index: 5;               
+  z-index: 5;  
+  box-sizing: border-box;
+  transform-origin: center;         
+  /* animation-name: gallop;
+  animation-duration: 20s;
+  animation-iteration-count: infinite; */
 }
 
 .right .fluffy {
@@ -989,6 +993,8 @@ p, h2, h3, h4, h5 {
     font-weight: 500;
     font-size: 1.2vh;
 }
+
+
 
 /* Food Bowl */
 
@@ -2844,7 +2850,9 @@ $(document).on(&quot;:passageend&quot;, function() {
     &quot;Rosebud&quot;,&quot;Daisy&quot;,&quot;Lilypad&quot;,&quot;Buttercup&quot;,&quot;Marigold&quot;,&quot;Petal&quot;,&quot;Blossom&quot;,&quot;Cherry&quot;,&quot;Peach&quot;,&quot;Berry&quot;,&quot;Honey&quot;,&quot;Sugar&quot;,&quot;Sparkle&quot;,&quot;Glimmer&quot;,&quot;Starflower&quot;,&quot;Moonbeam&quot;,&quot;Sunny&quot;,&quot;Skye&quot;,&quot;Raindrop&quot;,&quot;Dewdrop&quot;,&quot;Pearl&quot;,&quot;Coral&quot;,&quot;Sapphire&quot;,&quot;Ruby&quot;,&quot;Amber&quot;,&quot;Jade&quot;,&quot;Opal&quot;,&quot;Crystal&quot;,&quot;Velvet&quot;,&quot;Misty&quot;,&quot;Frosty&quot;,&quot;Snowflake&quot;,&quot;Cloudy&quot;,&quot;Breeze&quot;,&quot;Meadow&quot;,&quot;Willow&quot;,&quot;Clover&quot;,&quot;Tulip&quot;,&quot;Poppy&quot;,&quot;Lavender&quot;,&quot;Violet&quot;,&quot;Iris&quot;,&quot;Hazel&quot;,&quot;Maple&quot;,&quot;Autumn&quot;,&quot;Summer&quot;,&quot;Dawn&quot;,&quot;Twilight&quot;,&quot;Aurora&quot;,&quot;Starlight&quot;,&quot;Rosemary&quot;,&quot;Bluebell&quot;,&quot;Daffodil&quot;,&quot;Primrose&quot;,&quot;Sunflower&quot;,&quot;Cinnamon&quot;,&quot;Peppermint&quot;,&quot;Vanilla&quot;,&quot;Caramel&quot;,&quot;Toffee&quot;,&quot;Cupcake&quot;,&quot;Sprinkle&quot;,&quot;Glitter&quot;,&quot;Shimmer&quot;,&quot;Twinkle&quot;,&quot;Moonlight&quot;,&quot;Starshine&quot;,&quot;Sunbeam&quot;,&quot;Rainbow&quot;,&quot;Bubble&quot;,&quot;Feather&quot;,&quot;Swan&quot;,&quot;Dove&quot;,&quot;Robin&quot;,&quot;Wren&quot;,&quot;Sparrow&quot;,&quot;Lark&quot;,&quot;Finch&quot;,&quot;Nightingale&quot;,&quot;Canary&quot;,&quot;Marina&quot;,&quot;Seashell&quot;,&quot;Powder&quot;,&quot;Coraline&quot;,&quot;Aqua&quot;,&quot;Azure&quot;,&quot;Cerulean&quot;,&quot;Indigo&quot;,&quot;Lilac&quot;,&quot;Magnolia&quot;,&quot;Pansy&quot;,&quot;Dandelion&quot;,&quot;Cinnamon&quot;,&quot;Orchid&quot;,&quot;Peony&quot;,&quot;Tulip&quot;,&quot;Dahlia&quot;,&quot;Camellia&quot;,&quot;Aster&quot;,&quot;Snowdrop&quot;
 ]&gt;&gt;
 
-&lt;&lt;set $fertilityRoll =[ &quot;Sterile&quot;, &quot;Fertile&quot;, &quot;Neutered&quot;]&gt;&gt;
+&lt;&lt;set $fertilityRoll = [
+    &quot;Sterile&quot;, &quot;Fertile&quot;, &quot;Neutered&quot;
+]&gt;&gt;
 
 &lt;&lt;set $randomRace = [
     { name: &quot;Earthie&quot;, weight: 4 },
@@ -3536,23 +3544,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;div class=&quot;tank-wrapper&quot;&gt;
     &lt;div class=&quot;tank&quot;&gt;
         &lt;div class=&quot;tank-outline&quot;&gt;
-          &lt;&lt;clouds&gt;&gt;
-            &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;
-                &lt;svg width=&quot;70&quot; height=&quot;20&quot;&gt;
-                &lt;path stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;deeppink&quot; d=&quot;M10,0 Q35,4 60,0 L70,20 L0,20, L10,0 &quot; /&gt;
-                &lt;g stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M69,18 L1,18&quot; /&gt;&lt;path d=&quot;M9,2 Q35,6 61,2&quot; /&gt;
-              &lt;/g&gt;
-            &lt;/svg&gt;
-            &lt;/div&gt;
-          &lt;div class=&quot;tank-bottom metal&quot;&gt;
-            &lt;div class=&quot;tank-grass&quot;&gt;&lt;/div&gt;
-            &lt;div class=&quot;nametag&quot;&gt;
-              &lt;div class=&quot;nameinfo&quot;&gt;
-                &lt;ul&gt;
-                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Nameless :(&lt;&lt;else&gt;&gt;$args[2] ($args[3]) - $args[4]&lt;&lt;/if&gt;&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/div&gt;
-                &lt;div class=&quot;fluffy&quot;&gt;
+        &lt;div class=&quot;fluffy&quot;&gt;
                 &lt;&lt;if $fluffyRace is &quot;Unicorn&quot;&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
                 &lt;&lt;elseif $fluffyRace is &quot;Alicorn&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
                 &lt;&lt;elseif $fluffyRace is &quot;Pegasus&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;
@@ -3605,6 +3597,22 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
                 &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
                 &lt;/div&gt;
                 &lt;/div&gt;
+          &lt;&lt;clouds&gt;&gt;
+            &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;
+                &lt;svg width=&quot;70&quot; height=&quot;20&quot;&gt;
+                &lt;path stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;deeppink&quot; d=&quot;M10,0 Q35,4 60,0 L70,20 L0,20, L10,0 &quot; /&gt;
+                &lt;g stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M69,18 L1,18&quot; /&gt;&lt;path d=&quot;M9,2 Q35,6 61,2&quot; /&gt;
+              &lt;/g&gt;
+            &lt;/svg&gt;
+            &lt;/div&gt;
+          &lt;div class=&quot;tank-bottom metal&quot;&gt;
+            &lt;div class=&quot;tank-grass&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;nametag&quot;&gt;
+              &lt;div class=&quot;nameinfo&quot;&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Nameless :(&lt;&lt;else&gt;&gt;$args[2] ($args[3]) - $args[4]&lt;&lt;/if&gt;&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
             &lt;/div&gt;
           &lt;/div&gt;
 

@@ -3,16 +3,20 @@
 .fluffy {
   position: relative;
   display: inline-block;
-  transform-origin: top left;
   min-height: 100px;
 }
 
 .tank .fluffy {
   position: absolute;
   bottom: 47px;
-  left: 50px;
+  left: 60%;
   margin: 0;               
-  z-index: 5;               
+  z-index: 5;  
+  box-sizing: border-box;
+  transform-origin: center;         
+  /* animation-name: gallop;
+  animation-duration: 20s;
+  animation-iteration-count: infinite; */
 }
 
 .right .fluffy {

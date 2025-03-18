@@ -45,7 +45,9 @@
     "Rosebud","Daisy","Lilypad","Buttercup","Marigold","Petal","Blossom","Cherry","Peach","Berry","Honey","Sugar","Sparkle","Glimmer","Starflower","Moonbeam","Sunny","Skye","Raindrop","Dewdrop","Pearl","Coral","Sapphire","Ruby","Amber","Jade","Opal","Crystal","Velvet","Misty","Frosty","Snowflake","Cloudy","Breeze","Meadow","Willow","Clover","Tulip","Poppy","Lavender","Violet","Iris","Hazel","Maple","Autumn","Summer","Dawn","Twilight","Aurora","Starlight","Rosemary","Bluebell","Daffodil","Primrose","Sunflower","Cinnamon","Peppermint","Vanilla","Caramel","Toffee","Cupcake","Sprinkle","Glitter","Shimmer","Twinkle","Moonlight","Starshine","Sunbeam","Rainbow","Bubble","Feather","Swan","Dove","Robin","Wren","Sparrow","Lark","Finch","Nightingale","Canary","Marina","Seashell","Powder","Coraline","Aqua","Azure","Cerulean","Indigo","Lilac","Magnolia","Pansy","Dandelion","Cinnamon","Orchid","Peony","Tulip","Dahlia","Camellia","Aster","Snowdrop"
 ]>>
 
-<<set $fertilityRoll =[ "Sterile", "Fertile", "Neutered"]>>
+<<set $fertilityRoll = [
+    "Sterile", "Fertile", "Neutered"
+]>>
 
 <<set $randomRace = [
     { name: "Earthie", weight: 4 },

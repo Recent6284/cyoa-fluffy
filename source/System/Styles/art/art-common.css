@@ -3,7 +3,7 @@
 .fluffy {
   position: relative;
   display: inline-block;
-  transform-origin: center;
+  transform-origin: top left;
   min-height: 100px;
 }
 

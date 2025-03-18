@@ -220,7 +220,14 @@
     </g>
   </g>
 </svg>`>><</silent>>
-<<nobr>><div class="fluffy-svg" @style="'transform: scale(' + _scale + ');'">
+<<nobr>>
+  <<set _baseWidth to 185>> /* your art's base width */
+  <<set _baseHeight to 92>> /* your art's base height */
+  <<set _scaledWidth to _baseWidth * _scale>>
+  <<set _scaledHeight to _baseHeight * _scale>>
+  <<set _aspectRatio to _baseWidth / _baseHeight>>
+  <div id="fluffy" @style="'width: ' + _scaledWidth + 'px; height: ' + _scaledHeight + 'px; overflow: visible;'">
+  <div class="fluffy-svg" @style="'transform: scale(' + _scale + '); transform-origin: top left;'">
     <<if _SVGfluffyRace is "Earthie">>
       <<print _earthieSVG>>
     <<elseif _SVGfluffyRace is "Unicorn">>
@@ -232,5 +239,9 @@
     <<else>>
       <<print _earthieSVG>>
     <</if>>
-  </div><</nobr>>
+  </div></div><</nobr>>
 <</widget>>
+
+
+
+

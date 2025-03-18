@@ -2,11 +2,14 @@
 
 <<widget "FluffyCSS">>
   <<set _scale to _args[2] || 1>>
-  <<set _width to _args[3] || "auto">>
-  <<set _height to _args[4] || "auto">>
+  <<set _baseWidth to 185>> /* your art's base width */
+  <<set _baseHeight to 92>> /* your art's base height */
+  <<set _scaledWidth to _baseWidth * _scale>>
+  <<set _scaledHeight to _baseHeight * _scale>>
+  <<set _aspectRatio to _baseWidth / _baseHeight>>
 
-<div id="fluffy">
-  <div class="fluffy" @style="'transform: scale(' + _scale + ');'">
+<div id="fluffy" @style="'width: ' + _scaledWidth + 'px; height: ' + _scaledHeight + 'px; overflow: visible;'">
+  <div class="fluffy" @style="'transform: scale(' + _scale + '); transform-origin: top left;'">
   <<if $fluffyRace is "Unicorn">><<set _wingshide to "display:none;">><<unset _hornhide>>
     <<elseif $fluffyRace is "Alicorn">><<unset _wingshide>><<unset _hornhide>>
     <<elseif $fluffyRace is "Pegasus">><<unset _wingshide>><<set _hornhide to "display:none;">>

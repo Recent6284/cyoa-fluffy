@@ -390,7 +390,7 @@ p, h2, h3, h4, h5 {
 .fluffy {
   position: relative;
   display: inline-block;
-  transform-origin: center;
+  transform-origin: top left;
   min-height: 100px;
 }
 
@@ -879,14 +879,13 @@ p, h2, h3, h4, h5 {
 /* SVG fluffy styling */
 .fluffy-svg {
   display: inline-block;
-  vertical-align: middle;
-  margin: 1em 0;
+  visibility: visible;
+  height: auto;
+  min-height: 100px;
+  overflow: visible;
+  transform-origin: 0 50%;
 }
 
-.fluffy-svg svg {
-  display: block;
-  max-width: 100%;
-}
 /* twine-user-stylesheet #6: "art-tank.css" */
 /* Tank */
 
@@ -2403,12 +2402,18 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;&lt;redo &quot;upper&quot;&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;&lt;do tag &quot;upper&quot;&gt;&gt;
+
 !!! CSS Fluffy
-&lt;&lt;FluffyCSS $fluffySkin.colorname $fluffyMane.colorname 2&gt;&gt;
+
+&lt;&lt;FluffyCSS $fluffySkin.colorname $fluffyMane.colorname 3&gt;&gt;
 !!! SVG Fluffy
-&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2&gt;&gt;
+
+&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3&gt;&gt;
+
 !!! Tank CSS Fluffy
+
 &lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility&gt;&gt;
+
 &lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
@@ -3227,11 +3232,14 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 
 &lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="FluffyCSS" tags="widget nobr" position="850,600" size="100,100">&lt;&lt;widget &quot;FluffyCSS&quot;&gt;&gt;
   &lt;&lt;set _scale to _args[2] || 1&gt;&gt;
-  &lt;&lt;set _width to _args[3] || &quot;auto&quot;&gt;&gt;
-  &lt;&lt;set _height to _args[4] || &quot;auto&quot;&gt;&gt;
+  &lt;&lt;set _baseWidth to 185&gt;&gt; /* your art&#39;s base width */
+  &lt;&lt;set _baseHeight to 92&gt;&gt; /* your art&#39;s base height */
+  &lt;&lt;set _scaledWidth to _baseWidth * _scale&gt;&gt;
+  &lt;&lt;set _scaledHeight to _baseHeight * _scale&gt;&gt;
+  &lt;&lt;set _aspectRatio to _baseWidth / _baseHeight&gt;&gt;
 
-&lt;div id=&quot;fluffy&quot;&gt;
-  &lt;div class=&quot;fluffy&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;);&#39;&quot;&gt;
+&lt;div id=&quot;fluffy&quot; @style=&quot;&#39;width: &#39; + _scaledWidth + &#39;px; height: &#39; + _scaledHeight + &#39;px; overflow: visible;&#39;&quot;&gt;
+  &lt;div class=&quot;fluffy&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;); transform-origin: top left;&#39;&quot;&gt;
   &lt;&lt;if $fluffyRace is &quot;Unicorn&quot;&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
     &lt;&lt;elseif $fluffyRace is &quot;Alicorn&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
     &lt;&lt;elseif $fluffyRace is &quot;Pegasus&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;
@@ -3504,7 +3512,14 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;/g&gt;
   &lt;/g&gt;
 &lt;/svg&gt;`&gt;&gt;&lt;&lt;/silent&gt;&gt;
-&lt;&lt;nobr&gt;&gt;&lt;div class=&quot;fluffy-svg&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;);&#39;&quot;&gt;
+&lt;&lt;nobr&gt;&gt;
+  &lt;&lt;set _baseWidth to 185&gt;&gt; /* your art&#39;s base width */
+  &lt;&lt;set _baseHeight to 92&gt;&gt; /* your art&#39;s base height */
+  &lt;&lt;set _scaledWidth to _baseWidth * _scale&gt;&gt;
+  &lt;&lt;set _scaledHeight to _baseHeight * _scale&gt;&gt;
+  &lt;&lt;set _aspectRatio to _baseWidth / _baseHeight&gt;&gt;
+  &lt;div id=&quot;fluffy&quot; @style=&quot;&#39;width: &#39; + _scaledWidth + &#39;px; height: &#39; + _scaledHeight + &#39;px; overflow: visible;&#39;&quot;&gt;
+  &lt;div class=&quot;fluffy-svg&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;); transform-origin: top left;&#39;&quot;&gt;
     &lt;&lt;if _SVGfluffyRace is &quot;Earthie&quot;&gt;&gt;
       &lt;&lt;print _earthieSVG&gt;&gt;
     &lt;&lt;elseif _SVGfluffyRace is &quot;Unicorn&quot;&gt;&gt;
@@ -3516,7 +3531,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;&lt;else&gt;&gt;
       &lt;&lt;print _earthieSVG&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-  &lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
+  &lt;/div&gt;&lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Fluffy in Tank" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
   &lt;div class=&quot;tank-wrapper&quot;&gt;
     &lt;div class=&quot;tank&quot;&gt;

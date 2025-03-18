@@ -7,12 +7,18 @@
     <<redo "upper">>
     <<set $currentFluffyIndex to $currentFluffyIndex + 1>><</silent>><</button>><</nobr>>
 <<do tag "upper">>
+
 !!! CSS Fluffy
-<<FluffyCSS $fluffySkin.colorname $fluffyMane.colorname 2>>
+
+<<FluffyCSS $fluffySkin.colorname $fluffyMane.colorname 3>>
 !!! SVG Fluffy
-<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>>
+
+<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3>>
+
 !!! Tank CSS Fluffy
+
 <<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility>>
+
 <<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
 <table class="shop"><thead>
   <tr>

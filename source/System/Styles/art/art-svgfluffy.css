@@ -1,11 +1,10 @@
 /* SVG fluffy styling */
 .fluffy-svg {
   display: inline-block;
-  vertical-align: middle;
-  margin: 1em 0;
+  visibility: visible;
+  height: auto;
+  min-height: 100px;
+  overflow: visible;
+  transform-origin: 0 50%;
 }
 
-.fluffy-svg svg {
-  display: block;
-  max-width: 100%;
-}

@@ -47,7 +47,7 @@
         <rect id="SVGsnout" x="0" y="0" width="20" height="30" rx="5" fill="peru" filter="url(#SVGf4)" />
         <path id="SVGsmile" d="M3 1 A2.5 4 0 0 0 8 1" fill="none" stroke="rgba(0,0,0,0.5)" transform="translate(4, 18) rotate(0)" />
       </g>
-      <g id="SVGmane" fill="` + _SVGfluffyMane + `" filter="url(#SVGf2)">
+      <g id="SVGmane" fill="` + _SVGfluffySkin + `" filter="url(#SVGf2)">
         <path id="SVGmane1" d="M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0" />
         <path id="SVGmane2" d="M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0" />
         <path id="SVGmane3" d="M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1" />
@@ -96,7 +96,7 @@
         <rect id="SVGsnout" x="0" y="0" width="20" height="30" rx="5" fill="peru" filter="url(#SVGf4)" />
         <path id="SVGsmile" d="M3 1 A2.5 4 0 0 0 8 1" fill="none" stroke="rgba(0,0,0,0.5)" transform="translate(4, 18) rotate(0)" />
       </g>
-      <g id="SVGmane" fill="` + _SVGfluffyMane + `" filter="url(#SVGf2)">
+      <g id="SVGmane" fill="` + _SVGfluffySkin + `" filter="url(#SVGf2)">
         <path id="SVGmane1" d="M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0" />
         <path id="SVGmane2" d="M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0" />
         <path id="SVGmane3" d="M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1" />
@@ -154,7 +154,7 @@
         <rect id="SVGsnout" x="0" y="0" width="20" height="30" rx="5" fill="peru" filter="url(#SVGf4)" />
         <path id="SVGsmile" d="M3 1 A2.5 4 0 0 0 8 1" fill="none" stroke="rgba(0,0,0,0.5)" transform="translate(4, 18) rotate(0)" />
       </g>
-      <g id="SVGmane" fill="` + _SVGfluffyMane + `" filter="url(#SVGf2)">
+      <g id="SVGmane" fill="` + _SVGfluffySkin + `" filter="url(#SVGf2)">
         <path id="SVGmane1" d="M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0" />
         <path id="SVGmane2" d="M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0" />
         <path id="SVGmane3" d="M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1" />
@@ -203,7 +203,7 @@
         <rect id="SVGsnout" x="0" y="0" width="20" height="30" rx="5" fill="peru" filter="url(#SVGf4)" />
         <path id="SVGsmile" d="M3 1 A2.5 4 0 0 0 8 1" fill="none" stroke="rgba(0,0,0,0.5)" transform="translate(4, 18) rotate(0)" />
       </g>
-      <g id="SVGmane" fill="` + _SVGfluffyMane + `" filter="url(#SVGf2)">
+      <g id="SVGmane" fill="` + _SVGfluffySkin + `" filter="url(#SVGf2)">
         <path id="SVGmane1" d="M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0" />
         <path id="SVGmane2" d="M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0" />
         <path id="SVGmane3" d="M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1" />
@@ -212,7 +212,7 @@
     <g id="SVGhorn-container" transform="translate(8, 17)">
       <path id="SVGhorn" d="M6.5 0 L3.5 14 L9.5 14 Z" transform="rotate(-52)" fill="white" stroke="black" stroke-opacity="0.4" stroke-width="0.6" />
     </g>
-    <g id="SVGwings-container" transform="translate(65,20)" fill="` + _SVGfluffyMane + `">
+    <g id="SVGwings-container" transform="translate(65,20)" fill="` + _SVGfluffySkin + `">
       <path id="SVGwings-border" d="M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0" filter="url(#SVGf2)" />
       <line id="SVGwing-line-1" stroke="black" opacity="0.5" stroke-width="0.5" x1="53.5" y1="10" x2="38" y2="12" />
       <line id="SVGwing-line-2" stroke="black" opacity="0.5" stroke-width="0.5" x1="55" y1="13" x2="36" y2="15" />

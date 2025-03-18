@@ -70,6 +70,12 @@ If you were a parent and a Fluffy "bonded" with your kid, it would probably be h
 <<set _fluffyName = State.variables.fluffies[$currentFluffyIndex].name>>
 <<set _fluffyFertility = State.variables.fluffies[$currentFluffyIndex].fertility>><redo "tank">>
 <</silent>>
+<<<<<<< HEAD
+=======
+
+<<if typeof $fluffies[$currentFluffyIndex + 1] === "undefined">><<print "No more fluffies!">><<else>><<print $fluffies[$currentFluffyIndex + 1].name>><</if>>
+
+>>>>>>> 07e12cd5dcd4147e990366e28c2986888942b62d
 In each pen, you saw one Adult Fluffy who was oblivious to you judging them.
 
 Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname"><<print _fluffyMane.name.toLowerCase()>></span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin; you weren't sure how your felt about the color combination, but it was something to consider.

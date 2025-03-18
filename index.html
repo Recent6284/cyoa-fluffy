@@ -2342,21 +2342,21 @@ function weightedRandom(items) {
 __Appearance__
 Since you&#39;re a fluffy, pick the color of your mane and tail:
 &lt;label&gt;Mane and Tail: &lt;&lt;cycle &quot;$playerMane&quot;&gt;&gt;
-&lt;&lt;option &quot;Blue @@.icon;.square;color:blue;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Red @@.icon;.square;color:red;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Green @@.icon;.square;color:green;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Purple @@.icon;.square;color:purple;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Pink @@.icon;.square;color:pink;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Yellow @@.icon;.square;color:yellow;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Orange @@.icon;.square;color:orange;@@&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;&lt;/label&gt;
-&lt;label&gt;Fur: &lt;&lt;cycle &quot;$playerColor&quot;&gt;&gt;
-&lt;&lt;option &quot;Blue @@.icon;.square;color:blue;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Red @@.icon;.square;color:red;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Green @@.icon;.square;color:green;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Purple @@.icon;.square;color:purple;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Pink @@.icon;.square;color:pink;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Yellow @@.icon;.square;color:yellow;@@&quot;&gt;&gt;
-&lt;&lt;option &quot;Orange @@.icon;.square;color:orange;@@&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;&lt;/label&gt;
+&lt;&lt;option &quot;Blue @@.icon;.square;color:blue;@@&quot; &quot;blue&quot;&gt;&gt;
+&lt;&lt;option &quot;Red @@.icon;.square;color:red;@@&quot; &quot;red&quot;&gt;&gt;
+&lt;&lt;option &quot;Green @@.icon;.square;color:green;@@&quot; &quot;green&quot;&gt;&gt;
+&lt;&lt;option &quot;Purple @@.icon;.square;color:purple;@@&quot; &quot;purple&quot;&gt;&gt;
+&lt;&lt;option &quot;Pink @@.icon;.square;color:pink;@@&quot; &quot;pink&quot;&gt;&gt;
+&lt;&lt;option &quot;Yellow @@.icon;.square;color:yellow;@@&quot; &quot;yellow&quot;&gt;&gt;
+&lt;&lt;option &quot;Orange @@.icon;.square;color:orange;@@&quot; &quot;orange&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;&lt;/label&gt;
+&lt;label&gt;Fur: &lt;&lt;cycle &quot;$playerSkin&quot;&gt;&gt;
+&lt;&lt;option &quot;Blue @@.icon;.square;color:blue;@@&quot; &quot;blue&quot;&gt;&gt;
+&lt;&lt;option &quot;Red @@.icon;.square;color:red;@@&quot; &quot;red&quot;&gt;&gt;
+&lt;&lt;option &quot;Green @@.icon;.square;color:green;@@&quot; &quot;green&quot;&gt;&gt;
+&lt;&lt;option &quot;Purple @@.icon;.square;color:purple;@@&quot; &quot;purple&quot;&gt;&gt;
+&lt;&lt;option &quot;Pink @@.icon;.square;color:pink;@@&quot; &quot;pink&quot;&gt;&gt;
+&lt;&lt;option &quot;Yellow @@.icon;.square;color:yellow;@@&quot; &quot;yellow&quot;&gt;&gt;
+&lt;&lt;option &quot;Orange @@.icon;.square;color:orange;@@&quot; &quot;orange&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;&lt;/label&gt;
 
 __The Smarty Option__
 I noticed you wanted to play a fluffy. Do you want to be a Smarty?
@@ -2374,7 +2374,7 @@ I noticed you wanted to play a fluffy. Do you want to be a Smarty?
 
 Your name is &lt;&lt;textbox &quot;$playerName&quot; &quot;Player Name&quot;&gt;&gt;.
 
-You are playing a &lt;&lt;cycle &quot;$playerGender&quot;&gt;&gt;&lt;&lt;option Male &quot;male&quot;&gt;&gt;&lt;&lt;option Female &quot;female&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;  &lt;&lt;cycle &quot;$playerRace&quot;&gt;&gt;&lt;&lt;option Human &quot;human&quot;&gt;&gt;&lt;&lt;option &quot;Earthie Pony&quot; &quot;earthie&quot;&gt;&gt;&lt;&lt;option &quot;Pegasus Pony&quot; &quot;pegasus&quot;&gt;&gt;&lt;&lt;option &quot;Unicorn Pony&quot; &quot;unicorn&quot;&gt;&gt;&lt;&lt;option &quot;Alicorn Pony&quot; &quot;alicorn&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;.&lt;div id=&quot;nextButton1&quot;&gt;
+You are playing a &lt;&lt;cycle &quot;$playerGender&quot;&gt;&gt;&lt;&lt;option Male &quot;male&quot;&gt;&gt;&lt;&lt;option Female &quot;female&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;  &lt;&lt;cycle &quot;$playerRace&quot;&gt;&gt;&lt;&lt;option Human &quot;human&quot;&gt;&gt;&lt;&lt;option &quot;Earthie Pony&quot; &quot;Earthie&quot;&gt;&gt;&lt;&lt;option &quot;Pegasus Pony&quot; &quot;Pegasus&quot;&gt;&gt;&lt;&lt;option &quot;Unicorn Pony&quot; &quot;Unicorn&quot;&gt;&gt;&lt;&lt;option &quot;Alicorn Pony&quot; &quot;Alicorn&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;.&lt;div id=&quot;nextButton1&quot;&gt;
 &lt;&lt;include &quot;Character Creation Next Button&quot;&gt;&gt;&lt;/div&gt; \</tw-passagedata><tw-passagedata pid="4" name="Opening Credits" tags="" position="475,100" size="100,100">Hey all. This is a fun little thing I used to try to learn how to make things in Twine. Don&#39;t take it too seriously. 
 
 A little about me: I&#39;m &lt;a href=&quot;https://fluffy-community.com/u/recent6284/activity&quot; target=&quot;_blank&quot;&gt;Recent6284 on Fluffy-Community&lt;/a&gt; and I mostly want to experiment with Fluffy fiction as I can&#39;t draw for shit. 
@@ -2501,6 +2501,8 @@ Result: &lt;&lt;nobr&gt;&gt;&lt;!-- Roll for Obedience with a goal of 1 + $bonus
 &lt;&lt;FluffySVG &quot;red&quot; &quot;green&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Fluffy Start" tags="" position="850,100" size="100,100">This is the Fluffy Start page.
 
 You are $playerName, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you aren&#39;t a smarty.
+
+&lt;&lt;FluffySVG $playerSkin $playerMane $fluffyName $playerRace 2&gt;&gt;
 
 You&#39;re going to start in the &lt;&lt;cycle &quot;$ponyStart&quot;&gt;&gt;&lt;&lt;option &quot;Safe Room&quot; &quot;saferoom&quot;&gt;&gt;&lt;&lt;option &quot;Daycare Room&quot; &quot;daycare&quot;&gt;&gt;&lt;&lt;option &quot;Alleyway&quot; &quot;alleyway&quot;&gt;&gt;&lt;&lt;option &quot;Factory Farm&quot; &quot;factoryfarm&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;.</tw-passagedata><tw-passagedata pid="8" name="Sorry Poopies" tags="human event" position="975,100" size="100,100"></tw-passagedata><tw-passagedata pid="9" name="Bad Upsies" tags="human event" position="1100,100" size="100,100">You notice that $fluffyName somehow got a piece of fibre from your carpet stuck in their hind leg fluff. You&#39;ll probably have to get that out, or it&#39;s going to be a problem.
 

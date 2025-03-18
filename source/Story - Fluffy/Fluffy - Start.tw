@@ -3,4 +3,6 @@ This is the Fluffy Start page.
 
 You are $playerName, a $playerGender <<print $playerRace.toUpperFirst()>> pony, and you aren't a smarty.
 
+<<FluffySVG $playerSkin $playerMane $fluffyName $playerRace 2>>
+
 You're going to start in the <<cycle "$ponyStart">><<option "Safe Room" "saferoom">><<option "Daycare Room" "daycare">><<option "Alleyway" "alleyway">><<option "Factory Farm" "factoryfarm">><</cycle>>.

@@ -10,21 +10,21 @@
 __Appearance__
 Since you're a fluffy, pick the color of your mane and tail:
 <label>Mane and Tail: <<cycle "$playerMane">>
-<<option "Blue @@.icon;.square;color:blue;@@">>
-<<option "Red @@.icon;.square;color:red;@@">>
-<<option "Green @@.icon;.square;color:green;@@">>
-<<option "Purple @@.icon;.square;color:purple;@@">>
-<<option "Pink @@.icon;.square;color:pink;@@">>
-<<option "Yellow @@.icon;.square;color:yellow;@@">>
-<<option "Orange @@.icon;.square;color:orange;@@">><</cycle>></label>
-<label>Fur: <<cycle "$playerColor">>
-<<option "Blue @@.icon;.square;color:blue;@@">>
-<<option "Red @@.icon;.square;color:red;@@">>
-<<option "Green @@.icon;.square;color:green;@@">>
-<<option "Purple @@.icon;.square;color:purple;@@">>
-<<option "Pink @@.icon;.square;color:pink;@@">>
-<<option "Yellow @@.icon;.square;color:yellow;@@">>
-<<option "Orange @@.icon;.square;color:orange;@@">><</cycle>></label>
+<<option "Blue @@.icon;.square;color:blue;@@" "blue">>
+<<option "Red @@.icon;.square;color:red;@@" "red">>
+<<option "Green @@.icon;.square;color:green;@@" "green">>
+<<option "Purple @@.icon;.square;color:purple;@@" "purple">>
+<<option "Pink @@.icon;.square;color:pink;@@" "pink">>
+<<option "Yellow @@.icon;.square;color:yellow;@@" "yellow">>
+<<option "Orange @@.icon;.square;color:orange;@@" "orange">><</cycle>></label>
+<label>Fur: <<cycle "$playerSkin">>
+<<option "Blue @@.icon;.square;color:blue;@@" "blue">>
+<<option "Red @@.icon;.square;color:red;@@" "red">>
+<<option "Green @@.icon;.square;color:green;@@" "green">>
+<<option "Purple @@.icon;.square;color:purple;@@" "purple">>
+<<option "Pink @@.icon;.square;color:pink;@@" "pink">>
+<<option "Yellow @@.icon;.square;color:yellow;@@" "yellow">>
+<<option "Orange @@.icon;.square;color:orange;@@" "orange">><</cycle>></label>
 
 __The Smarty Option__
 I noticed you wanted to play a fluffy. Do you want to be a Smarty?

@@ -37,6 +37,10 @@
 
 /* Attribute Arrays */
 
+<<set $randomFlavor = [
+    "Loving", "Curious", "Timid", "Greedy", "Stubborn"
+]>>
+
 <<set $randomNameMale = [
     "Oak","Cedar","Birch","Ash","Thorn","Bramble","Flint","Stone","Boulder","Cliff","Storm","Thunder","Lightning","Blaze","Ember","Rusty","Copper","Bronze","Steel","Iron","Shadow","Midnight","Onyx","Jet","Coal","Gravel","Granite","Moss","Fern","Pine","Spruce","Timber","River","Brook","Lake","Ocean","Tide","Wave","Frost","Glacier","Comet","Meteor","Orion","Sol","Shade","Sandy","Shine","Gold","Silver","Platinum","Rowan","Hawthorn","Alder","Sycamore","Elm","Maple","Cypress","Redwood","Hickory","Juniper","Rex","Rover","Whistle","Rosemary","Coriander","Parsley","Dill","Trapper","Clove","Cumin","Cobalt","Mercury","Titanium","Nickel","Zinc","Quartz","Obsidian","Topaz","Garnet","Shale","Falcon","Eagle","Hawk","Raven","Crow","Phoenix","Griffin","Drake","Wolf","Bear","Fox","Lynx","Cougar","Panther","Leopard","Tiger","Lion","Falcon","Boulder","Slate"
 ]>>

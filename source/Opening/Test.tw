@@ -3,3 +3,8 @@
 Widget below
 
 <<FluffySVG "red" "green">>
+
+<<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>>
+<<print $fluffies.deleteWith(function ($fluffies) {
+    return $fluffies.color isnot "blue";
+})>>

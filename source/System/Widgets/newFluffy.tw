@@ -17,6 +17,32 @@
   <<set _impulsiveness = 10 - _obedience>> <!-- Impulsiveness is 10 minus obedience -->
   <<set _caution = random(1, 9)>> <!-- Random value between 1 and 9 for caution -->
   <<set _ignorance = 10 - _caution>> <!-- Ignorance is 10 minus caution -->
+  <<set _flavor = $randomFlavor.random()>>
+ <<if $obedience gte 7>>
+    <<if $caution gte 7>>
+        <<set _temperament to "Perfect">>
+    <<elseif $caution gte 4>>
+        <<set _temperament to "Loyal">>
+    <<else>>
+        <<set _temperament to "Clueless">>
+    <</if>>
+<<elseif $obedience gte 4>>
+    <<if $caution gte 7>>
+        <<set _temperament to "Cautious">>
+    <<elseif $caution gte 4>>
+        <<set _temperament to "Average">>
+    <<else>>
+        <<set _temperament to "Reckless">>
+    <</if>>
+<<else>>
+    <<if $caution gte 7>>
+        <<set _temperament to "Nervous">>
+    <<elseif $caution gte 4>>
+        <<set _temperament to "Free">>
+    <<else>>
+        <<set _temperament to "Chaotic">>
+    <</if>>
+<</if>>
 
   <<set _fluffy = {
     name: _name,
@@ -29,7 +55,9 @@
     im: _impulsiveness,
     ca: _caution,
     ig: _ignorance,
-    fertility: _fertility
+    fertility: _fertility,
+    flavor: _flavor,
+    temperament: _temperament
   }>>
 
   <<run $fluffies.push(_fluffy)>>

@@ -66,6 +66,14 @@
     <td>Ignorance</td>
     <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyIg>><</if>></td>
   </tr>
+  <tr>
+    <td>Flavor</td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyFlavor>><</if>></td>
+  </tr>
+  <tr>
+    <td><<hovertip "Archetype based on stat totals">>Temperament<</hovertip>></td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyTemperament>><</if>></td>
+  </tr>
 </tbody>
 </table><</do>>
 !! Roll Animation Test

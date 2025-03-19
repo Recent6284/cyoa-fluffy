@@ -2454,6 +2454,14 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;td&gt;Ignorance&lt;/td&gt;
     &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyIg&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Flavor&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyFlavor&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;&lt;hovertip &quot;Archetype based on stat totals&quot;&gt;&gt;Temperament&lt;&lt;/hovertip&gt;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyTemperament&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;&lt;&lt;/do&gt;&gt;
 !! Roll Animation Test
@@ -2496,7 +2504,12 @@ Result: &lt;&lt;nobr&gt;&gt;&lt;!-- Roll for Obedience with a goal of 1 + $bonus
   @@color:orange;Fail! The fluffy is too impulsive.@@
 &lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="A test passage" tags="" position="725,100" size="100,100">Widget below
 
-&lt;&lt;FluffySVG &quot;red&quot; &quot;green&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Fluffy Start" tags="" position="850,100" size="100,100">This is the Fluffy Start page.
+&lt;&lt;FluffySVG &quot;red&quot; &quot;green&quot;&gt;&gt;
+
+&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;
+&lt;&lt;print $fluffies.deleteWith(function ($fluffies) {
+    return $fluffies.color isnot &quot;blue&quot;;
+})&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Fluffy Start" tags="" position="850,100" size="100,100">This is the Fluffy Start page.
 
 You are $playerName, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you aren&#39;t a smarty.
 
@@ -2754,9 +2767,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &lt;&lt;button &quot;Approach the Fluffy&quot; &quot;Forest - Fluffy Intro&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Forest - Fluffy Intro" tags="" position="1100,475" size="100,100">&lt;&lt;lockFluffy&gt;&gt;
-
-Congrats, your new Fluffy is:
+&lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Forest - Fluffy Intro" tags="" position="1100,475" size="100,100">&lt;&lt;lockFluffy&gt;&gt;You mustered up a small amount of courage, and decided to take the leap. This Fluffy looked like  
 
 &#39;&#39;$fluffyName&#39;&#39;, the &lt;span @style=&quot;&#39;color:&#39; + $fluffySkin.colorname&quot;&gt;&lt;&lt;print $fluffySkin.name.toLowerCase()&gt;&gt;&lt;/span&gt; $fluffyRace with a &lt;span @style=&quot;&#39;color:&#39; + $fluffyMane.colorname&quot;&gt;&lt;&lt;print $fluffyMane.name.toLowerCase()&gt;&gt;&lt;/span&gt; mane.
 
@@ -2770,7 +2781,7 @@ Do you want to rename your Fluffy?
 
 &lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;
 
-If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="41" name="Human Home (First Visit)" tags="" position="100,600" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="41" name="Fluffy Quality Descriptions" tags="" position="100,600" size="100,100"></tw-passagedata><tw-passagedata pid="42" name="Human Home (First Visit)" tags="" position="225,600" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 ! Welcome Home
 You arrive home to your &lt;&lt;cycle &quot;$houseType&quot;&gt;&gt;&lt;&lt;option &quot;detached house&quot;&gt;&gt;&lt;&lt;option &quot;apartment&quot;&gt;&gt;&lt;&lt;option &quot;townhome&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;, which was pretty modest, all things considered. You had previously used an office during the pandemic for a work-from-home environment, but you realized that it was spending a lot of time gathering dust. You decided to move your desk, bookshelves and your stuff for your &lt;&lt;cycle &quot;$hobbyType&quot;&gt;&gt;&lt;&lt;option &quot;sewing&quot;&gt;&gt;&lt;&lt;option &quot;plants&quot;&gt;&gt;&lt;&lt;option &quot;guitar&quot;&gt;&gt;&lt;&lt;option &quot;language&quot;&gt;&gt;&lt;&lt;option &quot;calligraphy&quot;&gt;&gt;&lt;&lt;option &quot;leatherwork&quot;&gt;&gt;&lt;&lt;option &quot;yoga&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; hobby out into the living room; it didn&#39;t cramp the space that much, and you had a good opportunity to make the room more suitable for your new Fluffy.
 
@@ -2782,9 +2793,9 @@ You dumped all the things you got from Fluffmart into the room.
 
 &lt;&lt;if $playerSketties is &quot;true&quot;&gt;&gt;Your supply of canned spaghetti also went in one of your kitchen cupboards, which was starting to become &quot;the one where all your Fluffy junk is going.&quot; You wondered if Fluffies could be strong enough to pull knobs. &lt;&lt;set _randomThought to $knobThought.random()&gt;&gt;&lt;&lt;hovertip &quot;Things underlined in @@color:orange;orange@@ will be randomly generated, and remembered to influence events.&quot;&gt;&gt;&lt;&lt;print _randomThought&gt;&gt;&lt;&lt;/hovertip&gt;&gt;.&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;nobr&gt;&gt;&lt;&lt;if $knobThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $knobMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $knobThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $knobMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Shelter" tags="" position="225,600" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="43" name="Smarty Start" tags="" position="350,600" size="100,100">This is the Smarty Start page. 
+&lt;&lt;nobr&gt;&gt;&lt;&lt;if $knobThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $knobMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $knobThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $knobMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="Shelter" tags="" position="350,600" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="44" name="Smarty Start" tags="" position="475,600" size="100,100">This is the Smarty Start page. 
 
-You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot. Your mane is $playerMane, and your skin is $playerColor.</tw-passagedata><tw-passagedata pid="44" name="PassageFooter" tags="" position="475,600" size="100,100">&lt;&lt;script&gt;&gt;
+You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot. Your mane is $playerMane, and your skin is $playerColor.</tw-passagedata><tw-passagedata pid="45" name="PassageFooter" tags="" position="600,600" size="100,100">&lt;&lt;script&gt;&gt;
 // Wait for the passage to finish rendering
 $(document).on(&quot;:passageend&quot;, function() {
   // Add a click event listener to the bug icon
@@ -2794,14 +2805,14 @@ $(document).on(&quot;:passageend&quot;, function() {
     footergray.classList.toggle(&quot;hidden&quot;);
   });
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="StoryCaption" tags="" position="600,600" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="StoryCaption" tags="" position="725,600" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
 &#39;&#39;Money&#39;&#39;: $&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;
 &lt;h3&gt;&lt;u&gt;Player Inventory&lt;/u&gt;&lt;/h3&gt;&lt;/div&gt;&lt;&lt;inv $bag inspect&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;div id=&quot;bug-section&quot;&gt;
   &lt;div id=&quot;bug-button&quot;&gt;&lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Found a bug? Submit it to &lt;a href=&quot;https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
-  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="46" name="StoryMenu" tags="" position="725,600" size="100,100"></tw-passagedata><tw-passagedata pid="47" name="StoryInit" tags="" position="850,600" size="100,100">/* Player Variables */
+  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="47" name="StoryMenu" tags="" position="850,600" size="100,100"></tw-passagedata><tw-passagedata pid="48" name="StoryInit" tags="" position="975,600" size="100,100">/* Player Variables */
 
 &lt;&lt;set $firstLoad to &quot;true&quot;&gt;&gt;
 &lt;&lt;set $playerBudget to 500&gt;&gt;
@@ -2837,6 +2848,10 @@ $(document).on(&quot;:passageend&quot;, function() {
 &lt;&lt;set $fluffySterile = []&gt;&gt;
 
 /* Attribute Arrays */
+
+&lt;&lt;set $randomFlavor = [
+    &quot;Loving&quot;, &quot;Curious&quot;, &quot;Timid&quot;, &quot;Greedy&quot;, &quot;Stubborn&quot;
+]&gt;&gt;
 
 &lt;&lt;set $randomNameMale = [
     &quot;Oak&quot;,&quot;Cedar&quot;,&quot;Birch&quot;,&quot;Ash&quot;,&quot;Thorn&quot;,&quot;Bramble&quot;,&quot;Flint&quot;,&quot;Stone&quot;,&quot;Boulder&quot;,&quot;Cliff&quot;,&quot;Storm&quot;,&quot;Thunder&quot;,&quot;Lightning&quot;,&quot;Blaze&quot;,&quot;Ember&quot;,&quot;Rusty&quot;,&quot;Copper&quot;,&quot;Bronze&quot;,&quot;Steel&quot;,&quot;Iron&quot;,&quot;Shadow&quot;,&quot;Midnight&quot;,&quot;Onyx&quot;,&quot;Jet&quot;,&quot;Coal&quot;,&quot;Gravel&quot;,&quot;Granite&quot;,&quot;Moss&quot;,&quot;Fern&quot;,&quot;Pine&quot;,&quot;Spruce&quot;,&quot;Timber&quot;,&quot;River&quot;,&quot;Brook&quot;,&quot;Lake&quot;,&quot;Ocean&quot;,&quot;Tide&quot;,&quot;Wave&quot;,&quot;Frost&quot;,&quot;Glacier&quot;,&quot;Comet&quot;,&quot;Meteor&quot;,&quot;Orion&quot;,&quot;Sol&quot;,&quot;Shade&quot;,&quot;Sandy&quot;,&quot;Shine&quot;,&quot;Gold&quot;,&quot;Silver&quot;,&quot;Platinum&quot;,&quot;Rowan&quot;,&quot;Hawthorn&quot;,&quot;Alder&quot;,&quot;Sycamore&quot;,&quot;Elm&quot;,&quot;Maple&quot;,&quot;Cypress&quot;,&quot;Redwood&quot;,&quot;Hickory&quot;,&quot;Juniper&quot;,&quot;Rex&quot;,&quot;Rover&quot;,&quot;Whistle&quot;,&quot;Rosemary&quot;,&quot;Coriander&quot;,&quot;Parsley&quot;,&quot;Dill&quot;,&quot;Trapper&quot;,&quot;Clove&quot;,&quot;Cumin&quot;,&quot;Cobalt&quot;,&quot;Mercury&quot;,&quot;Titanium&quot;,&quot;Nickel&quot;,&quot;Zinc&quot;,&quot;Quartz&quot;,&quot;Obsidian&quot;,&quot;Topaz&quot;,&quot;Garnet&quot;,&quot;Shale&quot;,&quot;Falcon&quot;,&quot;Eagle&quot;,&quot;Hawk&quot;,&quot;Raven&quot;,&quot;Crow&quot;,&quot;Phoenix&quot;,&quot;Griffin&quot;,&quot;Drake&quot;,&quot;Wolf&quot;,&quot;Bear&quot;,&quot;Fox&quot;,&quot;Lynx&quot;,&quot;Cougar&quot;,&quot;Panther&quot;,&quot;Leopard&quot;,&quot;Tiger&quot;,&quot;Lion&quot;,&quot;Falcon&quot;,&quot;Boulder&quot;,&quot;Slate&quot;
@@ -3234,7 +3249,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 &lt;&lt;/item&gt;&gt;
 &lt;&lt;item &quot;brush&quot; &quot;Grooming Brush&quot;&gt;&gt;
 
-&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="FluffyCSS" tags="widget nobr" position="975,600" size="100,100">&lt;&lt;widget &quot;FluffyCSS&quot;&gt;&gt;
+&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="FluffyCSS" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;FluffyCSS&quot;&gt;&gt;
   &lt;&lt;set _scale to _args[2] || 1&gt;&gt;
   &lt;&lt;set _baseWidth to 185&gt;&gt; /* your art&#39;s base width */
   &lt;&lt;set _baseHeight to 92&gt;&gt; /* your art&#39;s base height */
@@ -3296,7 +3311,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Fluffy SVG" tags="widget nobr" position="1100,600" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="Fluffy SVG" tags="widget nobr" position="1225,600" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
   &lt;&lt;set _SVGfluffySkin to _args[0] || &quot;red&quot;&gt;&gt;
   &lt;&lt;set _SVGfluffyMane to _args[1] || &quot;blue&quot;&gt;&gt;
   &lt;&lt;set _SVGfluffyName to _args[2] || &quot;Unnamed&quot;&gt;&gt;
@@ -3539,7 +3554,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
       &lt;&lt;print _earthieSVG&gt;&gt;
     &lt;&lt;/if&gt;&gt;
   &lt;/div&gt;&lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="Fluffy in Tank" tags="widget nobr" position="1225,600" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Fluffy in Tank" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
   &lt;&lt;set _fluffyRace to _args[3]&gt;&gt;
   &lt;div class=&quot;tank-wrapper&quot;&gt;
     &lt;div class=&quot;tank&quot;&gt;
@@ -3633,9 +3648,9 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
           &lt;/div&gt;
           &lt;/div&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Print Player Budget" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;budget&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Print Player Budget" tags="widget nobr" position="225,725" size="100,100">&lt;&lt;widget &quot;budget&quot;&gt;&gt;
     &#39;&#39;$&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;&#39;&#39;
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="ButtonReplace" tags="widget" position="225,725" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="ButtonReplace" tags="widget" position="350,725" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
 
 &lt;&lt;widget &quot;buttonreplace&quot; container&gt;&gt;&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set _buttonText to $args[0]&gt;&gt;
@@ -3650,7 +3665,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &#39;&lt;&lt;/replace&gt;&gt;&#39; +
     &#39;&lt;&lt;/button&gt;&gt;&#39; +
 &#39;&lt;/span&gt;&#39;&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="Clouds" tags="widget nobr" position="350,725" size="100,100">&lt;&lt;widget &quot;clouds&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="Clouds" tags="widget nobr" position="475,725" size="100,100">&lt;&lt;widget &quot;clouds&quot;&gt;&gt;
     &lt;div class=&quot;sunholder&quot;&gt;
         &lt;div class=&quot;sun&quot;&gt;
             &lt;div class=&quot;raybase ray1&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
@@ -3683,7 +3698,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="ColorName" tags="widget nobr" position="475,725" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="inventory.strings" tags="" position="600,725" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="56" name="New Fluffy" tags="widget nobr" position="725,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="ColorName" tags="widget nobr" position="600,725" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="inventory.strings" tags="" position="725,725" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="57" name="New Fluffy" tags="widget nobr" position="850,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
   &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;
@@ -3700,6 +3715,32 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;&lt;set _impulsiveness = 10 - _obedience&gt;&gt; &lt;!-- Impulsiveness is 10 minus obedience --&gt;
   &lt;&lt;set _caution = random(1, 9)&gt;&gt; &lt;!-- Random value between 1 and 9 for caution --&gt;
   &lt;&lt;set _ignorance = 10 - _caution&gt;&gt; &lt;!-- Ignorance is 10 minus caution --&gt;
+  &lt;&lt;set _flavor = $randomFlavor.random()&gt;&gt;
+ &lt;&lt;if $obedience gte 7&gt;&gt;
+    &lt;&lt;if $caution gte 7&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Perfect&quot;&gt;&gt;
+    &lt;&lt;elseif $caution gte 4&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Loyal&quot;&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Clueless&quot;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif $obedience gte 4&gt;&gt;
+    &lt;&lt;if $caution gte 7&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Cautious&quot;&gt;&gt;
+    &lt;&lt;elseif $caution gte 4&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Average&quot;&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Reckless&quot;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+    &lt;&lt;if $caution gte 7&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Nervous&quot;&gt;&gt;
+    &lt;&lt;elseif $caution gte 4&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Free&quot;&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;set _temperament to &quot;Chaotic&quot;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
   &lt;&lt;set _fluffy = {
     name: _name,
@@ -3712,13 +3753,15 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     im: _impulsiveness,
     ca: _caution,
     ig: _ignorance,
-    fertility: _fertility
+    fertility: _fertility,
+    flavor: _flavor,
+    temperament: _temperament
   }&gt;&gt;
 
   &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="RefreshSidebar" tags="widget nobr" position="850,725" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="RefreshSidebar" tags="widget nobr" position="975,725" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
     &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="Roll" tags="widget" position="975,725" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="Roll" tags="widget" position="1100,725" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
   &lt;&lt;capture _stat&gt;&gt;
   &lt;&lt;if _stat === &quot;ob&quot;&gt;&gt;
     &lt;&lt;set _bonus = Math.floor(($fluffyOb - $fluffyIm) /2 )&gt;&gt; &lt;!-- Obedience - Impulsiveness --&gt;
@@ -3761,7 +3804,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;&lt;/if&gt;&gt;
 
   &lt;&lt;run State.setVar(_tempVarName, _result)&gt;&gt; &lt;!-- Store the result in the specified temporary variable --&gt;
-&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="Test Widget SVG" tags="widget" position="1100,725" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
+&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="Test Widget SVG" tags="widget" position="1225,725" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
 &lt;&lt;set _fill to &quot;blue&quot;&gt;&gt;
 &lt;&lt;= &#39;&lt;svg viewBox=&quot;0 0 10 10&quot; height=&quot;120px&quot; width=&quot;120px&quot; fill=&quot;&#39; + _fill + &#39;&quot;&gt;&lt;circle cx=&quot;5&quot; cy=&quot;5&quot; r=&quot;4&quot; /&gt;&lt;/svg&gt;&#39;&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>

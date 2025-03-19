@@ -109,9 +109,7 @@ Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colornam
 
 :: Forest - Fluffy Intro
 
-<<lockFluffy>>
-
-Congrats, your new Fluffy is:
+<<lockFluffy>>You mustered up a small amount of courage, and decided to take the leap. This Fluffy looked like  
 
 ''$fluffyName'', the <span @style="'color:' + $fluffySkin.colorname"><<print $fluffySkin.name.toLowerCase()>></span> $fluffyRace with a <span @style="'color:' + $fluffyMane.colorname"><<print $fluffyMane.name.toLowerCase()>></span> mane.
 
@@ -130,3 +128,6 @@ Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName, a <<c
 <<FluffyArt $fluffySkin.colorname $fluffyMane.colorname>>
 
 If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].
+
+:: Fluffy Quality Descriptions
+

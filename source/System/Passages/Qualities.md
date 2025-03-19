@@ -12,43 +12,47 @@ These are the overarching personality traits that give the Fluffy its unique "fl
 ### **2. List of 9 Stat Pair Possibilities**
 These are the mechanical archetypes based on the stat pairs (Obedience/Impulsiveness and Caution/Ignorance). They summarize the stats but don’t add extra "flavor."
 
-1. **The Perfect Pet**  
+|Temperament|Stats|
+|---|---|
+|Perfect|+OB,+CA|
+|Explorer|+OB,=CA|
+|Clueless|+OB,-CA|
+|Cautious|=OB,+CA|
+|Average|=OB,=CA|
+|Reckless|=OB,-CA|
+|Nervous|-OB,+CA|
+|FreeSpirit|-OB,=CA|
+|Chaotic|-OB,-CA|
+
+1. Perfect
    - *Stats*: High Obedience (7-10), High Caution (7-10)  
    - *Summary*: Obedient and cautious. Rarely causes trouble, but may be overly anxious.
-
-2. **The Loyal Explorer**  
+2. Explorer
    - *Stats*: High Obedience (7-10), Medium Caution (4-6)  
    - *Summary*: Obedient but curious. Tries to please but can get distracted by new things.
-
-3. **The Loyal Clueless**  
+3. Clueless
    - *Stats*: High Obedience (7-10), Low Caution (0-3)  
    - *Summary*: Obedient but oblivious to danger. May follow commands into risky situations.
-
-4. **The Cautious Buddy**  
+4. Cautious
    - *Stats*: Medium Obedience (4-6), High Caution (7-10)  
    - *Summary*: Balanced but cautious. Tries to be good but avoids risky situations.
-
-5. **The Average Joe**  
+5. Average
    - *Stats*: Medium Obedience (4-6), Medium Caution (4-6)  
    - *Summary*: Balanced in both obedience and caution. Predictable but not overly cautious.
-
-6. **The Reckless Buddy**  
+6. Reckless
    - *Stats*: Medium Obedience (4-6), Low Caution (0-3)  
    - *Summary*: Balanced but reckless. May act on impulse without thinking of consequences.
-
-7. **The Nervous Rebel**  
+7. Nervous
    - *Stats*: Low Obedience (0-3), High Caution (7-10)  
    - *Summary*: Independent but cautious. Avoids trouble but resists authority.
-
-8. **The Free Spirit**  
+8. Free Spirit
    - *Stats*: Low Obedience (0-3), Medium Caution (4-6)  
    - *Summary*: Independent and curious. Does its own thing but isn’t overly reckless.
-
-9. **The Chaotic Rebel**  
+9. Chaotic
    - *Stats*: Low Obedience (0-3), Low Caution (0-3)  
    - *Summary*: Independent and reckless. Ignores commands and charges into danger.
 
-   Perfect: The Perfect Pet
+Perfect: The Perfect Pet
 
 Loyal: The Loyal Explorer
 

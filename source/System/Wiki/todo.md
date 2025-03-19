@@ -7,16 +7,16 @@
 |Finalize day structure|high|Needs refining|Need to figure out how "time block" structure works. Current thoughts are either day-based, or week-based|
 |Finalize win condition for Human path|high|Needs refining|Not sure what the point of a human's campaign is, or how the player "wins." Currently no goal besides seeing as many events as possible, and becomes difficult in order to have perpetual play without Fluffy age/dying/etc.|
 
+# Todo Resource Dump
+
 ## Separated Arrays
 
-→ Returns [{ name : "Apricots" }]; $fruits [{ name : "Apples" }, { name : "Oranges" }]
-$fruits.deleteWith(function (val) {
-	return val.name === "Apricots";
-})
+> → Returns [{ name : "Apricots" }]; $fruits [{ name : "Apples" }, { name : "Oranges" }]
+> $fruits.deleteWith(function (val) {
+> 	return val.name === "Apricots";
+> })
 
-
-
-# BugFixes
+# Bug Fixes
 
 |Bug|Affects|Reproducible?|Status|
 |---|---|---|---|

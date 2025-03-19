@@ -52,33 +52,27 @@ These are the mechanical archetypes based on the stat pairs (Obedience/Impulsive
    - *Stats*: Low Obedience (0-3), Low Caution (0-3)  
    - *Summary*: Independent and reckless. Ignores commands and charges into danger.
 
-Perfect: The Perfect Pet
+### Archetypes based on Temperment
 
-Loyal: The Loyal Explorer
-
-Clueless: The Loyal Clueless
-
-Cautious: The Cautious Buddy
-
-Average: The Average Joe
-
-Reckless: The Reckless Buddy
-
-Nervous: The Nervous Rebel
-
-Free: The Free Spirit
-
-Chaotic: The Chaotic Rebel
+* Perfect: The Perfect Pet
+* Loyal: The Loyal Explorer
+* Clueless: The Loyal Clueless
+* Cautious: The Cautious Buddy
+* Average: The Average Joe
+* Reckless: The Reckless Buddy
+* Nervous: The Nervous Rebel
+* Free: The Free Spirit
+* Chaotic: The Chaotic Rebel
 
 ---
 
 ### **How They Work Together**
-- **Flavors**: These add personality and influence the *tone* of the Fluffy’s behavior, dialogue, and event outcomes. For example, a **Loving Companion** Fluffy might cry if it feels neglected, while a **Mischievous Troublemaker** might giggle after causing chaos.
-- **Stat Pairs**: These handle the *mechanics* of the Fluffy’s behavior, such as how likely it is to obey commands or avoid danger. For example, a **Loyal Clueless** Fluffy (High Obedience, Low Caution) might obediently follow a command to "go play outside" but wander into traffic because it’s oblivious to danger.
+- **Flavors**: These add personality and influence the *tone* of the Fluffy’s behavior, dialogue, and event outcomes. For example, a **Loving** Fluffy might cry if it feels neglected, while a **Mischievous** might giggle after causing chaos.
+- **Stat Pairs**: These handle the *mechanics* of the Fluffy’s behavior, such as how likely it is to obey commands or avoid danger. For example, a **Clueless** Fluffy (High Obedience, Low Caution) might obediently follow a command to "go play outside" but wander into traffic because it’s oblivious to danger.
 
 ---
 
 ### **Example Combinations**
-- **Loving Companion + The Perfect Pet**: A Fluffy that’s deeply affectionate, obedient, and cautious. It might constantly seek hugs and reassurance but rarely causes trouble.
-- **Curious Explorer + The Reckless Buddy**: A Fluffy that’s curious and playful but often acts on impulse, leading to chaotic and humorous situations.
-- **Timid Survivor + The Nervous Rebel**: A Fluffy that’s fearful and cautious but also independent, often hiding from perceived threats and resisting authority.
+- **Loving + Perfect**: A Fluffy that’s deeply affectionate, obedient, and cautious. It might constantly seek hugs and reassurance but rarely causes trouble.
+- **Curious +  Reckless**: A Fluffy that’s curious and playful but often acts on impulse, leading to chaotic and humorous situations.
+- **Timid + Nervous**: A Fluffy that’s fearful and cautious but also independent, often hiding from perceived threats and resisting authority.

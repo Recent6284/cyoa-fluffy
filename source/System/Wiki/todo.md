@@ -11,10 +11,10 @@
 
 ## Separated Arrays
 
-> → Returns [{ name : "Apricots" }]; $fruits [{ name : "Apples" }, { name : "Oranges" }]
-> $fruits.deleteWith(function (val) {
-> 	return val.name === "Apricots";
-> })
+> → Returns [{ name : "Apricots" }]; $fruits [{ name : "Apples" }, { name : "Oranges" }]<br />
+> $fruits.deleteWith(function (val) {<br />
+> 	return val.name === "Apricots";<br />
+> })<br />
 
 # Bug Fixes
 

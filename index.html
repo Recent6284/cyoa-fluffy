@@ -2463,7 +2463,8 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyTemperament&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;&lt;&lt;/do&gt;&gt;
+&lt;/table&gt;
+&lt;&lt;/do&gt;&gt;
 !! Roll Animation Test
 &lt;&lt;animatedroll &quot;Strength&quot; &quot;d20&quot; 10 15 2 4000&gt;&gt;
 Arguments: (stat name, dice type, [stat value], [goal], [bonus], [duration])
@@ -2725,14 +2726,18 @@ Fluffy hunting was an interesting art: you &lt;&lt;cycle &quot;$baitSet&quot;&gt
     &lt;&lt;include &quot;Forest - Fluffy Meet 1&quot;&gt;&gt;
     &lt;&lt;set $fluffiesLeft to 3&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Forest - Fluffy Meet 1" tags="" position="225,475" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
-&lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
-&lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
-&lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;&lt;&lt;/silent&gt;&gt;After a small wait, you saw a fluffy trot into view. &lt;&lt;if  _fluffyRace is &quot;alicorn&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Alicorn Intro&quot;&gt;&gt;&lt;&lt;elseif  _fluffyRace is &quot;unicorn&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Unicorn Intro&quot;&gt;&gt;&lt;&lt;elseif  _fluffyRace is &quot;pegasus&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Pegasus Intro&quot;&gt;&gt;&lt;&lt;elseif  _fluffyRace is &quot;earthie&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Earthie Intro&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Forest - Fluffy Meet 1" tags="" position="225,475" size="100,100">&lt;&lt;silent&gt;&gt;
+    &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
+    &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
+    &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
+    &lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;
+    &lt;&lt;set _fluffyFlavor = State.variables.fluffies[$currentFluffyIndex].flavor&gt;&gt;
+&lt;&lt;/silent&gt;&gt;
+After a small wait, you saw a fluffy trot into view. &lt;&lt;if  _fluffyRace is &quot;alicorn&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Alicorn Intro&quot;&gt;&gt;&lt;&lt;elseif  _fluffyRace is &quot;unicorn&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Unicorn Intro&quot;&gt;&gt;&lt;&lt;elseif  _fluffyRace is &quot;pegasus&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Pegasus Intro&quot;&gt;&gt;&lt;&lt;elseif  _fluffyRace is &quot;earthie&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Earthie Intro&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender is &quot;female&quot;&gt;&gt;@@color:pink;&lt;&lt;print  _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;else&gt;&gt;@@color:blue;&lt;&lt;print  _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;/if&gt;&gt;. &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot; &quot;upper&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffyMane.colorname&quot;&gt;_fluffyMane.name&lt;/span&gt; mane accented &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffySkin.colorname&quot;&gt;&lt;&lt;print _fluffySkin.name.toLowerCase()&gt;&gt;&lt;/span&gt; skin; you weren&#39;t sure how your felt about the color combination, but it was something to consider.
 
-&lt;&lt;FluffyArt _fluffySkin.colorname _fluffyMane.colorname&gt;&gt;
+&lt;&lt;FluffySVG _fluffySkin.colorname _fluffyMane.colorname&gt;&gt;
 
 &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; lowered &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; mane down to the water and began to sip thoughtfully; &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; didn&#39;t seem to be aware of your presence, but you wouldn&#39;t hold that against &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;them&quot;&gt;&gt;. When they were hungry, thirsty or horny, Fluffies probably didn&#39;t care about much besides sating their needs.
 
@@ -2751,17 +2756,20 @@ You had a couple choices from here:
 * You could [[head to your local shelter|Shelter]] to check out the options for Fluffies that were either pulled off the street or put up for adoption.
 * You could [[head downtown|City]] and see if you would have more luck with the more urban Fluffies
 * You could [[head home for the day]] and put off the decision until tomorrow.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Forest Fluffy Meet TwoThree" tags="" position="975,475" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
-&lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
-&lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
-&lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Forest Fluffy Meet TwoThree" tags="" position="975,475" size="100,100">&lt;&lt;silent&gt;&gt;
+    &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
+    &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
+    &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
+    &lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;
+    &lt;&lt;set _fluffyFlavor = State.variables.fluffies[$currentFluffyIndex].flavor&gt;&gt;
+&lt;&lt;/silent&gt;&gt;
 As the &lt;&lt;dynamicFluffyProperty $currentFluffyIndex-1 &quot;race&quot;&gt;&gt; disappeared into the forest, you saw another fluffy approach the creek after a brief wait. &lt;&lt;if _fluffyRace is &quot;alicorn&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Alicorn Intro&quot;&gt;&gt;&lt;&lt;elseif _fluffyRace is &quot;unicorn&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Unicorn Intro&quot;&gt;&gt;&lt;&lt;elseif _fluffyRace is &quot;pegasus&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Pegasus Intro&quot;&gt;&gt;&lt;&lt;elseif _fluffyRace is &quot;earthie&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Earthie Intro&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender is &quot;female&quot;&gt;&gt;@@color:pink;&lt;&lt;print _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;else&gt;&gt;@@color:blue;&lt;&lt;print _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;/if&gt;&gt;. &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot; &quot;upper&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffyMane.colorname&quot;&gt;&lt;&lt;print _fluffyMane.name.toLowerCase()&gt;&gt;&lt;/span&gt; mane accented &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffySkin.colorname&quot;&gt;&lt;&lt;print _fluffySkin.name.toLowerCase()&gt;&gt;&lt;/span&gt; skin.
 
-&lt;&lt;FluffyArt _fluffySkin.colorname _fluffyMane.colorname &gt;&gt;
+&lt;&lt;FluffySVG _fluffySkin.colorname _fluffyMane.colorname &gt;&gt;
 
-Like the fluffy before, &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; approached the water, but this time, &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; seemed a bit more observant. &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; surveyed the scene in front of them, trying to see if something didn&#39;t feel quite right. After a small pause, it was almost like the caution left their head entirely: like the &lt;&lt;dynamicFluffyProperty $currentFluffyIndex-1 &quot;race&quot;&gt;&gt; before, they went down to drink.
+Like the fluffy before, &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; approached the water, but this time, &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; seemed a bit more observant. &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; surveyed the scene in front of them, trying to see if something didn&#39;t feel quite right. After a small pause, it was almost like the caution left their head entirely: like the &lt;&lt;dynamicFluffyProperty $currentFluffyIndex-1 &quot;race&quot;&gt;&gt; before, they went down to drink. &lt;&lt;include &quot;Fluffy Quality Descriptions&quot;&gt;&gt;
 
 Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _fluffySkin.colorname&quot;&gt;&lt;&lt;print _fluffySkin.name.toLowerCase()&gt;&gt;&lt;/span&gt; &lt;&lt;dynamicFluffyProperty $currentFluffyIndex &quot;race&quot;&gt;&gt;, or wait to see if any others show up? This Fluffy might not stick around for long.
 
@@ -2771,7 +2779,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &#39;&#39;$fluffyName&#39;&#39;, the &lt;span @style=&quot;&#39;color:&#39; + $fluffySkin.colorname&quot;&gt;&lt;&lt;print $fluffySkin.name.toLowerCase()&gt;&gt;&lt;/span&gt; $fluffyRace with a &lt;span @style=&quot;&#39;color:&#39; + $fluffyMane.colorname&quot;&gt;&lt;&lt;print $fluffyMane.name.toLowerCase()&gt;&gt;&lt;/span&gt; mane.
 
-&lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;
+&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;
 
 Do you want to rename your Fluffy?
 
@@ -2779,9 +2787,20 @@ Do you want to rename your Fluffy?
 
 &lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="40" name="Confirm" tags="" position="1225,475" size="100,100">Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName, a &lt;&lt;colorname $fluffySkin&gt;&gt; $fluffyRace with a &lt;&lt;colorname $fluffyMane&gt;&gt; mane.
 
-&lt;&lt;FluffyArt $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;
+&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname&gt;&gt;
 
-If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="41" name="Fluffy Quality Descriptions" tags="" position="100,600" size="100,100"></tw-passagedata><tw-passagedata pid="42" name="Human Home (First Visit)" tags="" position="225,600" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="41" name="Fluffy Quality Descriptions" tags="" position="100,600" size="100,100">&lt;&lt;nobr&gt;&gt;
+    &lt;&lt;if _fluffyFlavor is &quot;Stubborn&quot;&gt;&gt;
+        Stubborn
+    &lt;&lt;elseif _fluffyFlavor is &quot;Greedy&quot;&gt;&gt;
+        Greedy
+    &lt;&lt;elseif _fluffyFlavor is &quot;Curious&quot;&gt;&gt;
+        Curious
+    &lt;&lt;elseif _fluffyFlavor is &quot;Loving&quot;&gt;&gt;
+        Loving
+    &lt;&lt;elseif _fluffyFlavor is &quot;Cautious&quot;&gt;&gt;
+        Cautious
+&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Human Home (First Visit)" tags="" position="225,600" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 ! Welcome Home
 You arrive home to your &lt;&lt;cycle &quot;$houseType&quot;&gt;&gt;&lt;&lt;option &quot;detached house&quot;&gt;&gt;&lt;&lt;option &quot;apartment&quot;&gt;&gt;&lt;&lt;option &quot;townhome&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;, which was pretty modest, all things considered. You had previously used an office during the pandemic for a work-from-home environment, but you realized that it was spending a lot of time gathering dust. You decided to move your desk, bookshelves and your stuff for your &lt;&lt;cycle &quot;$hobbyType&quot;&gt;&gt;&lt;&lt;option &quot;sewing&quot;&gt;&gt;&lt;&lt;option &quot;plants&quot;&gt;&gt;&lt;&lt;option &quot;guitar&quot;&gt;&gt;&lt;&lt;option &quot;language&quot;&gt;&gt;&lt;&lt;option &quot;calligraphy&quot;&gt;&gt;&lt;&lt;option &quot;leatherwork&quot;&gt;&gt;&lt;&lt;option &quot;yoga&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; hobby out into the living room; it didn&#39;t cramp the space that much, and you had a good opportunity to make the room more suitable for your new Fluffy.
 

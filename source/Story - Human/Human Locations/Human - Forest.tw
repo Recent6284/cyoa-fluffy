@@ -41,14 +41,18 @@ You decided to place your candy bar, partially unwrapped, near a particularly sh
 
 :: Forest - Fluffy Meet 1
 
-<<silent>><<set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race>>
-<<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
-<<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
-<<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>><</silent>>After a small wait, you saw a fluffy trot into view. <<if  _fluffyRace is "alicorn">><<include "Forest - Alicorn Intro">><<elseif  _fluffyRace is "unicorn">><<include "Forest - Unicorn Intro">><<elseif  _fluffyRace is "pegasus">><<include "Forest - Pegasus Intro">><<elseif  _fluffyRace is "earthie">><<include "Forest - Earthie Intro">><</if>>
+<<silent>>
+    <<set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race>>
+    <<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
+    <<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
+    <<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>>
+    <<set _fluffyFlavor = State.variables.fluffies[$currentFluffyIndex].flavor>>
+<</silent>>
+After a small wait, you saw a fluffy trot into view. <<if  _fluffyRace is "alicorn">><<include "Forest - Alicorn Intro">><<elseif  _fluffyRace is "unicorn">><<include "Forest - Unicorn Intro">><<elseif  _fluffyRace is "pegasus">><<include "Forest - Pegasus Intro">><<elseif  _fluffyRace is "earthie">><<include "Forest - Earthie Intro">><</if>>
 
 Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname">_fluffyMane.name</span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin; you weren't sure how your felt about the color combination, but it was something to consider.
 
-<<FluffyArt _fluffySkin.colorname _fluffyMane.colorname>>
+<<FluffySVG _fluffySkin.colorname _fluffyMane.colorname>>
 
 <<dynamicPronoun $currentFluffyIndex "they" "upper">> lowered <<dynamicPronoun $currentFluffyIndex "their">> mane down to the water and began to sip thoughtfully; <<dynamicPronoun $currentFluffyIndex "they">> didn't seem to be aware of your presence, but you wouldn't hold that against <<dynamicPronoun $currentFluffyIndex "them">>. When they were hungry, thirsty or horny, Fluffies probably didn't care about much besides sating their needs.
 
@@ -89,17 +93,20 @@ You had a couple choices from here:
 <</if>>
 
 :: Forest Fluffy Meet TwoThree
-<<silent>><<set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race>>
-<<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
-<<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
-<<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>><</silent>>
+<<silent>>
+    <<set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race>>
+    <<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
+    <<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
+    <<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>>
+    <<set _fluffyFlavor = State.variables.fluffies[$currentFluffyIndex].flavor>>
+<</silent>>
 As the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> disappeared into the forest, you saw another fluffy approach the creek after a brief wait. <<if _fluffyRace is "alicorn">><<include "Forest - Alicorn Intro">><<elseif _fluffyRace is "unicorn">><<include "Forest - Unicorn Intro">><<elseif _fluffyRace is "pegasus">><<include "Forest - Pegasus Intro">><<elseif _fluffyRace is "earthie">><<include "Forest - Earthie Intro">><</if>>
 
 Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname"><<print _fluffyMane.name.toLowerCase()>></span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin.
 
-<<FluffyArt _fluffySkin.colorname _fluffyMane.colorname >>
+<<FluffySVG _fluffySkin.colorname _fluffyMane.colorname >>
 
-Like the fluffy before, <<dynamicPronoun $currentFluffyIndex "they">> approached the water, but this time, <<dynamicPronoun $currentFluffyIndex "they">> seemed a bit more observant. <<dynamicPronoun $currentFluffyIndex "they" "upper">> surveyed the scene in front of them, trying to see if something didn't feel quite right. After a small pause, it was almost like the caution left their head entirely: like the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> before, they went down to drink.
+Like the fluffy before, <<dynamicPronoun $currentFluffyIndex "they">> approached the water, but this time, <<dynamicPronoun $currentFluffyIndex "they">> seemed a bit more observant. <<dynamicPronoun $currentFluffyIndex "they" "upper">> surveyed the scene in front of them, trying to see if something didn't feel quite right. After a small pause, it was almost like the caution left their head entirely: like the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> before, they went down to drink. <<include "Fluffy Quality Descriptions">>
 
 Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> <<dynamicFluffyProperty $currentFluffyIndex "race">>, or wait to see if any others show up? This Fluffy might not stick around for long.
 
@@ -113,7 +120,7 @@ Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colornam
 
 ''$fluffyName'', the <span @style="'color:' + $fluffySkin.colorname"><<print $fluffySkin.name.toLowerCase()>></span> $fluffyRace with a <span @style="'color:' + $fluffyMane.colorname"><<print $fluffyMane.name.toLowerCase()>></span> mane.
 
-<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname>>
+<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname>>
 
 Do you want to rename your Fluffy?
 
@@ -125,9 +132,21 @@ Do you want to rename your Fluffy?
 
 Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName, a <<colorname $fluffySkin>> $fluffyRace with a <<colorname $fluffyMane>> mane.
 
-<<FluffyArt $fluffySkin.colorname $fluffyMane.colorname>>
+<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname>>
 
 If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].
 
 :: Fluffy Quality Descriptions
 
+<<nobr>>
+    <<if _fluffyFlavor is "Stubborn">>
+        Stubborn
+    <<elseif _fluffyFlavor is "Greedy">>
+        Greedy
+    <<elseif _fluffyFlavor is "Curious">>
+        Curious
+    <<elseif _fluffyFlavor is "Loving">>
+        Loving
+    <<elseif _fluffyFlavor is "Cautious">>
+        Cautious
+<</if>><</nobr>>

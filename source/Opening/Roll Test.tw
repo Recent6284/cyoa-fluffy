@@ -75,7 +75,8 @@
     <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyTemperament>><</if>></td>
   </tr>
 </tbody>
-</table><</do>>
+</table>
+<</do>>
 !! Roll Animation Test
 <<animatedroll "Strength" "d20" 10 15 2 4000>>
 Arguments: (stat name, dice type, [stat value], [goal], [bonus], [duration])

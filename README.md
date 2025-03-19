@@ -4,6 +4,7 @@ This is a Twine project by John Recent. The aim is to have a couple branches of 
 * Wiki (in a very barebones form) can be found here:
     * Index
     * [Stats Reference](./source/System/Wiki/Qualities.md)
+    * [To Do List](./source/System/Wiki/todo.md)
 
 ## Bugs/Feedback
 

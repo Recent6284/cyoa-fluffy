@@ -7,7 +7,9 @@ Macro.add("dynamicPronoun", {
         var pronouns = {
             they: ["he", "she", "they", "it"],
             them: ["him", "her", "them", "it"],
-            their: ["his", "her", "their", "its"]
+            their: ["his", "her", "their", "its"],
+            themself: ["himself", "herself", "themself", "itself"],
+            themselves: ["himself", "herself", "themself", "itself"]
         };
         
         // Get the pronoun set

@@ -6,6 +6,7 @@
   <<set _SVGfluffyName to _args[2] || "Unnamed">>
   <<set _SVGfluffyRace to _args[3] || "Earthie">>
   <<set _scale to _args[4] || 1>>
+  <<set _shouldBlink to _args[5] === false ? false : true>>
 <<set _earthieSVG to `
 <svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
   <defs>
@@ -243,6 +244,10 @@
       <<print _earthieSVG>>
     <</if>>
   </div></div><</nobr>>
+<<script>>
+  // Trigger blinking check on the newly created Fluffy
+  setTimeout(window.makeFluffyBlink, 100);
+<</script>>
 <</widget>>
 
 

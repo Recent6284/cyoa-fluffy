@@ -47,13 +47,13 @@ You decided to place your candy bar, partially unwrapped, near a particularly sh
     <<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>>
     <<set _fluffyFlavor = State.variables.fluffies[$currentFluffyIndex].flavor>>
 <</silent>>
-After a small wait, you saw a fluffy trot into view. <<if  _fluffyRace is "alicorn">><<include "Forest - Alicorn Intro">><<elseif  _fluffyRace is "unicorn">><<include "Forest - Unicorn Intro">><<elseif  _fluffyRace is "pegasus">><<include "Forest - Pegasus Intro">><<elseif  _fluffyRace is "earthie">><<include "Forest - Earthie Intro">><</if>>
+After a small wait, you saw a fluffy trot into view. <<if  _fluffyRace is "Alicorn">><<include "Forest - Alicorn Intro">><<elseif  _fluffyRace is "Unicorn">><<include "Forest - Unicorn Intro">><<elseif  _fluffyRace is "Pegasus">><<include "Forest - Pegasus Intro">><<elseif  _fluffyRace is "Earthie">><<include "Forest - Earthie Intro">><</if>>
 
 Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print  _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print  _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname">_fluffyMane.name</span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin.
 
 <<include "Fluffy Quality Descriptions">>
 
-<<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2>>
+<span class="blink walking"><<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2>></span>
 
 <<dynamicPronoun $currentFluffyIndex "they" "upper">> lowered <<dynamicPronoun $currentFluffyIndex "their">> mane down to the water and began to sip thoughtfully; <<dynamicPronoun $currentFluffyIndex "they">> didn't seem to be aware of your presence, but you wouldn't hold that against <<dynamicPronoun $currentFluffyIndex "them">>. When they were hungry, thirsty or horny, Fluffies probably didn't care about much besides sating their needs.
 
@@ -69,7 +69,7 @@ You noticed the telltale horn of a unicorn, but also a pair of wings; you felt a
 
 :: Forest - Earthie Intro
 
-It had no horn, and no wings; earthie ponies tended to stand a little taller and stronger than their brothers and sisters. Someone could easily see an earthie as "boring," but as a first-time owner, an earthie might be a little more... durable.
+It had no horn, and no wings; earthie ponies tended to stand a little taller and stronger than <<dynamicPronoun $currentFluffyIndex "their">> brothers and sisters. Someone could easily see an earthie as "boring," but as a first-time owner, an earthie might be a little more... durable.
 
 :: Forest - Unicorn Intro
 
@@ -78,6 +78,21 @@ You noticed the telltale horn of a unicorn, and a small part of your brain hoped
 :: Forest - Pegasus Intro
 
 The pony unfurled its wings, almost to help slow itself; it wasn't going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy, and they could be found speeding around whatever environment they were in.
+
+:: Fluffy Quality Descriptions
+
+<<nobr>>
+    <<if _fluffyFlavor is "Stubborn">>
+        <<dynamicPronoun $currentFluffyIndex "they" "upper">> looked around and huffed, seemingly impatient for Fluffies (or perhaps life in general) that you couldn't see. You could see <<dynamicPronoun $currentFluffyIndex "them">> muttering to <<dynamicPronoun $currentFluffyIndex "themself">>, and when <<dynamicPronoun $currentFluffyIndex "they">> saw the water, you could see <<dynamicPronoun $currentFluffyIndex "they">> looked satisfied with <<dynamicPronoun $currentFluffyIndex "their">> choice.
+    <<elseif _fluffyFlavor is "Greedy">>
+        The Fluffy noticed the water, and <<dynamicPronoun $currentFluffyIndex "their">> first instinct was to look around, almost as if <<dynamicPronoun $currentFluffyIndex "they">> could hoard the entire thing for <<dynamicPronoun $currentFluffyIndex "themself">>. It seemed like <<dynamicPronoun $currentFluffyIndex "they">>'d never seen water before - or perhaps so much of it, without anyone to tell them to share.
+    <<elseif _fluffyFlavor is "Curious">>
+        The Fluffy noticed the water, but seemed distracted by the rest of the forest as <<dynamicPronoun $currentFluffyIndex "they">> slowly made <<dynamicPronoun $currentFluffyIndex "their">> way over. <<dynamicPronoun $currentFluffyIndex "their" "upper">> neck swivelled around, looking at every new sight, smelling every new smell, and you could almost see the small gears turning in <<dynamicPronoun $currentFluffyIndex "their">> tiny, tiny brain.
+    <<elseif _fluffyFlavor is "Loving">>
+        The Fluffy cooed as <<dynamicPronoun $currentFluffyIndex "they">> noticed a nearby bird at a branch, babbling out something about "birdie friend." The bird looked at it quizzically, not exactly sure what to make of the miniature horse, and flew away. The Fluffy smiled in turn, bidding the bird goodbye and wishing it "aw da most fun sky times" before turning back to the "tasty wawa."
+    <<elseif _fluffyFlavor is "Cautious">>
+        The Fluffy seemed a bit skittish, looking around carefully; it almost looked like it expected a tiger to burst out of the bushes at any second. Every step seemed to prompt another set of internal calculations: was the mud too sticky? The water too deep? <<dynamicPronoun $currentFluffyIndex "they" "upper">> dipped a hoof into the water, testing the temperature, and deemed it alright.
+<</if>><</nobr>>
 
 :: Forest - Interlude
 <<silent>><<set $currentFluffyIndex to 4 - $fluffiesLeft>><</silent>>
@@ -105,7 +120,7 @@ As the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> disappeared into t
 
 Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname"><<print _fluffyMane.name.toLowerCase()>></span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin. <<include "Fluffy Quality Descriptions">>
 
-<<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2>>
+<span class="blink"><<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2>></span>
 
 Like the fluffy before, <<dynamicPronoun $currentFluffyIndex "they">> approached the water, but this time, <<dynamicPronoun $currentFluffyIndex "they">> seemed a bit more observant. <<dynamicPronoun $currentFluffyIndex "they" "upper">> surveyed the scene in front of them, trying to see if something didn't feel quite right. After a small pause, it was almost like the caution left their head entirely: like the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> before, they went down to drink. 
 
@@ -121,7 +136,7 @@ Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colornam
 
 ''$fluffyName'', the <span @style="'color:' + $fluffySkin.colorname"><<print $fluffySkin.name.toLowerCase()>></span> $fluffyRace with a <span @style="'color:' + $fluffyMane.colorname"><<print $fluffyMane.name.toLowerCase()>></span> mane.
 
-<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname>>
+<span class="blink"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>></span>
 
 Do you want to rename your Fluffy?
 
@@ -130,24 +145,13 @@ Do you want to rename your Fluffy?
 <span id="confirmbutton"><<button [[Confirm|Confirm]]>><</button>></span>
 
 :: Confirm
+<<silent>><<set _skinName to "$fluffySkin.name.toLowerCase()">>
+<<set _article to setup.articles.find(_skinName)>><</silent>>
+<<set _colorSpan to "<span style='color:" + $fluffySkin.colorname + "'>" + $fluffySkin.name.toLowerCase() + "</span>">>
+Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName, _article <<colorname $fluffySkin>> $fluffyRace with a <<colorname $fluffyMane>> mane.
 
-Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName, a <<colorname $fluffySkin>> $fluffyRace with a <<colorname $fluffyMane>> mane.
-
-<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname>>
+<span class="blink"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>></span>
 
 If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].
 
-:: Fluffy Quality Descriptions
 
-<<nobr>>
-    <<if _fluffyFlavor is "Stubborn">>
-        <<dynamicPronoun $currentFluffyIndex "they" "upper">> looked around and huffed, seemingly impatient for Fluffies (or perhaps life in general) that you couldn't see. You could see them muttering to themselves, and when <<dynamicPronoun $currentFluffyIndex "they">> saw the water, you could see <<dynamicPronoun $currentFluffyIndex "they">> looked satisfied with <<dynamicPronoun $currentFluffyIndex "their">> choice.
-    <<elseif _fluffyFlavor is "Greedy">>
-        The Fluffy noticed the water, and <<dynamicPronoun $currentFluffyIndex "their">> first instinct was to look around, almost as if <<dynamicPronoun $currentFluffyIndex "they">> could hoard the entire thing for <<dynamicPronoun $currentFluffyIndex "themself">>. It seemed like <<dynamicPronoun $currentFluffyIndex "they">>'d never seen water before - or perhaps so much of it, without anyone to tell them to share.
-    <<elseif _fluffyFlavor is "Curious">>
-        The Fluffy noticed the water, but seemed distracted by the rest of the forest as <<dynamicPronoun $currentFluffyIndex "they">> slowly made <<dynamicPronoun $currentFluffyIndex "their">> way over. <<dynamicPronoun $currentFluffyIndex "their" "upper">> neck swivelled around, looking at every new sight, smelling every new smell, and you could almost see the small gears turning in <<dynamicPronoun $currentFluffyIndex "their">> tiny, tiny brain.
-    <<elseif _fluffyFlavor is "Loving">>
-        The Fluffy cooed as <<dynamicPronoun $currentFluffyIndex "they">> noticed a nearby bird at a branch, babbling out something about "birdie friend." The bird looked at it quizzically, not exactly sure what to make of the miniature horse, and flew away. The Fluffy smiled in turn, bidding the bird goodbye and wishing it "aw da most fun sky times" before turning back to the "tasty wawa."
-    <<elseif _fluffyFlavor is "Cautious">>
-        The Fluffy seemed a bit skittish, looking around carefully; it almost looked like it expected a tiger to burst out of the bushes at any second. Every step seemed to prompt another set of internal calculations: was the mud too sticky? The water too deep? <<dynamicPronoun $currentFluffyIndex "they" "upper">> dipped a hoof into the water, testing the temperature, and deemed it alright.
-<</if>><</nobr>>

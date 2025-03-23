@@ -3415,11 +3415,13 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="Forest - Fluffy Intro" tags="" position="1225,475" size="100,100">&lt;&lt;lockFluffy&gt;&gt;You mustered up a small amount of courage, and decided to take the leap. You moved from your hiding spot, illiciting a small jump from the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;.
 
-&lt;&lt;fluffyDialog&gt;&gt;&quot;Eep!&quot; the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt; said. &quot;Who you?&quot;&lt;&lt;/fluffyDialog&gt;&gt;
+&lt;&lt;fluffyDialog&gt;&gt;&quot;Eep!&quot; said the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;. &quot;Who you?&quot;&lt;&lt;/fluffyDialog&gt;&gt;
+
+The &lt;&lt;=$fluffyRace.toLowerCase()&gt;&gt; was a bit surprised, and a bit defensive. They weren&#39;t posturing aggressively.
 
 &lt;span class=&quot;blink&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2&gt;&gt;&lt;/span&gt;
 
-&lt;&lt;linkreplace &quot;Introduce yourself&quot; t8n&gt;&gt;&lt;&lt;include &quot;Intro Conversation&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Intro Conversation" tags="" position="100,600" size="100,100">You decided to introduce yourself. &quot;Hey there, buddy,&quot; you said, taking a small paudse. &quot;My name is $playerName, and I&#39;m looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?&quot;
+&lt;&lt;linkreplace &quot;Introduce yourself&quot; t8n&gt;&gt;&lt;&lt;include &quot;Intro Conversation&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Intro Conversation" tags="" position="100,600" size="100,100">You decided to introduce yourself. &quot;Hey there, buddy,&quot; you said, taking a small pause. &quot;My name is $playerName, and I&#39;m looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?&quot;
 
 You were purposefully being a bit obtuse, but this was a test: you wanted to see if this Fluffy was smart enough to advocate for itself.
 

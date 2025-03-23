@@ -134,7 +134,9 @@ Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colornam
 
 <<lockFluffy>>You mustered up a small amount of courage, and decided to take the leap. You moved from your hiding spot, illiciting a small jump from the <<print $fluffyRace.toLowerCase()>>.
 
-<<fluffyDialog>>"Eep!" the <<print $fluffyRace.toLowerCase()>> said. "Who you?"<</fluffyDialog>>
+<<fluffyDialog>>"Eep!" said the <<print $fluffyRace.toLowerCase()>>. "Who you?"<</fluffyDialog>>
+
+The <<=$fluffyRace.toLowerCase()>> was a bit surprised, and a bit defensive. They weren't posturing aggressively.
 
 <span class="blink"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>></span>
 
@@ -142,7 +144,7 @@ Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colornam
 
 :: Intro Conversation
 
-You decided to introduce yourself. "Hey there, buddy," you said, taking a small paudse. "My name is $playerName, and I'm looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?"
+You decided to introduce yourself. "Hey there, buddy," you said, taking a small pause. "My name is $playerName, and I'm looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?"
 
 You were purposefully being a bit obtuse, but this was a test: you wanted to see if this Fluffy was smart enough to advocate for itself.
 

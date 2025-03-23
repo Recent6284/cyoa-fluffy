@@ -1,16 +1,18 @@
 :: Roll Test
-
 !! <<hovertip "The button below generates a new Fluffy, and saves its stats to memory.">>Your Fluffy<</hovertip>>
 <<nobr>><<button "Click for Fluffy">><<silent>>
     <<newFluffy>>
     <<lockFluffy>>
     <<redo "upper">>
     <<set $currentFluffyIndex to $currentFluffyIndex + 1>><</silent>><</button>><</nobr>>
-<<do tag "upper">>
 
-!!! CSS Fluffy
+
+<<do tag "upper">>!!! CSS Fluffy
+
+<<fluffyDialog>>Test<</fluffyDialog>>
 
 <<FluffyCSS $fluffySkin.colorname $fluffyMane.colorname 3>>
+
 !!! SVG Fluffy
 
 <<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3>>
@@ -18,9 +20,8 @@
 !!! Tank CSS Fluffy
 <div class ="tank-container">
 <div class="blink moving-tank"><<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
-<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility>>
+<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility>>
 </div></div>
-
 <table class="shop"><thead>
   <tr>
     <th>Stat</th>
@@ -28,8 +29,12 @@
   </tr></thead>
 <tbody>
   <tr>
-    <td>Name</td>
-    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyName>><</if>></td>
+    <td>Name (Human)</td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyName.human>><</if>></td>
+  </tr>
+    <tr>
+    <td>Name (Fluffspeak)</td>
+    <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyName.fluffy>><</if>></td>
   </tr>
   <tr>
     <td>Gender</td>
@@ -76,8 +81,7 @@
     <td><<if $fluffyName.length == 0 >>Roll first!<<else>><<print $fluffyTemperament>><</if>></td>
   </tr>
 </tbody>
-</table>
-<</do>>
+</table><</do>>
 !! Roll Animation Test
 <<animatedroll "Strength" "d20" 10 15 2 4000>>
 Arguments: (stat name, dice type, [stat value], [goal], [bonus], [duration])

@@ -105,6 +105,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
 	<!-- UUID://91DE2478-0580-4525-B945-68EB03861614// --><tw-storydata name="A Fluffy Story" startnode="4" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="91DE2478-0580-4525-B945-68EB03861614" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "Story Stylesheet" */
+.fluffyspeak {
+    /* You can add any additional styling here if needed */
+}
+
 body {
  background-color: #121212;
 }
@@ -181,20 +185,31 @@ a.explainer {
 }
 
 .optionbox{
-	diplay: inline-block;
+	display: inline-block;
 	padding: 0px 1em;
 	border-left: 0.50em solid rgb(0, 119, 255);
 	max-width: 60%;
 }
 
 .cautionbox{
-	diplay: inline-block;
+	display: inline-block;
 	padding: 10px;
 	border-left: 0.50em solid red;
 	max-width: 60%;
 }
 
 .optionbox p, {
+	margin-block-start: 2em;
+	margin-block-end: 2em;
+}
+
+
+.fluffyDialog {
+	display: inline-block;
+	padding: 10px;
+	max-width: 60%;
+}
+.fluffyDialog p, {
 	margin-block-start: 2em;
 	margin-block-end: 2em;
 }
@@ -2118,7 +2133,57 @@ Macro.add("dynamicPronoun", {
         $(this.output).append(text);
     }
 });
-/* twine-user-script #7: "fluffySVGblink.js" */
+/* twine-user-script #7: "fluffspeak.js" */
+// Function to apply Fluffspeak rules to a given text
+function applyFluffspeak(text) {
+    text = text.replace(/r/gi, 'w'); // Replace r and R with w
+    text = text.replace(/l/gi, 'w'); // Replace l and L with w
+
+    // Additional Fluffspeak transformations
+    text = text.replace(/th/gi, 'd'); // Replace th with d
+    text = text.replace(/the/gi, 'da'); // Replace 'the' with 'da'
+    text = text.replace(/this/gi, 'dis'); // Replace 'this' with 'dis'
+    text = text.replace(/that/gi, 'dat'); // Replace 'that' with 'dat'
+    text = text.replace(/they/gi, 'dey'); // Replace 'they' with 'dey'
+    text = text.replace(/there/gi, 'dewe'); // Replace 'there' with 'dewe'
+    text = text.replace(/those/gi, 'dose'); // Replace 'those' with 'dose'
+    text = text.replace(/these/gi, 'dese'); // Replace 'these' with 'dese'
+    text = text.replace(/to/gi, 'tu'); // Replace 'to' with 'tu'
+    text = text.replace(/no/gi, 'nu'); // Replace 'no' with 'nu'
+    text = text.replace(/so/gi, 'su'); // Replace 'so' with 'su'
+    text = text.replace(/go/gi, 'gu'); // Replace 'go' with 'gu'
+    text = text.replace(/do/gi, 'du'); // Replace 'do' with 'du'
+    text = text.replace(/you/gi, 'yu'); // Replace 'you' with 'yu'
+    text = text.replace(/new/gi, 'nyu'); // Replace 'new' with 'nyu'
+    text = text.replace(/know/gi, 'knu'); // Replace 'know' with 'knu'
+    text = text.replace(/kitty/gi, 'kitteh'); // Replace 'kitty' with 'kitteh'
+    text = text.replace(/baby/gi, 'babbeh'); // Replace 'baby' with 'babbeh'
+    text = text.replace(/funny/gi, 'funneh'); // Replace 'funny' with 'funneh'
+    text = text.replace(/runny/gi, 'wunneh'); // Replace 'runny' with 'wunneh'
+    text = text.replace(/daddy/gi, 'daddeh'); // Replace 'daddy' with 'daddeh'
+    text = text.replace(/litter/gi, 'wittah'); // Replace 'litter' with 'wittah'
+    text = text.replace(/other/gi, 'udah'); // Replace 'other' with 'udah'
+    text = text.replace(/thriller/gi, 'thwiwwah'); // Replace 'thriller' with 'thwiwwah'
+    text = text.replace(/bother/gi, 'bothah'); // Replace 'bother' with 'bothah'
+    text = text.replace(/monster/gi, 'munstah'); // Replace 'monster' with 'munstah'
+
+    return text;
+}
+
+// Process all elements with the 'fluffyspeak' class
+function processFluffspeak() {
+    $('.fluffyspeak').each(function () {
+        let text = $(this).html();
+        let transformedText = applyFluffspeak(text);
+        $(this).html(transformedText);
+    });
+}
+
+// Run the Fluffspeak processor when the passage is displayed
+$(document).on(':passagedisplay', function () {
+    processFluffspeak();
+});
+/* twine-user-script #8: "fluffySVGblink.js" */
 // Add this to your JavaScript section or a script passage
 (function() {
     // Function to make Fluffies blink
@@ -2189,7 +2254,7 @@ Macro.add("dynamicPronoun", {
       setTimeout(window.makeFluffyBlink, 100);
     });
   })();
-/* twine-user-script #8: "hovertip.js" */
+/* twine-user-script #9: "hovertip.js" */
 /* hovertip v2.0 - Start */
 window.UpdateHoverTipTxt = function (container) {
 	if (Engine.isIdle()) {
@@ -2317,7 +2382,7 @@ Macro.add("hovertip", {
 	}
 });
 /* hovertip v2.0 - End */
-/* twine-user-script #9: "lockfluffy.js" */
+/* twine-user-script #10: "lockfluffy.js" */
 Macro.add("lockFluffy", {
     handler: function() {
         var index = State.variables.currentFluffyIndex; // Use the current index
@@ -2342,7 +2407,7 @@ Macro.add("lockFluffy", {
         State.variables.fluffy = chosenFluffy;
     }
 });
-/* twine-user-script #10: "roller.js" */
+/* twine-user-script #11: "roller.js" */
 (function () {
     // Define the widget to be used with <<do>> and <<redo>>
     Macro.add('animatedroll', {
@@ -2718,12 +2783,12 @@ Macro.add("lockFluffy", {
         };
     });
 })();
-/* twine-user-script #11: "simple-inventory.js" */
+/* twine-user-script #12: "simple-inventory.js" */
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
 ;"use strict";function _typeof(t){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},_typeof(t)}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function _defineProperties(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,_toPropertyKey(i.key),i)}}function _createClass(t,e,n){return e&&_defineProperties(t.prototype,e),n&&_defineProperties(t,n),Object.defineProperty(t,"prototype",{writable:!1}),t}function _toPropertyKey(t){var e=_toPrimitive(t,"string");return"symbol"==_typeof(e)?e:String(e)}function _toPrimitive(t,e){if("object"!=_typeof(t)||!t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,e||"default");if("object"!=_typeof(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}!function(){var t={description:"",handler:null,displayName:"",consumable:!0,unique:!1,permanent:!1},e=new Map,n=function(){function n(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:clone(t),r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];if(_classCallCheck(this,n),!e||"string"!=typeof e)throw new Error("invalid item ID");if("object"!==_typeof(i))throw new Error("invalid item definition");Object.assign(this,Object.assign({},t,i)),this.id=e,this._tags=r instanceof Array?r:"string"==typeof r?[r]:[]}return _createClass(n,[{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(t){return this._tags.includes(t)}},{key:"hasAllTags",value:function(){return this._tags.includesAll([].slice.call(arguments).flat(1/0))}},{key:"hasAnyTags",value:function(){return this._tags.includesAny([].slice.call(arguments).flat(1/0))}},{key:"name",get:function(){return this.displayName||this.id},set:function(t){this.displayName=t}},{key:"use",value:function(){return"string"==typeof this.handler?$.wiki(this.handler):"function"==typeof this.handler&&this.handler(this),this}},{key:"inspect",value:function(){return Dialog.setup(this.name,"simple-inventory item-description"),Dialog.wiki(this.description),Dialog.open(),this}}],[{key:"is",value:function(t){return t instanceof n}},{key:"add",value:function(t,i,r){var a=new n(t,i,r);return e.set(t,a),a}},{key:"get",value:function(t){return e.get(t)}},{key:"has",value:function(t){return e.has(t)}},{key:"list",get:function(){return e}}]),n}();setup.Item=n,window.Item=window.Item||n}(),function(){var t=setup.Item,e=!1,n="&hellip;",i={inspect:"Inspect",use:"Use",drop:"Drop",stack:"stack",take:"Take",give:"Give",stackPre:"&nbsp;&times;&nbsp;",stackPost:"&nbsp;"},r={};function a(e){return t.has(e)&&t.get(e).unique}var s=function(){function s(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[];_classCallCheck(this,s),this.data=clone(t),this._tags=e instanceof Array?e:"string"==typeof e?[e]:[]}return _createClass(s,[{key:"emit",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return s.emit(t,this,e),this}},{key:"array",get:function(){var t=this,e=[];return Object.keys(this.data).forEach((function(n){if(e.push(n),t.data[n]>1)for(var i=1;i<t.data[n];i++)e.push(n)})),e}},{key:"list",get:function(){return Object.keys(this.data)}},{key:"length",get:function(){return this.array.length}},{key:"uniqueLength",get:function(){return this.list.length}},{key:"table",get:function(){return this.data}},{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(t){return this._tags.includes(t)}},{key:"hasAllTags",value:function(){return this._tags.includesAll([].slice.call(arguments).flat(1/0))}},{key:"hasAnyTags",value:function(){return this._tags.includesAny([].slice.call(arguments).flat(1/0))}},{key:"count",value:function(t){return t?this.data[t]||0:this.length}},{key:"has",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1;return this.data[t]>=e}},{key:"hasAll",value:function(){var t=this;return[].slice.call(arguments).flat(1/0).every((function(e){return t.has(e)}))}},{key:"hasAny",value:function(){var t=this;return[].slice.call(arguments).flat(1/0).some((function(e){return t.has(e)}))}},{key:"compare",value:function(t){var e=this,n=s.itemset(t);return Object.keys(n).every((function(t){return e.has(t,n[t])}))}},{key:"merge",value:function(t){var e=this,n=s.itemset(t);return Object.keys(n).forEach((function(t){s.change(e,t,n[t])})),n}},{key:"unmerge",value:function(t){var e=this,n={},i=s.itemset(t);return Object.keys(i).forEach((function(t){e.has(t,i[t])?n[t]=i[t]:e.has(t)&&(n[t]=e.count(t)),s.change(e,t,i[t],!0)})),n}},{key:"pickup",value:function(){var t=this.merge(s.parseArgList.apply(null,arguments));return this.emit("update",{delta:t}),this}},{key:"drop",value:function(){var t=this.unmerge(s.parseArgList.apply(null,arguments));return this.emit("update",{delta:t}),this}},{key:"empty",value:function(){var t=clone(this.data);return this.data={},this.emit("update",{delta:t}),this}},{key:"transfer",value:function(t){var e=s.parseArgList.apply(null,[].slice.call(arguments).slice(1));if(!s.is(t))throw new TypeError("target inventory is not an inventory instance");var n=this.unmerge(e);return t.merge(n),this.emit("update",{target:t,delta:n}),this}},{key:"isEmpty",value:function(){return 0===this.length}},{key:"iterate",value:function(t){var e=this;return"function"!=typeof t||this.list.forEach((function(n){t(n,e.data[n])})),this}},{key:"use",value:function(e){if(t.has(e)){var n=t.get(e);if(n.use(),n.consumable){s.change(this,e,1,!0);var i={};i[e]=1,this.emit("update",{delta:i})}return this.emit("use",{item:n}),this}}},{key:"clone",value:function(){return new s(this.data||{},this._tags||[])}},{key:"toJSON",value:function(){return JSON.reviveWrapper("new setup.Inventory("+JSON.stringify(this.data)+", "+JSON.stringify(this._tags)+")")}}],[{key:"confirm",get:function(){return e},set:function(t){e="string"==typeof t&&"all"===t.trim().toLowerCase()?"all":"string"==typeof t&&"stack"===t.trim().toLowerCase()?"stack":!!t}},{key:"emptyMessage",get:function(){return n},set:function(t){"string"==typeof t&&(n=t)}},{key:"strings",get:function(){return Object.assign(clone(i),r)},set:function(t){"object"===_typeof(t)&&(r=Object.assign(r,clone(t)))}},{key:"change",value:function(e,n){var i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];if(0!==i){if(e instanceof s&&(e=e.data),"object"!==_typeof(e)){if(e)throw new TypeError("cannot access inventory data");e={}}if(!(o=n)||"string"!=typeof o||!o.trim())throw new TypeError("invalid item name/id");var o;if("number"==typeof i&&!Number.isNaN(i)&&Number.isInteger(i)||(i=1),r&&(i*=-1),i>0){if(Object.keys(e).includes(n)&&a(n))return;i>1&&a(n)&&(i=1),Object.keys(e).includes(n)||(e[n]=0),e[n]+=i}else{if(function(e){return t.has(e)&&t.get(e).permanent}(n))return;Object.keys(e).includes(n)&&"number"==typeof e[n]&&(e[n]+=i),e[n]<=0&&delete e[n]}return e}}},{key:"itemset",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(s.is(t)&&(t=t.data),"object"!==_typeof(t))return{};var e={};return Object.keys(t).forEach((function(n){"number"==typeof t[n]&&Number.isInteger(t[n])&&0!==t[n]&&(e[n]=t[n])})),e}},{key:"parseArgList",value:function(){var t=[].slice.call(arguments).flat(1/0);if(t.length%2!=0)throw new Error("item sets should be pairs of item IDs and numbers");var e={};return t.forEach((function(n,i){i%2==0&&(e[n]=t[i+1])})),e}},{key:"is",value:function(t){return t instanceof s}},{key:"emit",value:function(t,e){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};$(document).trigger(Object.assign({type:":inventory-"+t+".simple-inventory",inventory:e,target:null,delta:{},item:null},n))}},{key:"create",value:function(t,e){return new s(t,e)}}]),s}();setup.Inventory=s,window.Inventory=window.Inventory||s}(),function(){var t=setup.Item,e=setup.Inventory;function n(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,i=arguments.length>2&&void 0!==arguments[2]&&arguments[2],r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"Alert",a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:"Are you sure?";if(!t||"function"!=typeof t)throw new Error("Invalid confirmation callback!");if(e.confirm)if("all"!==e.confirm||"all"===i)if("stack"!==e.confirm||i){var s={display:"inline-block",float:"right"},o=$(document.createElement("div")),u=$(document.createElement("p")).append(a),l=$(document.createElement("div")).addClass("confirmation-buttons"),c=$(document.createElement("button")).append("Okay").addClass("confirm-yes").css(Object.assign(s,{"margin-right":"0.5rem"})),d=$(document.createElement("button")).append("Cancel").addClass("confirm-no").css(s);t&&"function"==typeof t&&c.ariaClick(t),n&&"function"==typeof n&&d.ariaClick(n),l.append(d,c),o.append(u,l),Dialog.setup(r,"simple-inventory confirmation"),Dialog.append(o),Dialog.open()}else t();else t();else t()}function i(t){var e=$(document.createElement("span")).addClass("spacer");return t&&e.wiki(""+t),e}function r(t,i){var r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:null;return"give"===String(i).toLowerCase().trim()?i=e.strings.give:"take"===String(i).toLowerCase().trim()?i=e.strings.take:i&&"drop"!==String(i).toLowerCase().trim()||(i=e.strings.drop),$(document.createElement(r?"button":"a")).addClass("all-link drop-link").wiki(i+" all").ariaClick((function(){t.isEmpty()||n((function(){a&&e.is(a)?(a.merge(t),t.empty()):t.empty(),Dialog.close()}),(function(){Dialog.close()}),!0)}))}function a(a){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{description:!0,use:!0,transfer:null,drop:!0,all:!0,stack:!0,dropActionText:"",classes:""},u=$(document.createElement("ul")).addClass("simple-inventory-list");if(a.length){if(s=a.list.map((function(r){var s=[],u=r;t.has(r)&&(u=t.get(r).name),o.description&&t.has(r)&&t.get(r).description?s.push(function(n,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return r=r||e.strings.inspect,$(document.createElement(a?"button":"a")).addClass("inspect-link").wiki(""+r).ariaClick((function(){t.get(i).inspect()}))}(a,r,u)):s.push($(document.createElement("span")).append(t.has(r)?t.get(r).name:r).addClass("item-name")),s.push(function(t,n,i,r){var a=$(document.createElement("span")),s=t.count(n);return i=i||e.strings.stackPre,r=r||e.strings.stackPost,1==s?a.addClass("item-count single"):a.addClass("item-count multi"),a.append(""+i+(s||0)+r)}(a,r)),o.use&&t.has(r)&&t.get(r).handler?s.push(function(t,n,i){var r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return i=i||e.strings.use,$(document.createElement(r?"button":"a")).addClass("use-link").wiki(""+i).ariaClick((function(){t.use(n)}))}(a,r)):s.push(i()),(o.transfer&&e.is(o.transfer)||o.drop)&&!function(e){return t.has(e)&&t.get(e).permanent}(r)?(s.push(function(t,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3],s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return"give"===String(r).toLowerCase().trim()?r=e.strings.give:"take"===String(r).toLowerCase().trim()?r=e.strings.take:r&&"drop"!==String(r).toLowerCase().trim()||(r=e.strings.drop),$(document.createElement(a?"button":"a")).addClass("drop-link").wiki(""+r).ariaClick((function(){n((function(){s&&e.is(s)?t.transfer(s,i,1):t.drop(i,1),Dialog.close()}),(function(){Dialog.close()}))}))}(a,r,o.dropActionText,!1,o.transfer||null)),a.count(r)>1&&o.stack?s.push(function(t,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3],s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return"give"===String(r).toLowerCase().trim()?r=e.strings.give:"take"===String(r).toLowerCase().trim()?r=e.strings.take:r&&"drop"!==String(r).toLowerCase().trim()||(r=e.strings.drop),r=r+"&nbsp;"+e.strings.stack,$(document.createElement(a?"button":"a")).addClass("stack-link drop-link").wiki(""+r).ariaClick((function(){n((function(){s&&e.is(s)?t.transfer(s,i,t.count(i)):t.drop(i,t.count(i)),Dialog.close()}),(function(){Dialog.close()}))}))}(a,r,o.dropActionText,!1,o.transfer||null)):s.push(i())):s.push(i());var l=r.normalize().toLowerCase().replace(/\s+/g,"-");return $(document.createElement("li")).append(s).addClass("simple-inventory-listing").attr({"data-item-id":l,"data-keyword":u})})),o.all){var l=$(document.createElement("li")).addClass("all-listing simple-inventory-listing").append([i("&mdash;"),i(),i(),r(a,o.dropActionText,!1,o.transfer||null)]);s.push(l)}}else s=$(document.createElement("li")).addClass("simple-inventory-listing").append($(document.createElement("span")).wiki(e.emptyMessage));return u.append(s),u}e.prototype.interface=function(){var t,e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,i=this,r=$(document.createElement("div")).addClass("simple-inventory-wrapper");return e.filter&&r.append(function(){var t=$(document.createElement("div")).addClass("simple-inventory-filter"),e=$(document.createElement("input")).attr({type:"text",placeholder:"Filter..."}).on("input",(function(){var n=e.val().trim().toLowerCase(),i=t.parent().find("ul.simple-inventory-list li.simple-inventory-listing:not(.all-listing)");n?i.each((function(t,e){var i=$(e);i&&i.length&&(i.attr("data-keyword").substring(0,n.length).trim().toLowerCase()!==n?i.hide():i.show())})):i.show()}));return t.append(e),t}()),r.append(a(this,e)),$(document).on(":inventory-update.simple-inventory.gui-built-in",(function(){r.length?r.empty().append(a(i,e)):$(document).off(":inventory-update.simple-inventory.gui-built-in")})),n&&n instanceof $?t=n:n&&(t=$(n)),t&&r.appendTo(t),r}}(),function(){setup.Inventory,setup.Item;var t=".simple-inventory-userland",e=":inventory-update.simple-inventory"+t,n=":inventory-use.simple-inventory"+t;function i(t){return t&&"function"==typeof t}Object.assign(setup.Inventory,{events:{update:{on:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).on(e+n,t)},one:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).one(e+n,t)},off:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";$(document).off(e+t)}},use:{on:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).on(n+e,t)},one:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).one(n+e,t)},off:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";$(document).off(n+t)}}}})}(),function(){var t=":";function e(e){var n=function(t){return t.replace(/\r+/g,"\n").replace(/\n+/,"\n").replace(/ +/g," ").trim().split(/\n/g)}(e),i={};return n.forEach((function(e){if(e&&e.trim()&&e.includes(t)){var n=e.trim().split(t);i[n[0].trim()]=n[1].trim()}})),i}var n=function(t){try{return Story.has(t)?e(Story.get(t).text):{}}catch(t){return console.error(t.message,t),{}}}("inventory.strings");n.empty&&"string"==typeof n.empty&&n.empty.trim()&&(setup.Inventory.emptyMessage=n.empty,delete n.empty),setup.Inventory.strings=n||{}}(),function(){var t=setup.Item,e=setup.Inventory;function n(t){return t&&"string"==typeof t&&t.length>=2&&("$"===t[0]||"_"===t[0])}function i(t){if(n(t)&&(t=State.getVar(t)),e.is(t))return t}Macro.add(["item","consumable"],{tags:["description","tags","unique","permanent"],handler:function(){var e,n,i,r,a=null,s=!1,o=!1,u=!1;if(State.length>0)return this.error("items must be defined in `StoryInit` or story JavaScript!");if(!this.args[0]||"string"!=typeof this.args[0]||!this.args[0].trim())return this.error("invalid item ID");if(e=this.args[0].trim(),"consumable"===this.name&&(a=this.payload[0].contents||null,s=!0),this.args[1]&&(n=this.args[1]),this.payload.length>1){var l=this.payload.find((function(t){return"description"===t.name})),c=this.payload.find((function(t){return"tags"===t.name})),d=this.payload.find((function(t){return"unique"===t.name})),f=this.payload.find((function(t){return"permanent"===t.name}));l&&(i=l.contents.trim()),c&&(r=c.args.flat(1/0)),d&&(o=!0),f&&(u=!0)}t.add(e,{displayName:n||"",description:i||"",handler:a,consumable:s,unique:o,permanent:u},r)}}),Macro.add("newinv",{handler:function(){var t=this.args.raw.trim().split(" ").first().replace(/["']/g,"").trim();if(!n(t))return this.error("argument must be a story or temporary variable!");State.setVar(t,new e({},this.args.flat(1/0).slice(1)))}}),Macro.add(["pickup","drop"],{handler:function(){var t=i(this.args[0]);return t?this.args.length<3?this.error("no items to pick up were provided"):void t[this.name](this.args.slice(1)):this.error("first argument must be a valid inventory!")}}),Macro.add("dropall",{handler:function(){var t=i(this.args[0]);if(!t)return this.error("first argument must be a valid inventory!");t.empty()}}),Macro.add(["transfer","merge","unmerge"],{handler:function(){var t=i(this.args[0]);if(!t)return this.error("first argument must be a valid inventory!");var e=i(this.args[1]);if(!e)return this.error("second argument must be a valid inventory!");if("transfer"===this.name){if(this.args.length<4)return this.error("no items to transfer were provided");t.transfer(e,this.args.slice(2))}else t[this.name](e)}}),Macro.add(["inv","take","give"],{handler:function(){var t=null,n=i(this.args[0]);if(!n)return this.error("first argument must be a valid inventory!");this.args[1]&&i(this.args[1])&&(t=i(this.args[1]));var r={description:this.args.includesAny("inspect","description"),use:this.args.includes("use"),transfer:t,drop:this.args.includes("drop"),all:this.args.includes("all"),stack:this.args.includes("stack"),filter:this.args.includes("filter"),dropActionText:"inv"===this.name?"Drop":e.strings[this.name.trim().toLowerCase()],classes:"macro-".concat(this.name)};n.interface(r,$(this.output))}})}(),function(){var t=setup.Item,e=setup.Inventory;function n(t,e,n){if("object"!==_typeof(e))throw new TypeError("the extension should be a plain generic object holding the properties and methods you want to add");Object.keys(e).forEach((function(i){if(t[i]&&!n)throw new Error('Cannot override existing property "'+i+'"!');t[i]=e[i]}))}Object.assign(e,{extend:function(t){n(e,t,arguments.length>1&&void 0!==arguments[1]&&arguments[1])},extendPrototype:function(t){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];n(e.prototype,t,i)}}),Object.assign(t,{extend:function(e){n(t,e,arguments.length>1&&void 0!==arguments[1]&&arguments[1])},extendPrototype:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];n(t.prototype,e,i)}})}();
 // End Simple Inventory
-/* twine-user-script #12: "tankwalk.js" */
+/* twine-user-script #13: "tankwalk.js" */
 // Tank animation for Fluffy creatures
 (function() {
   // Create CSS for animation classes if it doesn't exist
@@ -2872,7 +2937,7 @@ Macro.add("lockFluffy", {
     }, 100);
   });
 })();
-/* twine-user-script #13: "weightedRandom.js" */
+/* twine-user-script #14: "weightedRandom.js" */
 function weightedRandom(items) {
     const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
     const randomNum = Math.random() * totalWeight;
@@ -2948,11 +3013,14 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;&lt;lockFluffy&gt;&gt;
     &lt;&lt;redo &quot;upper&quot;&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/nobr&gt;&gt;
-&lt;&lt;do tag &quot;upper&quot;&gt;&gt;
 
-!!! CSS Fluffy
+
+&lt;&lt;do tag &quot;upper&quot;&gt;&gt;!!! CSS Fluffy
+
+&lt;&lt;fluffyDialog&gt;&gt;Test&lt;&lt;/fluffyDialog&gt;&gt;
 
 &lt;&lt;FluffyCSS $fluffySkin.colorname $fluffyMane.colorname 3&gt;&gt;
+
 !!! SVG Fluffy
 
 &lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3&gt;&gt;
@@ -2960,9 +3028,8 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 !!! Tank CSS Fluffy
 &lt;div class =&quot;tank-container&quot;&gt;
 &lt;div class=&quot;blink moving-tank&quot;&gt;&lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility&gt;&gt;
+&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility&gt;&gt;
 &lt;/div&gt;&lt;/div&gt;
-
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
     &lt;th&gt;Stat&lt;/th&gt;
@@ -2970,8 +3037,12 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
   &lt;/tr&gt;&lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-    &lt;td&gt;Name&lt;/td&gt;
-    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyName&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+    &lt;td&gt;Name (Human)&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyName.human&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;Name (Fluffspeak)&lt;/td&gt;
+    &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyName.fluffy&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt;Gender&lt;/td&gt;
@@ -3018,8 +3089,7 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;td&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;Roll first!&lt;&lt;else&gt;&gt;&lt;&lt;print $fluffyTemperament&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;&lt;/do&gt;&gt;
+&lt;/table&gt;&lt;&lt;/do&gt;&gt;
 !! Roll Animation Test
 &lt;&lt;animatedroll &quot;Strength&quot; &quot;d20&quot; 10 15 2 4000&gt;&gt;
 Arguments: (stat name, dice type, [stat value], [goal], [bonus], [duration])
@@ -3345,7 +3415,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="Forest - Fluffy Intro" tags="" position="1225,475" size="100,100">&lt;&lt;lockFluffy&gt;&gt;You mustered up a small amount of courage, and decided to take the leap. You moved from your hiding spot, illiciting a small jump from the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;.
 
-&quot;Eep!&quot; the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt; said. &quot;Who you?&quot;
+&lt;&lt;fluffyDialog&gt;&gt;&quot;Eep!&quot; the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt; said. &quot;Who you?&quot;&lt;&lt;/fluffyDialog&gt;&gt;
 
 &lt;span class=&quot;blink&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2&gt;&gt;&lt;/span&gt;
 
@@ -3355,18 +3425,20 @@ You were purposefully being a bit obtuse, but this was a test: you wanted to see
 
 The Fluffy&#39;s demeanor softened, and you could tell its programming was kicking in. You knew Hasbio had programmed Fluffies to be inherently trusting of humans, and despite living in the forest, &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; &lt;&lt;print either(&quot;decided to trust you&quot;, &quot;was desperate for a home&quot;, &quot;didn&#39;t really seem to care about any potential danger&quot;)&gt;&gt;.
 
-Again, you could see the gears turning in its head, and it piped up. &quot;//Fwuffy// is a good Fwuffy!&quot; it said, smiling and putting on its best &quot;adopt me&quot; expression. &quot;Fwuffy am named $fluffyName! $fluffyName is bestest Fwuffy in hewd, but hewd decide to be dummehs. $fluffyName wanted dwinkies, and found small wawa!&quot;
+Again, you could see the gears turning in its head, and it piped up. 
 
-&quot;Why hello there, $fluffyName,&quot; you said. &quot;Your herd sounds like a bunch of meanies. Would you maybe want to come home with me?&quot;
+&lt;&lt;fluffyDialog&gt;&gt;&quot;//Fwuffy// is a good Fwuffy!&quot; it said, smiling and putting on its best &quot;adopt me&quot; expression. &quot;Fwuffy am named $fluffyName.fluffy! $fluffyName.fluffy is bestest Fwuffy in hewd, but hewd decide to be dummehs. $fluffyName.fluffy wanted dwinkies, and found small wawa!&quot;&lt;&lt;/fluffyDialog&gt;&gt;
 
-You thought to yourself, and wondered: was &#39;&#39;$fluffyName&#39;&#39; something that you liked? Or did you want to cut them off now, and make a new name for them?
+&quot;Why hello there, $fluffyName.human,&quot; you said. &quot;Your herd sounds like a bunch of meanies. Would you maybe want to come home with me?&quot;
 
-&lt;&lt;buttonreplace &quot;Yes please!&quot;&gt;&gt;&lt;&lt;textbox &quot;$fluffyName&quot; $fluffyName&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;remove #confirmbutton&gt;&gt;&lt;&lt;/buttonreplace&gt;&gt;
+You thought to yourself, and wondered: was &#39;&#39;$fluffyName.human&#39;&#39; something that you liked? Or did you want to cut them off now, and make a new name for them?
+
+&lt;&lt;buttonreplace &quot;Yes please!&quot;&gt;&gt;&lt;&lt;textbox &quot;$fluffyName.human&quot; $fluffyName.human&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;remove #confirmbutton&gt;&gt;&lt;&lt;/buttonreplace&gt;&gt;
 
 &lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[&quot;No, I&#39;m fine&quot;|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="42" name="Confirm" tags="" position="225,600" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _skinName to &quot;$fluffySkin.name.toLowerCase()&quot;&gt;&gt;
 &lt;&lt;set _article to setup.articles.find(_skinName)&gt;&gt;&lt;&lt;/silent&gt;&gt;
 &lt;&lt;set _colorSpan to &quot;&lt;span style=&#39;color:&quot; + $fluffySkin.colorname + &quot;&#39;&gt;&quot; + $fluffySkin.name.toLowerCase() + &quot;&lt;/span&gt;&quot;&gt;&gt;
-Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName, _article &lt;&lt;colorname $fluffySkin&gt;&gt; $fluffyRace with a &lt;&lt;colorname $fluffyMane&gt;&gt; mane.
+Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName.human, _article &lt;&lt;colorname $fluffySkin&gt;&gt; $fluffyRace with a &lt;&lt;colorname $fluffyMane&gt;&gt; mane.
 
 &lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2&gt;&gt;&lt;/span&gt;
 
@@ -3443,11 +3515,204 @@ $(document).on(&quot;:passageend&quot;, function() {
 ]&gt;&gt;
 
 &lt;&lt;set $randomNameMale = [
-    &quot;Oak&quot;,&quot;Cedar&quot;,&quot;Birch&quot;,&quot;Ash&quot;,&quot;Thorn&quot;,&quot;Bramble&quot;,&quot;Flint&quot;,&quot;Stone&quot;,&quot;Boulder&quot;,&quot;Cliff&quot;,&quot;Storm&quot;,&quot;Thunder&quot;,&quot;Lightning&quot;,&quot;Blaze&quot;,&quot;Ember&quot;,&quot;Rusty&quot;,&quot;Copper&quot;,&quot;Bronze&quot;,&quot;Steel&quot;,&quot;Iron&quot;,&quot;Shadow&quot;,&quot;Midnight&quot;,&quot;Onyx&quot;,&quot;Jet&quot;,&quot;Coal&quot;,&quot;Gravel&quot;,&quot;Granite&quot;,&quot;Moss&quot;,&quot;Fern&quot;,&quot;Pine&quot;,&quot;Spruce&quot;,&quot;Timber&quot;,&quot;River&quot;,&quot;Brook&quot;,&quot;Lake&quot;,&quot;Ocean&quot;,&quot;Tide&quot;,&quot;Wave&quot;,&quot;Frost&quot;,&quot;Glacier&quot;,&quot;Comet&quot;,&quot;Meteor&quot;,&quot;Orion&quot;,&quot;Sol&quot;,&quot;Shade&quot;,&quot;Sandy&quot;,&quot;Shine&quot;,&quot;Gold&quot;,&quot;Silver&quot;,&quot;Platinum&quot;,&quot;Rowan&quot;,&quot;Hawthorn&quot;,&quot;Alder&quot;,&quot;Sycamore&quot;,&quot;Elm&quot;,&quot;Maple&quot;,&quot;Cypress&quot;,&quot;Redwood&quot;,&quot;Hickory&quot;,&quot;Juniper&quot;,&quot;Rex&quot;,&quot;Rover&quot;,&quot;Whistle&quot;,&quot;Rosemary&quot;,&quot;Coriander&quot;,&quot;Parsley&quot;,&quot;Dill&quot;,&quot;Trapper&quot;,&quot;Clove&quot;,&quot;Cumin&quot;,&quot;Cobalt&quot;,&quot;Mercury&quot;,&quot;Titanium&quot;,&quot;Nickel&quot;,&quot;Zinc&quot;,&quot;Quartz&quot;,&quot;Obsidian&quot;,&quot;Topaz&quot;,&quot;Garnet&quot;,&quot;Shale&quot;,&quot;Falcon&quot;,&quot;Eagle&quot;,&quot;Hawk&quot;,&quot;Raven&quot;,&quot;Crow&quot;,&quot;Phoenix&quot;,&quot;Griffin&quot;,&quot;Drake&quot;,&quot;Wolf&quot;,&quot;Bear&quot;,&quot;Fox&quot;,&quot;Lynx&quot;,&quot;Cougar&quot;,&quot;Panther&quot;,&quot;Leopard&quot;,&quot;Tiger&quot;,&quot;Lion&quot;,&quot;Falcon&quot;,&quot;Boulder&quot;,&quot;Slate&quot;
+    { human: &quot;Oak&quot;, fluffy: &quot;Owk&quot; },
+    { human: &quot;Cedar&quot;, fluffy: &quot;Cedaw&quot; },
+    { human: &quot;Birch&quot;, fluffy: &quot;Biwwch&quot; },
+    { human: &quot;Ash&quot;, fluffy: &quot;Aws&quot; },
+    { human: &quot;Thorn&quot;, fluffy: &quot;Thown&quot; },
+    { human: &quot;Bramble&quot;, fluffy: &quot;Bwambwe&quot; },
+    { human: &quot;Flint&quot;, fluffy: &quot;Fwint&quot; },
+    { human: &quot;Stone&quot;, fluffy: &quot;Stwone&quot; },
+    { human: &quot;Boulder&quot;, fluffy: &quot;Bouwdew&quot; },
+    { human: &quot;Cliff&quot;, fluffy: &quot;Cwif&quot; },
+    { human: &quot;Storm&quot;, fluffy: &quot;Stowm&quot; },
+    { human: &quot;Thunder&quot;, fluffy: &quot;Thundew&quot; },
+    { human: &quot;Lightning&quot;, fluffy: &quot;Wightning&quot; },
+    { human: &quot;Blaze&quot;, fluffy: &quot;Bwaze&quot; },
+    { human: &quot;Ember&quot;, fluffy: &quot;Embew&quot; },
+    { human: &quot;Rusty&quot;, fluffy: &quot;Wusty&quot; },
+    { human: &quot;Copper&quot;, fluffy: &quot;Coppew&quot; },
+    { human: &quot;Bronze&quot;, fluffy: &quot;Bwonze&quot; },
+    { human: &quot;Steel&quot;, fluffy: &quot;Steew&quot; },
+    { human: &quot;Iron&quot;, fluffy: &quot;Iwon&quot; },
+    { human: &quot;Shadow&quot;, fluffy: &quot;Shadow&quot; },
+    { human: &quot;Midnight&quot;, fluffy: &quot;Midnyte&quot; },
+    { human: &quot;Onyx&quot;, fluffy: &quot;Onyx&quot; },
+    { human: &quot;Jet&quot;, fluffy: &quot;Jet&quot; },
+    { human: &quot;Coal&quot;, fluffy: &quot;Coaw&quot; },
+    { human: &quot;Gravel&quot;, fluffy: &quot;Gwavuw&quot; },
+    { human: &quot;Granite&quot;, fluffy: &quot;Gwanite&quot; },
+    { human: &quot;Moss&quot;, fluffy: &quot;Moss&quot; },
+    { human: &quot;Fern&quot;, fluffy: &quot;Fewn&quot; },
+    { human: &quot;Pine&quot;, fluffy: &quot;Pine&quot; },
+    { human: &quot;Spruce&quot;, fluffy: &quot;Spwuce&quot; },
+    { human: &quot;Timber&quot;, fluffy: &quot;Timbeh&quot; },
+    { human: &quot;River&quot;, fluffy: &quot;Wivah&quot; },
+    { human: &quot;Brook&quot;, fluffy: &quot;Bwook&quot; },
+    { human: &quot;Lake&quot;, fluffy: &quot;Wake&quot; },
+    { human: &quot;Ocean&quot;, fluffy: &quot;Oceawn&quot; },
+    { human: &quot;Tide&quot;, fluffy: &quot;Tide&quot; },
+    { human: &quot;Wave&quot;, fluffy: &quot;Wave&quot; },
+    { human: &quot;Frost&quot;, fluffy: &quot;Fwost&quot; },
+    { human: &quot;Glacier&quot;, fluffy: &quot;Gwaciah&quot; },
+    { human: &quot;Comet&quot;, fluffy: &quot;Comet&quot; },
+    { human: &quot;Meteor&quot;, fluffy: &quot;Meteow&quot; },
+    { human: &quot;Orion&quot;, fluffy: &quot;Owion&quot; },
+    { human: &quot;Sol&quot;, fluffy: &quot;Sow&quot; },
+    { human: &quot;Shade&quot;, fluffy: &quot;Shade&quot; },
+    { human: &quot;Sandy&quot;, fluffy: &quot;Sandy&quot; },
+    { human: &quot;Shine&quot;, fluffy: &quot;Shine&quot; },
+    { human: &quot;Gold&quot;, fluffy: &quot;Gowd&quot; },
+    { human: &quot;Silver&quot;, fluffy: &quot;Siwveh&quot; },
+    { human: &quot;Platinum&quot;, fluffy: &quot;Pwatinum&quot; },
+    { human: &quot;Rowan&quot;, fluffy: &quot;Wowen&quot; },
+    { human: &quot;Hawthorn&quot;, fluffy: &quot;Hawthown&quot; },
+    { human: &quot;Alder&quot;, fluffy: &quot;Awdeh&quot; },
+    { human: &quot;Sycamore&quot;, fluffy: &quot;Sycamowe&quot; },
+    { human: &quot;Elm&quot;, fluffy: &quot;Elm&quot; },
+    { human: &quot;Maple&quot;, fluffy: &quot;Mapwe&quot; },
+    { human: &quot;Cypress&quot;, fluffy: &quot;Cypwess&quot; },
+    { human: &quot;Redwood&quot;, fluffy: &quot;Wedwood&quot; },
+    { human: &quot;Hickory&quot;, fluffy: &quot;Hickowy&quot; },
+    { human: &quot;Juniper&quot;, fluffy: &quot;Junipeh&quot; },
+    { human: &quot;Rex&quot;, fluffy: &quot;Wex&quot; },
+    { human: &quot;Rover&quot;, fluffy: &quot;Woveh&quot; },
+    { human: &quot;Whistle&quot;, fluffy: &quot;Whistwe&quot; },
+    { human: &quot;Rosemary&quot;, fluffy: &quot;Wosemawy&quot; },
+    { human: &quot;Coriander&quot;, fluffy: &quot;Cowiandeh&quot; },
+    { human: &quot;Parsley&quot;, fluffy: &quot;Pawswey&quot; },
+    { human: &quot;Dill&quot;, fluffy: &quot;Diww&quot; },
+    { human: &quot;Trapper&quot;, fluffy: &quot;Twappeh&quot; },
+    { human: &quot;Clove&quot;, fluffy: &quot;Cwove&quot; },
+    { human: &quot;Cumin&quot;, fluffy: &quot;Cumin&quot; },
+    { human: &quot;Cobalt&quot;, fluffy: &quot;Cobawt&quot; },
+    { human: &quot;Mercury&quot;, fluffy: &quot;Mewcuwy&quot; },
+    { human: &quot;Titanium&quot;, fluffy: &quot;Titanium&quot; },
+    { human: &quot;Nickel&quot;, fluffy: &quot;Nickew&quot; },
+    { human: &quot;Zinc&quot;, fluffy: &quot;Zinc&quot; },
+    { human: &quot;Quartz&quot;, fluffy: &quot;Quawtz&quot; },
+    { human: &quot;Obsidian&quot;, fluffy: &quot;Obsidian&quot; },
+    { human: &quot;Topaz&quot;, fluffy: &quot;Topaz&quot; },
+    { human: &quot;Garnet&quot;, fluffy: &quot;Gawneht&quot; },
+    { human: &quot;Shale&quot;, fluffy: &quot;Shale&quot; },
+    { human: &quot;Falcon&quot;, fluffy: &quot;Fawcon&quot; },
+    { human: &quot;Eagle&quot;, fluffy: &quot;Eagwe&quot; },
+    { human: &quot;Hawk&quot;, fluffy: &quot;Hawwk&quot; },
+    { human: &quot;Raven&quot;, fluffy: &quot;Waven&quot; },
+    { human: &quot;Crow&quot;, fluffy: &quot;Cwow&quot; },
+    { human: &quot;Phoenix&quot;, fluffy: &quot;Phoenix&quot; },
+    { human: &quot;Griffin&quot;, fluffy: &quot;Gwiffin&quot; },
+    { human: &quot;Drake&quot;, fluffy: &quot;Dwaek&quot; },
+    { human: &quot;Wolf&quot;, fluffy: &quot;Wowf&quot; },
+    { human: &quot;Bear&quot;, fluffy: &quot;Beaw&quot; },
+    { human: &quot;Fox&quot;, fluffy: &quot;Fox&quot; },
+    { human: &quot;Lynx&quot;, fluffy: &quot;Wynx&quot; },
+    { human: &quot;Cougar&quot;, fluffy: &quot;Cougaw&quot; },
+    { human: &quot;Panther&quot;, fluffy: &quot;Pantheh&quot; },
+    { human: &quot;Leopard&quot;, fluffy: &quot;Weopawd&quot; },
+    { human: &quot;Tiger&quot;, fluffy: &quot;Tigew&quot; },
+    { human: &quot;Lion&quot;, fluffy: &quot;Wion&quot; },
+    { human: &quot;Falcon&quot;, fluffy: &quot;Fawcon&quot; },
+    { human: &quot;Boulder&quot;, fluffy: &quot;Bouwdew&quot; },
+    { human: &quot;Slate&quot;, fluffy: &quot;Swate&quot; }
 ]&gt;&gt;
 
 &lt;&lt;set $randomNameFemale = [
-    &quot;Rosebud&quot;,&quot;Daisy&quot;,&quot;Lilypad&quot;,&quot;Buttercup&quot;,&quot;Marigold&quot;,&quot;Petal&quot;,&quot;Blossom&quot;,&quot;Cherry&quot;,&quot;Peach&quot;,&quot;Berry&quot;,&quot;Honey&quot;,&quot;Sugar&quot;,&quot;Sparkle&quot;,&quot;Glimmer&quot;,&quot;Starflower&quot;,&quot;Moonbeam&quot;,&quot;Sunny&quot;,&quot;Skye&quot;,&quot;Raindrop&quot;,&quot;Dewdrop&quot;,&quot;Pearl&quot;,&quot;Coral&quot;,&quot;Sapphire&quot;,&quot;Ruby&quot;,&quot;Amber&quot;,&quot;Jade&quot;,&quot;Opal&quot;,&quot;Crystal&quot;,&quot;Velvet&quot;,&quot;Misty&quot;,&quot;Frosty&quot;,&quot;Snowflake&quot;,&quot;Cloudy&quot;,&quot;Breeze&quot;,&quot;Meadow&quot;,&quot;Willow&quot;,&quot;Clover&quot;,&quot;Tulip&quot;,&quot;Poppy&quot;,&quot;Lavender&quot;,&quot;Violet&quot;,&quot;Iris&quot;,&quot;Hazel&quot;,&quot;Maple&quot;,&quot;Autumn&quot;,&quot;Summer&quot;,&quot;Dawn&quot;,&quot;Twilight&quot;,&quot;Aurora&quot;,&quot;Starlight&quot;,&quot;Rosemary&quot;,&quot;Bluebell&quot;,&quot;Daffodil&quot;,&quot;Primrose&quot;,&quot;Sunflower&quot;,&quot;Cinnamon&quot;,&quot;Peppermint&quot;,&quot;Vanilla&quot;,&quot;Caramel&quot;,&quot;Toffee&quot;,&quot;Cupcake&quot;,&quot;Sprinkle&quot;,&quot;Glitter&quot;,&quot;Shimmer&quot;,&quot;Twinkle&quot;,&quot;Moonlight&quot;,&quot;Starshine&quot;,&quot;Sunbeam&quot;,&quot;Rainbow&quot;,&quot;Bubble&quot;,&quot;Feather&quot;,&quot;Swan&quot;,&quot;Dove&quot;,&quot;Robin&quot;,&quot;Wren&quot;,&quot;Sparrow&quot;,&quot;Lark&quot;,&quot;Finch&quot;,&quot;Nightingale&quot;,&quot;Canary&quot;,&quot;Marina&quot;,&quot;Seashell&quot;,&quot;Powder&quot;,&quot;Coraline&quot;,&quot;Aqua&quot;,&quot;Azure&quot;,&quot;Cerulean&quot;,&quot;Indigo&quot;,&quot;Lilac&quot;,&quot;Magnolia&quot;,&quot;Pansy&quot;,&quot;Dandelion&quot;,&quot;Cinnamon&quot;,&quot;Orchid&quot;,&quot;Peony&quot;,&quot;Tulip&quot;,&quot;Dahlia&quot;,&quot;Camellia&quot;,&quot;Aster&quot;,&quot;Snowdrop&quot;
+    { human: &quot;Rosebud&quot;, fluffy: &quot;Wosebud&quot; },
+    { human: &quot;Daisy&quot;, fluffy: &quot;Daisy&quot; },
+    { human: &quot;Lilypad&quot;, fluffy: &quot;Wiwypad&quot; },
+    { human: &quot;Buttercup&quot;, fluffy: &quot;Buttehcup&quot; },
+    { human: &quot;Marigold&quot;, fluffy: &quot;Mawigowd&quot; },
+    { human: &quot;Petal&quot;, fluffy: &quot;Peta&quot; },
+    { human: &quot;Blossom&quot;, fluffy: &quot;Bwossom&quot; },
+    { human: &quot;Cherry&quot;, fluffy: &quot;Chewwy&quot; },
+    { human: &quot;Peach&quot;, fluffy: &quot;Peach&quot; },
+    { human: &quot;Berry&quot;, fluffy: &quot;Behwy&quot; },
+    { human: &quot;Honey&quot;, fluffy: &quot;Honey&quot; },
+    { human: &quot;Sugar&quot;, fluffy: &quot;Sugaw&quot; },
+    { human: &quot;Sparkle&quot;, fluffy: &quot;Spawkle&quot; },
+    { human: &quot;Glimmer&quot;, fluffy: &quot;Gwimmew&quot; },
+    { human: &quot;Starflower&quot;, fluffy: &quot;Stawfloweh&quot; },
+    { human: &quot;Moonbeam&quot;, fluffy: &quot;Moonbeam&quot; },
+    { human: &quot;Sunny&quot;, fluffy: &quot;Sunny&quot; },
+    { human: &quot;Skye&quot;, fluffy: &quot;Skye&quot; },
+    { human: &quot;Raindrop&quot;, fluffy: &quot;Waindwop&quot; },
+    { human: &quot;Dewdrop&quot;, fluffy: &quot;Dewdwop&quot; },
+    { human: &quot;Pearl&quot;, fluffy: &quot;Peaww&quot; },
+    { human: &quot;Coral&quot;, fluffy: &quot;Cowaw&quot; },
+    { human: &quot;Sapphire&quot;, fluffy: &quot;Sappiweh&quot; },
+    { human: &quot;Ruby&quot;, fluffy: &quot;Wuby&quot; },
+    { human: &quot;Amber&quot;, fluffy: &quot;Ambeh&quot; },
+    { human: &quot;Jade&quot;, fluffy: &quot;Jade&quot; },
+    { human: &quot;Opal&quot;, fluffy: &quot;Opaw&quot; },
+    { human: &quot;Crystal&quot;, fluffy: &quot;Cwystaw&quot; },
+    { human: &quot;Velvet&quot;, fluffy: &quot;Vewvet&quot; },
+    { human: &quot;Misty&quot;, fluffy: &quot;Misty&quot; },
+    { human: &quot;Frosty&quot;, fluffy: &quot;Fwosty&quot; },
+    { human: &quot;Snowflake&quot;, fluffy: &quot;Snowfwake&quot; },
+    { human: &quot;Cloudy&quot;, fluffy: &quot;Cwoudy&quot; },
+    { human: &quot;Breeze&quot;, fluffy: &quot;Bweeze&quot; },
+    { human: &quot;Meadow&quot;, fluffy: &quot;Meadow&quot; },
+    { human: &quot;Willow&quot;, fluffy: &quot;Wiwwow&quot; },
+    { human: &quot;Clover&quot;, fluffy: &quot;Cwoveh&quot; },
+    { human: &quot;Tulip&quot;, fluffy: &quot;Tuwip&quot; },
+    { human: &quot;Poppy&quot;, fluffy: &quot;Poppy&quot; },
+    { human: &quot;Lavender&quot;, fluffy: &quot;Wavendew&quot; },
+    { human: &quot;Violet&quot;, fluffy: &quot;Viowet&quot; },
+    { human: &quot;Iris&quot;, fluffy: &quot;Iwis&quot; },
+    { human: &quot;Hazel&quot;, fluffy: &quot;Hazew&quot; },
+    { human: &quot;Maple&quot;, fluffy: &quot;Mapwe&quot; },
+    { human: &quot;Autumn&quot;, fluffy: &quot;Autumn&quot; },
+    { human: &quot;Summer&quot;, fluffy: &quot;Summeh&quot; },
+    { human: &quot;Dawn&quot;, fluffy: &quot;Dawn&quot; },
+    { human: &quot;Twilight&quot;, fluffy: &quot;Twiwight&quot; },
+    { human: &quot;Aurora&quot;, fluffy: &quot;Auwowa&quot; },
+    { human: &quot;Starlight&quot;, fluffy: &quot;Stawwight&quot; },
+    { human: &quot;Rosemary&quot;, fluffy: &quot;Wosemawy&quot; },
+    { human: &quot;Bluebell&quot;, fluffy: &quot;Bwuebeww&quot; },
+    { human: &quot;Daffodil&quot;, fluffy: &quot;Daffodiww&quot; },
+    { human: &quot;Primrose&quot;, fluffy: &quot;Pwimwose&quot; },
+    { human: &quot;Sunflower&quot;, fluffy: &quot;Sunfloweh&quot; },
+    { human: &quot;Cinnamon&quot;, fluffy: &quot;Cinnamown&quot; },
+    { human: &quot;Peppermint&quot;, fluffy: &quot;Peppewmint&quot; },
+    { human: &quot;Vanilla&quot;, fluffy: &quot;Vaniwwa&quot; },
+    { human: &quot;Caramel&quot;, fluffy: &quot;Cawamew&quot; },
+    { human: &quot;Toffee&quot;, fluffy: &quot;Toffee&quot; },
+    { human: &quot;Cupcake&quot;, fluffy: &quot;Cupcake&quot; },
+    { human: &quot;Sprinkle&quot;, fluffy: &quot;Spwinkwe&quot; },
+    { human: &quot;Glitter&quot;, fluffy: &quot;Gwitteh&quot; },
+    { human: &quot;Shimmer&quot;, fluffy: &quot;Shimmew&quot; },
+    { human: &quot;Twinkle&quot;, fluffy: &quot;Twinkwe&quot; },
+    { human: &quot;Moonlight&quot;, fluffy: &quot;Moonwight&quot; },
+    { human: &quot;Starshine&quot;, fluffy: &quot;Stawshine&quot; },
+    { human: &quot;Sunbeam&quot;, fluffy: &quot;Sunbeam&quot; },
+    { human: &quot;Rainbow&quot;, fluffy: &quot;Wainbow&quot; },
+    { human: &quot;Bubble&quot;, fluffy: &quot;Bubbwe&quot; },
+    { human: &quot;Feather&quot;, fluffy: &quot;Featheh&quot; },
+    { human: &quot;Swan&quot;, fluffy: &quot;Swan&quot; },
+    { human: &quot;Dove&quot;, fluffy: &quot;Dove&quot; },
+    { human: &quot;Robin&quot;, fluffy: &quot;Wobin&quot; },
+    { human: &quot;Wren&quot;, fluffy: &quot;Wen&quot; },
+    { human: &quot;Sparrow&quot;, fluffy: &quot;Spawwow&quot; },
+    { human: &quot;Lark&quot;, fluffy: &quot;Wawk&quot; },
+    { human: &quot;Finch&quot;, fluffy: &quot;Finch&quot; },
+    { human: &quot;Nightingale&quot;, fluffy: &quot;Nytingawe&quot; },
+    { human: &quot;Canary&quot;, fluffy: &quot;Canawy&quot; },
+    { human: &quot;Marina&quot;, fluffy: &quot;Mawina&quot; },
+    { human: &quot;Seashell&quot;, fluffy: &quot;Seashew&quot; },
+    { human: &quot;Powder&quot;, fluffy: &quot;Powdeh&quot; },
+    { human: &quot;Coraline&quot;, fluffy: &quot;Cowawine&quot; },
+    { human: &quot;Aqua&quot;, fluffy: &quot;Aqua&quot; },
+    { human: &quot;Azure&quot;, fluffy: &quot;Azuweh&quot; },
+    { human: &quot;Cerulean&quot;, fluffy: &quot;Cewuwan&quot; },
+    { human: &quot;Indigo&quot;, fluffy: &quot;Indigo&quot; },
+    { human: &quot;Lilac&quot;, fluffy: &quot;Wiwac&quot; },
+    { human: &quot;Magnolia&quot;, fluffy: &quot;Magnowia&quot; },
+    { human: &quot;Pansy&quot;, fluffy: &quot;Pansy&quot; },
+    { human: &quot;Dandelion&quot;, fluffy: &quot;Dandewion&quot; },
+    { human: &quot;Camellia&quot;, fluffy: &quot;Camewia&quot; },
+    { human: &quot;Aster&quot;, fluffy: &quot;Asteh&quot; },
+    { human: &quot;Snowdrop&quot;, fluffy: &quot;Snowdwop&quot; }
 ]&gt;&gt;
 
 &lt;&lt;set $fertilityRoll = [
@@ -4222,7 +4487,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
           &lt;&lt;clouds&gt;&gt;
             &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;
                 &lt;svg width=&quot;70&quot; height=&quot;20&quot;&gt;
-                &lt;path stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;deeppink&quot; d=&quot;M10,0 Q35,4 60,0 L70,20 L0,20, L10,0 &quot; /&gt;
+                &lt;path stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;yellow&quot; d=&quot;M10,0 Q35,4 60,0 L70,20 L0,20, L10,0 &quot; /&gt;
                 &lt;g stroke-width=&quot;1&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M69,18 L1,18&quot; /&gt;&lt;path d=&quot;M9,2 Q35,6 61,2&quot; /&gt;
               &lt;/g&gt;
             &lt;/svg&gt;
@@ -4232,7 +4497,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;div class=&quot;nametag&quot;&gt;
               &lt;div class=&quot;nameinfo&quot;&gt;
                 &lt;ul&gt;
-                  &lt;li&gt;$args[2] ($args[3]) - _fluffyFert&lt;/li&gt;
+                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;&lt;&lt;set _tempName to $randomNameMale.random()&gt;&gt;_tempName.human (You should roll)&lt;&lt;else&gt;&gt;$args[2] ($args[3]) - _fluffyFert&lt;&lt;/if&gt;&gt;&lt;/li&gt;
                 &lt;/ul&gt;
               &lt;/div&gt;
             &lt;/div&gt;
@@ -4289,15 +4554,19 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="ColorName" tags="widget nobr" position="725,725" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="inventory.strings" tags="" position="850,725" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="58" name="New Fluffy" tags="widget nobr" position="975,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="ColorName" tags="widget nobr" position="725,725" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="Fluffy Dialog" tags="widget nobr" position="850,725" size="100,100">&lt;&lt;widget &quot;fluffyDialog&quot; container&gt;&gt;
+    &lt;&lt;set _borderColor = $fluffySkin.colorname&gt;&gt;
+    &lt;p @style=&quot;&#39;display: inline-block;margin:0;
+	padding: 0.5em 1em ;border-left: 0.50em solid &#39; + _borderColor&quot;&gt;_contents&lt;/p&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="inventory.strings" tags="" position="975,725" size="100,100">empty: Your inventory is empty!</tw-passagedata><tw-passagedata pid="59" name="New Fluffy" tags="widget nobr" position="1100,725" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
   &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;
   &lt;&lt;if _gender is &quot;Male&quot;&gt;&gt;
-    &lt;&lt;set _name = $randomNameMale.random()&gt;&gt;
+    &lt;&lt;set _name = $randomNameMale.random()&gt;&gt; &lt;!-- Get a random male name object --&gt;
     &lt;&lt;set _pronounIndex = 0&gt;&gt;
   &lt;&lt;else&gt;&gt;
-    &lt;&lt;set _name = $randomNameFemale.random()&gt;&gt;
+    &lt;&lt;set _name = $randomNameFemale.random()&gt;&gt; &lt;!-- Get a random female name object --&gt;
     &lt;&lt;set _pronounIndex = 1&gt;&gt;
   &lt;&lt;/if&gt;&gt;
   &lt;&lt;set _fertility = $fertilityRoll.random()&gt;&gt;
@@ -4307,31 +4576,32 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;&lt;set _caution = random(1, 9)&gt;&gt; &lt;!-- Random value between 1 and 9 for caution --&gt;
   &lt;&lt;set _ignorance = 10 - _caution&gt;&gt; &lt;!-- Ignorance is 10 minus caution --&gt;
   &lt;&lt;set _flavor = $randomFlavor.random()&gt;&gt;
- &lt;&lt;if $obedience gte 7&gt;&gt;
-    &lt;&lt;if $caution gte 7&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Perfect&quot;&gt;&gt;
-    &lt;&lt;elseif $caution gte 4&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Loyal&quot;&gt;&gt;
+
+  &lt;&lt;if _obedience gte 7&gt;&gt;
+    &lt;&lt;if _caution gte 7&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Perfect&quot;&gt;&gt;
+    &lt;&lt;elseif _caution gte 4&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Loyal&quot;&gt;&gt;
     &lt;&lt;else&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Clueless&quot;&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Clueless&quot;&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $obedience gte 4&gt;&gt;
-    &lt;&lt;if $caution gte 7&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Cautious&quot;&gt;&gt;
-    &lt;&lt;elseif $caution gte 4&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Average&quot;&gt;&gt;
+  &lt;&lt;elseif _obedience gte 4&gt;&gt;
+    &lt;&lt;if _caution gte 7&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Cautious&quot;&gt;&gt;
+    &lt;&lt;elseif _caution gte 4&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Average&quot;&gt;&gt;
     &lt;&lt;else&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Reckless&quot;&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Reckless&quot;&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;else&gt;&gt;
-    &lt;&lt;if $caution gte 7&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Nervous&quot;&gt;&gt;
-    &lt;&lt;elseif $caution gte 4&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Free&quot;&gt;&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;if _caution gte 7&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Nervous&quot;&gt;&gt;
+    &lt;&lt;elseif _caution gte 4&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Free&quot;&gt;&gt;
     &lt;&lt;else&gt;&gt;
-        &lt;&lt;set _temperament to &quot;Chaotic&quot;&gt;&gt;
+      &lt;&lt;set _temperament to &quot;Chaotic&quot;&gt;&gt;
     &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
 
   &lt;&lt;set _fluffy = {
     name: _name,
@@ -4349,10 +4619,10 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     temperament: _temperament
   }&gt;&gt;
 
-  &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="RefreshSidebar" tags="widget nobr" position="1100,725" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
+  &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt; &lt;!-- Add the new Fluffy to the $fluffies array --&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="RefreshSidebar" tags="widget nobr" position="1225,725" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
     &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="Roll" tags="widget" position="1225,725" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="Roll" tags="widget" position="100,850" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
   &lt;&lt;capture _stat&gt;&gt;
   &lt;&lt;if _stat === &quot;ob&quot;&gt;&gt;
     &lt;&lt;set _bonus = Math.floor(($fluffyOb - $fluffyIm) /2 )&gt;&gt; &lt;!-- Obedience - Impulsiveness --&gt;
@@ -4395,7 +4665,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;&lt;/if&gt;&gt;
 
   &lt;&lt;run State.setVar(_tempVarName, _result)&gt;&gt; &lt;!-- Store the result in the specified temporary variable --&gt;
-&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="Test Widget SVG" tags="widget" position="100,850" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
+&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="Test Widget SVG" tags="widget" position="225,850" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
 &lt;&lt;set _fill to &quot;blue&quot;&gt;&gt;
 &lt;&lt;= &#39;&lt;svg viewBox=&quot;0 0 10 10&quot; height=&quot;120px&quot; width=&quot;120px&quot; fill=&quot;&#39; + _fill + &#39;&quot;&gt;&lt;circle cx=&quot;5&quot; cy=&quot;5&quot; r=&quot;4&quot; /&gt;&lt;/svg&gt;&#39;&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>

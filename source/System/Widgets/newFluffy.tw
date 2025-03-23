@@ -1,14 +1,14 @@
 :: New Fluffy [widget nobr]
-  
+
 <<widget "newFluffy">>
   <<set _gender = $randomGender.random()>>
   <<set _mane = $randomMane.random()>>
   <<set _skin = $randomSkin.random()>>
   <<if _gender is "Male">>
-    <<set _name = $randomNameMale.random()>>
+    <<set _name = $randomNameMale.random()>> <!-- Get a random male name object -->
     <<set _pronounIndex = 0>>
   <<else>>
-    <<set _name = $randomNameFemale.random()>>
+    <<set _name = $randomNameFemale.random()>> <!-- Get a random female name object -->
     <<set _pronounIndex = 1>>
   <</if>>
   <<set _fertility = $fertilityRoll.random()>>
@@ -18,31 +18,32 @@
   <<set _caution = random(1, 9)>> <!-- Random value between 1 and 9 for caution -->
   <<set _ignorance = 10 - _caution>> <!-- Ignorance is 10 minus caution -->
   <<set _flavor = $randomFlavor.random()>>
- <<if $obedience gte 7>>
-    <<if $caution gte 7>>
-        <<set _temperament to "Perfect">>
-    <<elseif $caution gte 4>>
-        <<set _temperament to "Loyal">>
+
+  <<if _obedience gte 7>>
+    <<if _caution gte 7>>
+      <<set _temperament to "Perfect">>
+    <<elseif _caution gte 4>>
+      <<set _temperament to "Loyal">>
     <<else>>
-        <<set _temperament to "Clueless">>
+      <<set _temperament to "Clueless">>
     <</if>>
-<<elseif $obedience gte 4>>
-    <<if $caution gte 7>>
-        <<set _temperament to "Cautious">>
-    <<elseif $caution gte 4>>
-        <<set _temperament to "Average">>
+  <<elseif _obedience gte 4>>
+    <<if _caution gte 7>>
+      <<set _temperament to "Cautious">>
+    <<elseif _caution gte 4>>
+      <<set _temperament to "Average">>
     <<else>>
-        <<set _temperament to "Reckless">>
+      <<set _temperament to "Reckless">>
     <</if>>
-<<else>>
-    <<if $caution gte 7>>
-        <<set _temperament to "Nervous">>
-    <<elseif $caution gte 4>>
-        <<set _temperament to "Free">>
+  <<else>>
+    <<if _caution gte 7>>
+      <<set _temperament to "Nervous">>
+    <<elseif _caution gte 4>>
+      <<set _temperament to "Free">>
     <<else>>
-        <<set _temperament to "Chaotic">>
+      <<set _temperament to "Chaotic">>
     <</if>>
-<</if>>
+  <</if>>
 
   <<set _fluffy = {
     name: _name,
@@ -60,5 +61,5 @@
     temperament: _temperament
   }>>
 
-  <<run $fluffies.push(_fluffy)>>
+  <<run $fluffies.push(_fluffy)>> <!-- Add the new Fluffy to the $fluffies array -->
 <</widget>>

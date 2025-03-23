@@ -1,0 +1,7 @@
+::Fluffy Dialog [widget nobr]
+
+<<widget "fluffyDialog" container>>
+    <<set _borderColor = $fluffySkin.colorname>>
+    <p @style="'display: inline-block;margin:0;
+	padding: 0.5em 1em ;border-left: 0.50em solid ' + _borderColor">_contents</p>
+<</widget>>

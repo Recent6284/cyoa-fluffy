@@ -134,7 +134,7 @@ Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colornam
 
 <<lockFluffy>>You mustered up a small amount of courage, and decided to take the leap. You moved from your hiding spot, illiciting a small jump from the <<print $fluffyRace.toLowerCase()>>.
 
-"Eep!" the <<print $fluffyRace.toLowerCase()>> said. "Who you?"
+<<fluffyDialog>>"Eep!" the <<print $fluffyRace.toLowerCase()>> said. "Who you?"<</fluffyDialog>>
 
 <span class="blink"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>></span>
 
@@ -148,13 +148,15 @@ You were purposefully being a bit obtuse, but this was a test: you wanted to see
 
 The Fluffy's demeanor softened, and you could tell its programming was kicking in. You knew Hasbio had programmed Fluffies to be inherently trusting of humans, and despite living in the forest, <<dynamicPronoun $currentFluffyIndex "they">> <<print either("decided to trust you", "was desperate for a home", "didn't really seem to care about any potential danger")>>.
 
-Again, you could see the gears turning in its head, and it piped up. "//Fwuffy// is a good Fwuffy!" it said, smiling and putting on its best "adopt me" expression. "Fwuffy am named $fluffyName! $fluffyName is bestest Fwuffy in hewd, but hewd decide to be dummehs. $fluffyName wanted dwinkies, and found small wawa!"
+Again, you could see the gears turning in its head, and it piped up. 
 
-"Why hello there, $fluffyName," you said. "Your herd sounds like a bunch of meanies. Would you maybe want to come home with me?"
+<<fluffyDialog>>"//Fwuffy// is a good Fwuffy!" it said, smiling and putting on its best "adopt me" expression. "Fwuffy am named $fluffyName.fluffy! $fluffyName.fluffy is bestest Fwuffy in hewd, but hewd decide to be dummehs. $fluffyName.fluffy wanted dwinkies, and found small wawa!"<</fluffyDialog>>
 
-You thought to yourself, and wondered: was ''$fluffyName'' something that you liked? Or did you want to cut them off now, and make a new name for them?
+"Why hello there, $fluffyName.human," you said. "Your herd sounds like a bunch of meanies. Would you maybe want to come home with me?"
 
-<<buttonreplace "Yes please!">><<textbox "$fluffyName" $fluffyName>><br><br><<button [[Confirm|Confirm]]>><</button>><<remove #confirmbutton>><</buttonreplace>>
+You thought to yourself, and wondered: was ''$fluffyName.human'' something that you liked? Or did you want to cut them off now, and make a new name for them?
+
+<<buttonreplace "Yes please!">><<textbox "$fluffyName.human" $fluffyName.human>><br><br><<button [[Confirm|Confirm]]>><</button>><<remove #confirmbutton>><</buttonreplace>>
 
 <span id="confirmbutton"><<button [["No, I'm fine"|Confirm]]>><</button>></span>
 
@@ -162,7 +164,7 @@ You thought to yourself, and wondered: was ''$fluffyName'' something that you li
 <<silent>><<set _skinName to "$fluffySkin.name.toLowerCase()">>
 <<set _article to setup.articles.find(_skinName)>><</silent>>
 <<set _colorSpan to "<span style='color:" + $fluffySkin.colorname + "'>" + $fluffySkin.name.toLowerCase() + "</span>">>
-Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName, _article <<colorname $fluffySkin>> $fluffyRace with a <<colorname $fluffyMane>> mane.
+Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName.human, _article <<colorname $fluffySkin>> $fluffyRace with a <<colorname $fluffyMane>> mane.
 
 <span class="blink walking"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>></span>
 

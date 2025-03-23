@@ -1,5 +1,9 @@
 :: Story Stylesheet [stylesheet]
 
+.fluffyspeak {
+    /* You can add any additional styling here if needed */
+}
+
 body {
  background-color: #121212;
 }
@@ -76,20 +80,31 @@ a.explainer {
 }
 
 .optionbox{
-	diplay: inline-block;
+	display: inline-block;
 	padding: 0px 1em;
 	border-left: 0.50em solid rgb(0, 119, 255);
 	max-width: 60%;
 }
 
 .cautionbox{
-	diplay: inline-block;
+	display: inline-block;
 	padding: 10px;
 	border-left: 0.50em solid red;
 	max-width: 60%;
 }
 
 .optionbox p, {
+	margin-block-start: 2em;
+	margin-block-end: 2em;
+}
+
+
+.fluffyDialog {
+	display: inline-block;
+	padding: 10px;
+	max-width: 60%;
+}
+.fluffyDialog p, {
 	margin-block-start: 2em;
 	margin-block-end: 2em;
 }

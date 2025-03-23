@@ -11,12 +11,9 @@
   bottom: 47px;
   left: 40%;
   margin: 0;               
-  z-index: 5;  
+  z-index: 5;
   box-sizing: border-box;
   transform-origin: center;         
-  /* animation-name: gallop;
-  animation-duration: 20s;
-  animation-iteration-count: infinite; */
 }
 
 .right .fluffy {

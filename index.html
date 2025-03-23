@@ -335,7 +335,7 @@ p, h2, h3, h4, h5 {
 	z-index: 1000;      /* Ensure it's above other content */
 }
 /* twine-user-stylesheet #2: "art-animations.css" */
-@keyframes gallop {
+#keyframes gallop {
     0% {
       left: 0;
       transform: scaleX(-1) translateY(0);
@@ -398,12 +398,9 @@ p, h2, h3, h4, h5 {
   bottom: 47px;
   left: 40%;
   margin: 0;               
-  z-index: 5;  
+  z-index: 5;
   box-sizing: border-box;
   transform-origin: center;         
-  /* animation-name: gallop;
-  animation-duration: 20s;
-  animation-iteration-count: infinite; */
 }
 
 .right .fluffy {
@@ -993,6 +990,24 @@ p, h2, h3, h4, h5 {
     clip-path: path('M60,0 Q150,30 240,0 L300,100 L0,100 Z');
   }
   
+  .tank-container {
+    position: relative;
+    margin: 20px 0;
+  }
+  
+  /* Optional styling for the toggle button */
+  .move-toggle {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .move-toggle:hover {
+    background-color: #e0e0e0;
+  }
 /* twine-user-stylesheet #7: "clouds.css" */
 cloud-body {
     display: flex;
@@ -1705,7 +1720,170 @@ ul.simple-inventory-list {
 .simple-inventory-filter input {
     display: inline-block;
 }
-/* End Simple Inventory */</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "articles.js" */
+/* End Simple Inventory */</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "anim-walking.js" */
+// Add this to your JavaScript section or a script passage
+(function() {
+    // Create CSS for animation classes
+    if (!document.getElementById('fluffyAnimationCSS')) {
+      const css = document.createElement('style');
+      css.id = 'fluffyAnimationCSS';
+      css.textContent = `
+        /* Set transform origins for each leg group */
+        #SVGleg1-group {
+          transform-origin: 15px 45px; /* Top of leg */
+        }
+        #SVGleg2-group {
+          transform-origin: 37px 45px;
+        }
+        #SVGleg3-group {
+          transform-origin: 79px 45px;
+        }
+        #SVGleg4-group {
+          transform-origin: 100px 45px;
+        }
+      `;
+      document.head.appendChild(css);
+    }
+    
+    // Function to make Fluffies walk
+    window.makeFluffyWalk = function() {
+      // Find all Fluffy SVGs that are inside a walking span
+      const walkingFluffies = document.querySelectorAll('.walking #SVGfluffy-svg');
+      
+      walkingFluffies.forEach(svg => {
+        // Get the main fluffy group - this contains everything
+        const fluffyGroup = svg.querySelector('#SVGfluffy');
+        
+        // Get the legs
+        const legGroups = [
+          {
+            group: svg.querySelector('#SVGleg1-group'),
+            phase: 0
+          },
+          {
+            group: svg.querySelector('#SVGleg2-group'),
+            phase: Math.PI
+          },
+          {
+            group: svg.querySelector('#SVGleg3-group'),
+            phase: Math.PI
+          },
+          {
+            group: svg.querySelector('#SVGleg4-group'),
+            phase: 0
+          }
+        ];
+        
+        // Get other parts to animate
+        const body = svg.querySelector('#SVGfluffbody');
+        const belly = svg.querySelector('#SVGbelly');
+        const headContainer = svg.querySelector('#SVGhead-container');
+        
+        // Store original transforms
+        const fluffyGroupTransform = fluffyGroup.getAttribute('transform') || '';
+        
+        // Apply CSS for transform origins
+        legGroups.forEach(leg => {
+          if (!leg.group) return;
+        });
+        
+        // Animation variables
+        let time = 0;
+        const walkSpeed = 0.04; // SLOWER: Reduced from 0.05 to 0.03
+        
+        function animate() {
+            time += walkSpeed;
+            
+            // REDUCED BOUNCE: Less amplitude for sway and bounce
+            const bodySway = Math.sin(time * 2) * 1.0; // Reduced from 1.5 to 1.0
+            const bodyY = Math.abs(Math.sin(time * 2)) * -1.0; // Reduced from -1.5 to -1.0
+            
+            // Move the entire fluffy group to the right
+            fluffyGroup.setAttribute('transform', `translate(${5 + bodySway}, ${bodyY}) rotate(${bodySway * 0.2})`); // Reduced rotation from 0.3 to 0.2
+            
+            // Body animation is simplified - no translation needed
+            body.removeAttribute('transform');
+            
+            // Head follows with slight delay and reduced movement
+            const headY = Math.abs(Math.sin(time * 2 - 0.1)) * -0.3; // Reduced from -0.5 to -0.3
+            const headSway = Math.sin(time * 2 - 0.2) * 0.3; // Reduced from 0.5 to 0.3
+            headContainer.setAttribute('transform', `translate(${10 + headSway}, ${17 + headY})`);
+            
+            // Legs move with subtle rotation only
+            legGroups.forEach(leg => {
+              if (!leg.group) return;
+              // Smaller angle for legs
+              const angle = Math.sin(time * 2 + leg.phase) * 6; // Reduced from 6 to 4
+              leg.group.style.transform = `rotate(${angle}deg)`;
+            });
+            
+            // Continue animation
+            svg.walkFrameId = requestAnimationFrame(animate);
+        }
+        
+        // Start animation if not already running
+        if (!svg.walkFrameId) {
+          svg.walkFrameId = requestAnimationFrame(animate);
+        }
+      });
+    };
+    
+    // Function to stop walking
+    window.stopFluffyWalk = function() {
+      const walkingFluffies = document.querySelectorAll('#SVGfluffy-svg');
+      
+      walkingFluffies.forEach(svg => {
+        if (svg.walkFrameId) {
+          cancelAnimationFrame(svg.walkFrameId);
+          svg.walkFrameId = null;
+          
+          // Reset transforms
+          const legGroups = svg.querySelectorAll('[id$="-group"]');
+          legGroups.forEach(group => {
+            group.style.transform = '';
+          });
+          
+          const fluffyGroup = svg.querySelector('#SVGfluffy');
+          const body = svg.querySelector('#SVGfluffbody');
+          const belly = svg.querySelector('#SVGbelly');
+          const headContainer = svg.querySelector('#SVGhead-container');
+          
+          // Reset the entire fluffy group to original position with slight offset
+          fluffyGroup.setAttribute('transform', 'translate(5, 0)');
+          body.removeAttribute('transform');
+          belly.removeAttribute('transform');
+          headContainer.setAttribute('transform', 'translate(10, 17)');
+        }
+      });
+    };
+       
+    // Setup event listeners for walking
+    $(document).on(':passagedisplay', function() {
+      // Slight delay to ensure SVG is fully rendered
+      setTimeout(function() {
+        // Find elements with walking class and start animation
+        document.querySelectorAll('.walking').forEach(el => {
+          window.makeFluffyWalk();
+        });
+        
+        // Add click handlers to toggle walking for clickable elements
+        document.querySelectorAll('.walking-toggle').forEach(el => {
+          el.addEventListener('click', function() {
+            const target = document.querySelector(this.getAttribute('data-target'));
+            if (target) {
+              target.classList.toggle('walking');
+              if (target.classList.contains('walking')) {
+                window.makeFluffyWalk();
+              } else {
+                window.stopFluffyWalk();
+              }
+            }
+          });
+        });
+      }, 100);
+    });
+  })();
+/* twine-user-script #2: "articles.js" */
 (function () {
     // v1.0.0
     'use strict';
@@ -1859,13 +2037,13 @@ ul.simple-inventory-list {
         }
     });
 }());
-/* twine-user-script #2: "checkboxevent.js" */
+/* twine-user-script #3: "checkboxevent.js" */
 $(document).on(':passagerender', function (ev) {
     if (passage() == "Character Creation") {
             $(ev.content).find("#checkbox-playersmarty").on('propertychange change', function() { Engine.play(passage()); } );
     }
 });
-/* twine-user-script #3: "debugsettings.js" */
+/* twine-user-script #4: "debugsettings.js" */
 (function () {
         Setting.addHeader("Debug Settings");
 
@@ -1882,7 +2060,7 @@ $(document).on(':passagerender', function (ev) {
                 }
         });
 })();
-/* twine-user-script #4: "dynamicFluffyProperty.js" */
+/* twine-user-script #5: "dynamicFluffyProperty.js" */
 Macro.add("dynamicFluffyProperty", {
     handler: function() {
         var index = this.args[0]; // Index of the Fluffy
@@ -1903,7 +2081,7 @@ Macro.add("dynamicFluffyProperty", {
         $(this.output).append(fluffy[property]);
     }
 });
-/* twine-user-script #5: "dynamicPronouns.js" */
+/* twine-user-script #6: "dynamicPronouns.js" */
 Macro.add("dynamicPronoun", {
     handler: function() {
         var index = this.args[0]; // Index of the Fluffy
@@ -1940,7 +2118,7 @@ Macro.add("dynamicPronoun", {
         $(this.output).append(text);
     }
 });
-/* twine-user-script #6: "fluffySVGblink.js" */
+/* twine-user-script #7: "fluffySVGblink.js" */
 // Add this to your JavaScript section or a script passage
 (function() {
     // Function to make Fluffies blink
@@ -2011,7 +2189,7 @@ Macro.add("dynamicPronoun", {
       setTimeout(window.makeFluffyBlink, 100);
     });
   })();
-/* twine-user-script #7: "hovertip.js" */
+/* twine-user-script #8: "hovertip.js" */
 /* hovertip v2.0 - Start */
 window.UpdateHoverTipTxt = function (container) {
 	if (Engine.isIdle()) {
@@ -2139,7 +2317,7 @@ Macro.add("hovertip", {
 	}
 });
 /* hovertip v2.0 - End */
-/* twine-user-script #8: "lockfluffy.js" */
+/* twine-user-script #9: "lockfluffy.js" */
 Macro.add("lockFluffy", {
     handler: function() {
         var index = State.variables.currentFluffyIndex; // Use the current index
@@ -2164,7 +2342,7 @@ Macro.add("lockFluffy", {
         State.variables.fluffy = chosenFluffy;
     }
 });
-/* twine-user-script #9: "roller.js" */
+/* twine-user-script #10: "roller.js" */
 (function () {
     // Define the widget to be used with <<do>> and <<redo>>
     Macro.add('animatedroll', {
@@ -2540,12 +2718,161 @@ Macro.add("lockFluffy", {
         };
     });
 })();
-/* twine-user-script #10: "simple-inventory.js" */
+/* twine-user-script #11: "simple-inventory.js" */
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
 ;"use strict";function _typeof(t){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},_typeof(t)}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function _defineProperties(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,_toPropertyKey(i.key),i)}}function _createClass(t,e,n){return e&&_defineProperties(t.prototype,e),n&&_defineProperties(t,n),Object.defineProperty(t,"prototype",{writable:!1}),t}function _toPropertyKey(t){var e=_toPrimitive(t,"string");return"symbol"==_typeof(e)?e:String(e)}function _toPrimitive(t,e){if("object"!=_typeof(t)||!t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,e||"default");if("object"!=_typeof(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}!function(){var t={description:"",handler:null,displayName:"",consumable:!0,unique:!1,permanent:!1},e=new Map,n=function(){function n(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:clone(t),r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];if(_classCallCheck(this,n),!e||"string"!=typeof e)throw new Error("invalid item ID");if("object"!==_typeof(i))throw new Error("invalid item definition");Object.assign(this,Object.assign({},t,i)),this.id=e,this._tags=r instanceof Array?r:"string"==typeof r?[r]:[]}return _createClass(n,[{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(t){return this._tags.includes(t)}},{key:"hasAllTags",value:function(){return this._tags.includesAll([].slice.call(arguments).flat(1/0))}},{key:"hasAnyTags",value:function(){return this._tags.includesAny([].slice.call(arguments).flat(1/0))}},{key:"name",get:function(){return this.displayName||this.id},set:function(t){this.displayName=t}},{key:"use",value:function(){return"string"==typeof this.handler?$.wiki(this.handler):"function"==typeof this.handler&&this.handler(this),this}},{key:"inspect",value:function(){return Dialog.setup(this.name,"simple-inventory item-description"),Dialog.wiki(this.description),Dialog.open(),this}}],[{key:"is",value:function(t){return t instanceof n}},{key:"add",value:function(t,i,r){var a=new n(t,i,r);return e.set(t,a),a}},{key:"get",value:function(t){return e.get(t)}},{key:"has",value:function(t){return e.has(t)}},{key:"list",get:function(){return e}}]),n}();setup.Item=n,window.Item=window.Item||n}(),function(){var t=setup.Item,e=!1,n="&hellip;",i={inspect:"Inspect",use:"Use",drop:"Drop",stack:"stack",take:"Take",give:"Give",stackPre:"&nbsp;&times;&nbsp;",stackPost:"&nbsp;"},r={};function a(e){return t.has(e)&&t.get(e).unique}var s=function(){function s(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[];_classCallCheck(this,s),this.data=clone(t),this._tags=e instanceof Array?e:"string"==typeof e?[e]:[]}return _createClass(s,[{key:"emit",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return s.emit(t,this,e),this}},{key:"array",get:function(){var t=this,e=[];return Object.keys(this.data).forEach((function(n){if(e.push(n),t.data[n]>1)for(var i=1;i<t.data[n];i++)e.push(n)})),e}},{key:"list",get:function(){return Object.keys(this.data)}},{key:"length",get:function(){return this.array.length}},{key:"uniqueLength",get:function(){return this.list.length}},{key:"table",get:function(){return this.data}},{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(t){return this._tags.includes(t)}},{key:"hasAllTags",value:function(){return this._tags.includesAll([].slice.call(arguments).flat(1/0))}},{key:"hasAnyTags",value:function(){return this._tags.includesAny([].slice.call(arguments).flat(1/0))}},{key:"count",value:function(t){return t?this.data[t]||0:this.length}},{key:"has",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1;return this.data[t]>=e}},{key:"hasAll",value:function(){var t=this;return[].slice.call(arguments).flat(1/0).every((function(e){return t.has(e)}))}},{key:"hasAny",value:function(){var t=this;return[].slice.call(arguments).flat(1/0).some((function(e){return t.has(e)}))}},{key:"compare",value:function(t){var e=this,n=s.itemset(t);return Object.keys(n).every((function(t){return e.has(t,n[t])}))}},{key:"merge",value:function(t){var e=this,n=s.itemset(t);return Object.keys(n).forEach((function(t){s.change(e,t,n[t])})),n}},{key:"unmerge",value:function(t){var e=this,n={},i=s.itemset(t);return Object.keys(i).forEach((function(t){e.has(t,i[t])?n[t]=i[t]:e.has(t)&&(n[t]=e.count(t)),s.change(e,t,i[t],!0)})),n}},{key:"pickup",value:function(){var t=this.merge(s.parseArgList.apply(null,arguments));return this.emit("update",{delta:t}),this}},{key:"drop",value:function(){var t=this.unmerge(s.parseArgList.apply(null,arguments));return this.emit("update",{delta:t}),this}},{key:"empty",value:function(){var t=clone(this.data);return this.data={},this.emit("update",{delta:t}),this}},{key:"transfer",value:function(t){var e=s.parseArgList.apply(null,[].slice.call(arguments).slice(1));if(!s.is(t))throw new TypeError("target inventory is not an inventory instance");var n=this.unmerge(e);return t.merge(n),this.emit("update",{target:t,delta:n}),this}},{key:"isEmpty",value:function(){return 0===this.length}},{key:"iterate",value:function(t){var e=this;return"function"!=typeof t||this.list.forEach((function(n){t(n,e.data[n])})),this}},{key:"use",value:function(e){if(t.has(e)){var n=t.get(e);if(n.use(),n.consumable){s.change(this,e,1,!0);var i={};i[e]=1,this.emit("update",{delta:i})}return this.emit("use",{item:n}),this}}},{key:"clone",value:function(){return new s(this.data||{},this._tags||[])}},{key:"toJSON",value:function(){return JSON.reviveWrapper("new setup.Inventory("+JSON.stringify(this.data)+", "+JSON.stringify(this._tags)+")")}}],[{key:"confirm",get:function(){return e},set:function(t){e="string"==typeof t&&"all"===t.trim().toLowerCase()?"all":"string"==typeof t&&"stack"===t.trim().toLowerCase()?"stack":!!t}},{key:"emptyMessage",get:function(){return n},set:function(t){"string"==typeof t&&(n=t)}},{key:"strings",get:function(){return Object.assign(clone(i),r)},set:function(t){"object"===_typeof(t)&&(r=Object.assign(r,clone(t)))}},{key:"change",value:function(e,n){var i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];if(0!==i){if(e instanceof s&&(e=e.data),"object"!==_typeof(e)){if(e)throw new TypeError("cannot access inventory data");e={}}if(!(o=n)||"string"!=typeof o||!o.trim())throw new TypeError("invalid item name/id");var o;if("number"==typeof i&&!Number.isNaN(i)&&Number.isInteger(i)||(i=1),r&&(i*=-1),i>0){if(Object.keys(e).includes(n)&&a(n))return;i>1&&a(n)&&(i=1),Object.keys(e).includes(n)||(e[n]=0),e[n]+=i}else{if(function(e){return t.has(e)&&t.get(e).permanent}(n))return;Object.keys(e).includes(n)&&"number"==typeof e[n]&&(e[n]+=i),e[n]<=0&&delete e[n]}return e}}},{key:"itemset",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(s.is(t)&&(t=t.data),"object"!==_typeof(t))return{};var e={};return Object.keys(t).forEach((function(n){"number"==typeof t[n]&&Number.isInteger(t[n])&&0!==t[n]&&(e[n]=t[n])})),e}},{key:"parseArgList",value:function(){var t=[].slice.call(arguments).flat(1/0);if(t.length%2!=0)throw new Error("item sets should be pairs of item IDs and numbers");var e={};return t.forEach((function(n,i){i%2==0&&(e[n]=t[i+1])})),e}},{key:"is",value:function(t){return t instanceof s}},{key:"emit",value:function(t,e){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};$(document).trigger(Object.assign({type:":inventory-"+t+".simple-inventory",inventory:e,target:null,delta:{},item:null},n))}},{key:"create",value:function(t,e){return new s(t,e)}}]),s}();setup.Inventory=s,window.Inventory=window.Inventory||s}(),function(){var t=setup.Item,e=setup.Inventory;function n(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,i=arguments.length>2&&void 0!==arguments[2]&&arguments[2],r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"Alert",a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:"Are you sure?";if(!t||"function"!=typeof t)throw new Error("Invalid confirmation callback!");if(e.confirm)if("all"!==e.confirm||"all"===i)if("stack"!==e.confirm||i){var s={display:"inline-block",float:"right"},o=$(document.createElement("div")),u=$(document.createElement("p")).append(a),l=$(document.createElement("div")).addClass("confirmation-buttons"),c=$(document.createElement("button")).append("Okay").addClass("confirm-yes").css(Object.assign(s,{"margin-right":"0.5rem"})),d=$(document.createElement("button")).append("Cancel").addClass("confirm-no").css(s);t&&"function"==typeof t&&c.ariaClick(t),n&&"function"==typeof n&&d.ariaClick(n),l.append(d,c),o.append(u,l),Dialog.setup(r,"simple-inventory confirmation"),Dialog.append(o),Dialog.open()}else t();else t();else t()}function i(t){var e=$(document.createElement("span")).addClass("spacer");return t&&e.wiki(""+t),e}function r(t,i){var r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:null;return"give"===String(i).toLowerCase().trim()?i=e.strings.give:"take"===String(i).toLowerCase().trim()?i=e.strings.take:i&&"drop"!==String(i).toLowerCase().trim()||(i=e.strings.drop),$(document.createElement(r?"button":"a")).addClass("all-link drop-link").wiki(i+" all").ariaClick((function(){t.isEmpty()||n((function(){a&&e.is(a)?(a.merge(t),t.empty()):t.empty(),Dialog.close()}),(function(){Dialog.close()}),!0)}))}function a(a){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{description:!0,use:!0,transfer:null,drop:!0,all:!0,stack:!0,dropActionText:"",classes:""},u=$(document.createElement("ul")).addClass("simple-inventory-list");if(a.length){if(s=a.list.map((function(r){var s=[],u=r;t.has(r)&&(u=t.get(r).name),o.description&&t.has(r)&&t.get(r).description?s.push(function(n,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return r=r||e.strings.inspect,$(document.createElement(a?"button":"a")).addClass("inspect-link").wiki(""+r).ariaClick((function(){t.get(i).inspect()}))}(a,r,u)):s.push($(document.createElement("span")).append(t.has(r)?t.get(r).name:r).addClass("item-name")),s.push(function(t,n,i,r){var a=$(document.createElement("span")),s=t.count(n);return i=i||e.strings.stackPre,r=r||e.strings.stackPost,1==s?a.addClass("item-count single"):a.addClass("item-count multi"),a.append(""+i+(s||0)+r)}(a,r)),o.use&&t.has(r)&&t.get(r).handler?s.push(function(t,n,i){var r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return i=i||e.strings.use,$(document.createElement(r?"button":"a")).addClass("use-link").wiki(""+i).ariaClick((function(){t.use(n)}))}(a,r)):s.push(i()),(o.transfer&&e.is(o.transfer)||o.drop)&&!function(e){return t.has(e)&&t.get(e).permanent}(r)?(s.push(function(t,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3],s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return"give"===String(r).toLowerCase().trim()?r=e.strings.give:"take"===String(r).toLowerCase().trim()?r=e.strings.take:r&&"drop"!==String(r).toLowerCase().trim()||(r=e.strings.drop),$(document.createElement(a?"button":"a")).addClass("drop-link").wiki(""+r).ariaClick((function(){n((function(){s&&e.is(s)?t.transfer(s,i,1):t.drop(i,1),Dialog.close()}),(function(){Dialog.close()}))}))}(a,r,o.dropActionText,!1,o.transfer||null)),a.count(r)>1&&o.stack?s.push(function(t,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3],s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return"give"===String(r).toLowerCase().trim()?r=e.strings.give:"take"===String(r).toLowerCase().trim()?r=e.strings.take:r&&"drop"!==String(r).toLowerCase().trim()||(r=e.strings.drop),r=r+"&nbsp;"+e.strings.stack,$(document.createElement(a?"button":"a")).addClass("stack-link drop-link").wiki(""+r).ariaClick((function(){n((function(){s&&e.is(s)?t.transfer(s,i,t.count(i)):t.drop(i,t.count(i)),Dialog.close()}),(function(){Dialog.close()}))}))}(a,r,o.dropActionText,!1,o.transfer||null)):s.push(i())):s.push(i());var l=r.normalize().toLowerCase().replace(/\s+/g,"-");return $(document.createElement("li")).append(s).addClass("simple-inventory-listing").attr({"data-item-id":l,"data-keyword":u})})),o.all){var l=$(document.createElement("li")).addClass("all-listing simple-inventory-listing").append([i("&mdash;"),i(),i(),r(a,o.dropActionText,!1,o.transfer||null)]);s.push(l)}}else s=$(document.createElement("li")).addClass("simple-inventory-listing").append($(document.createElement("span")).wiki(e.emptyMessage));return u.append(s),u}e.prototype.interface=function(){var t,e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,i=this,r=$(document.createElement("div")).addClass("simple-inventory-wrapper");return e.filter&&r.append(function(){var t=$(document.createElement("div")).addClass("simple-inventory-filter"),e=$(document.createElement("input")).attr({type:"text",placeholder:"Filter..."}).on("input",(function(){var n=e.val().trim().toLowerCase(),i=t.parent().find("ul.simple-inventory-list li.simple-inventory-listing:not(.all-listing)");n?i.each((function(t,e){var i=$(e);i&&i.length&&(i.attr("data-keyword").substring(0,n.length).trim().toLowerCase()!==n?i.hide():i.show())})):i.show()}));return t.append(e),t}()),r.append(a(this,e)),$(document).on(":inventory-update.simple-inventory.gui-built-in",(function(){r.length?r.empty().append(a(i,e)):$(document).off(":inventory-update.simple-inventory.gui-built-in")})),n&&n instanceof $?t=n:n&&(t=$(n)),t&&r.appendTo(t),r}}(),function(){setup.Inventory,setup.Item;var t=".simple-inventory-userland",e=":inventory-update.simple-inventory"+t,n=":inventory-use.simple-inventory"+t;function i(t){return t&&"function"==typeof t}Object.assign(setup.Inventory,{events:{update:{on:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).on(e+n,t)},one:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).one(e+n,t)},off:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";$(document).off(e+t)}},use:{on:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).on(n+e,t)},one:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).one(n+e,t)},off:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";$(document).off(n+t)}}}})}(),function(){var t=":";function e(e){var n=function(t){return t.replace(/\r+/g,"\n").replace(/\n+/,"\n").replace(/ +/g," ").trim().split(/\n/g)}(e),i={};return n.forEach((function(e){if(e&&e.trim()&&e.includes(t)){var n=e.trim().split(t);i[n[0].trim()]=n[1].trim()}})),i}var n=function(t){try{return Story.has(t)?e(Story.get(t).text):{}}catch(t){return console.error(t.message,t),{}}}("inventory.strings");n.empty&&"string"==typeof n.empty&&n.empty.trim()&&(setup.Inventory.emptyMessage=n.empty,delete n.empty),setup.Inventory.strings=n||{}}(),function(){var t=setup.Item,e=setup.Inventory;function n(t){return t&&"string"==typeof t&&t.length>=2&&("$"===t[0]||"_"===t[0])}function i(t){if(n(t)&&(t=State.getVar(t)),e.is(t))return t}Macro.add(["item","consumable"],{tags:["description","tags","unique","permanent"],handler:function(){var e,n,i,r,a=null,s=!1,o=!1,u=!1;if(State.length>0)return this.error("items must be defined in `StoryInit` or story JavaScript!");if(!this.args[0]||"string"!=typeof this.args[0]||!this.args[0].trim())return this.error("invalid item ID");if(e=this.args[0].trim(),"consumable"===this.name&&(a=this.payload[0].contents||null,s=!0),this.args[1]&&(n=this.args[1]),this.payload.length>1){var l=this.payload.find((function(t){return"description"===t.name})),c=this.payload.find((function(t){return"tags"===t.name})),d=this.payload.find((function(t){return"unique"===t.name})),f=this.payload.find((function(t){return"permanent"===t.name}));l&&(i=l.contents.trim()),c&&(r=c.args.flat(1/0)),d&&(o=!0),f&&(u=!0)}t.add(e,{displayName:n||"",description:i||"",handler:a,consumable:s,unique:o,permanent:u},r)}}),Macro.add("newinv",{handler:function(){var t=this.args.raw.trim().split(" ").first().replace(/["']/g,"").trim();if(!n(t))return this.error("argument must be a story or temporary variable!");State.setVar(t,new e({},this.args.flat(1/0).slice(1)))}}),Macro.add(["pickup","drop"],{handler:function(){var t=i(this.args[0]);return t?this.args.length<3?this.error("no items to pick up were provided"):void t[this.name](this.args.slice(1)):this.error("first argument must be a valid inventory!")}}),Macro.add("dropall",{handler:function(){var t=i(this.args[0]);if(!t)return this.error("first argument must be a valid inventory!");t.empty()}}),Macro.add(["transfer","merge","unmerge"],{handler:function(){var t=i(this.args[0]);if(!t)return this.error("first argument must be a valid inventory!");var e=i(this.args[1]);if(!e)return this.error("second argument must be a valid inventory!");if("transfer"===this.name){if(this.args.length<4)return this.error("no items to transfer were provided");t.transfer(e,this.args.slice(2))}else t[this.name](e)}}),Macro.add(["inv","take","give"],{handler:function(){var t=null,n=i(this.args[0]);if(!n)return this.error("first argument must be a valid inventory!");this.args[1]&&i(this.args[1])&&(t=i(this.args[1]));var r={description:this.args.includesAny("inspect","description"),use:this.args.includes("use"),transfer:t,drop:this.args.includes("drop"),all:this.args.includes("all"),stack:this.args.includes("stack"),filter:this.args.includes("filter"),dropActionText:"inv"===this.name?"Drop":e.strings[this.name.trim().toLowerCase()],classes:"macro-".concat(this.name)};n.interface(r,$(this.output))}})}(),function(){var t=setup.Item,e=setup.Inventory;function n(t,e,n){if("object"!==_typeof(e))throw new TypeError("the extension should be a plain generic object holding the properties and methods you want to add");Object.keys(e).forEach((function(i){if(t[i]&&!n)throw new Error('Cannot override existing property "'+i+'"!');t[i]=e[i]}))}Object.assign(e,{extend:function(t){n(e,t,arguments.length>1&&void 0!==arguments[1]&&arguments[1])},extendPrototype:function(t){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];n(e.prototype,t,i)}}),Object.assign(t,{extend:function(e){n(t,e,arguments.length>1&&void 0!==arguments[1]&&arguments[1])},extendPrototype:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];n(t.prototype,e,i)}})}();
 // End Simple Inventory
-/* twine-user-script #11: "weightedRandom.js" */
+/* twine-user-script #12: "tankwalk.js" */
+// Tank animation for Fluffy creatures
+(function() {
+  // Create CSS for animation classes if it doesn't exist
+  if (!document.getElementById('fluffyTankAnimationCSS')) {
+    const css = document.createElement('style');
+    css.id = 'fluffyTankAnimationCSS';
+    css.textContent = `
+      /* Animation for moving fluffy across tank */
+      .moving-tank .fluffy {
+        animation: moveTankFluffy 20s infinite;
+      }
+      
+      @keyframes moveTankFluffy {
+        /* Start with a pause at left side */
+        0%, 10% { transform: translateX(-25%) scaleX(-1); }
+        
+        /* Walk right */
+        15% { transform: translateX(-15%) scaleX(-1); }
+        20% { transform: translateX(-5%) scaleX(-1); }
+        25% { transform: translateX(5%) scaleX(-1); }
+        30% { transform: translateX(15%) scaleX(-1); }
+        35% { transform: translateX(25%) scaleX(-1); }
+        
+        /* Pause at right side */
+        40%, 50% { transform: translateX(25%) scaleX(-1); }
+        
+        /* Turn around */
+        55% { transform: translateX(25%) scaleX(1); }
+        
+        /* Walk left */
+        60% { transform: translateX(15%) scaleX(1); }
+        65% { transform: translateX(5%) scaleX(1); }
+        70% { transform: translateX(-5%) scaleX(1); }
+        75% { transform: translateX(-15%) scaleX(1); }
+        80% { transform: translateX(-25%) scaleX(1); }
+        
+        /* Pause at left side again */
+        85%, 95% { transform: translateX(-25%) scaleX(1); }
+        
+        /* Turn to face right for next cycle */
+        100% { transform: translateX(-25%) scaleX(-1); }
+      }
+      
+      /* Simple, subtle leg swinging animation */
+      .moving-tank .fluffy #SVGleg1-group, 
+      .moving-tank .fluffy #SVGleg4-group {
+        animation: subtleLegSwing 20s infinite;
+        transform-origin: top center;
+      }
+      
+      .moving-tank .fluffy #SVGleg2-group, 
+      .moving-tank .fluffy #SVGleg3-group {
+        animation: subtleLegSwingAlt 20s infinite;
+        transform-origin: top center;
+      }
+      
+      /* Subtle leg swing animation */
+      @keyframes subtleLegSwing {
+        /* No swing during pauses */
+        0%, 10%, 40%, 50%, 55%, 85%, 95%, 100% { transform: rotate(0deg); }
+        
+        /* Very subtle swing while moving right */
+        15%, 25%, 35% { transform: rotate(2deg); }
+        20%, 30% { transform: rotate(-2deg); }
+        
+        /* Very subtle swing while moving left */
+        60%, 70%, 80% { transform: rotate(2deg); }
+        65%, 75% { transform: rotate(-2deg); }
+      }
+      
+      /* Alternate leg swing (opposite timing) */
+      @keyframes subtleLegSwingAlt {
+        /* No swing during pauses */
+        0%, 10%, 40%, 50%, 55%, 85%, 95%, 100% { transform: rotate(0deg); }
+        
+        /* Very subtle swing (opposite phase) while moving right */
+        15%, 25%, 35% { transform: rotate(-2deg); }
+        20%, 30% { transform: rotate(2deg); }
+        
+        /* Very subtle swing (opposite phase) while moving left */
+        60%, 70%, 80% { transform: rotate(-2deg); }
+        65%, 75% { transform: rotate(2deg); }
+      }
+    `;
+    document.head.appendChild(css);
+  }
+  
+  // Function to make tank Fluffies move
+  window.makeTankFluffyMove = function() {
+    // Find all tank containers with moving-tank class
+    const movingTanks = document.querySelectorAll('.moving-tank');
+    
+    movingTanks.forEach(tank => {
+      // Make sure the animation is applied
+      const fluffy = tank.querySelector('.fluffy');
+      if (fluffy) {
+        fluffy.style.animationPlayState = 'running';
+      }
+    });
+  };
+  
+  // Function to stop movement with more thorough cleanup
+  window.stopTankFluffyMove = function() {
+    const tankFluffies = document.querySelectorAll('.tank .fluffy');
+    
+    tankFluffies.forEach(fluffy => {
+      // Clear all inline styles completely to prevent style stacking
+      fluffy.removeAttribute('style');
+      
+      // Reset leg animations by removing inline styles
+      const legGroups = fluffy.querySelectorAll('#SVGleg1-group, #SVGleg2-group, #SVGleg3-group, #SVGleg4-group');
+      legGroups.forEach(legGroup => {
+        legGroup.removeAttribute('style');
+      });
+      
+      // Force reflow to ensure changes take effect
+      void fluffy.offsetWidth;
+    });
+  };
+  
+  // Setup event listeners for both initial display and widget redos
+  $(document).on(':passagedisplay :redodisplay', function(ev) {
+    // First stop all animations to prevent position issues on redraw
+    window.stopTankFluffyMove();
+    
+    // Short delay to allow DOM to update
+    setTimeout(function() {
+      // Start movement for tank fluffies with moving-tank class
+      window.makeTankFluffyMove();
+      
+      // Add click handlers to toggle movement
+      document.querySelectorAll('.move-toggle').forEach(el => {
+        el.addEventListener('click', function() {
+          const targetSelector = this.getAttribute('data-target');
+          const target = document.querySelector(targetSelector);
+          if (target) {
+            target.classList.toggle('moving-tank');
+            if (target.classList.contains('moving-tank')) {
+              window.makeTankFluffyMove();
+            } else {
+              window.stopTankFluffyMove();
+            }
+          }
+        });
+      });
+    }, 100);
+  });
+})();
+/* twine-user-script #13: "weightedRandom.js" */
 function weightedRandom(items) {
     const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
     const randomNum = Math.random() * totalWeight;
@@ -2631,10 +2958,11 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 &lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3&gt;&gt;
 
 !!! Tank CSS Fluffy
-
+&lt;div class =&quot;tank-container&quot;&gt;
+&lt;div class=&quot;blink moving-tank&quot;&gt;&lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace _tankFertility&gt;&gt;
+&lt;/div&gt;&lt;/div&gt;
 
-&lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
     &lt;th&gt;Stat&lt;/th&gt;
@@ -3579,21 +3907,30 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
-    &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(175, -2) rotate(60)&quot; /&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
+
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
+      &lt;g id=&quot;SVGleg3-group&quot;&gt;
         &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
         &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg1-group&quot;&gt;
         &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
         &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
       &lt;/g&gt;
       &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
+      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
+      &lt;g id=&quot;SVGleg2-group&quot;&gt;
         &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
         &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg4-group&quot;&gt;
         &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
         &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+      &lt;/g&gt;
       &lt;/g&gt;
     &lt;/g&gt;
     &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
@@ -3629,21 +3966,30 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
-    &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(175, -2) rotate(60)&quot; /&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
+          &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
+      &lt;g id=&quot;SVGleg3-group&quot;&gt;
         &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
         &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg1-group&quot;&gt;
         &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
         &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
       &lt;/g&gt;
       &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
+      &lt;g id=&quot;SVGleg2-group&quot;&gt;
         &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
         &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg4-group&quot;&gt;
         &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
         &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+      &lt;/g&gt;
       &lt;/g&gt;
     &lt;/g&gt;
     &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
@@ -3682,29 +4028,39 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
-    &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(175, -2) rotate(60)&quot; /&gt;
+    
+  
+    &lt;!-- Body container with leg groups --&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
+      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
-        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
-        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;g id=&quot;SVGleg3-group&quot;&gt;
+          &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg1-group&quot;&gt;
+          &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
       &lt;/g&gt;
+      
+      &lt;!-- Body and belly --&gt;
       &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
+      
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
-        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
-        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;g id=&quot;SVGleg2-group&quot;&gt;
+          &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg4-group&quot;&gt;
+          &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
       &lt;/g&gt;
     &lt;/g&gt;
-    &lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGfluffySkin + `&quot;&gt;
-      &lt;path id=&quot;SVGwings-border&quot; d=&quot;M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0&quot; filter=&quot;url(#SVGf2)&quot; /&gt;
-      &lt;line id=&quot;SVGwing-line-1&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;53.5&quot; y1=&quot;10&quot; x2=&quot;38&quot; y2=&quot;12&quot; /&gt;
-      &lt;line id=&quot;SVGwing-line-2&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;55&quot; y1=&quot;13&quot; x2=&quot;36&quot; y2=&quot;15&quot; /&gt;
-      &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
-    &lt;/g&gt;
+    
+    &lt;!-- Head container --&gt;
     &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
       &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
       &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
@@ -3720,13 +4076,19 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
       &lt;/g&gt;
       &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGfluffyMane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
-
         &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
         &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
         &lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
       &lt;/g&gt;
     &lt;/g&gt;
   &lt;/g&gt;
+      &lt;!-- Wings container - positioned here for proper z-index --&gt;
+    &lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGfluffySkin + `&quot;&gt;
+      &lt;path id=&quot;SVGwings-border&quot; d=&quot;M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0&quot; filter=&quot;url(#SVGf2)&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-1&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;53.5&quot; y1=&quot;10&quot; x2=&quot;38&quot; y2=&quot;12&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-2&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;55&quot; y1=&quot;13&quot; x2=&quot;36&quot; y2=&quot;15&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
+    &lt;/g&gt;
 &lt;/svg&gt;`&gt;&gt;
 &lt;&lt;set _alicornSVG to `
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
@@ -3738,21 +4100,29 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
-    &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(175, -2) rotate(60)&quot; /&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
+        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
+      &lt;g id=&quot;SVGleg3-group&quot;&gt;
         &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
         &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg1-group&quot;&gt;
         &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
         &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
       &lt;/g&gt;
       &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
+      &lt;g id=&quot;SVGleg2-group&quot;&gt;
         &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
         &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg4-group&quot;&gt;
         &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
         &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+      &lt;/g&gt;
       &lt;/g&gt;
     &lt;/g&gt;
     &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
@@ -3811,7 +4181,12 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   setTimeout(window.makeFluffyBlink, 100);
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Fluffy in Tank" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
+  &lt;&lt;set _fluffySkin to _args[0]&gt;&gt;
+  &lt;&lt;set _fluffyMane to _args[1]&gt;&gt;
+  &lt;&lt;set _fluffyName to _args[2]&gt;&gt;
   &lt;&lt;set _fluffyRace to _args[3]&gt;&gt;
+  &lt;&lt;set _fluffyFert to _args[4]&gt;&gt;
+  &lt;&lt;set _fluffyScale to _args[5]&gt;&gt;
   &lt;div class=&quot;tank-wrapper&quot;&gt;
     &lt;div class=&quot;tank&quot;&gt;
         &lt;div class=&quot;tank-outline&quot;&gt;
@@ -3832,57 +4207,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
               &lt;/svg&gt;
             &lt;/div&gt;
         &lt;div class=&quot;fluffy&quot;&gt;
-                &lt;&lt;if _fluffyRace is &quot;Unicorn&quot;&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
-                &lt;&lt;elseif _fluffyRace is &quot;Alicorn&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;&lt;&lt;unset _hornhide&gt;&gt;
-                &lt;&lt;elseif _fluffyRace is &quot;Pegasus&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;unset _wingshide&gt;&gt;
-                &lt;&lt;else&gt;&gt;&lt;&lt;set _wingshide to &quot;display:none;&quot;&gt;&gt;&lt;&lt;set _hornhide to &quot;display:none;&quot;&gt;&gt;
-                &lt;&lt;/if&gt;&gt;
-                &lt;!-- Horn --&gt;
-                &lt;div class=&quot;horn-container&quot; @style=&#39;_hornhide&#39;&gt;
-                &lt;div class=&quot;horn&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;horn-shadow&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;!-- Wings --&gt;
-                &lt;div class=&quot;wings-container&quot; @style=&#39;_wingshide&#39;&gt;
-                &lt;div class=&quot;line line-1&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;line line-2&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;line line-3&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;wings-border&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;wings&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;!-- Head --&gt;
-                &lt;div class=&quot;head-container&quot;&gt;
-                &lt;div class=&quot;mane1&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;mane2&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;head&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;
-                &lt;div class=&quot;eye1&quot;&gt;
-                &lt;div class=&quot;pupil&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;eye2&quot;&gt;
-                &lt;div class=&quot;pupil&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;snout-container&quot;&gt;
-                &lt;div class=&quot;snout&quot;&gt;
-                &lt;div class=&quot;smile&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;!-- Body --&gt;
-                &lt;div class=&quot;body-container&quot;&gt;
-                &lt;div class=&quot;fluffbody&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;
-                &lt;div class=&quot;leg leg1&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;foot foot1&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;leg leg2&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;foot foot2&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;leg leg3&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;foot foot3&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;leg leg4&quot; @style=&quot;&#39;background-color: &#39; + _args[0] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;foot foot4&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;div class=&quot;belly&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
-                &lt;/div&gt;
+                &lt;&lt;FluffySVG _args[0] _args[1] _args[2] _args[3] _args[5]&gt;&gt;
                 &lt;/div&gt;
           &lt;&lt;clouds&gt;&gt;
             &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;
@@ -3897,7 +4222,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;div class=&quot;nametag&quot;&gt;
               &lt;div class=&quot;nameinfo&quot;&gt;
                 &lt;ul&gt;
-                  &lt;li&gt;$args[2] ($args[3]) - $args[4]&lt;/li&gt;
+                  &lt;li&gt;$args[2] ($args[3]) - _fluffyFert&lt;/li&gt;
                 &lt;/ul&gt;
               &lt;/div&gt;
             &lt;/div&gt;

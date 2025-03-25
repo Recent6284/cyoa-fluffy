@@ -1,0 +1,84 @@
+:: Female Alicorn [nobr]
+
+<svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
+  <defs>
+    <filter id="SVGf1"><feDropShadow dx="1" dy="1" stdDeviation="0.2" flood-opacity="0.1" /></filter>
+    <filter id="SVGf2"><feDropShadow dx="2" dy="2" stdDeviation="1" flood-opacity="0.6" /></filter>
+    <filter id="SVGf3"><feDropShadow dx="1" dy="1" stdDeviation="0.1" flood-opacity="1" /></filter>
+    <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
+    <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
+  </defs>
+  <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(168, -5) rotate(60)" />
+	<g id="SVGfluffy" transform="translate(-5,0)">
+		<g id="SVGbody-container" transform="translate(30, 20)">
+			<g id="SVGlegs-background">
+				<g id="SVGleg3-group">
+					<rect id="SVGleg3" x="69" y="45" width="20" height="25" rx="5" fill="` + _SVGskin + `" />
+					<rect id="SVGfoot3" x="69" y="65" width="20" height="7" fill="` + _SVGmane + `" />
+				</g>
+				<g id="SVGleg1-group">
+					<rect id="SVGleg1" x="5" y="45" width="20" height="25" rx="5" fill="` + _SVGskin + `" />
+					<rect id="SVGfoot1" x="5" y="65" width="20" height="7" fill="` + _SVGmane + `" />
+				</g>
+			</g>
+			<rect id="SVGfluffbody" x="0" y="0" width="110" height="55" rx="15" fill="` + _SVGskin + `" />
+			<rect id="SVGbelly" clip-path="polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)" x="15" y="44" width="90" height="11" rx="7" ry="6" fill="peru" />
+			<g id="SVGlegs-foreground">
+				<g id="SVGleg2-group">
+					<rect id="SVGleg2" x="27" y="45" width="20" height="25" rx="5" fill="` + _SVGskin + `" filter="url(#SVGf5)" />
+					<rect id="SVGfoot2" x="27" y="65" width="20" height="7" fill="` + _SVGmane + `" />
+				</g>
+				<g id="SVGleg4-group">
+					<rect id="SVGleg4" x="90" y="45" width="20" height="25" rx="5" fill="` + _SVGskin + `" filter="url(#SVGf5)" />
+					<rect id="SVGfoot4" x="90" y="65" width="20" height="7" fill="` + _SVGmane + `" />
+				</g>
+			</g>
+		</g>
+		<g id="SVGhead-container" transform="translate(10, 17)">
+		  <rect id="SVGhead" x="0" y="0" width="50" height="50" rx="5" fill="` + _SVGskin + `" filter="url(#SVGf1)"></rect>
+		  <g id="SVGeye1" transform="translate(3, 5)">
+			<rect id="lash1" x="-0.5" y="-2.5" width="1px" height="3px" fill="black"  transform="rotate(-45)" opacity="0.5"/>
+			<rect id="lash2" x="1" y="-3" width="1px" height="3px" fill="black" opacity="0.5"/>
+			<rect id="lash3" x="3" y="-3" width="1px" height="3px" fill="black" opacity="0.5"/>
+			<rect id="lash4" x="5" y="-3" width="1px" height="3px" fill="black" opacity="0.5"/>
+			<rect id="lash5" x="5" y="-7.6" width="1px" height="3px" fill="black" transform="rotate(45)" opacity="0.5"/>
+			<rect x="0" y="0" width="8" height="12" fill="white" />
+			<rect id="SVGpupil1" x="2" y="4" width="3" height="5" fill="#1b1b1b" filter="url(#SVGf1)" stroke-width="1" />
+		  </g>
+		  
+		  <g id="SVGeye2" transform="translate(15, 5)">
+			<rect id="lash1" x="-0.5" y="-2.5" width="1px" height="3px" fill="black"  transform="rotate(-45)" opacity="0.5"/>
+			<rect id="lash2" x="1" y="-3" width="1px" height="3px" fill="black" opacity="0.5"/>
+			<rect id="lash2" x="3" y="-3" width="1px" height="3px" fill="black" opacity="0.5"/>
+			<rect id="lash4" x="5" y="-3" width="1px" height="3px" fill="black" opacity="0.5"/>
+			<rect id="lash5" x="5" y="-7.6" width="1px" height="3px" fill="black" transform="rotate(45)" opacity="0.5"/>
+			<rect x="0" y="0" width="8" height="12" fill="white"/>
+			<rect id="SVGpupil2" x="2" y="4" width="3" height="5" fill="#1b1b1b" filter="url(#SVGf1)" stroke-width="1" />
+		  </g>
+		  <g id="SVGsnout-container" transform="translate(-5, 20)">
+			<rect id="SVGsnout" x="0" y="0" width="20" height="30" rx="5" fill="peru" filter="url(#SVGf4)" />
+			<path id="SVGsmile" d="M3 1 A2.5 4 0 0 0 8 1" fill="none" stroke="rgba(0,0,0,0.5)" transform="translate(4, 18) rotate(0)" />
+		  </g>
+		  <g id="SVGmane" fill="` + _SVGmane + `" filter="url(#SVGf2)">
+			<path id="SVGmane1" d="M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0" />
+			<path id="SVGmane2" d="M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0" />
+			<path id="SVGmane3" d="M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1" />
+		  </g>
+		</g>
+		<g id="SVGwings-container" transform="translate(65,20)" fill="` + _SVGskin + `">
+		  <path id="SVGwings-border" d="M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0" filter="url(#SVGf2)" />
+		  <line id="SVGwing-line-1" stroke="black" opacity="0.5" stroke-width="0.5" x1="53.5" y1="10" x2="38" y2="12" />
+		  <line id="SVGwing-line-2" stroke="black" opacity="0.5" stroke-width="0.5" x1="55" y1="13" x2="36" y2="15" />
+		  <line id="SVGwing-line-3" stroke="black" opacity="0.5" stroke-width="0.5" x1="52.5" y1="17" x2="38" y2="18" />
+		</g>
+		<g id="SVGhorn-container" transform="translate(8, 17)">
+			<path id="SVGhorn" d="M6.5 0 L3.5 14 L9.5 14 Z" transform="rotate(-52)" fill="white" stroke="black" stroke-opacity="0.4" stroke-width="0.6" />
+		</g>
+		<g id="SVGwings-container" transform="translate(65,20)" fill="` + _SVGskin + `">
+		  <path id="SVGwings-border" d="M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0" filter="url(#SVGf2)" />
+		  <line id="SVGwing-line-1" stroke="black" opacity="0.5" stroke-width="0.5" x1="53.5" y1="10" x2="38" y2="12" />
+		  <line id="SVGwing-line-2" stroke="black" opacity="0.5" stroke-width="0.5" x1="55" y1="13" x2="36" y2="15" />
+		  <line id="SVGwing-line-3" stroke="black" opacity="0.5" stroke-width="0.5" x1="52.5" y1="17" x2="38" y2="18" />
+		</g>
+	</g>
+</svg>

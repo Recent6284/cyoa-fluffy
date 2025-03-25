@@ -197,12 +197,7 @@
     </g>
   </g>
       <!-- Wings container - positioned here for proper z-index -->
-    <g id="SVGwings-container" transform="translate(65,20)" fill="` + _SVGskin + `">
-      <path id="SVGwings-border" d="M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0" filter="url(#SVGf2)" />
-      <line id="SVGwing-line-1" stroke="black" opacity="0.5" stroke-width="0.5" x1="53.5" y1="10" x2="38" y2="12" />
-      <line id="SVGwing-line-2" stroke="black" opacity="0.5" stroke-width="0.5" x1="55" y1="13" x2="36" y2="15" />
-      <line id="SVGwing-line-3" stroke="black" opacity="0.5" stroke-width="0.5" x1="52.5" y1="17" x2="38" y2="18" />
-    </g>
+    
 </svg>`>>
 <<set _alicornMSVG to `
 <svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
@@ -548,23 +543,23 @@
   <div id="fluffy" @style="'width: ' + _scaledWidth + 'px; height: ' + _scaledHeight + 'px; overflow: visible;'">
   <div class="fluffy-svg" @style="'transform: scale(' + _scale + '); transform-origin: top left;'">
     <<if (_SVGrace is "Earthie" and _SVGfluffyGender is "Male")>>
-      <<print _earthieMSVG>>
+      <<include "Earthie Male">>
     <<elseif (_SVGrace is "Unicorn" and _SVGgender is "Male")>>
-      <<print _unicornMSVG>>
+      <<include _unicornMSVG>>
     <<elseif (_SVGrace is "Pegasus" and _SVGgender is "Male")>>
-      <<print _pegasusMSVG>>
+      <<include _pegasusMSVG>>
     <<elseif (_SVGrace is "Alicorn" and _SVGgender is "Male")>>
-      <<print _alicornMSVG>>
+      <<include _alicornMSVG>>
     <<elseif (_SVGrace is "Earthie" and _SVGgender is "Female")>>
-      <<print _earthieFSVG>>
+      <<include "Earthie Female">>
     <<elseif (_SVGrace is "Unicorn" and _SVGgender is "Female")>>
-      <<print _unicornFSVG>>
+      <<include _unicornFSVG>>
     <<elseif (_SVGrace is "Pegasus" and _SVGgender is "Female")>>
-      <<print _pegasusFSVG>>
+      <<include _pegasusFSVG>>
     <<elseif (_SVGrace is "Alicorn" and _SVGgender is "Female")>>
-      <<print _alicornFSVG>>
+      <<include _alicornFSVG>>
     <<else>>
-      <<print _earthieMSVG>>
+      <<include _earthieMSVG>>
     <</if>>
   </div></div><</nobr>>
 <<script>>

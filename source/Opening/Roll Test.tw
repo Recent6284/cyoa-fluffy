@@ -15,12 +15,12 @@
 
 !!! SVG Fluffy
 
-<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3>>
+<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender>>
 
 !!! Tank CSS Fluffy
 <div class ="tank-container">
 <div class="blink moving-tank"><<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
-<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility>>
+<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility 1 $fluffyGender>>
 </div></div>
 <table class="shop"><thead>
   <tr>

@@ -3023,12 +3023,12 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 
 !!! SVG Fluffy
 
-&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3&gt;&gt;
+&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender&gt;&gt;
 
 !!! Tank CSS Fluffy
 &lt;div class =&quot;tank-container&quot;&gt;
 &lt;div class=&quot;blink moving-tank&quot;&gt;&lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility&gt;&gt;
+&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility 1 $fluffyGender&gt;&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
@@ -3364,7 +3364,7 @@ Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender 
 
 &lt;&lt;include &quot;Fluffy Quality Descriptions&quot;&gt;&gt;
 
-&lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;
 
 &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; lowered &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; mane down to the water and began to sip thoughtfully; &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; didn&#39;t seem to be aware of your presence, but you wouldn&#39;t hold that against &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;them&quot;&gt;&gt;. When they were hungry, thirsty or horny, Fluffies probably didn&#39;t care about much besides sating their needs.
 
@@ -3405,7 +3405,7 @@ As the &lt;&lt;dynamicFluffyProperty $currentFluffyIndex-1 &quot;race&quot;&gt;&
 
 Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender is &quot;female&quot;&gt;&gt;@@color:pink;&lt;&lt;print _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;else&gt;&gt;@@color:blue;&lt;&lt;print _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;/if&gt;&gt;. &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot; &quot;upper&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffyMane.colorname&quot;&gt;&lt;&lt;print _fluffyMane.name.toLowerCase()&gt;&gt;&lt;/span&gt; mane accented &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffySkin.colorname&quot;&gt;&lt;&lt;print _fluffySkin.name.toLowerCase()&gt;&gt;&lt;/span&gt; skin. &lt;&lt;include &quot;Fluffy Quality Descriptions&quot;&gt;&gt;
 
-&lt;span class=&quot;blink&quot;&gt;&lt;&lt;FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;blink&quot;&gt;&lt;&lt;FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;
 
 Like the fluffy before, &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; approached the water, but this time, &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; seemed a bit more observant. &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; surveyed the scene in front of them, trying to see if something didn&#39;t feel quite right. After a small pause, it was almost like the caution left their head entirely: like the &lt;&lt;dynamicFluffyProperty $currentFluffyIndex-1 &quot;race&quot;&gt;&gt; before, they went down to drink. 
 
@@ -3419,7 +3419,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 The &lt;&lt;=$fluffyRace.toLowerCase()&gt;&gt; was a bit surprised, and a bit defensive. They weren&#39;t posturing aggressively.
 
-&lt;span class=&quot;blink&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;blink&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;
 
 &lt;&lt;linkreplace &quot;Introduce yourself&quot; t8n&gt;&gt;&lt;&lt;include &quot;Intro Conversation&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Intro Conversation" tags="" position="100,600" size="100,100">You decided to introduce yourself. &quot;Hey there, buddy,&quot; you said, taking a small pause. &quot;My name is $playerName, and I&#39;m looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?&quot;
 
@@ -3442,7 +3442,7 @@ You thought to yourself, and wondered: was &#39;&#39;$fluffyName.human&#39;&#39;
 &lt;&lt;set _colorSpan to &quot;&lt;span style=&#39;color:&quot; + $fluffySkin.colorname + &quot;&#39;&gt;&quot; + $fluffySkin.name.toLowerCase() + &quot;&lt;/span&gt;&quot;&gt;&gt;
 Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName.human, _article &lt;&lt;colorname $fluffySkin&gt;&gt; $fluffyRace with a &lt;&lt;colorname $fluffyMane&gt;&gt; mane.
 
-&lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;
 
 If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="43" name="Human Home (First Visit)" tags="" position="350,600" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 ! Welcome Home
@@ -3593,7 +3593,7 @@ $(document).on(&quot;:passageend&quot;, function() {
     { human: &quot;Nickel&quot;, fluffy: &quot;Nickew&quot; },
     { human: &quot;Zinc&quot;, fluffy: &quot;Zinc&quot; },
     { human: &quot;Quartz&quot;, fluffy: &quot;Quawtz&quot; },
-    { human: &quot;Obsidian&quot;, fluffy: &quot;Obsidian&quot; },
+    { human: &quot;Obsidian&quot;, fluffy: &quot;Obseediahn&quot; },
     { human: &quot;Topaz&quot;, fluffy: &quot;Topaz&quot; },
     { human: &quot;Garnet&quot;, fluffy: &quot;Gawneht&quot; },
     { human: &quot;Shale&quot;, fluffy: &quot;Shale&quot; },
@@ -3625,24 +3625,24 @@ $(document).on(&quot;:passageend&quot;, function() {
     { human: &quot;Lilypad&quot;, fluffy: &quot;Wiwypad&quot; },
     { human: &quot;Buttercup&quot;, fluffy: &quot;Buttehcup&quot; },
     { human: &quot;Marigold&quot;, fluffy: &quot;Mawigowd&quot; },
-    { human: &quot;Petal&quot;, fluffy: &quot;Peta&quot; },
+    { human: &quot;Petal&quot;, fluffy: &quot;Petaw&quot; },
     { human: &quot;Blossom&quot;, fluffy: &quot;Bwossom&quot; },
     { human: &quot;Cherry&quot;, fluffy: &quot;Chewwy&quot; },
     { human: &quot;Peach&quot;, fluffy: &quot;Peach&quot; },
-    { human: &quot;Berry&quot;, fluffy: &quot;Behwy&quot; },
+    { human: &quot;Berry&quot;, fluffy: &quot;Bewwy&quot; },
     { human: &quot;Honey&quot;, fluffy: &quot;Honey&quot; },
     { human: &quot;Sugar&quot;, fluffy: &quot;Sugaw&quot; },
-    { human: &quot;Sparkle&quot;, fluffy: &quot;Spawkle&quot; },
+    { human: &quot;Sparkle&quot;, fluffy: &quot;Spawkuw&quot; },
     { human: &quot;Glimmer&quot;, fluffy: &quot;Gwimmew&quot; },
-    { human: &quot;Starflower&quot;, fluffy: &quot;Stawfloweh&quot; },
+    { human: &quot;Starflower&quot;, fluffy: &quot;Stawfwoweh&quot; },
     { human: &quot;Moonbeam&quot;, fluffy: &quot;Moonbeam&quot; },
     { human: &quot;Sunny&quot;, fluffy: &quot;Sunny&quot; },
     { human: &quot;Skye&quot;, fluffy: &quot;Skye&quot; },
     { human: &quot;Raindrop&quot;, fluffy: &quot;Waindwop&quot; },
     { human: &quot;Dewdrop&quot;, fluffy: &quot;Dewdwop&quot; },
-    { human: &quot;Pearl&quot;, fluffy: &quot;Peaww&quot; },
-    { human: &quot;Coral&quot;, fluffy: &quot;Cowaw&quot; },
-    { human: &quot;Sapphire&quot;, fluffy: &quot;Sappiweh&quot; },
+    { human: &quot;Pearl&quot;, fluffy: &quot;Peaw&quot; },
+    { human: &quot;Coral&quot;, fluffy: &quot;Cowuw&quot; },
+    { human: &quot;Sapphire&quot;, fluffy: &quot;Saffiwe&quot; },
     { human: &quot;Ruby&quot;, fluffy: &quot;Wuby&quot; },
     { human: &quot;Amber&quot;, fluffy: &quot;Ambeh&quot; },
     { human: &quot;Jade&quot;, fluffy: &quot;Jade&quot; },
@@ -3664,7 +3664,7 @@ $(document).on(&quot;:passageend&quot;, function() {
     { human: &quot;Iris&quot;, fluffy: &quot;Iwis&quot; },
     { human: &quot;Hazel&quot;, fluffy: &quot;Hazew&quot; },
     { human: &quot;Maple&quot;, fluffy: &quot;Mapwe&quot; },
-    { human: &quot;Autumn&quot;, fluffy: &quot;Autumn&quot; },
+    { human: &quot;Autumn&quot;, fluffy: &quot;Autumm&quot; },
     { human: &quot;Summer&quot;, fluffy: &quot;Summeh&quot; },
     { human: &quot;Dawn&quot;, fluffy: &quot;Dawn&quot; },
     { human: &quot;Twilight&quot;, fluffy: &quot;Twiwight&quot; },
@@ -3698,7 +3698,7 @@ $(document).on(&quot;:passageend&quot;, function() {
     { human: &quot;Sparrow&quot;, fluffy: &quot;Spawwow&quot; },
     { human: &quot;Lark&quot;, fluffy: &quot;Wawk&quot; },
     { human: &quot;Finch&quot;, fluffy: &quot;Finch&quot; },
-    { human: &quot;Nightingale&quot;, fluffy: &quot;Nytingawe&quot; },
+    { human: &quot;Dusk&quot;, fluffy: &quot;Dusky&quot; },
     { human: &quot;Canary&quot;, fluffy: &quot;Canawy&quot; },
     { human: &quot;Marina&quot;, fluffy: &quot;Mawina&quot; },
     { human: &quot;Seashell&quot;, fluffy: &quot;Seashew&quot; },
@@ -4168,13 +4168,14 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Fluffy SVG" tags="widget nobr" position="100,725" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
-  &lt;&lt;set _SVGfluffySkin to _args[0] || &quot;red&quot;&gt;&gt;
-  &lt;&lt;set _SVGfluffyMane to _args[1] || &quot;blue&quot;&gt;&gt;
-  &lt;&lt;set _SVGfluffyName to _args[2] || &quot;Unnamed&quot;&gt;&gt;
-  &lt;&lt;set _SVGfluffyRace to _args[3] || &quot;Earthie&quot;&gt;&gt;
+  &lt;&lt;set _SVGskin to _args[0] || &quot;red&quot;&gt;&gt;
+  &lt;&lt;set _SVGmane to _args[1] || &quot;blue&quot;&gt;&gt;
+  &lt;&lt;set _SVGname to _args[2] || &quot;Unnamed&quot;&gt;&gt;
+  &lt;&lt;set _SVGrace to _args[3] || &quot;Earthie&quot;&gt;&gt;
   &lt;&lt;set _scale to _args[4] || 1&gt;&gt;
-  &lt;&lt;set _shouldBlink to _args[5] === false ? false : true&gt;&gt;
-&lt;&lt;set _earthieSVG to `
+  &lt;&lt;set _SVGgender to _args[5]&gt;&gt;
+
+&lt;&lt;set _earthieMSVG to `
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
@@ -4188,30 +4189,30 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
       &lt;g id=&quot;SVGleg3-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
         &lt;g id=&quot;SVGleg1-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
       &lt;/g&gt;
-      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
       &lt;g id=&quot;SVGleg2-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
         &lt;g id=&quot;SVGleg4-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
       &lt;/g&gt;
       &lt;/g&gt;
     &lt;/g&gt;
     &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
-      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
+      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
       &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
         &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
         &lt;rect id=&quot;SVGpupil1&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
@@ -4224,7 +4225,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;rect id=&quot;SVGsnout&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;30&quot; rx=&quot;5&quot; fill=&quot;peru&quot; filter=&quot;url(#SVGf4)&quot; /&gt;
         &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
       &lt;/g&gt;
-      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGfluffyMane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
+      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGmane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
 
         &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
         &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
@@ -4233,7 +4234,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;/g&gt;
   &lt;/g&gt;
 &lt;/svg&gt;`&gt;&gt;
-&lt;&lt;set _unicornSVG to `
+&lt;&lt;set _unicornMSVG to `
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
@@ -4244,33 +4245,33 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;/defs&gt;
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
-          &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+          &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
 
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
       &lt;g id=&quot;SVGleg3-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
         &lt;g id=&quot;SVGleg1-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
       &lt;/g&gt;
-      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
+      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
       &lt;g id=&quot;SVGleg2-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
         &lt;g id=&quot;SVGleg4-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
       &lt;/g&gt;
       &lt;/g&gt;
     &lt;/g&gt;
     &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
-      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
+      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
       &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
         &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
         &lt;rect id=&quot;SVGpupil1&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
@@ -4283,7 +4284,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;rect id=&quot;SVGsnout&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;30&quot; rx=&quot;5&quot; fill=&quot;peru&quot; filter=&quot;url(#SVGf4)&quot; /&gt;
         &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
       &lt;/g&gt;
-      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGfluffyMane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
+      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGmane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
 
         &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
         &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
@@ -4295,7 +4296,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;/g&gt;
   &lt;/g&gt;
 &lt;/svg&gt;`&gt;&gt;
-&lt;&lt;set _pegasusSVG to `
+&lt;&lt;set _pegasusMSVG to `
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
@@ -4309,37 +4310,37 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   
     &lt;!-- Body container with leg groups --&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
-      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
         &lt;g id=&quot;SVGleg3-group&quot;&gt;
-          &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-          &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+          &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
         &lt;g id=&quot;SVGleg1-group&quot;&gt;
-          &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-          &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+          &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
       &lt;/g&gt;
       
       &lt;!-- Body and belly --&gt;
-      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
+      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
         &lt;g id=&quot;SVGleg2-group&quot;&gt;
-          &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-          &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+          &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
         &lt;g id=&quot;SVGleg4-group&quot;&gt;
-          &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-          &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+          &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
       &lt;/g&gt;
     &lt;/g&gt;
     
     &lt;!-- Head container --&gt;
     &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
-      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
+      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
       &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
         &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
         &lt;rect id=&quot;SVGpupil1&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
@@ -4352,7 +4353,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;rect id=&quot;SVGsnout&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;30&quot; rx=&quot;5&quot; fill=&quot;peru&quot; filter=&quot;url(#SVGf4)&quot; /&gt;
         &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
       &lt;/g&gt;
-      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGfluffyMane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
+      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGmane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
         &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
         &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
         &lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
@@ -4360,14 +4361,14 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;/g&gt;
   &lt;/g&gt;
       &lt;!-- Wings container - positioned here for proper z-index --&gt;
-    &lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGfluffySkin + `&quot;&gt;
+    &lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGskin + `&quot;&gt;
       &lt;path id=&quot;SVGwings-border&quot; d=&quot;M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0&quot; filter=&quot;url(#SVGf2)&quot; /&gt;
       &lt;line id=&quot;SVGwing-line-1&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;53.5&quot; y1=&quot;10&quot; x2=&quot;38&quot; y2=&quot;12&quot; /&gt;
       &lt;line id=&quot;SVGwing-line-2&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;55&quot; y1=&quot;13&quot; x2=&quot;36&quot; y2=&quot;15&quot; /&gt;
       &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
     &lt;/g&gt;
 &lt;/svg&gt;`&gt;&gt;
-&lt;&lt;set _alicornSVG to `
+&lt;&lt;set _alicornMSVG to `
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
@@ -4378,32 +4379,32 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;/defs&gt;
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
-        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGfluffyMane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
       &lt;g id=&quot;SVGleg3-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
         &lt;g id=&quot;SVGleg1-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
       &lt;/g&gt;
-      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGfluffySkin + `&quot; /&gt;
+      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
       &lt;g id=&quot;SVGleg2-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
         &lt;g id=&quot;SVGleg4-group&quot;&gt;
-        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
-        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGfluffyMane + `&quot; /&gt;
+        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
       &lt;/g&gt;
       &lt;/g&gt;
     &lt;/g&gt;
     &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
-      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGfluffySkin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
+      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
       &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
         &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
         &lt;rect id=&quot;SVGpupil1&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
@@ -4416,7 +4417,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;rect id=&quot;SVGsnout&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;30&quot; rx=&quot;5&quot; fill=&quot;peru&quot; filter=&quot;url(#SVGf4)&quot; /&gt;
         &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
       &lt;/g&gt;
-      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGfluffyMane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
+      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGmane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
         &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
         &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
         &lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
@@ -4425,14 +4426,278 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;g id=&quot;SVGhorn-container&quot; transform=&quot;translate(8, 17)&quot;&gt;
       &lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;
     &lt;/g&gt;
-    &lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGfluffySkin + `&quot;&gt;
+    &lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGskin + `&quot;&gt;
       &lt;path id=&quot;SVGwings-border&quot; d=&quot;M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0&quot; filter=&quot;url(#SVGf2)&quot; /&gt;
       &lt;line id=&quot;SVGwing-line-1&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;53.5&quot; y1=&quot;10&quot; x2=&quot;38&quot; y2=&quot;12&quot; /&gt;
       &lt;line id=&quot;SVGwing-line-2&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;55&quot; y1=&quot;13&quot; x2=&quot;36&quot; y2=&quot;15&quot; /&gt;
       &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
     &lt;/g&gt;
   &lt;/g&gt;
-&lt;/svg&gt;`&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;/svg&gt;`&gt;&gt;
+&lt;&lt;set _earthieFSVG to `
+&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+  &lt;defs&gt;
+    &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf3&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.1&quot; flood-opacity=&quot;1&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
+  &lt;/defs&gt;
+  &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
+    &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
+
+      &lt;g id=&quot;SVGlegs-background&quot;&gt;
+      &lt;g id=&quot;SVGleg3-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg1-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+      &lt;ellipse cx=&quot;85&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
+      &lt;ellipse cx=&quot;90&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
+      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+      &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
+      &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
+      &lt;g id=&quot;SVGleg2-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg4-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+      &lt;/g&gt;
+      &lt;/g&gt;
+    &lt;/g&gt;
+    &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
+      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
+      &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
+        &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
+        &lt;rect id=&quot;SVGpupil1&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGeye2&quot; transform=&quot;translate(15, 5)&quot;&gt;
+        &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
+        &lt;rect id=&quot;SVGpupil2&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGsnout-container&quot; transform=&quot;translate(-5, 20)&quot;&gt;
+        &lt;rect id=&quot;SVGsnout&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;30&quot; rx=&quot;5&quot; fill=&quot;peru&quot; filter=&quot;url(#SVGf4)&quot; /&gt;
+        &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGmane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
+
+        &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
+        &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
+        &lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
+      &lt;/g&gt;
+    &lt;/g&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;`&gt;&gt;
+&lt;&lt;set _unicornFSVG to `
+&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+  &lt;defs&gt;
+    &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf3&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.1&quot; flood-opacity=&quot;1&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
+  &lt;/defs&gt;
+  &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
+      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+      &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
+      &lt;g id=&quot;SVGlegs-background&quot;&gt;
+      &lt;g id=&quot;SVGleg3-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg1-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+      &lt;ellipse cx=&quot;85&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
+      &lt;ellipse cx=&quot;90&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
+      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+      &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
+      &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
+      &lt;g id=&quot;SVGleg2-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg4-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+      &lt;/g&gt;
+      &lt;/g&gt;
+    &lt;/g&gt;
+    &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
+      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
+      &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
+        &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
+        &lt;rect id=&quot;SVGpupil1&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGeye2&quot; transform=&quot;translate(15, 5)&quot;&gt;
+        &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
+        &lt;rect id=&quot;SVGpupil2&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGsnout-container&quot; transform=&quot;translate(-5, 20)&quot;&gt;
+        &lt;rect id=&quot;SVGsnout&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;30&quot; rx=&quot;5&quot; fill=&quot;peru&quot; filter=&quot;url(#SVGf4)&quot; /&gt;
+        &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGmane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
+
+        &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
+        &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
+        &lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
+      &lt;/g&gt;
+    &lt;/g&gt;
+    &lt;g id=&quot;SVGhorn-container&quot; transform=&quot;translate(8, 17)&quot;&gt;
+      &lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;
+    &lt;/g&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;`&gt;&gt;
+&lt;&lt;set _pegasusFSVG to `
+&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+  &lt;defs&gt;
+    &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf3&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.1&quot; flood-opacity=&quot;1&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
+  &lt;/defs&gt;
+  &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
+  &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+    &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
+      &lt;g id=&quot;SVGlegs-background&quot;&gt;
+        &lt;g id=&quot;SVGleg3-group&quot;&gt;
+          &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg1-group&quot;&gt;
+          &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+      
+      &lt;!-- Body and belly --&gt;
+      &lt;ellipse cx=&quot;85&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
+      &lt;ellipse cx=&quot;90&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
+      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+      &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
+      
+      &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
+        &lt;g id=&quot;SVGleg2-group&quot;&gt;
+          &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg4-group&quot;&gt;
+          &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+          &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+    &lt;/g&gt;
+    
+    &lt;!-- Head container --&gt;
+    &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
+      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
+      &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
+        &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
+        &lt;rect id=&quot;SVGpupil1&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGeye2&quot; transform=&quot;translate(15, 5)&quot;&gt;
+        &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
+        &lt;rect id=&quot;SVGpupil2&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGsnout-container&quot; transform=&quot;translate(-5, 20)&quot;&gt;
+        &lt;rect id=&quot;SVGsnout&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;30&quot; rx=&quot;5&quot; fill=&quot;peru&quot; filter=&quot;url(#SVGf4)&quot; /&gt;
+        &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGmane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
+        &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
+        &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
+        &lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
+      &lt;/g&gt;
+    &lt;/g&gt;
+  &lt;/g&gt;
+      &lt;!-- Wings container - positioned here for proper z-index --&gt;
+    &lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGskin + `&quot;&gt;
+      &lt;path id=&quot;SVGwings-border&quot; d=&quot;M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0&quot; filter=&quot;url(#SVGf2)&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-1&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;53.5&quot; y1=&quot;10&quot; x2=&quot;38&quot; y2=&quot;12&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-2&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;55&quot; y1=&quot;13&quot; x2=&quot;36&quot; y2=&quot;15&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;`&gt;&gt;
+&lt;&lt;set _alicornFSVG to `
+&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+  &lt;defs&gt;
+    &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf3&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.1&quot; flood-opacity=&quot;1&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
+    &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
+  &lt;/defs&gt;
+  &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
+    &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
+        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+      &lt;g id=&quot;SVGlegs-background&quot;&gt;
+      &lt;g id=&quot;SVGleg3-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot3&quot; x=&quot;69&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg1-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg1&quot; x=&quot;5&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+      &lt;/g&gt;
+      &lt;ellipse cx=&quot;85&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
+      &lt;ellipse cx=&quot;90&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
+      &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
+      &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
+      &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
+      &lt;g id=&quot;SVGleg2-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg2&quot; x=&quot;27&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot2&quot; x=&quot;27&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;SVGleg4-group&quot;&gt;
+        &lt;rect id=&quot;SVGleg4&quot; x=&quot;90&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf5)&quot; /&gt;
+        &lt;rect id=&quot;SVGfoot4&quot; x=&quot;90&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
+      &lt;/g&gt;
+      &lt;/g&gt;
+    &lt;/g&gt;
+    &lt;g id=&quot;SVGhead-container&quot; transform=&quot;translate(10, 17)&quot;&gt;
+      &lt;rect id=&quot;SVGhead&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;50&quot; height=&quot;50&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; filter=&quot;url(#SVGf1)&quot;&gt;&lt;/rect&gt;
+      &lt;g id=&quot;SVGeye1&quot; transform=&quot;translate(3, 5)&quot;&gt;
+        &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
+        &lt;rect id=&quot;SVGpupil1&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGeye2&quot; transform=&quot;translate(15, 5)&quot;&gt;
+        &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;8&quot; height=&quot;12&quot; fill=&quot;white&quot; /&gt;
+        &lt;rect id=&quot;SVGpupil2&quot; x=&quot;2&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;5&quot; fill=&quot;#1b1b1b&quot; filter=&quot;url(#SVGf1)&quot; stroke-width=&quot;1&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGsnout-container&quot; transform=&quot;translate(-5, 20)&quot;&gt;
+        &lt;rect id=&quot;SVGsnout&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;30&quot; rx=&quot;5&quot; fill=&quot;peru&quot; filter=&quot;url(#SVGf4)&quot; /&gt;
+        &lt;path id=&quot;SVGsmile&quot; d=&quot;M3 1 A2.5 4 0 0 0 8 1&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.5)&quot; transform=&quot;translate(4, 18) rotate(0)&quot; /&gt;
+      &lt;/g&gt;
+      &lt;g id=&quot;SVGmane&quot; fill=&quot;` + _SVGmane + `&quot; filter=&quot;url(#SVGf2)&quot;&gt;
+        &lt;path id=&quot;SVGmane1&quot; d=&quot;M2 1 Q 7 -15 18 -12 L12 -8 Q 13 -11 25 -12 L 20 -8 Q 27 -13 30 -13 L 28 0&quot; /&gt;
+        &lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
+        &lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
+      &lt;/g&gt;
+    &lt;/g&gt;
+    &lt;g id=&quot;SVGhorn-container&quot; transform=&quot;translate(8, 17)&quot;&gt;
+      &lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;
+    &lt;/g&gt;
+    &lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGskin + `&quot;&gt;
+      &lt;path id=&quot;SVGwings-border&quot; d=&quot;M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0&quot; filter=&quot;url(#SVGf2)&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-1&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;53.5&quot; y1=&quot;10&quot; x2=&quot;38&quot; y2=&quot;12&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-2&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;55&quot; y1=&quot;13&quot; x2=&quot;36&quot; y2=&quot;15&quot; /&gt;
+      &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
+    &lt;/g&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;`&gt;&gt;
+&lt;&lt;/silent&gt;&gt;
 &lt;&lt;nobr&gt;&gt;
   &lt;&lt;set _baseWidth to 185&gt;&gt; /* your art&#39;s base width */
   &lt;&lt;set _baseHeight to 92&gt;&gt; /* your art&#39;s base height */
@@ -4441,16 +4706,24 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;&lt;set _aspectRatio to _baseWidth / _baseHeight&gt;&gt;
   &lt;div id=&quot;fluffy&quot; @style=&quot;&#39;width: &#39; + _scaledWidth + &#39;px; height: &#39; + _scaledHeight + &#39;px; overflow: visible;&#39;&quot;&gt;
   &lt;div class=&quot;fluffy-svg&quot; @style=&quot;&#39;transform: scale(&#39; + _scale + &#39;); transform-origin: top left;&#39;&quot;&gt;
-    &lt;&lt;if _SVGfluffyRace is &quot;Earthie&quot;&gt;&gt;
-      &lt;&lt;print _earthieSVG&gt;&gt;
-    &lt;&lt;elseif _SVGfluffyRace is &quot;Unicorn&quot;&gt;&gt;
-      &lt;&lt;print _unicornSVG&gt;&gt;
-    &lt;&lt;elseif _SVGfluffyRace is &quot;Pegasus&quot;&gt;&gt;
-      &lt;&lt;print _pegasusSVG&gt;&gt;
-    &lt;&lt;elseif _SVGfluffyRace is &quot;Alicorn&quot;&gt;&gt;
-      &lt;&lt;print _alicornSVG&gt;&gt;
+    &lt;&lt;if (_SVGrace is &quot;Earthie&quot; and _SVGfluffyGender is &quot;Male&quot;)&gt;&gt;
+      &lt;&lt;print _earthieMSVG&gt;&gt;
+    &lt;&lt;elseif (_SVGrace is &quot;Unicorn&quot; and _SVGgender is &quot;Male&quot;)&gt;&gt;
+      &lt;&lt;print _unicornMSVG&gt;&gt;
+    &lt;&lt;elseif (_SVGrace is &quot;Pegasus&quot; and _SVGgender is &quot;Male&quot;)&gt;&gt;
+      &lt;&lt;print _pegasusMSVG&gt;&gt;
+    &lt;&lt;elseif (_SVGrace is &quot;Alicorn&quot; and _SVGgender is &quot;Male&quot;)&gt;&gt;
+      &lt;&lt;print _alicornMSVG&gt;&gt;
+    &lt;&lt;elseif (_SVGrace is &quot;Earthie&quot; and _SVGgender is &quot;Female&quot;)&gt;&gt;
+      &lt;&lt;print _earthieFSVG&gt;&gt;
+    &lt;&lt;elseif (_SVGrace is &quot;Unicorn&quot; and _SVGgender is &quot;Female&quot;)&gt;&gt;
+      &lt;&lt;print _unicornFSVG&gt;&gt;
+    &lt;&lt;elseif (_SVGrace is &quot;Pegasus&quot; and _SVGgender is &quot;Female&quot;)&gt;&gt;
+      &lt;&lt;print _pegasusFSVG&gt;&gt;
+    &lt;&lt;elseif (_SVGrace is &quot;Alicorn&quot; and _SVGgender is &quot;Female&quot;)&gt;&gt;
+      &lt;&lt;print _alicornFSVG&gt;&gt;
     &lt;&lt;else&gt;&gt;
-      &lt;&lt;print _earthieSVG&gt;&gt;
+      &lt;&lt;print _earthieMSVG&gt;&gt;
     &lt;&lt;/if&gt;&gt;
   &lt;/div&gt;&lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;&lt;script&gt;&gt;
@@ -4464,6 +4737,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   &lt;&lt;set _fluffyRace to _args[3]&gt;&gt;
   &lt;&lt;set _fluffyFert to _args[4]&gt;&gt;
   &lt;&lt;set _fluffyScale to _args[5]&gt;&gt;
+  &lt;&lt;set _fluffyGender to _args[6]&gt;&gt;
   &lt;div class=&quot;tank-wrapper&quot;&gt;
     &lt;div class=&quot;tank&quot;&gt;
         &lt;div class=&quot;tank-outline&quot;&gt;
@@ -4484,7 +4758,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
               &lt;/svg&gt;
             &lt;/div&gt;
         &lt;div class=&quot;blink fluffy&quot;&gt;
-                &lt;&lt;FluffySVG _args[0] _args[1] _args[2] _args[3] _args[5]&gt;&gt;
+                &lt;&lt;FluffySVG _fluffySkin _fluffyMane _FluffyName _fluffyRace _fluffyScale _fluffyGender&gt;&gt;
                 &lt;/div&gt;
           &lt;&lt;clouds&gt;&gt;
             &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;

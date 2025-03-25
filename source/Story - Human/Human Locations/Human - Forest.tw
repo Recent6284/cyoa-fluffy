@@ -53,7 +53,7 @@ Based on their size, you made the guess that they were <<if _fluffyGender is "fe
 
 <<include "Fluffy Quality Descriptions">>
 
-<span class="blink walking"><<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2>></span>
+<span class="blink walking"><<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2 _fluffyGender>></span>
 
 <<dynamicPronoun $currentFluffyIndex "they" "upper">> lowered <<dynamicPronoun $currentFluffyIndex "their">> mane down to the water and began to sip thoughtfully; <<dynamicPronoun $currentFluffyIndex "they">> didn't seem to be aware of your presence, but you wouldn't hold that against <<dynamicPronoun $currentFluffyIndex "them">>. When they were hungry, thirsty or horny, Fluffies probably didn't care about much besides sating their needs.
 
@@ -120,7 +120,7 @@ As the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> disappeared into t
 
 Based on their size, you made the guess that they were <<if _fluffyGender is "female">>@@color:pink;<<print _fluffyGender.toLowerCase()>>@@<<else>>@@color:blue;<<print _fluffyGender.toLowerCase()>>@@<</if>>. <<dynamicPronoun $currentFluffyIndex "their" "upper">> <span @style="'color:' + _fluffyMane.colorname"><<print _fluffyMane.name.toLowerCase()>></span> mane accented <<dynamicPronoun $currentFluffyIndex "their">> <span @style="'color:' + _fluffySkin.colorname"><<print _fluffySkin.name.toLowerCase()>></span> skin. <<include "Fluffy Quality Descriptions">>
 
-<span class="blink"><<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2>></span>
+<span class="blink"><<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2 _fluffyGender>></span>
 
 Like the fluffy before, <<dynamicPronoun $currentFluffyIndex "they">> approached the water, but this time, <<dynamicPronoun $currentFluffyIndex "they">> seemed a bit more observant. <<dynamicPronoun $currentFluffyIndex "they" "upper">> surveyed the scene in front of them, trying to see if something didn't feel quite right. After a small pause, it was almost like the caution left their head entirely: like the <<dynamicFluffyProperty $currentFluffyIndex-1 "race">> before, they went down to drink. 
 
@@ -138,7 +138,7 @@ Will you introduce yourself to the <span @style="'color:' + _fluffySkin.colornam
 
 The <<=$fluffyRace.toLowerCase()>> was a bit surprised, and a bit defensive. They weren't posturing aggressively.
 
-<span class="blink"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>></span>
+<span class="blink"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2 _fluffyGender>></span>
 
 <<linkreplace "Introduce yourself" t8n>><<include "Intro Conversation">><</linkreplace>>
 
@@ -168,7 +168,7 @@ You thought to yourself, and wondered: was ''$fluffyName.human'' something that 
 <<set _colorSpan to "<span style='color:" + $fluffySkin.colorname + "'>" + $fluffySkin.name.toLowerCase() + "</span>">>
 Congrats! You made it to a test ending. Your Fluffy's name is $fluffyName.human, _article <<colorname $fluffySkin>> $fluffyRace with a <<colorname $fluffyMane>> mane.
 
-<span class="blink walking"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2>></span>
+<span class="blink walking"><<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2 _fluffyGender>></span>
 
 If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].
 

@@ -7,6 +7,7 @@
   <<set _fluffyRace to _args[3]>>
   <<set _fluffyFert to _args[4]>>
   <<set _fluffyScale to _args[5]>>
+  <<set _fluffyGender to _args[6]>>
   <div class="tank-wrapper">
     <div class="tank">
         <div class="tank-outline">
@@ -27,7 +28,7 @@
               </svg>
             </div>
         <div class="blink fluffy">
-                <<FluffySVG _args[0] _args[1] _args[2] _args[3] _args[5]>>
+                <<FluffySVG _fluffySkin _fluffyMane _FluffyName _fluffyRace _fluffyScale _fluffyGender>>
                 </div>
           <<clouds>>
             <div id="bowl" style="position:absolute; left:30px; bottom:50px;">

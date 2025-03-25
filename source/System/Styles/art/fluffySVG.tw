@@ -545,21 +545,21 @@
     <<if (_SVGrace is "Earthie" and _SVGfluffyGender is "Male")>>
       <<include "Earthie Male">>
     <<elseif (_SVGrace is "Unicorn" and _SVGgender is "Male")>>
-      <<include _unicornMSVG>>
+      <<include "Unicorn Male">>
     <<elseif (_SVGrace is "Pegasus" and _SVGgender is "Male")>>
-      <<include _pegasusMSVG>>
+      <<include "Pegasus Male">>
     <<elseif (_SVGrace is "Alicorn" and _SVGgender is "Male")>>
-      <<include _alicornMSVG>>
+      <<include "Alicorn Male">>
     <<elseif (_SVGrace is "Earthie" and _SVGgender is "Female")>>
       <<include "Earthie Female">>
     <<elseif (_SVGrace is "Unicorn" and _SVGgender is "Female")>>
-      <<include _unicornFSVG>>
+      <<include "Unicorn Female">>
     <<elseif (_SVGrace is "Pegasus" and _SVGgender is "Female")>>
-      <<include _pegasusFSVG>>
+      <<include "Pegasus Female">>
     <<elseif (_SVGrace is "Alicorn" and _SVGgender is "Female")>>
-      <<include _alicornFSVG>>
+      <<include "Alicorn Female">>
     <<else>>
-      <<include _earthieMSVG>>
+      <<include "Eartie Male">>
     <</if>>
   </div></div><</nobr>>
 <<script>>

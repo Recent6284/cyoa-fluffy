@@ -559,7 +559,7 @@
     <<elseif (_SVGrace is "Alicorn" and _SVGgender is "Female")>>
       <<include "Alicorn Female">>
     <<else>>
-      <<include "Eartie Male">>
+      <<include "Earthie Male">>
     <</if>>
   </div></div><</nobr>>
 <<script>>

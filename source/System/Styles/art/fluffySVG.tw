@@ -17,6 +17,8 @@
     <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
     <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
   </defs>
+        <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
+
   <g id="SVGfluffy" transform="translate(-5,0)">
     <g id="SVGbody-container" transform="translate(30, 20)">
 
@@ -30,7 +32,6 @@
         <rect id="SVGfoot1" x="5" y="65" width="20" height="7" fill="` + _SVGmane + `" />
         </g>
       </g>
-      <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
       <rect id="SVGfluffbody" x="0" y="0" width="110" height="55" rx="15" fill="` + _SVGskin + `" />
       <rect id="SVGbelly" clip-path="polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)" x="15" y="44" width="90" height="11" rx="7" ry="6" fill="peru" />
       <g id="SVGlegs-foreground">
@@ -76,9 +77,10 @@
     <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
     <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
   </defs>
+            <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
+
   <g id="SVGfluffy" transform="translate(-5,0)">
     <g id="SVGbody-container" transform="translate(30, 20)">
-          <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
 
       <g id="SVGlegs-background">
       <g id="SVGleg3-group">
@@ -138,12 +140,13 @@
     <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
     <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
   </defs>
+        <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
+
   <g id="SVGfluffy" transform="translate(-5,0)">
     
   
     <!-- Body container with leg groups -->
     <g id="SVGbody-container" transform="translate(30, 20)">
-      <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
       <g id="SVGlegs-background">
         <g id="SVGleg3-group">
           <rect id="SVGleg3" x="69" y="45" width="20" height="25" rx="5" fill="` + _SVGskin + `" />
@@ -210,9 +213,10 @@
     <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
     <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
   </defs>
+          <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
+
   <g id="SVGfluffy" transform="translate(-5,0)">
     <g id="SVGbody-container" transform="translate(30, 20)">
-        <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
       <g id="SVGlegs-background">
       <g id="SVGleg3-group">
         <rect id="SVGleg3" x="69" y="45" width="20" height="25" rx="5" fill="` + _SVGskin + `" />
@@ -276,6 +280,8 @@
     <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
     <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
   </defs>
+        <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
+
   <g id="SVGfluffy" transform="translate(-5,0)">
     <g id="SVGbody-container" transform="translate(30, 20)">
 
@@ -291,7 +297,6 @@
       </g>
       <ellipse cx="85" cy="50" rx="15" ry="10" fill="peru" stroke="saddlebrown"/>
       <ellipse cx="90" cy="50" rx="15" ry="10" fill="peru" stroke="saddlebrown"/>
-      <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
       <rect id="SVGfluffbody" x="0" y="0" width="110" height="55" rx="15" fill="` + _SVGskin + `" />
       <rect id="SVGbelly" clip-path="polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)" x="15" y="44" width="90" height="11" rx="7" ry="6" fill="peru" />
       <g id="SVGlegs-foreground">
@@ -337,8 +342,9 @@
     <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
     <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
   </defs>
+  <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
+
   <g id="SVGfluffy" transform="translate(-5,0)">
-      <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
       <g id="SVGbody-container" transform="translate(30, 20)">
       <g id="SVGlegs-background">
       <g id="SVGleg3-group">
@@ -400,8 +406,9 @@
     <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
     <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
   </defs>
-  <g id="SVGfluffy" transform="translate(-5,0)">
   <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
+
+  <g id="SVGfluffy" transform="translate(-5,0)">
     <g id="SVGbody-container" transform="translate(30, 20)">
       <g id="SVGlegs-background">
         <g id="SVGleg3-group">
@@ -471,9 +478,10 @@
     <filter id="SVGf4"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.6" /></filter>
     <filter id="SVGf5"><feDropShadow dx="1" dy="1" stdDeviation="0.7" flood-opacity="0.1" /></filter>
   </defs>
+          <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
+
   <g id="SVGfluffy" transform="translate(-5,0)">
     <g id="SVGbody-container" transform="translate(30, 20)">
-        <path filter="url(#SVGf2)" id="SVGtail" d="M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50" fill="` + _SVGmane + `" transform="translate(145, -22) rotate(60)" />
       <g id="SVGlegs-background">
       <g id="SVGleg3-group">
         <rect id="SVGleg3" x="69" y="45" width="20" height="25" rx="5" fill="` + _SVGskin + `" />

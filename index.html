@@ -3308,13 +3308,14 @@ If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would pro
 &lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;
 &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
 &lt;&lt;set _fluffyName = State.variables.fluffies[$currentFluffyIndex].name&gt;&gt;
-&lt;&lt;set _fluffyFertility = State.variables.fluffies[$currentFluffyIndex].fertility&gt;&gt;&lt;redo &quot;tank&quot;&gt;&gt;
+&lt;&lt;set _fluffyFertility = State.variables.fluffies[$currentFluffyIndex].fertility&gt;&gt;
+&lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;&lt;redo &quot;tank&quot;&gt;&gt;
 &lt;&lt;/silent&gt;&gt;
 In each pen, you saw one Adult Fluffy who was oblivious to you judging them.
 
 Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender is &quot;female&quot;&gt;&gt;@@color:pink;&lt;&lt;print  _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;else&gt;&gt;@@color:blue;&lt;&lt;print  _fluffyGender.toLowerCase()&gt;&gt;@@&lt;&lt;/if&gt;&gt;. &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot; &quot;upper&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffyMane.colorname&quot;&gt;&lt;&lt;print _fluffyMane.name.toLowerCase()&gt;&gt;&lt;/span&gt; mane accented &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; &lt;span @style=&quot;&#39;color:&#39; + _fluffySkin.colorname&quot;&gt;&lt;&lt;print _fluffySkin.name.toLowerCase()&gt;&gt;&lt;/span&gt; skin; you weren&#39;t sure how your felt about the color combination, but it was something to consider.
 
-&lt;&lt;FluffTank _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace _fluffyFertility&gt;&gt;
+&lt;&lt;FluffTank _fluffySkin.colorname _fluffyMane.colorname _fluffyName.human _fluffyRace _fluffyFertility 1 _fluffyGender&gt;&gt;
 
 &lt;&lt;button &quot;Look at another&quot;&gt;&gt;&lt;&lt;if typeof $fluffies[$currentFluffyIndex + 1] === &quot;undefined&quot;&gt;&gt;&lt;&lt;goto &quot;Fluffmart - No More Fluffies&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;Fluffmart - Adult Options&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Fluffmart - No More Fluffies" tags="" position="725,350" size="100,100">&lt;&lt;set $playerBudget to $playerBudget - 10&gt;&gt;
 
@@ -4184,6 +4185,8 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
+        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
 
@@ -4197,7 +4200,6 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
         &lt;rect id=&quot;SVGfoot1&quot; x=&quot;5&quot; y=&quot;65&quot; width=&quot;20&quot; height=&quot;7&quot; fill=&quot;` + _SVGmane + `&quot; /&gt;
         &lt;/g&gt;
       &lt;/g&gt;
-      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
@@ -4243,9 +4245,10 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
+            &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
-          &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
 
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
       &lt;g id=&quot;SVGleg3-group&quot;&gt;
@@ -4305,12 +4308,13 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
+        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     
   
     &lt;!-- Body container with leg groups --&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
-      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
         &lt;g id=&quot;SVGleg3-group&quot;&gt;
           &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
@@ -4377,9 +4381,10 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
+          &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
-        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
       &lt;g id=&quot;SVGleg3-group&quot;&gt;
         &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
@@ -4443,6 +4448,8 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
+        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
 
@@ -4458,7 +4465,6 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
       &lt;/g&gt;
       &lt;ellipse cx=&quot;85&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
       &lt;ellipse cx=&quot;90&quot; cy=&quot;50&quot; rx=&quot;15&quot; ry=&quot;10&quot; fill=&quot;peru&quot; stroke=&quot;saddlebrown&quot;/&gt;
-      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;rect id=&quot;SVGfluffbody&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;110&quot; height=&quot;55&quot; rx=&quot;15&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
       &lt;rect id=&quot;SVGbelly&quot; clip-path=&quot;polygon(0% 75%, 100% 50%, 100% 100%, 0% 100%)&quot; x=&quot;15&quot; y=&quot;44&quot; width=&quot;90&quot; height=&quot;11&quot; rx=&quot;7&quot; ry=&quot;6&quot; fill=&quot;peru&quot; /&gt;
       &lt;g id=&quot;SVGlegs-foreground&quot;&gt;
@@ -4504,8 +4510,9 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
+  &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
-      &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
       &lt;g id=&quot;SVGleg3-group&quot;&gt;
@@ -4567,8 +4574,9 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
-  &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
   &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
+  &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
         &lt;g id=&quot;SVGleg3-group&quot;&gt;
@@ -4638,9 +4646,10 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
     &lt;filter id=&quot;SVGf4&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf5&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.7&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
   &lt;/defs&gt;
+          &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
+
   &lt;g id=&quot;SVGfluffy&quot; transform=&quot;translate(-5,0)&quot;&gt;
     &lt;g id=&quot;SVGbody-container&quot; transform=&quot;translate(30, 20)&quot;&gt;
-        &lt;path filter=&quot;url(#SVGf2)&quot; id=&quot;SVGtail&quot; d=&quot;M0 50 L16 33 L11 42 L24 32 L17 42 L33 31 L25 40 L40 32 L30 41 L49 33 L36 41 L50 37 L35 45 L27 49 L12 50&quot; fill=&quot;` + _SVGmane + `&quot; transform=&quot;translate(145, -22) rotate(60)&quot; /&gt;
       &lt;g id=&quot;SVGlegs-background&quot;&gt;
       &lt;g id=&quot;SVGleg3-group&quot;&gt;
         &lt;rect id=&quot;SVGleg3&quot; x=&quot;69&quot; y=&quot;45&quot; width=&quot;20&quot; height=&quot;25&quot; rx=&quot;5&quot; fill=&quot;` + _SVGskin + `&quot; /&gt;
@@ -4731,13 +4740,13 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   setTimeout(window.makeFluffyBlink, 100);
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Fluffy in Tank" tags="widget nobr" position="225,725" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
-  &lt;&lt;set _fluffySkin to _args[0]&gt;&gt;
-  &lt;&lt;set _fluffyMane to _args[1]&gt;&gt;
-  &lt;&lt;set _fluffyName to _args[2]&gt;&gt;
-  &lt;&lt;set _fluffyRace to _args[3]&gt;&gt;
-  &lt;&lt;set _fluffyFert to _args[4]&gt;&gt;
-  &lt;&lt;set _fluffyScale to _args[5]&gt;&gt;
-  &lt;&lt;set _fluffyGender to _args[6]&gt;&gt;
+  &lt;&lt;set _fluffyTankSkin to _args[0]&gt;&gt;
+  &lt;&lt;set _fluffyTankMane to _args[1]&gt;&gt;
+  &lt;&lt;set _fluffyTankName to _args[2]&gt;&gt;
+  &lt;&lt;set _fluffyTankRace to _args[3]&gt;&gt;
+  &lt;&lt;set _fluffyTankFert to _args[4]&gt;&gt;
+  &lt;&lt;set _fluffyTankScale to _args[5]&gt;&gt;
+  &lt;&lt;set _fluffyTankGender to _args[6]&gt;&gt;
   &lt;div class=&quot;tank-wrapper&quot;&gt;
     &lt;div class=&quot;tank&quot;&gt;
         &lt;div class=&quot;tank-outline&quot;&gt;
@@ -4758,7 +4767,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
               &lt;/svg&gt;
             &lt;/div&gt;
         &lt;div class=&quot;blink fluffy&quot;&gt;
-                &lt;&lt;FluffySVG _fluffySkin _fluffyMane _FluffyName _fluffyRace _fluffyScale _fluffyGender&gt;&gt;
+                &lt;&lt;FluffySVG _fluffyTankSkin _fluffyTankSkin _fluffyTankName _fluffyTankRace _fluffyTankScale _fluffyTankGender&gt;&gt;
                 &lt;/div&gt;
           &lt;&lt;clouds&gt;&gt;
             &lt;div id=&quot;bowl&quot; style=&quot;position:absolute; left:30px; bottom:50px;&quot;&gt;
@@ -4773,7 +4782,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;div class=&quot;nametag&quot;&gt;
               &lt;div class=&quot;nameinfo&quot;&gt;
                 &lt;ul&gt;
-                  &lt;li&gt;&lt;&lt;if $fluffyName.length == 0 &gt;&gt;&lt;&lt;set _tempName to $randomNameMale.random()&gt;&gt;_tempName.human (You should roll)&lt;&lt;else&gt;&gt;$args[2] ($args[3]) - _fluffyFert&lt;&lt;/if&gt;&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;&lt;if $_fluffyTankName == 0 &gt;&gt;&lt;&lt;set _tempName to $randomNameMale.random()&gt;&gt;_tempName.human (You should roll)&lt;&lt;else&gt;&gt;_fluffyTankName ($args[3]) - _fluffyTankFert&lt;&lt;/if&gt;&gt;&lt;/li&gt;
                 &lt;/ul&gt;
               &lt;/div&gt;
             &lt;/div&gt;

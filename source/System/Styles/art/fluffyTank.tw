@@ -1,13 +1,13 @@
 :: Fluffy in Tank [widget nobr]
 
 <<widget "FluffTank">>
-  <<set _fluffySkin to _args[0]>>
-  <<set _fluffyMane to _args[1]>>
-  <<set _fluffyName to _args[2]>>
-  <<set _fluffyRace to _args[3]>>
-  <<set _fluffyFert to _args[4]>>
-  <<set _fluffyScale to _args[5]>>
-  <<set _fluffyGender to _args[6]>>
+  <<set _fluffyTankSkin to _args[0]>>
+  <<set _fluffyTankMane to _args[1]>>
+  <<set _fluffyTankName to _args[2]>>
+  <<set _fluffyTankRace to _args[3]>>
+  <<set _fluffyTankFert to _args[4]>>
+  <<set _fluffyTankScale to _args[5]>>
+  <<set _fluffyTankGender to _args[6]>>
   <div class="tank-wrapper">
     <div class="tank">
         <div class="tank-outline">
@@ -28,7 +28,7 @@
               </svg>
             </div>
         <div class="blink fluffy">
-                <<FluffySVG _fluffySkin _fluffyMane _FluffyName _fluffyRace _fluffyScale _fluffyGender>>
+                <<FluffySVG _fluffyTankSkin _fluffyTankSkin _fluffyTankName _fluffyTankRace _fluffyTankScale _fluffyTankGender>>
                 </div>
           <<clouds>>
             <div id="bowl" style="position:absolute; left:30px; bottom:50px;">
@@ -43,7 +43,7 @@
             <div class="nametag">
               <div class="nameinfo">
                 <ul>
-                  <li><<if $fluffyName.length == 0 >><<set _tempName to $randomNameMale.random()>>_tempName.human (You should roll)<<else>>$args[2] ($args[3]) - _fluffyFert<</if>></li>
+                  <li><<if $_fluffyTankName == 0 >><<set _tempName to $randomNameMale.random()>>_tempName.human (You should roll)<<else>>_fluffyTankName ($args[3]) - _fluffyTankFert<</if>></li>
                 </ul>
               </div>
             </div>

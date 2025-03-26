@@ -28,7 +28,7 @@
               </svg>
             </div>
         <div class="blink fluffy">
-                <<FluffySVG _fluffyTankSkin _fluffyTankSkin _fluffyTankName _fluffyTankRace _fluffyTankScale _fluffyTankGender>>
+                <<FluffySVG _fluffyTankSkin _fluffyTankMane _fluffyTankName _fluffyTankRace _fluffyTankScale _fluffyTankGender>>
                 </div>
           <<clouds>>
             <div id="bowl" style="position:absolute; left:30px; bottom:50px;">

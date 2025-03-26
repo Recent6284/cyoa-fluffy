@@ -1,4 +1,5 @@
 :: Male Earthie [nobr]
+<<capture _SVGskin, _SVGmane>>
 <svg id="SVGfluffy-svg" viewBox="0 0 180 100" height="100px" width="180px">
   <defs>
     <filter id="SVGf1"><feDropShadow dx="1" dy="1" stdDeviation="0.2" flood-opacity="0.1" /></filter>
@@ -56,3 +57,4 @@
 		</g>
 	</g>
 </svg>
+<</capture>>

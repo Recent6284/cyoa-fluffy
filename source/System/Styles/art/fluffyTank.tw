@@ -1,6 +1,6 @@
-:: Fluffy in Tank [widget nobr]
+:: Fluffy in Tank [widget]
 
-<<widget "FluffTank">>
+<<widget "FluffTank">><<nobr>>
   <<set _fluffyTankSkin to _args[0]>>
   <<set _fluffyTankMane to _args[1]>>
   <<set _fluffyTankName to _args[2]>>
@@ -49,5 +49,4 @@
             </div>
           </div>
           </div>
-
-<</widget>>
+<</nobr>><</widget>>

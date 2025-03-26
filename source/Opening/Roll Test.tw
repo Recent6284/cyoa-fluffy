@@ -10,10 +10,8 @@
 !!! SVG Test
 <<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender>>
 !!! Tank Test
-<div class ="tank-container">
-<div class="blink moving-tank"><<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
-<<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility 1 $fluffyGender>>
-</div></div>
+<<nobr>><div class ="tank-container"><div class="blink moving-tank"><<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>><<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility 1 $fluffyGender>></div></div><</nobr>>
+!!! Stats Table
 <table class="shop"><thead>
   <tr>
     <th>Stat</th>

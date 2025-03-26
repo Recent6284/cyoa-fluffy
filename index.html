@@ -3018,10 +3018,8 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
 !!! SVG Test
 &lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender&gt;&gt;
 !!! Tank Test
-&lt;div class =&quot;tank-container&quot;&gt;
-&lt;div class=&quot;blink moving-tank&quot;&gt;&lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility 1 $fluffyGender&gt;&gt;
-&lt;/div&gt;&lt;/div&gt;
+&lt;&lt;nobr&gt;&gt;&lt;div class =&quot;tank-container&quot;&gt;&lt;div class=&quot;blink moving-tank&quot;&gt;&lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility 1 $fluffyGender&gt;&gt;&lt;/div&gt;&lt;/div&gt;&lt;&lt;/nobr&gt;&gt;
+!!! Stats Table
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
     &lt;th&gt;Stat&lt;/th&gt;
@@ -5331,7 +5329,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
   // Trigger blinking check on the newly created Fluffy
   setTimeout(window.makeFluffyBlink, 100);
 &lt;&lt;/script&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="Fluffy in Tank" tags="widget nobr" position="1225,725" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="Fluffy in Tank" tags="widget" position="1225,725" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;
   &lt;&lt;set _fluffyTankSkin to _args[0]&gt;&gt;
   &lt;&lt;set _fluffyTankMane to _args[1]&gt;&gt;
   &lt;&lt;set _fluffyTankName to _args[2]&gt;&gt;
@@ -5380,8 +5378,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;/div&gt;
           &lt;/div&gt;
           &lt;/div&gt;
-
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="Print Player Budget" tags="widget nobr" position="100,850" size="100,100">&lt;&lt;widget &quot;budget&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="Print Player Budget" tags="widget nobr" position="100,850" size="100,100">&lt;&lt;widget &quot;budget&quot;&gt;&gt;
     &#39;&#39;$&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;&#39;&#39;
     &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="ButtonReplace" tags="widget" position="225,850" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
 

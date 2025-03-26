@@ -543,23 +543,23 @@
   <div id="fluffy" @style="'width: ' + _scaledWidth + 'px; height: ' + _scaledHeight + 'px; overflow: visible;'">
   <div class="fluffy-svg" @style="'transform: scale(' + _scale + '); transform-origin: top left;'">
     <<if (_SVGrace is "Earthie" and _SVGfluffyGender is "Male")>>
-      <<include "Earthie Male">>
+      <<include "Male Earthie">>
     <<elseif (_SVGrace is "Unicorn" and _SVGgender is "Male")>>
-      <<include "Unicorn Male">>
+      <<include "Male Unicorn Male">>
     <<elseif (_SVGrace is "Pegasus" and _SVGgender is "Male")>>
-      <<include "Pegasus Male">>
+      <<include "Male Pegasus Male">>
     <<elseif (_SVGrace is "Alicorn" and _SVGgender is "Male")>>
-      <<include "Alicorn Male">>
+      <<include "Male Alicorn">>
     <<elseif (_SVGrace is "Earthie" and _SVGgender is "Female")>>
-      <<include "Earthie Female">>
+      <<include "Female Earthie">>
     <<elseif (_SVGrace is "Unicorn" and _SVGgender is "Female")>>
-      <<include "Unicorn Female">>
+      <<include "Female Unicorn">>
     <<elseif (_SVGrace is "Pegasus" and _SVGgender is "Female")>>
-      <<include "Pegasus Female">>
+      <<include "Female Pegasus">>
     <<elseif (_SVGrace is "Alicorn" and _SVGgender is "Female")>>
-      <<include "Alicorn Female">>
+      <<include "Female Alicorn">>
     <<else>>
-      <<include "Earthie Male">>
+      <<include "Male Earthie">>
     <</if>>
   </div></div><</nobr>>
 <<script>>

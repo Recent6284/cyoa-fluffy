@@ -3012,14 +3012,12 @@ If you&#39;d like to go to the Roll Test, [[click here|Roll Test]].
     &lt;&lt;newFluffy&gt;&gt;
     &lt;&lt;lockFluffy&gt;&gt;
     &lt;&lt;redo &quot;upper&quot;&gt;&gt;
-    &lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/nobr&gt;&gt;
-
-
+    &lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
 &lt;&lt;do tag &quot;upper&quot;&gt;&gt;
-
+!!! SVG Test
 &lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender&gt;&gt;
-
-!!! Tank CSS Fluffy
+!!! Tank Test
 &lt;div class =&quot;tank-container&quot;&gt;
 &lt;div class=&quot;blink moving-tank&quot;&gt;&lt;&lt;if $fluffyFertility isnot &quot;Fertile&quot;&gt;&gt;&lt;&lt;set _tankFertility to &quot;Neutered&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _tankFertility to &quot;Not Neutered!&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility 1 $fluffyGender&gt;&gt;

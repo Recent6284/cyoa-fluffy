@@ -6,18 +6,13 @@
     <<redo "upper">>
     <<set $currentFluffyIndex to $currentFluffyIndex + 1>><</silent>><</button>><</nobr>>
 
-
-<<do tag "upper">>!!! CSS Fluffy
-
 <<fluffyDialog>>Test<</fluffyDialog>>
-
-<<FluffyCSS $fluffySkin.colorname $fluffyMane.colorname 3>>
 
 !!! SVG Fluffy
 
 <<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender>>
 
-!!! Tank CSS Fluffy
+!!! Tank Test
 <div class ="tank-container">
 <div class="blink moving-tank"><<if $fluffyFertility isnot "Fertile">><<set _tankFertility to "Neutered">><<else>><<set _tankFertility to "Not Neutered!">><</if>>
 <<FluffTank $fluffySkin.colorname $fluffyMane.colorname $fluffyName.human $fluffyRace _tankFertility 1 $fluffyGender>>

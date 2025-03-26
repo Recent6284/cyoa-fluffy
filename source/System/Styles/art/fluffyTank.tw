@@ -43,7 +43,7 @@
             <div class="nametag">
               <div class="nameinfo">
                 <ul>
-                  <li><<if $_fluffyTankName == 0 >><<set _tempName to $randomNameMale.random()>>_tempName.human (You should roll)<<else>>_fluffyTankName ($args[3]) - _fluffyTankFert<</if>></li>
+                  <li><<if ndef _fluffyTankName>><<set _tempName to $randomNameMale.random()>>_tempName.human (You should roll)<<else>>_fluffyTankName ($args[3]) - _fluffyTankFert<</if>></li>
                 </ul>
               </div>
             </div>

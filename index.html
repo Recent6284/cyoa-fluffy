@@ -5372,7 +5372,7 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
             &lt;div class=&quot;nametag&quot;&gt;
               &lt;div class=&quot;nameinfo&quot;&gt;
                 &lt;ul&gt;
-                  &lt;li&gt;&lt;&lt;if $_fluffyTankName == 0 &gt;&gt;&lt;&lt;set _tempName to $randomNameMale.random()&gt;&gt;_tempName.human (You should roll)&lt;&lt;else&gt;&gt;_fluffyTankName ($args[3]) - _fluffyTankFert&lt;&lt;/if&gt;&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;&lt;if ndef _fluffyTankName&gt;&gt;&lt;&lt;set _tempName to $randomNameMale.random()&gt;&gt;_tempName.human (You should roll)&lt;&lt;else&gt;&gt;_fluffyTankName ($args[3]) - _fluffyTankFert&lt;&lt;/if&gt;&gt;&lt;/li&gt;
                 &lt;/ul&gt;
               &lt;/div&gt;
             &lt;/div&gt;

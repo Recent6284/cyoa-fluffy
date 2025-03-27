@@ -1,0 +1,11 @@
+:: Icon Widget [widget nobr]
+
+<<widget "scIcon" container>><span @class="'sc-icon ' + _contents"></span><</widget>>
+
+:: Check Widget [widget]
+
+<<widget "iconCheck">><span class="sc-icon sc-circle-check" style="color: lime;"></span><</widget>>
+
+:: X Widget [widget]
+
+<<widget "iconX">><span class="sc-icon sc-circle-times" style="color: red;"></span><</widget>>

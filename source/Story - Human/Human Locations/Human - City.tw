@@ -8,24 +8,15 @@ Many an alleyway and cardboard box has been used by Fluffies to live their entir
 
 You've decided that a walk through downtown is worth the risk tonight, mostly because of the possibility of being able to.... commandeer... a good Fluffy from their otherwise difficult life on the streets. After some pondering, you've decided that there's only so many places that they could congregate.
 
-<<button [[Visit the Strip Mall|Alley]]>><<set $cityScape to "strip">><</button>>
-
 <<button [[Visit the Restaurant|Alley]]>><<set $cityScape to "restaurant">><</button>>
 
 <<button [[Visit the Industrial Park|Alley]]>><<set $cityScape to "industrial">><</button>>
 
 :: Alley
 
-This <<if $cityScape is "strip">>strip mall<<elseif $cityScape is "restaurant">>restaurant<<elseif $cityScape is "industrial">>Industrial Park<</if>> had seen better days, and that's probably why you thought you could find some Fluffies — eventually, with enough apathy, the circumstances for favorable feral festivities flourished.
+This <<if $cityScape is "restaurant">>restaurant<<elseif $cityScape is "industrial">>Industrial Park<</if>> had seen better days, and that's probably why you thought you could find some Fluffies — eventually, with enough apathy, the circumstances for favorable feral festivities flourished.
 
-<<if $cityScape is "strip">><<nobr>><<include [[Strip Mall]]>><</nobr>><<elseif $cityScape is "restaurant">><<nobr>><<include [[Restaurant]]>><</nobr>><<elseif $cityScape is "industrial">><<nobr>><<include [[Industrial Park]]>><</nobr>><</if>>
-:: Strip Mall
-
-This strip mall was more of a one-stop shop for the district; when you were done with your shift in the factory, the last thing you wanted to do was to go out of your way for milk (that you obviously forgot the last time your spouse asked) or some flowers in order to make your late nights a bit more palatable.
-
-You didn't have to worry about that, since you had a cushy office job — you weren't about to trade that in for washing the smoke and soot and iron filaments out of your clothes every night.
-
-There was still a bodega in the strip mall that was open, but most of the other businesses were either boarded up or closed for the night; you were sure most of them were fronts for some kind of mob, anyways. Still, strip malls meant garbage, and garbage meant fluffies. Maybe. In theory.
+<<if $cityScape is "restaurant">><<nobr>><<include [[Restaurant]]>><</nobr>><<elseif $cityScape is "industrial">><<nobr>><<include [[Industrial Park]]>><</nobr>><</if>>
 
 :: Restaurant
 You kicked yourself a little bit for being stereotypical — really? @@color:green;An@@ Italian @@color:red;restaurant@@? You didn't know if it would be this easy, or a Fluffy's sense of smell would be that good. Pasquale's was a local joint that people either loved to death or turned their noses up at; the 90-year-old proprietor had lost his wife years ago, but there were weathered newspaper articles clipped and carefully preserved on the wall. You could've sworn you even saw a blessing from the Pope up there — an Italian wouldn't lie about that, would they?
@@ -70,9 +61,12 @@ Security guards patrolled the grounds, but this was mostly for insurance reasons
 You'd never actually //been// to this industrial park before, but you knew that there was multiple ways to just walk up and explore. You were prepared for the worst; at worst, you'd get mugged, just to save a few bucks. At best, you'd find a new Fluffy friend. In the middle, you might get a beer by the union hall: they've always had some pretty cheap brews and sports on the TV.
 
 Your choices:
-* <<if ndef $fenceVictory>><<link "Check the fence around the old assembly line" "The Fence">><</link>><<else>>You checked around the fence, and <<if $fenceVictory is "true">>found a small piece of evidence that Fluffies could be near the warehouse doors<<else>>didn't find anything convincing to help<</if>><</if>>.
-* <<if ndef $barConvo>><<link "Visit the union bar" "Union Bar">><</link>><<else>>You've already visited the union bar, and <<if $barConvo is "true">>you got some good information<<else>>didn't get any extra information<</if>><</if>>
-* <<link "Watch, wait and listen" "Security Guard">><</link>>
+* <<if ndef $fenceVictory>><<link "Check the fence around the old assembly line." "The Fence">><</link>><<else>>You checked around the fence, and <<if $fenceVictory is "true">>found a small piece of evidence as to where Fluffies could be <<iconCheck>><<else>>didn't find anything convincing to help <<iconX>><</if>><</if>>
+* <<if ndef $barConvo>><<link "Visit the union bar." "Union Bar">><</link>><<else>>You've already visited the union bar, and <<if $barConvo is "true">>you got some good information <<iconCheck>><<else>>didn't get any extra information <<iconX>><</if>><</if>>
+* <<if ndef $securitySuccess>><<link "Watch, wait and listen." "Security Guard">><</link>><<else>>You'd already dealt with the security guard, and <<if $securitySuccess is "true">>got some good information <<iconCheck>><<else>>didn't find anything useful <<iconX>><</if>><</if>>
+<<if def $securitySuccess and $barConvo and $fenceVictory>><<hovertip "Congrats, you did some detective work">>After much skulking around<</hovertip>>, you <<if $barConvo is "false" and $fenceVictory is "false" and $securitySuccess is "false">>were totally fed up. This night had been a total wash, and you weren't sure whether you could stomach a second round tomorrow night. You'd have to go look somewhere else for your Fluffy, because the city wasn't being your friend tonight.<<else>>had gotten a small idea of where you could look: the Old Bean Factory had a warehouse, and that warehouse looked like it had Fluffies coming in and out of it. You knew that there was somewhere that they were getting food, and being able to get a look at a Fluffy before potentially adopting it would be your best chance at getting one you wanted.<</if>>
+
+<<button "Finally, check out the warehouse" "Warehouse">><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<newFluffy>><<set $alleyRoll to 0>><<if $fenceVictory is "true">><<set $alleyRoll to $alleyRoll + 1>><<else>><</if>><<if $barConvo is "true">><<set $alleyRoll to $alleyRoll + 1>><<else>><</if>><<if $securitySuccess is "true">><<set $alleyRoll to $alleyRoll + 1>><<else>><</if>><</button>><</if>>
 
 :: The Fence
 
@@ -94,8 +88,91 @@ You popped your head into the union bar and found it mostly empty; they wouldn't
 
 <<linkreplace "Take a sip" t8n>><<set _luckyRoll to random(1, 20)>><<if _luckyRoll >= 6>>After a few sips, <<hovertip "Needed 6, rolled <<print _luckyRoll>>">>you could hear a small side conversation<</hovertip>> from the guys watching the football game at the other end of the bar. They were more familiar with the layout of this district than you were, and were used to spending more time around the assembly lines. They mentioned off-hand that they'd seen some Fluffies popping their heads in and out of the warehouse doors, and "solos" scrounging for garbage around the corner. This was probably your best shot at getting one alone, instead of ending up responsible for an entire herd. <<set $barConvo to "true">><<else>><<hovertip "Needed 6, rolled <<print _luckyRoll>>">>Unfortunately<</hovertip>>, the barman wasn't too helpful with your questions (the lucky guy didn't seem to know what Fluffies were) and you weren't about to disrupt the rest of the union members' watching of the football game. The local team was losing, and taking them out of their misery might just make things hazardous to your health. You decided to leave after finishing up your pint. <<set $barConvo to "false">><</if>>
   
-It'd be probably best for you to leave the Union Hall, and <<link "head back to your staging grounds" "Industrial Park">><</link>>.<</linkreplace>>
+It'd be probably best for you to leave the union hall, and <<link "head back to your staging grounds" "Industrial Park">><</link>>.<</linkreplace>>
 
 :: Security Guard
 
-After some waiting, you saw a security officer start his patrol. You had a small window here: you could either see what he was checking out, or you could duck a head into his office to see if there were any security camera monitors to view.<</replace>>
+You noticed that the only really "active" place in the Industrial Park was the light flickering from the security guard's booth, which was just inside the main driveway.
+
+This guy probably had the easiest job in the industrial park: nothing to do besides kill time, call the cops on people breaking in, and watching Netflix on a laptop. If you weren't a huge nerd (liking your indoor time), you'd probably find this job pretty great - that is, until you decided to upgrade to something besides living in a shoebox, or with 5 roommates.
+<<if ndef $securityChoice>>
+You had a couple ways of approaching this. If you were inclined to try to Snake Plisskin your way in, you could probably wait for this guy to go take a piss or something, and see what you could see inside his office. You could also //follow// him out on his rounds, but that depended on your ability to just... not get caught.
+
+Or you could bribe the guy. Bribing him seemed to be a bit of an easier option. <<if $playerBudget <= 50>>However, you didn't have the cash for this right now; you were kind of kicking yourself at that.<</if>>
+
+You'd probably only get one shot at this, so you better make a choice:
+
+1. <<link "Check out his office after he leaves" "Security Guard 2">><<set $securityChoice to 1>><</link>>
+2. <<link "Tail him on his patrol and hope he shows you something" "Security Guard 2">><<set $securityChoice to 2>><</link>>
+3. <<if $playerBudget >= 50>><<link "Try to just walk up and bribe him (-$50)" "Security Guard 2">><<set $securityChoice to 3>><</link>><<else>>You can't afford to bribe him, you broke bitch.<</if>>
+<<else>>
+<<nobr>>
+You'd already tried to <<if $securityChoice is 1>>check out his booth<<elseif $securityChoice is 2>>tail the guard<<elseif $securityChoice is 3>>bribe him<</if>>, and 
+<<if $securityChoice is 1 and $securitySuccess is "true">>found out some great security camera footage, pointing to the warehouse doors
+<<elseif $securityChoice is 1 and $securitySuccess is "false">>didn't see anything particularly interesting, save for his... weird reading habits
+<<elseif $securityChoice is 2 and $securitySuccess is "true">>found out about the warehouse doors, and his inability to chase out the Fluffies that were residing in the building
+<<elseif $securityChoice is 2 and $securitySuccess is "false">>didn't find out anything besides the man's terrible cardio
+<<elseif $securityChoice is 3 and $securitySuccess is "true">>spent $50 to find out that the warehouse had some Fluffies living in it, and hanging around by the warehouse doors would likely help me run into one eventually
+<<elseif $securityChoice is 3 and $securitySuccess is "false">>
+<</if>>. <<if $securityChoice is 2 and $securitySuccess is "false" and $playerBudget >= 50>>You sighed, and opened your wallet. You still //could// <<link 
+"try to bribe him" "Bribe">><</link>>, if you wanted.<</if>>
+<</nobr>><</if>>
+
+:: Security Guard 2
+<<nobr>><<set _secRoll to random(1,20)>><</nobr>>
+<<if $securityChoice is 1>>
+As you pondered, you heard a loud @@color:gold;''crash''@@ and saw the security guard jump from his chair. It was clear that he was having a coffee emergency, judging by the large stain on his pants. As he danced a funny dance in order to cool himself down, you saw him amble over to the direction of the union bar, and then out of sight. if you were going to check out his booth, now was the time.
+  <<if _secRoll >= 6>>
+    You peered into the security booth, and found exactly what you were looking for: security camera monitors, and <<hovertip "Needed 6, rolled <<print _luckyRoll>>">>thankfully<</hovertip>> untouched by the coffee spillage. There were a number of locations around the industrial park, but only one which had a foot-tall miniature horse scrambling outside of a warehouse door: bingo. 
+    
+    You had all you needed here, and you could <<link "head back in victory." "Industrial Park">><<set $securitySuccess to "true">><</link>>
+  <<else>>
+    <<hovertip "Needed 6, rolled <<print _luckyRoll>>">>Unfortunately<</hovertip>>, what you found was quite boring. The coffee had fallen in a way that soaked and waterlogged the guard's computer, and even if you could get the thing to power on, the monitors looked to be a bit fried beyond all belief. This was maybe a waste of time, and perhaps a dead-end. You didn't know if the security guard would even be back now; all that was left was a very... weird... magazine with advertisements for "marriage aid Fluffies."
+
+    You decided to leave that alone for now.
+
+    <<link "Head back in shame." "Industrial Park">><<set $securitySuccess to "false">><</link>>
+  <</if>>
+<<elseif $securityChoice is 2>>
+It took a bit of waiting for him to get the courage (or boredom) to get out to go on his rounds. Until then, you had a good time watching a rerun of some ancient sitcom through his window <<hovertip "You were thankful he turned his subtitles on.">>with him<</hovertip>>. Eventually though, boredom caught up with him, and with a giant creak of his chair, he grabbed his keys and decided to go for a walk.
+  <<if _secRoll >= 6>>
+    All your time fantasizing about being a super spy paid off, as you followed the oblivious security guard as he walked his beat, scratched his balls, and began muttering to himself.<<set $fluffySkin.colorname to "dodgerblue">>
+    <<fluffyDialog>>"Stupid... stupid fuzzballs," he said.<</fluffyDialog>>Your ears perked up. Stupid //fuzzballs// were one step removed from stupid //Fluffies//, and that's what you were after.
+    <<fluffyDialog>>"Why they gotta make my job difficult," he continued. "If only the super would just come fix this stupid warehouse door, they wouldn't be eating out of the garbage...<</fluffyDialog>>This was what you needed.
+
+    A warehouse door in bad repair would be perfect for a Fluffy to get in and out. You could drop your tailing detail and <<link "go look for more clues, or go find those fluffies." "Industrial Park">><<unset $fluffySkin.colorname>><<set $securitySuccess to "true">><</link>>
+  <<else>>
+    <<hovertip "Needed 6, rolled <<print _luckyRoll>>">>Unfortunately<</hovertip>>, all you really found was that the guard was terrifyingly slow, and had such a bad wheeze you were worried you'd have to eventually make the choice between calling him an ambulance (and blowing your cover) or leaving a poor, fat man to die if he keeled over. As he eventually completed his rounds, you were happy to see that he wasn't about to die just yet. However, you didn't really have much choice but to <<link "leave and try other methods" "Industrial Park">><<set $securitySuccess to "false">><</link>><<if $playerBudget >= 50>> or... <<link "try to bribe the guy" "Bribe">><</link>><</if>>.
+  <</if>>
+<<elseif $securityChoice is 3>>
+  <<if _secRoll >= 6>>
+    You slipped the security guard a wad of cash, and his face immediately brightened. "Listen, I know what you're looking for," he said in a low voice. "There's a whole bunch of those colorful little horses by the old warehouse door. Been there for weeks. Management won't do anything about it."
+    
+    This was exactly what you needed to know. The warehouse must be where they're congregating.
+    
+    <<link "Head back with the information." "Industrial Park">><<set $securitySuccess to "true">><<set $playerBudget to $playerBudget - 50>><</link>>
+  <<else>>
+    It figures that <<hovertip "Needed 6, rolled <<print _luckyRoll>>">>you'd find the only honest security guard<</hovertip>> in the city. Or well, you thought that, until he pointed out the security cameras and microphones pointed at his booth, and made a big show of explaining (loudly) that he would not be taking any bribes for "corporate espionage." This sufficiently scared you away from asking him any further - if he decided to call the cops, it'd be your words against his.
+    
+    <<link "Time to leave." "Industrial Park">><<set $securitySuccess to "false">><</link>>
+  <</if>>
+<</if>>
+
+:: Bribe
+
+<<if _secRoll >= 6>>You sidled on up to the window, seeing the guard wheezing over his brief walk, and you decided to <<else>>It figures that <<hovertip "Needed 6, rolled <<print _luckyRoll>>">>you'd find the only honest security guard<</hovertip>> in the city. Or well, you thought that, until he pointed out the security cameras and microphones pointed at his booth, and made a big show of explaining (loudly) that he would not be taking any bribes for "corporate espionage." This sufficiently scared you away from asking him any further - if he decided to call the cops, it'd be your words against his.
+
+<<link "It was time to go!" "Industrial Park">><<set $securitySuccess to "false">><</link>><</if>>
+
+:: Warehouse
+<<silent>>
+    <<set $currentFluffyIndex to 4 - $alleyRoll>>
+    <<set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race>>
+    <<set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender>>
+    <<set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane>>
+    <<set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin>>
+    <<set _fluffyFlavor = State.variables.fluffies[$currentFluffyIndex].flavor>><</silent>>
+
+<<if $alleyRoll isnot 0>><<do>><span class="blink walking"><<FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2 _fluffyGender>></span><</do>><<else>>No more fluffies!<</if>>
+
+<<button "Go Next" "Warehouse">><<set $alleyRoll to $alleyRoll - 1>><<redo>><</button>>

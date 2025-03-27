@@ -21,6 +21,12 @@ This <<if $cityScape is "strip">>strip mall<<elseif $cityScape is "restaurant">>
 <<if $cityScape is "strip">><<nobr>><<include [[Strip Mall]]>><</nobr>><<elseif $cityScape is "restaurant">><<nobr>><<include [[Restaurant]]>><</nobr>><<elseif $cityScape is "industrial">><<nobr>><<include [[Industrial Park]]>><</nobr>><</if>>
 :: Strip Mall
 
+This strip mall was more of a one-stop shop for the district; when you were done with your shift in the factory, the last thing you wanted to do was to go out of your way for milk (that you obviously forgot the last time your spouse asked) or some flowers in order to make your late nights a bit more palatable.
+
+You didn't have to worry about that, since you had a cushy office job — you weren't about to trade that in for washing the smoke and soot and iron filaments out of your clothes every night.
+
+There was still a bodega in the strip mall that was open, but most of the other businesses were either boarded up or closed for the night; you were sure most of them were fronts for some kind of mob, anyways. Still, strip malls meant garbage, and garbage meant fluffies. Maybe. In theory.
+
 :: Restaurant
 You kicked yourself a little bit for being stereotypical — really? @@color:green;An@@ Italian @@color:red;restaurant@@? You didn't know if it would be this easy, or a Fluffy's sense of smell would be that good. Pasquale's was a local joint that people either loved to death or turned their noses up at; the 90-year-old proprietor had lost his wife years ago, but there were weathered newspaper articles clipped and carefully preserved on the wall. You could've sworn you even saw a blessing from the Pope up there — an Italian wouldn't lie about that, would they?
 
@@ -64,28 +70,32 @@ Security guards patrolled the grounds, but this was mostly for insurance reasons
 You'd never actually //been// to this industrial park before, but you knew that there was multiple ways to just walk up and explore. You were prepared for the worst; at worst, you'd get mugged, just to save a few bucks. At best, you'd find a new Fluffy friend. In the middle, you might get a beer by the union hall: they've always had some pretty cheap brews and sports on the TV.
 
 Your choices:
-* <<link "Check the fence around the old assembly line">>
-    <<set _luckyRoll to random(1, 20)>>
-    <<if _luckyRoll >= 8>>
-        <<replace "#answer">>Wow, this was a success! (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
-    <<else>>
-        <<replace "#answer">>Unfortunately, you weren't able to find anything. (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
-    <</if>>
-<</link>>
-* <<link "Check around the union office">>
-    <<set _luckyRoll to random(1, 20)>>
-    <<if _luckyRoll >= 8>>
-        <<replace "#answer">>Wow, this was a success! (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
-    <<else>>
-        <<replace "#answer">>Unfortunately, you weren't able to find anything. (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
-    <</if>>
-<</link>>
-* <<link "Watch, wait and listen">>
-    <<set _luckyRoll to random(1, 20)>>
-    <<if _luckyRoll >= 8>>
-        <<replace "#answer">>Wow, this was a success! (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
-    <<else>>
-        <<replace "#answer">>Unfortunately, you weren't able to find anything. (Roll was a <<print _luckyRoll>>, needed >8)<</replace>>
-    <</if>>
-<</link>>
-<div id="answer"></div>
+* <<if ndef $fenceVictory>><<link "Check the fence around the old assembly line" "The Fence">><</link>><<else>>You checked around the fence, and <<if $fenceVictory is "true">>found a small piece of evidence that Fluffies could be near the warehouse doors<<else>>didn't find anything convincing to help<</if>><</if>>.
+* <<if ndef $barConvo>><<link "Visit the union bar" "Union Bar">><</link>><<else>>You've already visited the union bar, and <<if $barConvo is "true">>you got some good information<<else>>didn't get any extra information<</if>><</if>>
+* <<link "Watch, wait and listen" "Security Guard">><</link>>
+
+:: The Fence
+
+The fence of the old <<hovertip "They didn't make beans - it was owned by the Bean Family">>Bean Factory<</hovertip>> was rickety, but it did the job of making it look pretty darned hard to get over or under. There were numerous snagged pieces of wool on the barbed wire on the top, as looters or scavengers tried their luck at the picking at the carcass of the building.
+
+There was a darker part of the fence, though, where the security lamps seemed to stop; perhaps they'd just burned out one day and the owners never really bothered to get them replaced. You decided to take your phone out and shine it over in that direction. <<set _fenceRoll to random(1,20)>>
+
+<<linkreplace "Shine your flashlight towards the darkness.">><<if _fenceRoll >= 6>>You were <<hovertip "Needed 6, rolled <<print _fenceRoll>>">>in luck<</hovertip>>; there was a piece of bright (too bright to be a dingy vagrant coat) fibre that was caught between the chain links at the bottom of the fence. 
+
+Judging by the way that the small gap at the base of the fence was bent inward, there was a good chance that a Fluffy (or someone in their herd) pushed their way in, and had gotten a bit caught in the process. Whether you would meet that Fluffy or not remained to be seen, but you knew there was a good chance that this wasn't a foot-high vagrant wearing a bright @@color:magenta;magenta@@ fur coat.
+
+<<link "Head back to the industrial park." "Industrial Park">><<set $fenceVictory to "true">><</link>>.<<else>>Despite searching, <<hovertip "Needed 6, rolled <<print _fenceRoll>>">>all you found<</hovertip>> was the smell of piss, and a lot of disappointment. There would be other opportunities to find a Fluffy friend, but it wouldn't be here.
+  
+<<link "Head back to the industrial park." "Industrial Park">><<set $fenceVictory to "false">><</link>><</if>><</linkreplace>>
+
+:: Union Bar
+
+You popped your head into the union bar and found it mostly empty; they wouldn't care about whether you were a member or not, mostly because any money was good money. You ordered a pint - something local, that was on-tap. You weren't really sure what you were doing at this point, but you couldn't complain.
+
+<<linkreplace "Take a sip" t8n>><<set _luckyRoll to random(1, 20)>><<if _luckyRoll >= 6>>After a few sips, <<hovertip "Needed 6, rolled <<print _luckyRoll>>">>you could hear a small side conversation<</hovertip>> from the guys watching the football game at the other end of the bar. They were more familiar with the layout of this district than you were, and were used to spending more time around the assembly lines. They mentioned off-hand that they'd seen some Fluffies popping their heads in and out of the warehouse doors, and "solos" scrounging for garbage around the corner. This was probably your best shot at getting one alone, instead of ending up responsible for an entire herd. <<set $barConvo to "true">><<else>><<hovertip "Needed 6, rolled <<print _luckyRoll>>">>Unfortunately<</hovertip>>, the barman wasn't too helpful with your questions (the lucky guy didn't seem to know what Fluffies were) and you weren't about to disrupt the rest of the union members' watching of the football game. The local team was losing, and taking them out of their misery might just make things hazardous to your health. You decided to leave after finishing up your pint. <<set $barConvo to "false">><</if>>
+  
+It'd be probably best for you to leave the Union Hall, and <<link "head back to your staging grounds" "Industrial Park">><</link>>.<</linkreplace>>
+
+:: Security Guard
+
+After some waiting, you saw a security officer start his patrol. You had a small window here: you could either see what he was checking out, or you could duck a head into his office to see if there were any security camera monitors to view.<</replace>>

@@ -15,20 +15,6 @@
                 "isDefault": true
             },
             "problemMatcher": []
-        },
-        {
-            "label": "Single Load Tweego (Branch-Specific)",
-            "type": "shell",
-            "command": "bash",
-            "args": [
-                "-c",
-                "if [ \"$(git branch --show-current)\" = \"main\" ]; then tweego -o index.html source; else mkdir -p test && tweego -o test/index.html source; fi"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
         }
     ]
 }

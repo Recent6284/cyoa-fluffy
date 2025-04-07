@@ -13,6 +13,8 @@
 /* Inventory */
 
 <<newinv $bag>>
+<<newinv $fmCart>>
+<<newinv $shCart>>
 
 /* ID Replacement Variable (Dynamic ID for <<buttonreplacement) */
 
@@ -629,5 +631,16 @@ It's a ball! This ball is about the size of a tennis ball, and is fuzzy like one
 Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflated volleyball. Fluffies can find comfort in another object that's their relative size, and gain confidence from being able to impose their will on it. Not big or heavy enough to knock over anything it's pushed into, nor will it scuff up your baseboards if you decide to give it a good kick. 
 <</item>>
 <<item "brush" "Grooming Brush">>
+<<description>>\
 
 <</item>>
+
+<<item "yourFluffy" "Your new Fluffy">>
+<<description>>\
+This is the Fluffy you chose to buy! You're keeping it in your inventory for now - the store doesn't want you to carry it around the store, so it's going to chill here for now.
+<</item>>
+
+:: inventory.strings
+
+empty: Your inventory is empty!
+drop: Discard

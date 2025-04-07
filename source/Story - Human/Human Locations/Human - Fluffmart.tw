@@ -23,7 +23,7 @@ Lastly, visiting ''the discount pen'' would probably be the cheapest option, but
 
 <<button "Visit the Discount Pens @@.icon;.next-arrow;@@" "Fluffmart - The Discounts">><</button>>
 
-Remember, you have <<budget>>, and a prayer. Let's see where this leads.
+Remember, you have $playerBudget, and a prayer. Let's see where this leads.
 
 <<button "Change your mind, and go somewhere else @@.icon;.next-arrow;@@" "Day 1 Travel">><</button>>
 
@@ -78,6 +78,159 @@ Based on their size, you made the guess that they were <<if _fluffyGender is "fe
 <<FluffTank _fluffySkin.colorname _fluffyMane.colorname _fluffyName.human _fluffyRace _fluffyFertility 1 _fluffyGender>>
 
 <<button "Look at another">><<if typeof $fluffies[$currentFluffyIndex + 1] === "undefined">><<goto "Fluffmart - No More Fluffies">><<else>><<goto "Fluffmart - Adult Options">><</if>><<set $currentFluffyIndex to $currentFluffyIndex + 1>><</button>>
+
+<<button "Buy this Fluffy" "Post Purchase">><<lockFluffy>><</button>>
+
+:: Post Purchase
+
+You decide on $fluffyName, and notify the clerk. Since they don't want you to carry your Fluffy around the store, they give you a receipt to take to the checkout, along with any other purchases you might make. You'll head over to the Fluffy Meet area, which should help you to acclimate to your Fluffy. Fluffmart will give you a free carrier, too!
+
+Did you want to proceed to the checkout? Or did you want to check out any toys, items or things you might need?
+
+
+:: Fluffmart Shop
+
+FluffMart partners with both Hasbio-branded products, and other (approved) third-parties to provide everything a Fluffy owner might need to furnish a safe place for their new friend. From treats, to toys, to tools, it's all here (or at least, Fluffmart thinks so).
+<<newinv _fmCart>>
+
+<<hovertip "(There's a cart after the table, too!)">>''@@font-size:20px;Your Cart@@''<</hovertip>>
+
+<div id="simple-inventory-list"><<do>><<inv _fmCart inspect drop>><</do>></div>
+<table class="shop">
+    <thead>
+        <tr>
+            <th width="25%">Item</th>
+            <th width="75%">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Tools Category -->
+        <tr class="category-header">
+            <td colspan="2"><strong>Tools</strong></td>
+        </tr>
+        <tr>
+            <td>Grooming Brush<br><<link "Add to cart">><<pickup _fmCart "brush" 1>><<redo>><</link>></td>
+            <td><<print Item.get("brush").description>></td>
+        </tr>
+        <tr>
+            <td>Sorry Stick<br><<link "Add to cart">><<pickup _fmCart "sorrystick" 1>><<redo>><</link>></td>
+            <td><<print Item.get("sorrystick").description>></td>
+        </tr>
+        <tr>
+            <td>Pillowing Kit<br><<link "Add to cart">><<pickup _fmCart "pillowkit" 1>><<redo>><</link>></td>
+            <td><<print Item.get("pillowkit").description>></td>
+        </tr>
+        <tr>
+            <td>Gelding Kit<br><<link "Add to cart">><<pickup _fmCart "geldingkit" 1>><<redo>><</link>></td>
+            <td><<print Item.get("geldingkit").description>></td>
+        </tr>
+
+        <!-- Appliances Category -->
+        <tr class="category-header">
+            <td colspan="2"><strong>Appliances</strong></td>
+        </tr>
+        <tr>
+            <td>Food Bowl<br><<link "Add to cart">><<pickup _fmCart "foodbowl" 1>><<redo>><</link>></td>
+            <td><<print Item.get("foodbowl").description>></td>
+        </tr>
+        <tr>
+            <td>Auto Feeder<br><<link "Add to cart">><<pickup _fmCart "autofeeder" 1>><<redo>><</link>></td>
+            <td><<print Item.get("autofeeder").description>></td>
+        </tr>
+        <tr>
+            <td>Litter Box<br><<link "Add to cart">><<pickup _fmCart "litterbox" 1>><<redo>><</link>></td>
+            <td><<print Item.get("litterbox").description>></td>
+        </tr>
+        <tr>
+            <td>Auto Litter<br><<link "Add to cart">><<pickup _fmCart "autolitter" 1>><<redo>><</link>></td>
+            <td><<print Item.get("autolitter").description>></td>
+        </tr>
+        <tr>
+            <td>Smell Station<br><<link "Add to cart">><<pickup _fmCart "smellstation" 1>><<redo>><</link>></td>
+            <td><<print Item.get("smellstation").description>></td>
+        </tr>
+        <tr>
+            <td>FluffTV Set<br><<link "Add to cart">><<pickup _fmCart "flufftv" 1>><<redo>><</link>></td>
+            <td><<print Item.get("flufftv").description>></td>
+        </tr>
+        <tr>
+            <td>Sorry Box<br><<link "Add to cart">><<pickup _fmCart "sorrybox" 1>><<redo>><</link>></td>
+            <td><<print Item.get("sorrybox").description>></td>
+        </tr>
+
+        <!-- Toys Category -->
+        <tr class="category-header">
+            <td colspan="2"><strong>Toys</strong></td>
+        </tr>
+        <tr>
+            <td>Stuffy Toy<br><<link "Add to cart">><<pickup _fmCart "stuffytoy" 1>><<redo>><</link>></td>
+            <td><<print Item.get("stuffytoy").description>></td>
+        </tr>
+        <tr>
+            <td>Enfy Toy<br><<link "Add to cart">><<pickup _fmCart "enfytoy" 1>><<redo>><</link>></td>
+            <td><<print Item.get("enfytoy").description>></td>
+        </tr>
+        <tr>
+            <td>Blocks<br><<link "Add to cart">><<pickup _fmCart "blocks" 1>><<redo>><</link>></td>
+            <td><<print Item.get("blocks").description>></td>
+        </tr>
+        <tr>
+            <td>Ball (Small)<br><<link "Add to cart">><<pickup _fmCart "smallball" 1>><<redo>><</link>></td>
+            <td><<print Item.get("smallball").description>></td>
+        </tr>
+        <tr>
+            <td>Ball (Big)<br><<link "Add to cart">><<pickup _fmCart "bigball" 1>><<redo>><</link>></td>
+            <td><<print Item.get("bigball").description>></td>
+        </tr>
+
+        <!-- Food Category -->
+        <tr class="category-header">
+            <td colspan="2"><strong>Food</strong></td>
+        </tr>
+        <tr>
+            <td>Candy Bar<br><<link "Add to cart">><<pickup _fmCart "candybar" 1>><<redo>><</link>></td>
+            <td><<print Item.get("candybar").description>></td>
+        </tr>
+        <tr>
+            <td>Cans of Sketties (8)<br><<link "Add to cart">><<pickup _fmCart "sketties8" 1>><<redo>><</link>></td>
+            <td><<print Item.get("sketties8").description>></td>
+        </tr>
+        <tr>
+            <td>Cans of Sketties (24)<br><<link "Add to cart">><<pickup _fmCart "sketties24" 1>><<redo>><</link>></td>
+            <td><<print Item.get("sketties24").description>></td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    .shop {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1em 0;
+    }
+    .shop th, .shop td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        vertical-align: top;
+    }
+    .shop th {
+    }
+    .category-header {
+        font-size: 1.1em;
+    }
+    .category-header td {
+        padding-top: 1.5em;
+        border-bottom: 1px solid #aaa;
+    }
+    .shop a {
+        color: #0066cc;
+        text-decoration: none;
+    }
+    .shop a:hover {
+        text-decoration: underline;
+    }
+</style>
 
 :: Fluffmart - No More Fluffies
 

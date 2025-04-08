@@ -1,0 +1,14 @@
+:: Fluffy Acquired
+
+! Congratulations
+
+After your hard work, you finally set out what you wanted to do  — you got yourself a Fluffy! Now all that's left is to introduce $fluffyName to their new home, and see where your adventures take you from here.
+
+Based on your Fluffy's stats and your choices, you will go through a cycle of different events, and consequences from those events! There isn't really a goal in mind from here on out, so play until you get bored. Feel free to leave Recent some [[feedback|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]] if you like the game so far.
+
+<<FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender>>
+
+[[Continue on Home|Safe Room Intro]]
+
+:: Safe Room Intro
+

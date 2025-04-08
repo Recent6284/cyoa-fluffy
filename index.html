@@ -3313,7 +3313,15 @@ It took a bit of waiting for him to get the courage (or boredom) to get out to g
 
 &lt;&lt;if $alleyRoll isnot 0&gt;&gt;&lt;&lt;do&gt;&gt;&lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;else&gt;&gt;No more fluffies!&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;button &quot;Go Next&quot; &quot;Warehouse&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll - 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Fluffmart" tags="" position="975,350" size="100,100">Your local Fluffmart is a bit of a zoo. There are always people milling about and filing in and out, and it doesn&#39;t help that it&#39;s part of a bigger plaza that has a number of other stores. You always hate how hard it is to park, and you nearly get hit by a couple cars just trying to cross the parking lot.
+&lt;&lt;button &quot;Go Next&quot; &quot;Warehouse&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll - 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Fluffy Acquired" tags="" position="975,350" size="100,100">! Congratulations
+
+After your hard work, you finally set out what you wanted to do  — you got yourself a Fluffy! Now all that&#39;s left is to introduce $fluffyName to their new home, and see where your adventures take you from here.
+
+Based on your Fluffy&#39;s stats and your choices, you will go through a cycle of different events, and consequences from those events! There isn&#39;t really a goal in mind from here on out, so play until you get bored. Feel free to leave Recent some [[feedback|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]] if you like the game so far.
+
+&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender&gt;&gt;
+
+[[Continue on Home|Safe Room Intro]]</tw-passagedata><tw-passagedata pid="29" name="Safe Room Intro" tags="" position="1100,350" size="100,100"></tw-passagedata><tw-passagedata pid="30" name="Fluffmart" tags="" position="1225,350" size="100,100">Your local Fluffmart is a bit of a zoo. There are always people milling about and filing in and out, and it doesn&#39;t help that it&#39;s part of a bigger plaza that has a number of other stores. You always hate how hard it is to park, and you nearly get hit by a couple cars just trying to cross the parking lot.
 
 You notice a couple employees in bright orange vests hosing down a large green dumpster in the alley beside the building; from the telltale swarming of flies you can tell there was probably some unpleasant things being disposed of; you weren&#39;t sure where you exactly stood on the &quot;Fluffies aren&#39;t animals&quot; thing, but it sure made it easier to deal with when it came to the law. 
 
@@ -3340,7 +3348,7 @@ Remember, you have $playerBudget, and a prayer. Let&#39;s see where this leads.
 
 &lt;&lt;button &quot;Change your mind, and go somewhere else @@.icon;.next-arrow;@@&quot; &quot;Day 1 Travel&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;nobr&gt;&gt;&lt;&lt;if $tvThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $tvMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $tvThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $tvMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Fluffmart - Foals" tags="" position="1100,350" size="100,100">The foal cases were away from the adult pens, for good reason; even if the foals weren&#39;t the biological children of the fluffies on sale, there would probably be endless enthusiasm about them, to the detriment of making good sales. The foal area was almost like a more traditional pet store&#39;s fish, reptile and amphibian section; walls lined with glass paneling, gentle lighting, and climate-controlled tanks that gave customers a good look at what they could buy.
+&lt;&lt;nobr&gt;&gt;&lt;&lt;if $tvThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $tvMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $tvThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $tvMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Fluffmart - Foals" tags="" position="100,475" size="100,100">The foal cases were away from the adult pens, for good reason; even if the foals weren&#39;t the biological children of the fluffies on sale, there would probably be endless enthusiasm about them, to the detriment of making good sales. The foal area was almost like a more traditional pet store&#39;s fish, reptile and amphibian section; walls lined with glass paneling, gentle lighting, and climate-controlled tanks that gave customers a good look at what they could buy.
 
 You noticed that there were milk feeders, audio speakers, and other ways of tricking the foal into thinking that they were still in a comfortable environment with their parents; there was a variety of them at different stages of life, mostly because some had spent more time waiting to be bought than others, and had opened their eyes, or started talking.
 
@@ -3351,7 +3359,7 @@ Each cage had a descriptor of the foal, their colors, the colors of their parent
 &lt;&lt;button &quot;Visit the Adult Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - Adults&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Visit the Discount Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - The Discounts&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="Fluffmart - Adults" tags="" position="1225,350" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;&lt;button &quot;Visit the Discount Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - The Discounts&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Fluffmart - Adults" tags="" position="225,475" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;
 
 Managing a number of adult fluffies was difficult, and trying to put them in the best environment to entice prospective customers was even harder. With ages ranging from &quot;just matured&quot; to &quot;a bit on the older side&quot;, Fluffies in the adult area were separated by gender, and in different pens to avoid overcrowding. You noticed that a couple of the dividers were clear, with a large sign proclaiming &quot;~Special Friends!~&quot;; some fluffies probably managed to pair bond despite Fluffmart&#39;s best efforts, and they probably were testing the profitability of selling twice the food, twice the equipment, and Fluffies that would have their own social entertainment.
 
@@ -3363,7 +3371,7 @@ Being seen as a potential &quot;new parent&quot; was a daunting thing for most o
 
 If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.
 
-&lt;&lt;button [[Take a look at the Fluffies on sale|Fluffmart - Adult Options]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Fluffmart - Adult Options" tags="" position="100,475" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;button [[Take a look at the Fluffies on sale|Fluffmart - Adult Options]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Fluffmart - Adult Options" tags="" position="350,475" size="100,100">&lt;&lt;silent&gt;&gt;
 &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
 &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
 &lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;
@@ -3380,9 +3388,9 @@ Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender 
 
 &lt;&lt;button &quot;Look at another&quot;&gt;&gt;&lt;&lt;if typeof $fluffies[$currentFluffyIndex + 1] === &quot;undefined&quot;&gt;&gt;&lt;&lt;goto &quot;Fluffmart - No More Fluffies&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;Fluffmart - Adult Options&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Buy this Fluffy&quot; &quot;Post Purchase&quot;&gt;&gt;&lt;&lt;lockFluffy&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Post Purchase" tags="" position="225,475" size="100,100">You decide on $fluffyName, and notify the clerk. Since they don&#39;t want you to carry your Fluffy around the store, they give you a receipt to take to the checkout, along with any other purchases you might make. You&#39;ll head over to the Fluffy Meet area, which should help you to acclimate to your Fluffy. Fluffmart will give you a free carrier, too!
+&lt;&lt;button &quot;Buy this Fluffy&quot; &quot;Post Purchase&quot;&gt;&gt;&lt;&lt;lockFluffy&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Post Purchase" tags="" position="475,475" size="100,100">You decide on $fluffyName, and notify the clerk. Since they don&#39;t want you to carry your Fluffy around the store, they give you a receipt to take to the checkout, along with any other purchases you might make. You&#39;ll head over to the Fluffy Meet area, which should help you to acclimate to your Fluffy. Fluffmart will give you a free carrier, too!
 
-Did you want to proceed to the checkout? Or did you want to check out any toys, items or things you might need?</tw-passagedata><tw-passagedata pid="33" name="Fluffmart Shop" tags="" position="350,475" size="100,100">FluffMart partners with both Hasbio-branded products, and other (approved) third-parties to provide everything a Fluffy owner might need to furnish a safe place for their new friend. From treats, to toys, to tools, it&#39;s all here (or at least, Fluffmart thinks so).
+Did you want to proceed to the checkout? Or did you want to check out any toys, items or things you might need?</tw-passagedata><tw-passagedata pid="35" name="Fluffmart Shop" tags="" position="600,475" size="100,100">FluffMart partners with both Hasbio-branded products, and other (approved) third-parties to provide everything a Fluffy owner might need to furnish a safe place for their new friend. From treats, to toys, to tools, it&#39;s all here (or at least, Fluffmart thinks so).
 &lt;&lt;newinv _fmCart&gt;&gt;
 
 &lt;&lt;hovertip &quot;(There&#39;s a cart after the table, too!)&quot;&gt;&gt;&#39;&#39;@@font-size:20px;Your Cart@@&#39;&#39;&lt;&lt;/hovertip&gt;&gt;
@@ -3522,15 +3530,15 @@ Did you want to proceed to the checkout? Or did you want to check out any toys, 
     .shop a:hover {
         text-decoration: underline;
     }
-&lt;/style&gt;</tw-passagedata><tw-passagedata pid="34" name="Fluffmart - No More Fluffies" tags="" position="475,475" size="100,100">&lt;&lt;set $playerBudget to $playerBudget - 10&gt;&gt;
+&lt;/style&gt;</tw-passagedata><tw-passagedata pid="36" name="Fluffmart - No More Fluffies" tags="" position="725,475" size="100,100">&lt;&lt;set $playerBudget to $playerBudget - 10&gt;&gt;
 
-After doing a circuit, you didn&#39;t see any other Fluffies you liked. With the gas it took you to get to Fluffmart, you&#39;re down to &lt;&lt;budget&gt;&gt; in your Fluffy budget.</tw-passagedata><tw-passagedata pid="35" name="Fluffmart - The Discounts" tags="" position="600,475" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
+After doing a circuit, you didn&#39;t see any other Fluffies you liked. With the gas it took you to get to Fluffmart, you&#39;re down to &lt;&lt;budget&gt;&gt; in your Fluffy budget.</tw-passagedata><tw-passagedata pid="37" name="Fluffmart - The Discounts" tags="" position="850,475" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
 
 Perhaps it was a greater awareness of the consequences of not being adopted, but some Fluffies looked like they lacked a specific spark. Fluffmart was not bound by any kind of ethical concern (due to the &quot;toy&quot; status of Fluffies), so there definitely was some kind of &quot;disposal&quot; date - however, in an attempt to recoup some of their losses when it came to breeding, adoption, or acquisition, these Fluffies were heavily marked down.
 
 These pens weren&#39;t //garbage//, but it was clear there was something different about them compared to the Adult Room or the Foal Area; it&#39;s like the &quot;well-used&quot; fixtures found their way here, and everything seemed a little less well-presented. Of course, this wasn&#39;t enough to disuade a sale, and for many people, the discount aisle would be their first encounter with a Fluffy before graduating to something more expensive, or finding a good pet that would defy expectations the store had for them.
 
-Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="36" name="Forest" tags="" position="725,475" size="100,100">Your local forest is adjacent to a nice park, and the government has decided that it should be a protected parcel of land. It doesn&#39;t keep the local developers from building housing to the millimeter of the boundary, and to Fluffies, this means both the safety and wonder of the forest, and some readily-available scrounging on construction sites. More than a few Fluffies have wound up drying cement overnight: if the Fluffy mafia existed, they&#39;d love to dispose some bodies there.
+Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="38" name="Forest" tags="" position="975,475" size="100,100">Your local forest is adjacent to a nice park, and the government has decided that it should be a protected parcel of land. It doesn&#39;t keep the local developers from building housing to the millimeter of the boundary, and to Fluffies, this means both the safety and wonder of the forest, and some readily-available scrounging on construction sites. More than a few Fluffies have wound up drying cement overnight: if the Fluffy mafia existed, they&#39;d love to dispose some bodies there.
 
 Fluffies have plenty of places to explore, forage and hide in the actual woods: they compete for burrowing space with other small game, and enjoy the occasional uprooting of a tree for safe shelter.
 
@@ -3543,21 +3551,21 @@ Fluffy hunting was an interesting art: you &lt;&lt;cycle &quot;$baitSet&quot;&gt
 &lt;&lt;option &quot;&lt;&lt;print &#39;&lt;&lt;hovertip \&quot;This will cost you $5 from your budget (currently $&lt;&lt;print $playerBudget&gt;&gt;)\&quot;&gt;&gt;came prepared with a candy bar&lt;&lt;/hovertip&gt;&gt;&#39;&gt;&gt;&quot; &quot;candy&quot;&gt;&gt;
 &lt;&lt;/cycle&gt;&gt; as you approach a common area that most Fluffies would need eventually: a babbling brook.
 
-&lt;&lt;button &quot;Go to the creek @@.icon;.next-arrow;@@&quot; &quot;Forest Creek&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;set $playerBudget to $playerBudget - 5&gt;&gt;&lt;&lt;pickup $bag &quot;candybar&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="Forest Creek" tags="" position="850,475" size="100,100">Approaching the creek, there was no sign of any humans or Fluffies: perfect. You saw a particularly shallow part of the stream, and figured that this was the best chance of finding a Fluffy who wasn&#39;t going to drown itself.
+&lt;&lt;button &quot;Go to the creek @@.icon;.next-arrow;@@&quot; &quot;Forest Creek&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;set $playerBudget to $playerBudget - 5&gt;&gt;&lt;&lt;pickup $bag &quot;candybar&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Forest Creek" tags="" position="1100,475" size="100,100">Approaching the creek, there was no sign of any humans or Fluffies: perfect. You saw a particularly shallow part of the stream, and figured that this was the best chance of finding a Fluffy who wasn&#39;t going to drown itself.
 
-&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Candy Bar Bait&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;include &quot;Forest - Wait For Fluffy&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Forest - Candy Bar Bait" tags="" position="975,475" size="100,100">You decided to place your candy bar, partially unwrapped, near a particularly shallow part of the creek, and sat down on a nearby log, behind a shrub that hid you from view.  You thought that your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
+&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Candy Bar Bait&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;include &quot;Forest - Wait For Fluffy&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="Forest - Candy Bar Bait" tags="" position="1225,475" size="100,100">You decided to place your candy bar, partially unwrapped, near a particularly shallow part of the creek, and sat down on a nearby log, behind a shrub that hid you from view.  You thought that your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
 
 &lt;&lt;button [[Wait for a Fluffy|Forest - Fluffy Meet 1]]&gt;&gt;
     &lt;&lt;drop $bag &quot;candybar&quot; 1&gt;&gt;
     &lt;&lt;set $fluffiesLeft to 4&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Forest - Wait For Fluffy" tags="" position="1100,475" size="100,100">You then sat down on a nearby log, behind a shrub that hid you from view. You thought that your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Forest - Wait For Fluffy" tags="" position="100,600" size="100,100">You then sat down on a nearby log, behind a shrub that hid you from view. You thought that your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
 
 &lt;&lt;button [[Wait for a Fluffy|Forest - Fluffy Meet 1]]&gt;&gt;
     &lt;&lt;include &quot;Forest - Fluffy Meet 1&quot;&gt;&gt;
     &lt;&lt;set $fluffiesLeft to 3&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="Forest - Fluffy Meet 1" tags="" position="1225,475" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Forest - Fluffy Meet 1" tags="" position="225,600" size="100,100">&lt;&lt;silent&gt;&gt;
     &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
     &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
     &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
@@ -3578,7 +3586,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &lt;&lt;button &quot;Introduce Yourself&quot; &quot;Forest - Fluffy Intro&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Wait for Another&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Forest - Alicorn Intro" tags="" position="100,600" size="100,100">You noticed the telltale horn of a unicorn, but also a pair of wings; you felt a bit lucky, since an alicorn in the wild either didn&#39;t live for long, or got snatched up by enterprising owners.</tw-passagedata><tw-passagedata pid="42" name="Forest - Earthie Intro" tags="" position="225,600" size="100,100">It had no horn, and no wings; earthie ponies tended to stand a little taller and stronger than &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; brothers and sisters. Someone could easily see an earthie as &quot;boring,&quot; but as a first-time owner, an earthie might be a little more... durable.</tw-passagedata><tw-passagedata pid="43" name="Forest - Unicorn Intro" tags="" position="350,600" size="100,100">You noticed the telltale horn of a unicorn, and a small part of your brain hoped to see a pair of wings. However, &quot;sadly&quot;, it was a unicorn Fluffy, which usually signalled a slightly higher intelligence, for however that counted among Fluffies.</tw-passagedata><tw-passagedata pid="44" name="Forest - Pegasus Intro" tags="" position="475,600" size="100,100">The pony unfurled its wings, almost to help slow itself; it wasn&#39;t going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy, and they could be found speeding around whatever environment they were in.</tw-passagedata><tw-passagedata pid="45" name="Fluffy Quality Descriptions" tags="" position="600,600" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;button &quot;Wait for Another&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="Forest - Alicorn Intro" tags="" position="350,600" size="100,100">You noticed the telltale horn of a unicorn, but also a pair of wings; you felt a bit lucky, since an alicorn in the wild either didn&#39;t live for long, or got snatched up by enterprising owners.</tw-passagedata><tw-passagedata pid="44" name="Forest - Earthie Intro" tags="" position="475,600" size="100,100">It had no horn, and no wings; earthie ponies tended to stand a little taller and stronger than &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; brothers and sisters. Someone could easily see an earthie as &quot;boring,&quot; but as a first-time owner, an earthie might be a little more... durable.</tw-passagedata><tw-passagedata pid="45" name="Forest - Unicorn Intro" tags="" position="600,600" size="100,100">You noticed the telltale horn of a unicorn, and a small part of your brain hoped to see a pair of wings. However, &quot;sadly&quot;, it was a unicorn Fluffy, which usually signalled a slightly higher intelligence, for however that counted among Fluffies.</tw-passagedata><tw-passagedata pid="46" name="Forest - Pegasus Intro" tags="" position="725,600" size="100,100">The pony unfurled its wings, almost to help slow itself; it wasn&#39;t going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy, and they could be found speeding around whatever environment they were in.</tw-passagedata><tw-passagedata pid="47" name="Fluffy Quality Descriptions" tags="" position="850,600" size="100,100">&lt;&lt;nobr&gt;&gt;
     &lt;&lt;if _fluffyFlavor is &quot;Stubborn&quot;&gt;&gt;
         &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; looked around and huffed, seemingly impatient for Fluffies (or perhaps life in general) that you couldn&#39;t see. You could see &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;them&quot;&gt;&gt; muttering to &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;themself&quot;&gt;&gt;, and when &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; saw the water, you could see &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; looked satisfied with &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; choice.
     &lt;&lt;elseif _fluffyFlavor is &quot;Greedy&quot;&gt;&gt;
@@ -3589,7 +3597,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
         The Fluffy cooed as &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; noticed a nearby bird at a branch, babbling out something about &quot;birdie friend.&quot; The bird looked at it quizzically, not exactly sure what to make of the miniature horse, and flew away. The Fluffy smiled in turn, bidding the bird goodbye and wishing it &quot;aw da most fun sky times&quot; before turning back to the &quot;tasty wawa.&quot;
     &lt;&lt;elseif _fluffyFlavor is &quot;Cautious&quot;&gt;&gt;
         The Fluffy seemed a bit skittish, looking around carefully; it almost looked like it expected a tiger to burst out of the bushes at any second. Every step seemed to prompt another set of internal calculations: was the mud too sticky? The water too deep? &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; dipped a hoof into the water, testing the temperature, and deemed it alright.
-&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="Forest - Interlude" tags="" position="725,600" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="Forest - Interlude" tags="" position="975,600" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/silent&gt;&gt;
 You decided to pass on the Fluffy, and after a couple minutes, you saw &lt;&lt;dynamicPronoun $currentFluffyIndex-1 &quot;them&quot;&gt;&gt; &lt;&lt;print either(&quot;get distracted by a passing butterfly, and trotted away in chase.&quot;,&quot;bolt away after hearing a bird take off by a nearby branch. Forest life must be scary for a fluffy.&quot;,&quot;test the temperature of the river, nearly slip and fall, and trot away with a few \&quot;huu huus\&quot; for good measure.&quot;)&gt;&gt;&lt;&lt;if $fluffiesLeft &gt; 0&gt;&gt;
 &lt;&lt;include &quot;Forest Fluffy Meet TwoThree&quot;&gt;&gt;&lt;&lt;else&gt;&gt;
 
@@ -3600,7 +3608,7 @@ You had a couple choices from here:
 * You could [[head to your local shelter|Shelter]] to check out the options for Fluffies that were either pulled off the street or put up for adoption.
 * You could [[head downtown|City]] and see if you would have more luck with the more urban Fluffies
 * You could [[head home for the day]] and put off the decision until tomorrow.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="Forest Fluffy Meet TwoThree" tags="" position="850,600" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Forest Fluffy Meet TwoThree" tags="" position="1100,600" size="100,100">&lt;&lt;silent&gt;&gt;
     &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
     &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
     &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
@@ -3619,7 +3627,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &lt;&lt;button &quot;Approach the Fluffy&quot; &quot;Forest - Fluffy Intro&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="Forest - Fluffy Intro" tags="" position="975,600" size="100,100">&lt;&lt;lockFluffy&gt;&gt;You mustered up a small amount of courage, and decided to take the leap. You moved from your hiding spot, illiciting a small jump from the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;.
+&lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="Forest - Fluffy Intro" tags="" position="1225,600" size="100,100">&lt;&lt;lockFluffy&gt;&gt;You mustered up a small amount of courage, and decided to take the leap. You moved from your hiding spot, illiciting a small jump from the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;.
 
 &lt;&lt;fluffyDialog&gt;&gt;&quot;Eep!&quot; said the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;. &quot;Who you?&quot;&lt;&lt;/fluffyDialog&gt;&gt;
 
@@ -3627,7 +3635,7 @@ The &lt;&lt;=$fluffyRace.toLowerCase()&gt;&gt; was a bit surprised, and a bit de
 
 &lt;span class=&quot;blink&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;
 
-&lt;&lt;linkreplace &quot;Introduce yourself&quot; t8n&gt;&gt;&lt;&lt;include &quot;Intro Conversation&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Intro Conversation" tags="" position="1100,600" size="100,100">You decided to introduce yourself. &quot;Hey there, buddy,&quot; you said, taking a small pause. &quot;My name is $playerName, and I&#39;m looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?&quot;
+&lt;&lt;linkreplace &quot;Introduce yourself&quot; t8n&gt;&gt;&lt;&lt;include &quot;Intro Conversation&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Intro Conversation" tags="" position="100,725" size="100,100">You decided to introduce yourself. &quot;Hey there, buddy,&quot; you said, taking a small pause. &quot;My name is $playerName, and I&#39;m looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?&quot;
 
 You were purposefully being a bit obtuse, but this was a test: you wanted to see if this Fluffy was smart enough to advocate for itself.
 
@@ -3643,14 +3651,14 @@ You thought to yourself, and wondered: was &#39;&#39;$fluffyName.human&#39;&#39;
 
 &lt;&lt;buttonreplace &quot;Yes please!&quot;&gt;&gt;&lt;&lt;textbox &quot;$fluffyName.human&quot; $fluffyName.human&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;remove #confirmbutton&gt;&gt;&lt;&lt;/buttonreplace&gt;&gt;
 
-&lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[&quot;No, I&#39;m fine&quot;|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="50" name="Confirm" tags="" position="1225,600" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _skinName to &quot;$fluffySkin.name.toLowerCase()&quot;&gt;&gt;
+&lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[&quot;No, I&#39;m fine&quot;|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="52" name="Confirm" tags="" position="225,725" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _skinName to &quot;$fluffySkin.name.toLowerCase()&quot;&gt;&gt;
 &lt;&lt;set _article to setup.articles.find(_skinName)&gt;&gt;&lt;&lt;/silent&gt;&gt;
 &lt;&lt;set _colorSpan to &quot;&lt;span style=&#39;color:&quot; + $fluffySkin.colorname + &quot;&#39;&gt;&quot; + $fluffySkin.name.toLowerCase() + &quot;&lt;/span&gt;&quot;&gt;&gt;
 Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName.human, _article &lt;&lt;colorname $fluffySkin&gt;&gt; $fluffyRace with a &lt;&lt;colorname $fluffyMane&gt;&gt; mane.
 
 &lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;
 
-If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="51" name="Human Home (First Visit)" tags="" position="100,725" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="53" name="Human Home (First Visit)" tags="" position="350,725" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 ! Welcome Home
 You arrive home to your &lt;&lt;cycle &quot;$houseType&quot;&gt;&gt;&lt;&lt;option &quot;detached house&quot;&gt;&gt;&lt;&lt;option &quot;apartment&quot;&gt;&gt;&lt;&lt;option &quot;townhome&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;, which was pretty modest, all things considered. You had previously used an office during the pandemic for a work-from-home environment, but you realized that it was spending a lot of time gathering dust. You decided to move your desk, bookshelves and your stuff for your &lt;&lt;cycle &quot;$hobbyType&quot;&gt;&gt;&lt;&lt;option &quot;sewing&quot;&gt;&gt;&lt;&lt;option &quot;plants&quot;&gt;&gt;&lt;&lt;option &quot;guitar&quot;&gt;&gt;&lt;&lt;option &quot;language&quot;&gt;&gt;&lt;&lt;option &quot;calligraphy&quot;&gt;&gt;&lt;&lt;option &quot;leatherwork&quot;&gt;&gt;&lt;&lt;option &quot;yoga&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; hobby out into the living room; it didn&#39;t cramp the space that much, and you had a good opportunity to make the room more suitable for your new Fluffy.
 
@@ -3662,9 +3670,9 @@ You dumped all the things you got from Fluffmart into the room.
 
 &lt;&lt;if $playerSketties is &quot;true&quot;&gt;&gt;Your supply of canned spaghetti also went in one of your kitchen cupboards, which was starting to become &quot;the one where all your Fluffy junk is going.&quot; You wondered if Fluffies could be strong enough to pull knobs. &lt;&lt;set _randomThought to $knobThought.random()&gt;&gt;&lt;&lt;hovertip &quot;Things underlined in @@color:orange;orange@@ will be randomly generated, and remembered to influence events.&quot;&gt;&gt;&lt;&lt;print _randomThought&gt;&gt;&lt;&lt;/hovertip&gt;&gt;.&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;nobr&gt;&gt;&lt;&lt;if $knobThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $knobMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $knobThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $knobMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Shelter" tags="" position="225,725" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="53" name="Smarty Start" tags="" position="350,725" size="100,100">This is the Smarty Start page. 
+&lt;&lt;nobr&gt;&gt;&lt;&lt;if $knobThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $knobMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $knobThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $knobMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="Shelter" tags="" position="475,725" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="55" name="Smarty Start" tags="" position="600,725" size="100,100">This is the Smarty Start page. 
 
-You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot. Your mane is $playerMane, and your skin is $playerColor.</tw-passagedata><tw-passagedata pid="54" name="PassageFooter" tags="" position="475,725" size="100,100">&lt;&lt;script&gt;&gt;
+You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot. Your mane is $playerMane, and your skin is $playerColor.</tw-passagedata><tw-passagedata pid="56" name="PassageFooter" tags="" position="725,725" size="100,100">&lt;&lt;script&gt;&gt;
 // Wait for the passage to finish rendering
 $(document).on(&quot;:passageend&quot;, function() {
   // Add a click event listener to the bug icon
@@ -3674,14 +3682,14 @@ $(document).on(&quot;:passageend&quot;, function() {
     footergray.classList.toggle(&quot;hidden&quot;);
   });
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="StoryCaption" tags="" position="600,725" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="StoryCaption" tags="" position="850,725" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
 &#39;&#39;Money&#39;&#39;: $&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;
 &lt;h3&gt;&lt;u&gt;Player Inventory&lt;/u&gt;&lt;/h3&gt;&lt;/div&gt;&lt;&lt;inv $bag inspect&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;div id=&quot;bug-section&quot;&gt;
   &lt;div id=&quot;bug-button&quot;&gt;&lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Found a bug? Submit it to &lt;a href=&quot;https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
-  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="56" name="StoryMenu" tags="" position="725,725" size="100,100"></tw-passagedata><tw-passagedata pid="57" name="StoryInit" tags="" position="850,725" size="100,100">/* Player Variables */
+  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="58" name="StoryMenu" tags="" position="975,725" size="100,100"></tw-passagedata><tw-passagedata pid="59" name="StoryInit" tags="" position="1100,725" size="100,100">/* Player Variables */
 
 &lt;&lt;set $firstLoad to &quot;true&quot;&gt;&gt;
 &lt;&lt;set $playerBudget to 500&gt;&gt;
@@ -3690,6 +3698,7 @@ $(document).on(&quot;:passageend&quot;, function() {
 &lt;&lt;set $firstTravel to &quot;true&quot;&gt;&gt;
 &lt;&lt;set $dayNumber to &quot;1&quot;&gt;&gt;
 &lt;&lt;set $playerStatus to &quot;firstvisit&quot;&gt;&gt;
+&lt;&lt;set $fluffyOrigin to &quot;unset&quot;&gt;&gt;
 
 /* Inventory */
 
@@ -4319,8 +4328,8 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 &lt;&lt;item &quot;yourFluffy&quot; &quot;Your new Fluffy&quot;&gt;&gt;
 &lt;&lt;description&gt;&gt;\
 This is the Fluffy you chose to buy! You&#39;re keeping it in your inventory for now - the store doesn&#39;t want you to carry it around the store, so it&#39;s going to chill here for now.
-&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="inventory.strings" tags="" position="975,725" size="100,100">empty: Your inventory is empty!
-drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tags="nobr" position="1100,725" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="inventory.strings" tags="" position="1225,725" size="100,100">empty: Your inventory is empty!
+drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tags="nobr" position="100,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4401,7 +4410,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
 		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="60" name="Female Earthie" tags="nobr" position="1225,725" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="62" name="Female Earthie" tags="nobr" position="225,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4467,7 +4476,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
 		  &lt;/g&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="61" name="Female Pegasus" tags="nobr" position="100,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="63" name="Female Pegasus" tags="nobr" position="350,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4539,7 +4548,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
 		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="62" name="Female Unicorn" tags="nobr" position="225,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="64" name="Female Unicorn" tags="nobr" position="475,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4614,7 +4623,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
 			&lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="63" name="Male Alicorn" tags="nobr" position="350,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="65" name="Male Alicorn" tags="nobr" position="600,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4685,7 +4694,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
 		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="64" name="Male Earthie" tags="nobr" position="475,850" size="100,100">&lt;&lt;capture _SVGskin, _SVGmane&gt;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="66" name="Male Earthie" tags="nobr" position="725,850" size="100,100">&lt;&lt;capture _SVGskin, _SVGmane&gt;&gt;
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
@@ -4743,7 +4752,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
 		&lt;/g&gt;
 	&lt;/g&gt;
 &lt;/svg&gt;
-&lt;&lt;/capture&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="Male Pegasus" tags="nobr" position="600,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;&lt;/capture&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="Male Pegasus" tags="nobr" position="850,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4805,7 +4814,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
 		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="66" name="Male Unicorn" tags="nobr" position="725,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="68" name="Male Unicorn" tags="nobr" position="975,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4870,7 +4879,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
 			&lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="67" name="FluffyCSS" tags="widget nobr" position="850,850" size="100,100">&lt;&lt;widget &quot;FluffyCSS&quot;&gt;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="69" name="FluffyCSS" tags="widget nobr" position="1100,850" size="100,100">&lt;&lt;widget &quot;FluffyCSS&quot;&gt;&gt;
   &lt;&lt;set _scale to _args[2] || 1&gt;&gt;
   &lt;&lt;set _baseWidth to 185&gt;&gt; /* your art&#39;s base width */
   &lt;&lt;set _baseHeight to 92&gt;&gt; /* your art&#39;s base height */
@@ -4932,7 +4941,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
     &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="Fluffy SVG" tags="widget nobr" position="975,850" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Fluffy SVG" tags="widget nobr" position="1225,850" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
   &lt;&lt;set _SVGskin to _args[0] || &quot;red&quot;&gt;&gt;
   &lt;&lt;set _SVGmane to _args[1] || &quot;blue&quot;&gt;&gt;
   &lt;&lt;set _SVGname to _args[2] || &quot;Unnamed&quot;&gt;&gt;
@@ -5553,7 +5562,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
   // Trigger blinking check on the newly created Fluffy
   setTimeout(window.makeFluffyBlink, 100);
 &lt;&lt;/script&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Fluffy in Tank" tags="widget" position="1100,850" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Fluffy in Tank" tags="widget" position="100,975" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;
   &lt;&lt;set _fluffyTankSkin to _args[0]&gt;&gt;
   &lt;&lt;set _fluffyTankMane to _args[1]&gt;&gt;
   &lt;&lt;set _fluffyTankName to _args[2]&gt;&gt;
@@ -5602,9 +5611,9 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
             &lt;/div&gt;
           &lt;/div&gt;
           &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Print Player Budget" tags="widget nobr" position="1225,850" size="100,100">&lt;&lt;widget &quot;budget&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="Print Player Budget" tags="widget nobr" position="225,975" size="100,100">&lt;&lt;widget &quot;budget&quot;&gt;&gt;
     &#39;&#39;$&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;&#39;&#39;
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="ButtonReplace" tags="widget" position="100,975" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="ButtonReplace" tags="widget" position="350,975" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
 
 &lt;&lt;widget &quot;buttonreplace&quot; container&gt;&gt;&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set _buttonText to $args[0]&gt;&gt;
@@ -5619,7 +5628,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
         &#39;&lt;&lt;/replace&gt;&gt;&#39; +
     &#39;&lt;&lt;/button&gt;&gt;&#39; +
 &#39;&lt;/span&gt;&#39;&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="Clouds" tags="widget nobr" position="225,975" size="100,100">&lt;&lt;widget &quot;clouds&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Clouds" tags="widget nobr" position="475,975" size="100,100">&lt;&lt;widget &quot;clouds&quot;&gt;&gt;
     &lt;div class=&quot;sunholder&quot;&gt;
         &lt;div class=&quot;sun&quot;&gt;
             &lt;div class=&quot;raybase ray1&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
@@ -5652,7 +5661,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
         &lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="ColorName" tags="widget nobr" position="350,975" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Fluffy Dialog" tags="widget nobr" position="475,975" size="100,100">&lt;&lt;widget &quot;fluffyDialog&quot; container&gt;&gt;&lt;&lt;set _borderColor = $fluffySkin.colorname&gt;&gt;&lt;p sc-eval:style=&quot;&#39;margin: 1em 0px 1em 0.25em; padding-left: 1em; border-left: 5px solid &#39; + _borderColor + &#39;;&#39;&quot;&gt;_contents&lt;/p&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Icon Widget" tags="widget nobr" position="600,975" size="100,100">&lt;&lt;widget &quot;scIcon&quot; container&gt;&gt;&lt;span @class=&quot;&#39;sc-icon &#39; + _contents&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Check Widget" tags="widget" position="725,975" size="100,100">&lt;&lt;widget &quot;iconCheck&quot;&gt;&gt;&lt;span class=&quot;sc-icon sc-circle-check&quot; style=&quot;color: lime;&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="X Widget" tags="widget" position="850,975" size="100,100">&lt;&lt;widget &quot;iconX&quot;&gt;&gt;&lt;span class=&quot;sc-icon sc-circle-times&quot; style=&quot;color: red;&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="New Fluffy" tags="widget nobr" position="975,975" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="ColorName" tags="widget nobr" position="600,975" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Fluffy Dialog" tags="widget nobr" position="725,975" size="100,100">&lt;&lt;widget &quot;fluffyDialog&quot; container&gt;&gt;&lt;&lt;set _borderColor = $fluffySkin.colorname&gt;&gt;&lt;p sc-eval:style=&quot;&#39;margin: 1em 0px 1em 0.25em; padding-left: 1em; border-left: 5px solid &#39; + _borderColor + &#39;;&#39;&quot;&gt;_contents&lt;/p&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="Icon Widget" tags="widget nobr" position="850,975" size="100,100">&lt;&lt;widget &quot;scIcon&quot; container&gt;&gt;&lt;span @class=&quot;&#39;sc-icon &#39; + _contents&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="Check Widget" tags="widget" position="975,975" size="100,100">&lt;&lt;widget &quot;iconCheck&quot;&gt;&gt;&lt;span class=&quot;sc-icon sc-circle-check&quot; style=&quot;color: lime;&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="X Widget" tags="widget" position="1100,975" size="100,100">&lt;&lt;widget &quot;iconX&quot;&gt;&gt;&lt;span class=&quot;sc-icon sc-circle-times&quot; style=&quot;color: red;&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="New Fluffy" tags="widget nobr" position="1225,975" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
   &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;
@@ -5714,9 +5723,9 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
   }&gt;&gt;
 
   &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt; &lt;!-- Add the new Fluffy to the $fluffies array --&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="RefreshSidebar" tags="widget nobr" position="1100,975" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="RefreshSidebar" tags="widget nobr" position="100,1100" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
     &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="Roll" tags="widget" position="1225,975" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Roll" tags="widget" position="225,1100" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
   &lt;&lt;capture _stat&gt;&gt;
   &lt;&lt;if _stat === &quot;ob&quot;&gt;&gt;
     &lt;&lt;set _bonus = Math.floor(($fluffyOb - $fluffyIm) /2 )&gt;&gt; &lt;!-- Obedience - Impulsiveness --&gt;
@@ -5759,7 +5768,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="59" name="Female Alicorn" tag
   &lt;&lt;/if&gt;&gt;
 
   &lt;&lt;run State.setVar(_tempVarName, _result)&gt;&gt; &lt;!-- Store the result in the specified temporary variable --&gt;
-&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Test Widget SVG" tags="widget" position="100,1100" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
+&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="Test Widget SVG" tags="widget" position="350,1100" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
 &lt;&lt;set _fill to &quot;blue&quot;&gt;&gt;
 &lt;&lt;= &#39;&lt;svg viewBox=&quot;0 0 10 10&quot; height=&quot;120px&quot; width=&quot;120px&quot; fill=&quot;&#39; + _fill + &#39;&quot;&gt;&lt;circle cx=&quot;5&quot; cy=&quot;5&quot; r=&quot;4&quot; /&gt;&lt;/svg&gt;&#39;&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>

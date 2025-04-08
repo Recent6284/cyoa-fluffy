@@ -9,6 +9,7 @@
 <<set $firstTravel to "true">>
 <<set $dayNumber to "1">>
 <<set $playerStatus to "firstvisit">>
+<<set $fluffyOrigin to "unset">>
 
 /* Inventory */
 

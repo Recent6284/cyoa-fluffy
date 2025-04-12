@@ -89,13 +89,21 @@ Did you want to proceed to the checkout? Or did you want to check out any toys, 
 
 
 :: Fluffmart Shop
+<<set _emptyMessage to Inventory.emptyMessage>>
+<<set Inventory.emptyMessage to "Your cart is empty!">>
+<<newinv _fmCart>>
 
+<<run setup.validateCart(_fmCart)>>
 FluffMart partners with both Hasbio-branded products, and other (approved) third-parties to provide everything a Fluffy owner might need to furnish a safe place for their new friend. From treats, to toys, to tools, it's all here (or at least, Fluffmart thinks so).
 <<newinv _fmCart>>
 
 <<hovertip "(There's a cart after the table, too!)">>''@@font-size:20px;Your Cart@@''<</hovertip>>
 
-<div id="simple-inventory-list"><<do>><<inv _fmCart inspect drop>><</do>></div>
+<div id="simple-inventory-list">
+    <<inv _fmCart inspect drop>>
+</div>
+
+
 <table class="shop">
     <thead>
         <tr>
@@ -188,7 +196,13 @@ FluffMart partners with both Hasbio-branded products, and other (approved) third
             <td colspan="2"><strong>Food</strong></td>
         </tr>
         <tr>
-            <td>Candy Bar<br><<link "Add to cart">><<pickup _fmCart "candybar" 1>><<redo>><</link>></td>
+            <td>
+                Candy Bar<br>
+                <<link "Add to cart">>
+                    <<pickup _fmCart "candybar" 1>>
+                    <<redo>>
+                <</link>>
+            </td>
             <td><<print Item.get("candybar").description>></td>
         </tr>
         <tr>
@@ -201,6 +215,15 @@ FluffMart partners with both Hasbio-branded products, and other (approved) third
         </tr>
     </tbody>
 </table>
+<<link "Go to checkout">>
+    <<run setup.validateCart(_fmCart)>>
+    <<set _cartTotal to setup.calculateCartTotal(_fmCart)>>
+    <<if _cartTotal > State.variables.money>>
+        /* Error message display */
+    <<else>>
+        <<goto "Cashier">>
+    <</if>>
+<</link>>
 
 <style>
     .shop {
@@ -231,6 +254,8 @@ FluffMart partners with both Hasbio-branded products, and other (approved) third
         text-decoration: underline;
     }
 </style>
+
+:: Cashier
 
 :: Fluffmart - No More Fluffies
 

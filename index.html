@@ -2051,13 +2051,54 @@ ul.simple-inventory-list {
         }
     });
 }());
-/* twine-user-script #3: "checkboxevent.js" */
+/* twine-user-script #3: "cart-calculate.js" */
+/* shopSystem.js - Fixed for Simple Inventory */
+(function() {
+    // Cart calculation function (fixed)
+    setup.calculateCartTotal = function(cart) {
+        let total = 0;
+        const items = Object.keys(cart.table); // Changed to use .table
+        for (let i = 0; i < items.length; i++) {
+            const id = items[i];
+            const item = Item.get(id);
+            if (!(item && item.permanent && State.variables.bag.has(id))) {
+                total += cart.count(id) * (setup.fmPrices.get(id) || 0);
+            }
+        }
+        return total;
+    };
+
+    // Cart validation function (fixed)
+    setup.validateCart = function(cart) {
+        let changed = false;
+        const items = Object.keys(cart.table); // Changed to use .table
+        for (let i = 0; i < items.length; i++) {
+            const id = items[i];
+            const item = Item.get(id);
+            if (item && item.permanent && State.variables.bag.has(id)) {
+                cart.drop(id);
+                changed = true;
+            }
+        }
+        return changed;
+    };
+
+    // Quantity helper (fixed)
+    setup.addToCart = function(cart, id, quantity) {
+        if (!Item.get(id).permanent || !State.variables.bag.has(id)) {
+            cart.pickup(id, quantity);
+            return true;
+        }
+        return false;
+    };
+})();
+/* twine-user-script #4: "checkboxevent.js" */
 $(document).on(':passagerender', function (ev) {
     if (passage() == "Character Creation") {
             $(ev.content).find("#checkbox-playersmarty").on('propertychange change', function() { Engine.play(passage()); } );
     }
 });
-/* twine-user-script #4: "debugsettings.js" */
+/* twine-user-script #5: "debugsettings.js" */
 (function () {
         Setting.addHeader("Debug Settings");
 
@@ -2074,7 +2115,7 @@ $(document).on(':passagerender', function (ev) {
                 }
         });
 })();
-/* twine-user-script #5: "dynamicFluffyProperty.js" */
+/* twine-user-script #6: "dynamicFluffyProperty.js" */
 Macro.add("dynamicFluffyProperty", {
     handler: function() {
         var index = this.args[0]; // Index of the Fluffy
@@ -2095,7 +2136,7 @@ Macro.add("dynamicFluffyProperty", {
         $(this.output).append(fluffy[property]);
     }
 });
-/* twine-user-script #6: "dynamicPronouns.js" */
+/* twine-user-script #7: "dynamicPronouns.js" */
 Macro.add("dynamicPronoun", {
     handler: function() {
         var index = this.args[0]; // Index of the Fluffy
@@ -2132,7 +2173,7 @@ Macro.add("dynamicPronoun", {
         $(this.output).append(text);
     }
 });
-/* twine-user-script #7: "fluffspeak.js" */
+/* twine-user-script #8: "fluffspeak.js" */
 // Function to apply Fluffspeak rules to a given text
 function applyFluffspeak(text) {
     text = text.replace(/r/gi, 'w'); // Replace r and R with w
@@ -2182,7 +2223,7 @@ function processFluffspeak() {
 $(document).on(':passagedisplay', function () {
     processFluffspeak();
 });
-/* twine-user-script #8: "fluffySVGblink.js" */
+/* twine-user-script #9: "fluffySVGblink.js" */
 // Add this to your JavaScript section or a script passage
 (function() {
     // Function to make Fluffies blink
@@ -2253,7 +2294,7 @@ $(document).on(':passagedisplay', function () {
       setTimeout(window.makeFluffyBlink, 100);
     });
   })();
-/* twine-user-script #9: "hovertip.js" */
+/* twine-user-script #10: "hovertip.js" */
 /* hovertip v2.0 - Start */
 window.UpdateHoverTipTxt = function (container) {
 	if (Engine.isIdle()) {
@@ -2381,7 +2422,7 @@ Macro.add("hovertip", {
 	}
 });
 /* hovertip v2.0 - End */
-/* twine-user-script #10: "lockfluffy.js" */
+/* twine-user-script #11: "lockfluffy.js" */
 Macro.add("lockFluffy", {
     handler: function() {
         var index = State.variables.currentFluffyIndex; // Use the current index
@@ -2406,7 +2447,7 @@ Macro.add("lockFluffy", {
         State.variables.fluffy = chosenFluffy;
     }
 });
-/* twine-user-script #11: "roller.js" */
+/* twine-user-script #12: "roller.js" */
 (function () {
     // Define the widget to be used with <<do>> and <<redo>>
     Macro.add('animatedroll', {
@@ -2782,12 +2823,12 @@ Macro.add("lockFluffy", {
         };
     });
 })();
-/* twine-user-script #12: "simple-inventory.js" */
+/* twine-user-script #13: "simple-inventory.js" */
 // Simple Inventory, for SugarCube 2, by Chapel
 // v3.0.1, 2024-07-22, 8c9749dbafa5f12948d743a8dedd4e1c74bb9e26
 ;"use strict";function _typeof(t){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},_typeof(t)}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function _defineProperties(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,_toPropertyKey(i.key),i)}}function _createClass(t,e,n){return e&&_defineProperties(t.prototype,e),n&&_defineProperties(t,n),Object.defineProperty(t,"prototype",{writable:!1}),t}function _toPropertyKey(t){var e=_toPrimitive(t,"string");return"symbol"==_typeof(e)?e:String(e)}function _toPrimitive(t,e){if("object"!=_typeof(t)||!t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,e||"default");if("object"!=_typeof(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}!function(){var t={description:"",handler:null,displayName:"",consumable:!0,unique:!1,permanent:!1},e=new Map,n=function(){function n(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:clone(t),r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];if(_classCallCheck(this,n),!e||"string"!=typeof e)throw new Error("invalid item ID");if("object"!==_typeof(i))throw new Error("invalid item definition");Object.assign(this,Object.assign({},t,i)),this.id=e,this._tags=r instanceof Array?r:"string"==typeof r?[r]:[]}return _createClass(n,[{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(t){return this._tags.includes(t)}},{key:"hasAllTags",value:function(){return this._tags.includesAll([].slice.call(arguments).flat(1/0))}},{key:"hasAnyTags",value:function(){return this._tags.includesAny([].slice.call(arguments).flat(1/0))}},{key:"name",get:function(){return this.displayName||this.id},set:function(t){this.displayName=t}},{key:"use",value:function(){return"string"==typeof this.handler?$.wiki(this.handler):"function"==typeof this.handler&&this.handler(this),this}},{key:"inspect",value:function(){return Dialog.setup(this.name,"simple-inventory item-description"),Dialog.wiki(this.description),Dialog.open(),this}}],[{key:"is",value:function(t){return t instanceof n}},{key:"add",value:function(t,i,r){var a=new n(t,i,r);return e.set(t,a),a}},{key:"get",value:function(t){return e.get(t)}},{key:"has",value:function(t){return e.has(t)}},{key:"list",get:function(){return e}}]),n}();setup.Item=n,window.Item=window.Item||n}(),function(){var t=setup.Item,e=!1,n="&hellip;",i={inspect:"Inspect",use:"Use",drop:"Drop",stack:"stack",take:"Take",give:"Give",stackPre:"&nbsp;&times;&nbsp;",stackPost:"&nbsp;"},r={};function a(e){return t.has(e)&&t.get(e).unique}var s=function(){function s(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[];_classCallCheck(this,s),this.data=clone(t),this._tags=e instanceof Array?e:"string"==typeof e?[e]:[]}return _createClass(s,[{key:"emit",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return s.emit(t,this,e),this}},{key:"array",get:function(){var t=this,e=[];return Object.keys(this.data).forEach((function(n){if(e.push(n),t.data[n]>1)for(var i=1;i<t.data[n];i++)e.push(n)})),e}},{key:"list",get:function(){return Object.keys(this.data)}},{key:"length",get:function(){return this.array.length}},{key:"uniqueLength",get:function(){return this.list.length}},{key:"table",get:function(){return this.data}},{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(t){return this._tags.includes(t)}},{key:"hasAllTags",value:function(){return this._tags.includesAll([].slice.call(arguments).flat(1/0))}},{key:"hasAnyTags",value:function(){return this._tags.includesAny([].slice.call(arguments).flat(1/0))}},{key:"count",value:function(t){return t?this.data[t]||0:this.length}},{key:"has",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1;return this.data[t]>=e}},{key:"hasAll",value:function(){var t=this;return[].slice.call(arguments).flat(1/0).every((function(e){return t.has(e)}))}},{key:"hasAny",value:function(){var t=this;return[].slice.call(arguments).flat(1/0).some((function(e){return t.has(e)}))}},{key:"compare",value:function(t){var e=this,n=s.itemset(t);return Object.keys(n).every((function(t){return e.has(t,n[t])}))}},{key:"merge",value:function(t){var e=this,n=s.itemset(t);return Object.keys(n).forEach((function(t){s.change(e,t,n[t])})),n}},{key:"unmerge",value:function(t){var e=this,n={},i=s.itemset(t);return Object.keys(i).forEach((function(t){e.has(t,i[t])?n[t]=i[t]:e.has(t)&&(n[t]=e.count(t)),s.change(e,t,i[t],!0)})),n}},{key:"pickup",value:function(){var t=this.merge(s.parseArgList.apply(null,arguments));return this.emit("update",{delta:t}),this}},{key:"drop",value:function(){var t=this.unmerge(s.parseArgList.apply(null,arguments));return this.emit("update",{delta:t}),this}},{key:"empty",value:function(){var t=clone(this.data);return this.data={},this.emit("update",{delta:t}),this}},{key:"transfer",value:function(t){var e=s.parseArgList.apply(null,[].slice.call(arguments).slice(1));if(!s.is(t))throw new TypeError("target inventory is not an inventory instance");var n=this.unmerge(e);return t.merge(n),this.emit("update",{target:t,delta:n}),this}},{key:"isEmpty",value:function(){return 0===this.length}},{key:"iterate",value:function(t){var e=this;return"function"!=typeof t||this.list.forEach((function(n){t(n,e.data[n])})),this}},{key:"use",value:function(e){if(t.has(e)){var n=t.get(e);if(n.use(),n.consumable){s.change(this,e,1,!0);var i={};i[e]=1,this.emit("update",{delta:i})}return this.emit("use",{item:n}),this}}},{key:"clone",value:function(){return new s(this.data||{},this._tags||[])}},{key:"toJSON",value:function(){return JSON.reviveWrapper("new setup.Inventory("+JSON.stringify(this.data)+", "+JSON.stringify(this._tags)+")")}}],[{key:"confirm",get:function(){return e},set:function(t){e="string"==typeof t&&"all"===t.trim().toLowerCase()?"all":"string"==typeof t&&"stack"===t.trim().toLowerCase()?"stack":!!t}},{key:"emptyMessage",get:function(){return n},set:function(t){"string"==typeof t&&(n=t)}},{key:"strings",get:function(){return Object.assign(clone(i),r)},set:function(t){"object"===_typeof(t)&&(r=Object.assign(r,clone(t)))}},{key:"change",value:function(e,n){var i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];if(0!==i){if(e instanceof s&&(e=e.data),"object"!==_typeof(e)){if(e)throw new TypeError("cannot access inventory data");e={}}if(!(o=n)||"string"!=typeof o||!o.trim())throw new TypeError("invalid item name/id");var o;if("number"==typeof i&&!Number.isNaN(i)&&Number.isInteger(i)||(i=1),r&&(i*=-1),i>0){if(Object.keys(e).includes(n)&&a(n))return;i>1&&a(n)&&(i=1),Object.keys(e).includes(n)||(e[n]=0),e[n]+=i}else{if(function(e){return t.has(e)&&t.get(e).permanent}(n))return;Object.keys(e).includes(n)&&"number"==typeof e[n]&&(e[n]+=i),e[n]<=0&&delete e[n]}return e}}},{key:"itemset",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(s.is(t)&&(t=t.data),"object"!==_typeof(t))return{};var e={};return Object.keys(t).forEach((function(n){"number"==typeof t[n]&&Number.isInteger(t[n])&&0!==t[n]&&(e[n]=t[n])})),e}},{key:"parseArgList",value:function(){var t=[].slice.call(arguments).flat(1/0);if(t.length%2!=0)throw new Error("item sets should be pairs of item IDs and numbers");var e={};return t.forEach((function(n,i){i%2==0&&(e[n]=t[i+1])})),e}},{key:"is",value:function(t){return t instanceof s}},{key:"emit",value:function(t,e){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};$(document).trigger(Object.assign({type:":inventory-"+t+".simple-inventory",inventory:e,target:null,delta:{},item:null},n))}},{key:"create",value:function(t,e){return new s(t,e)}}]),s}();setup.Inventory=s,window.Inventory=window.Inventory||s}(),function(){var t=setup.Item,e=setup.Inventory;function n(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,i=arguments.length>2&&void 0!==arguments[2]&&arguments[2],r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"Alert",a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:"Are you sure?";if(!t||"function"!=typeof t)throw new Error("Invalid confirmation callback!");if(e.confirm)if("all"!==e.confirm||"all"===i)if("stack"!==e.confirm||i){var s={display:"inline-block",float:"right"},o=$(document.createElement("div")),u=$(document.createElement("p")).append(a),l=$(document.createElement("div")).addClass("confirmation-buttons"),c=$(document.createElement("button")).append("Okay").addClass("confirm-yes").css(Object.assign(s,{"margin-right":"0.5rem"})),d=$(document.createElement("button")).append("Cancel").addClass("confirm-no").css(s);t&&"function"==typeof t&&c.ariaClick(t),n&&"function"==typeof n&&d.ariaClick(n),l.append(d,c),o.append(u,l),Dialog.setup(r,"simple-inventory confirmation"),Dialog.append(o),Dialog.open()}else t();else t();else t()}function i(t){var e=$(document.createElement("span")).addClass("spacer");return t&&e.wiki(""+t),e}function r(t,i){var r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:null;return"give"===String(i).toLowerCase().trim()?i=e.strings.give:"take"===String(i).toLowerCase().trim()?i=e.strings.take:i&&"drop"!==String(i).toLowerCase().trim()||(i=e.strings.drop),$(document.createElement(r?"button":"a")).addClass("all-link drop-link").wiki(i+" all").ariaClick((function(){t.isEmpty()||n((function(){a&&e.is(a)?(a.merge(t),t.empty()):t.empty(),Dialog.close()}),(function(){Dialog.close()}),!0)}))}function a(a){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{description:!0,use:!0,transfer:null,drop:!0,all:!0,stack:!0,dropActionText:"",classes:""},u=$(document.createElement("ul")).addClass("simple-inventory-list");if(a.length){if(s=a.list.map((function(r){var s=[],u=r;t.has(r)&&(u=t.get(r).name),o.description&&t.has(r)&&t.get(r).description?s.push(function(n,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return r=r||e.strings.inspect,$(document.createElement(a?"button":"a")).addClass("inspect-link").wiki(""+r).ariaClick((function(){t.get(i).inspect()}))}(a,r,u)):s.push($(document.createElement("span")).append(t.has(r)?t.get(r).name:r).addClass("item-name")),s.push(function(t,n,i,r){var a=$(document.createElement("span")),s=t.count(n);return i=i||e.strings.stackPre,r=r||e.strings.stackPost,1==s?a.addClass("item-count single"):a.addClass("item-count multi"),a.append(""+i+(s||0)+r)}(a,r)),o.use&&t.has(r)&&t.get(r).handler?s.push(function(t,n,i){var r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];return i=i||e.strings.use,$(document.createElement(r?"button":"a")).addClass("use-link").wiki(""+i).ariaClick((function(){t.use(n)}))}(a,r)):s.push(i()),(o.transfer&&e.is(o.transfer)||o.drop)&&!function(e){return t.has(e)&&t.get(e).permanent}(r)?(s.push(function(t,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3],s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return"give"===String(r).toLowerCase().trim()?r=e.strings.give:"take"===String(r).toLowerCase().trim()?r=e.strings.take:r&&"drop"!==String(r).toLowerCase().trim()||(r=e.strings.drop),$(document.createElement(a?"button":"a")).addClass("drop-link").wiki(""+r).ariaClick((function(){n((function(){s&&e.is(s)?t.transfer(s,i,1):t.drop(i,1),Dialog.close()}),(function(){Dialog.close()}))}))}(a,r,o.dropActionText,!1,o.transfer||null)),a.count(r)>1&&o.stack?s.push(function(t,i,r){var a=arguments.length>3&&void 0!==arguments[3]&&arguments[3],s=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return"give"===String(r).toLowerCase().trim()?r=e.strings.give:"take"===String(r).toLowerCase().trim()?r=e.strings.take:r&&"drop"!==String(r).toLowerCase().trim()||(r=e.strings.drop),r=r+"&nbsp;"+e.strings.stack,$(document.createElement(a?"button":"a")).addClass("stack-link drop-link").wiki(""+r).ariaClick((function(){n((function(){s&&e.is(s)?t.transfer(s,i,t.count(i)):t.drop(i,t.count(i)),Dialog.close()}),(function(){Dialog.close()}))}))}(a,r,o.dropActionText,!1,o.transfer||null)):s.push(i())):s.push(i());var l=r.normalize().toLowerCase().replace(/\s+/g,"-");return $(document.createElement("li")).append(s).addClass("simple-inventory-listing").attr({"data-item-id":l,"data-keyword":u})})),o.all){var l=$(document.createElement("li")).addClass("all-listing simple-inventory-listing").append([i("&mdash;"),i(),i(),r(a,o.dropActionText,!1,o.transfer||null)]);s.push(l)}}else s=$(document.createElement("li")).addClass("simple-inventory-listing").append($(document.createElement("span")).wiki(e.emptyMessage));return u.append(s),u}e.prototype.interface=function(){var t,e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,i=this,r=$(document.createElement("div")).addClass("simple-inventory-wrapper");return e.filter&&r.append(function(){var t=$(document.createElement("div")).addClass("simple-inventory-filter"),e=$(document.createElement("input")).attr({type:"text",placeholder:"Filter..."}).on("input",(function(){var n=e.val().trim().toLowerCase(),i=t.parent().find("ul.simple-inventory-list li.simple-inventory-listing:not(.all-listing)");n?i.each((function(t,e){var i=$(e);i&&i.length&&(i.attr("data-keyword").substring(0,n.length).trim().toLowerCase()!==n?i.hide():i.show())})):i.show()}));return t.append(e),t}()),r.append(a(this,e)),$(document).on(":inventory-update.simple-inventory.gui-built-in",(function(){r.length?r.empty().append(a(i,e)):$(document).off(":inventory-update.simple-inventory.gui-built-in")})),n&&n instanceof $?t=n:n&&(t=$(n)),t&&r.appendTo(t),r}}(),function(){setup.Inventory,setup.Item;var t=".simple-inventory-userland",e=":inventory-update.simple-inventory"+t,n=":inventory-use.simple-inventory"+t;function i(t){return t&&"function"==typeof t}Object.assign(setup.Inventory,{events:{update:{on:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).on(e+n,t)},one:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).one(e+n,t)},off:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";$(document).off(e+t)}},use:{on:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).on(n+e,t)},one:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"";i(t)&&$(document).one(n+e,t)},off:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";$(document).off(n+t)}}}})}(),function(){var t=":";function e(e){var n=function(t){return t.replace(/\r+/g,"\n").replace(/\n+/,"\n").replace(/ +/g," ").trim().split(/\n/g)}(e),i={};return n.forEach((function(e){if(e&&e.trim()&&e.includes(t)){var n=e.trim().split(t);i[n[0].trim()]=n[1].trim()}})),i}var n=function(t){try{return Story.has(t)?e(Story.get(t).text):{}}catch(t){return console.error(t.message,t),{}}}("inventory.strings");n.empty&&"string"==typeof n.empty&&n.empty.trim()&&(setup.Inventory.emptyMessage=n.empty,delete n.empty),setup.Inventory.strings=n||{}}(),function(){var t=setup.Item,e=setup.Inventory;function n(t){return t&&"string"==typeof t&&t.length>=2&&("$"===t[0]||"_"===t[0])}function i(t){if(n(t)&&(t=State.getVar(t)),e.is(t))return t}Macro.add(["item","consumable"],{tags:["description","tags","unique","permanent"],handler:function(){var e,n,i,r,a=null,s=!1,o=!1,u=!1;if(State.length>0)return this.error("items must be defined in `StoryInit` or story JavaScript!");if(!this.args[0]||"string"!=typeof this.args[0]||!this.args[0].trim())return this.error("invalid item ID");if(e=this.args[0].trim(),"consumable"===this.name&&(a=this.payload[0].contents||null,s=!0),this.args[1]&&(n=this.args[1]),this.payload.length>1){var l=this.payload.find((function(t){return"description"===t.name})),c=this.payload.find((function(t){return"tags"===t.name})),d=this.payload.find((function(t){return"unique"===t.name})),f=this.payload.find((function(t){return"permanent"===t.name}));l&&(i=l.contents.trim()),c&&(r=c.args.flat(1/0)),d&&(o=!0),f&&(u=!0)}t.add(e,{displayName:n||"",description:i||"",handler:a,consumable:s,unique:o,permanent:u},r)}}),Macro.add("newinv",{handler:function(){var t=this.args.raw.trim().split(" ").first().replace(/["']/g,"").trim();if(!n(t))return this.error("argument must be a story or temporary variable!");State.setVar(t,new e({},this.args.flat(1/0).slice(1)))}}),Macro.add(["pickup","drop"],{handler:function(){var t=i(this.args[0]);return t?this.args.length<3?this.error("no items to pick up were provided"):void t[this.name](this.args.slice(1)):this.error("first argument must be a valid inventory!")}}),Macro.add("dropall",{handler:function(){var t=i(this.args[0]);if(!t)return this.error("first argument must be a valid inventory!");t.empty()}}),Macro.add(["transfer","merge","unmerge"],{handler:function(){var t=i(this.args[0]);if(!t)return this.error("first argument must be a valid inventory!");var e=i(this.args[1]);if(!e)return this.error("second argument must be a valid inventory!");if("transfer"===this.name){if(this.args.length<4)return this.error("no items to transfer were provided");t.transfer(e,this.args.slice(2))}else t[this.name](e)}}),Macro.add(["inv","take","give"],{handler:function(){var t=null,n=i(this.args[0]);if(!n)return this.error("first argument must be a valid inventory!");this.args[1]&&i(this.args[1])&&(t=i(this.args[1]));var r={description:this.args.includesAny("inspect","description"),use:this.args.includes("use"),transfer:t,drop:this.args.includes("drop"),all:this.args.includes("all"),stack:this.args.includes("stack"),filter:this.args.includes("filter"),dropActionText:"inv"===this.name?"Drop":e.strings[this.name.trim().toLowerCase()],classes:"macro-".concat(this.name)};n.interface(r,$(this.output))}})}(),function(){var t=setup.Item,e=setup.Inventory;function n(t,e,n){if("object"!==_typeof(e))throw new TypeError("the extension should be a plain generic object holding the properties and methods you want to add");Object.keys(e).forEach((function(i){if(t[i]&&!n)throw new Error('Cannot override existing property "'+i+'"!');t[i]=e[i]}))}Object.assign(e,{extend:function(t){n(e,t,arguments.length>1&&void 0!==arguments[1]&&arguments[1])},extendPrototype:function(t){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];n(e.prototype,t,i)}}),Object.assign(t,{extend:function(e){n(t,e,arguments.length>1&&void 0!==arguments[1]&&arguments[1])},extendPrototype:function(e){var i=arguments.length>1&&void 0!==arguments[1]&&arguments[1];n(t.prototype,e,i)}})}();
 // End Simple Inventory
-/* twine-user-script #13: "tankwalk.js" */
+/* twine-user-script #14: "tankwalk.js" */
 // Tank animation for Fluffy creatures
 (function() {
   // Create CSS for animation classes if it doesn't exist
@@ -2936,7 +2977,7 @@ Macro.add("lockFluffy", {
     }, 100);
   });
 })();
-/* twine-user-script #14: "weightedRandom.js" */
+/* twine-user-script #15: "weightedRandom.js" */
 function weightedRandom(items) {
     const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
     const randomNum = Math.random() * totalWeight;
@@ -3182,15 +3223,9 @@ Many an alleyway and cardboard box has been used by Fluffies to live their entir
 
 You&#39;ve decided that a walk through downtown is worth the risk tonight, mostly because of the possibility of being able to.... commandeer... a good Fluffy from their otherwise difficult life on the streets. After some pondering, you&#39;ve decided that there&#39;s only so many places that they could congregate.
 
-&lt;&lt;button [[Visit the Restaurant|Alley]]&gt;&gt;&lt;&lt;set $cityScape to &quot;restaurant&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;&lt;button [[Visit the Industrial Park|Alley]]&gt;&gt;&lt;&lt;set $cityScape to &quot;industrial&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button [[Visit the Industrial Park|Alley]]&gt;&gt;&lt;&lt;set $cityScape to &quot;industrial&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Alley" tags="" position="975,225" size="100,100">This &lt;&lt;if $cityScape is &quot;restaurant&quot;&gt;&gt;restaurant&lt;&lt;elseif $cityScape is &quot;industrial&quot;&gt;&gt;Industrial Park&lt;&lt;/if&gt;&gt; had seen better days, and that&#39;s probably why you thought you could find some Fluffies — eventually, with enough apathy, the circumstances for favorable feral festivities flourished.
-
-&lt;&lt;if $cityScape is &quot;restaurant&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;include [[Restaurant]]&gt;&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;elseif $cityScape is &quot;industrial&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;include [[Industrial Park]]&gt;&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Restaurant" tags="" position="1100,225" size="100,100">You kicked yourself a little bit for being stereotypical — really? @@color:green;An@@ Italian @@color:red;restaurant@@? You didn&#39;t know if it would be this easy, or a Fluffy&#39;s sense of smell would be that good. Pasquale&#39;s was a local joint that people either loved to death or turned their noses up at; the 90-year-old proprietor had lost his wife years ago, but there were weathered newspaper articles clipped and carefully preserved on the wall. You could&#39;ve sworn you even saw a blessing from the Pope up there — an Italian wouldn&#39;t lie about that, would they?
-
-You weren&#39;t sure if old man Pasquale was even //aware// of what Fluffies were, but you were sure they&#39;d probably have something in the garbage that Fluffies would find delectable. From your research, almost all humans didn&#39;t think Fluffy &quot;skettis&quot; were appetizing, and it felt almost insulting to see a Fluffy-themed vending machine next door, hawking Fluffy merch. You saw a giant sticker, promising that &quot;Foals in a Can will return!&quot;; you&#39;d heard some scuttlebutt on Reddit about the temperature units failing on the cans, and man, that can&#39;t be pleasant to clean up. You took a look at the rest of the products anyways.
-
-&lt;&lt;button [[Visit the Vending Machine|City Vending Machine]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="City Vending Machine" tags="" position="1225,225" size="100,100">!!!The City Vending Machine
+&lt;&lt;button [[Visit the Vending Machine|City Vending Machine]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="City Vending Machine" tags="" position="975,225" size="100,100">!!!The City Vending Machine
 &lt;&lt;nobr&gt;&gt;
 &lt;table class=&quot;shop&quot;&gt;&lt;thead&gt;
   &lt;tr&gt;
@@ -3212,7 +3247,7 @@ You weren&#39;t sure if old man Pasquale was even //aware// of what Fluffies wer
 &lt;/table&gt;
 &lt;&lt;/nobr&gt;&gt;
 
-&lt;&lt;button [[Back to the Restaurant|Restaurant]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Industrial Park" tags="" position="100,350" size="100,100">This industrial park was a wasteland; it never quite recovered from a recession that started and finished long before you were born. Sprawling derelic warehouses and empty assembly lines were kind of a perfect Venn Diagram for Fluffies to find their homes: dangerous enough that the homeless wouldn&#39;t want to squat there, and enough nooks and crannies for a nest to be made out of fluff, discarded blankets, a forgotten work shirt, or exposed (perhaps @@color:lime;toxic@@!) @@color:pink;insulation@@.
+&lt;&lt;button [[Back to the Restaurant|Restaurant]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Industrial Park" tags="" position="1100,225" size="100,100">This industrial park was a wasteland; it never quite recovered from a recession that started and finished long before you were born. Sprawling derelic warehouses and empty assembly lines were kind of a perfect Venn Diagram for Fluffies to find their homes: dangerous enough that the homeless wouldn&#39;t want to squat there, and enough nooks and crannies for a nest to be made out of fluff, discarded blankets, a forgotten work shirt, or exposed (perhaps @@color:lime;toxic@@!) @@color:pink;insulation@@.
 
 Long-stripped for copper or anything of value, the industrial park was just a series of shadowy buildings that were waiting for redevelopment. As usual, permits, bureaucracy and greed kept them from getting anywhere: Parties A, B and C were all convinced that //their// lot was the more valuable parcel, and they weren&#39;t budging. This was their retirement packages, after all.
 
@@ -3226,7 +3261,7 @@ Your choices:
 * &lt;&lt;if ndef $securitySuccess&gt;&gt;&lt;&lt;link &quot;Watch, wait and listen.&quot; &quot;Security Guard&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;else&gt;&gt;You&#39;d already dealt with the security guard, and &lt;&lt;if $securitySuccess is &quot;true&quot;&gt;&gt;got some good information &lt;&lt;iconCheck&gt;&gt;&lt;&lt;else&gt;&gt;didn&#39;t find anything useful &lt;&lt;iconX&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if def $securitySuccess and $barConvo and $fenceVictory&gt;&gt;&lt;&lt;hovertip &quot;Congrats, you did some detective work&quot;&gt;&gt;After much skulking around&lt;&lt;/hovertip&gt;&gt;, you &lt;&lt;if $barConvo is &quot;false&quot; and $fenceVictory is &quot;false&quot; and $securitySuccess is &quot;false&quot;&gt;&gt;were totally fed up. This night had been a total wash, and you weren&#39;t sure whether you could stomach a second round tomorrow night. You&#39;d have to go look somewhere else for your Fluffy, because the city wasn&#39;t being your friend tonight.&lt;&lt;else&gt;&gt;had gotten a small idea of where you could look: the Old Bean Factory had a warehouse, and that warehouse looked like it had Fluffies coming in and out of it. You knew that there was somewhere that they were getting food, and being able to get a look at a Fluffy before potentially adopting it would be your best chance at getting one you wanted.&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;button &quot;Finally, check out the warehouse&quot; &quot;Warehouse&quot;&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;set $alleyRoll to 0&gt;&gt;&lt;&lt;if $fenceVictory is &quot;true&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll + 1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $barConvo is &quot;true&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll + 1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $securitySuccess is &quot;true&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll + 1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="The Fence" tags="" position="225,350" size="100,100">The fence of the old &lt;&lt;hovertip &quot;They didn&#39;t make beans - it was owned by the Bean Family&quot;&gt;&gt;Bean Factory&lt;&lt;/hovertip&gt;&gt; was rickety, but it did the job of making it look pretty darned hard to get over or under. There were numerous snagged pieces of wool on the barbed wire on the top, as looters or scavengers tried their luck at the picking at the carcass of the building.
+&lt;&lt;button &quot;Finally, check out the warehouse&quot; &quot;Warehouse&quot;&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;set $alleyRoll to 0&gt;&gt;&lt;&lt;if $fenceVictory is &quot;true&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll + 1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $barConvo is &quot;true&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll + 1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $securitySuccess is &quot;true&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll + 1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="The Fence" tags="" position="1225,225" size="100,100">The fence of &lt;&lt;hovertip &quot;They didn&#39;t make beans - it was owned by the Bean Family&quot;&gt;&gt;The Old Bean Factory&lt;&lt;/hovertip&gt;&gt; was rickety, but it did the job of making it look pretty darned hard to get over or under. There were numerous snagged pieces of wool on the barbed wire on the top, as looters or scavengers tried their luck at the picking at the carcass of the building.
 
 There was a darker part of the fence, though, where the security lamps seemed to stop; perhaps they&#39;d just burned out one day and the owners never really bothered to get them replaced. You decided to take your phone out and shine it over in that direction. &lt;&lt;set _fenceRoll to random(1,20)&gt;&gt;
 
@@ -3236,11 +3271,11 @@ Judging by the way that the small gap at the base of the fence was bent inward, 
 
 &lt;&lt;link &quot;Head back to the industrial park.&quot; &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;set $fenceVictory to &quot;true&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;.&lt;&lt;else&gt;&gt;Despite searching, &lt;&lt;hovertip &quot;Needed 6, rolled &lt;&lt;print _fenceRoll&gt;&gt;&quot;&gt;&gt;all you found&lt;&lt;/hovertip&gt;&gt; was the smell of piss, and a lot of disappointment. There would be other opportunities to find a Fluffy friend, but it wouldn&#39;t be here.
   
-&lt;&lt;link &quot;Head back to the industrial park.&quot; &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;set $fenceVictory to &quot;false&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Union Bar" tags="" position="350,350" size="100,100">You popped your head into the union bar and found it mostly empty; they wouldn&#39;t care about whether you were a member or not, mostly because any money was good money. You ordered a pint - something local, that was on-tap. You weren&#39;t really sure what you were doing at this point, but you couldn&#39;t complain.
+&lt;&lt;link &quot;Head back to the industrial park.&quot; &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;set $fenceVictory to &quot;false&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Union Bar" tags="" position="100,350" size="100,100">You popped your head into the union bar and found it mostly empty; they wouldn&#39;t care about whether you were a member or not, mostly because any money was good money. You ordered a pint - something local, that was on-tap. You weren&#39;t really sure what you were doing at this point, but you couldn&#39;t complain.
 
 &lt;&lt;linkreplace &quot;Take a sip&quot; t8n&gt;&gt;&lt;&lt;set _luckyRoll to random(1, 20)&gt;&gt;&lt;&lt;if _luckyRoll &gt;= 6&gt;&gt;After a few sips, &lt;&lt;hovertip &quot;Needed 6, rolled &lt;&lt;print _luckyRoll&gt;&gt;&quot;&gt;&gt;you could hear a small side conversation&lt;&lt;/hovertip&gt;&gt; from the guys watching the football game at the other end of the bar. They were more familiar with the layout of this district than you were, and were used to spending more time around the assembly lines. They mentioned off-hand that they&#39;d seen some Fluffies popping their heads in and out of the warehouse doors, and &quot;solos&quot; scrounging for garbage around the corner. This was probably your best shot at getting one alone, instead of ending up responsible for an entire herd. &lt;&lt;set $barConvo to &quot;true&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;hovertip &quot;Needed 6, rolled &lt;&lt;print _luckyRoll&gt;&gt;&quot;&gt;&gt;Unfortunately&lt;&lt;/hovertip&gt;&gt;, the barman wasn&#39;t too helpful with your questions (the lucky guy didn&#39;t seem to know what Fluffies were) and you weren&#39;t about to disrupt the rest of the union members&#39; watching of the football game. The local team was losing, and taking them out of their misery might just make things hazardous to your health. You decided to leave after finishing up your pint. &lt;&lt;set $barConvo to &quot;false&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
   
-It&#39;d be probably best for you to leave the union hall, and &lt;&lt;link &quot;head back to your staging grounds&quot; &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;.&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Security Guard" tags="" position="475,350" size="100,100">You noticed that the only really &quot;active&quot; place in the Industrial Park was the light flickering from the security guard&#39;s booth, which was just inside the main driveway.
+It&#39;d be probably best for you to leave the union hall, and &lt;&lt;link &quot;head back to your staging grounds&quot; &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;.&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Security Guard" tags="" position="225,350" size="100,100">You noticed that the only really &quot;active&quot; place in the Industrial Park was the light flickering from the security guard&#39;s booth, which was just inside the main driveway.
 
 This guy probably had the easiest job in the industrial park: nothing to do besides kill time, call the cops on people breaking in, and watching Netflix on a laptop. If you weren&#39;t a huge nerd (liking your indoor time), you&#39;d probably find this job pretty great - that is, until you decided to upgrade to something besides living in a shoebox, or with 5 roommates.
 &lt;&lt;if ndef $securityChoice&gt;&gt;
@@ -3264,7 +3299,7 @@ You&#39;d already tried to &lt;&lt;if $securityChoice is 1&gt;&gt;check out his 
 &lt;&lt;elseif $securityChoice is 3 and $securitySuccess is &quot;false&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;. &lt;&lt;if $securityChoice is 2 and $securitySuccess is &quot;false&quot; and $playerBudget &gt;= 50&gt;&gt;You sighed, and opened your wallet. You still //could// &lt;&lt;link 
 &quot;try to bribe him&quot; &quot;Bribe&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;, if you wanted.&lt;&lt;/if&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Security Guard 2" tags="" position="600,350" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set _secRoll to random(1,20)&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Security Guard 2" tags="" position="350,350" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set _secRoll to random(1,20)&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 &lt;&lt;if $securityChoice is 1&gt;&gt;
 As you pondered, you heard a loud @@color:gold;&#39;&#39;crash&#39;&#39;@@ and saw the security guard jump from his chair. It was clear that he was having a coffee emergency, judging by the large stain on his pants. As he danced a funny dance in order to cool himself down, you saw him amble over to the direction of the union bar, and then out of sight. if you were going to check out his booth, now was the time.
   &lt;&lt;if _secRoll &gt;= 6&gt;&gt;
@@ -3301,9 +3336,9 @@ It took a bit of waiting for him to get the courage (or boredom) to get out to g
     
     &lt;&lt;link &quot;Time to leave.&quot; &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;set $securitySuccess to &quot;false&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
   &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Bribe" tags="" position="725,350" size="100,100">&lt;&lt;if _secRoll &gt;= 6&gt;&gt;You sidled on up to the window, seeing the guard wheezing over his brief walk, and you decided to &lt;&lt;else&gt;&gt;It figures that &lt;&lt;hovertip &quot;Needed 6, rolled &lt;&lt;print _luckyRoll&gt;&gt;&quot;&gt;&gt;you&#39;d find the only honest security guard&lt;&lt;/hovertip&gt;&gt; in the city. Or well, you thought that, until he pointed out the security cameras and microphones pointed at his booth, and made a big show of explaining (loudly) that he would not be taking any bribes for &quot;corporate espionage.&quot; This sufficiently scared you away from asking him any further - if he decided to call the cops, it&#39;d be your words against his.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Bribe" tags="" position="475,350" size="100,100">&lt;&lt;if _secRoll &gt;= 6&gt;&gt;You sidled on up to the window, seeing the guard wheezing over his brief walk, and you decided to &lt;&lt;else&gt;&gt;It figures that &lt;&lt;hovertip &quot;Needed 6, rolled &lt;&lt;print _luckyRoll&gt;&gt;&quot;&gt;&gt;you&#39;d find the only honest security guard&lt;&lt;/hovertip&gt;&gt; in the city. Or well, you thought that, until he pointed out the security cameras and microphones pointed at his booth, and made a big show of explaining (loudly) that he would not be taking any bribes for &quot;corporate espionage.&quot; This sufficiently scared you away from asking him any further - if he decided to call the cops, it&#39;d be your words against his.
 
-&lt;&lt;link &quot;It was time to go!&quot; &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;set $securitySuccess to &quot;false&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Warehouse" tags="" position="850,350" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;link &quot;It was time to go!&quot; &quot;Industrial Park&quot;&gt;&gt;&lt;&lt;set $securitySuccess to &quot;false&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Warehouse" tags="" position="600,350" size="100,100">&lt;&lt;silent&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to 4 - $alleyRoll&gt;&gt;
     &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
     &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
@@ -3313,7 +3348,7 @@ It took a bit of waiting for him to get the courage (or boredom) to get out to g
 
 &lt;&lt;if $alleyRoll isnot 0&gt;&gt;&lt;&lt;do&gt;&gt;&lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG _fluffySkin.colorname _fluffyMane.colorname _fluffyName _fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;else&gt;&gt;No more fluffies!&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;button &quot;Go Next&quot; &quot;Warehouse&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll - 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Fluffy Acquired" tags="" position="975,350" size="100,100">! Congratulations
+&lt;&lt;button &quot;Go Next&quot; &quot;Warehouse&quot;&gt;&gt;&lt;&lt;set $alleyRoll to $alleyRoll - 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Fluffy Acquired" tags="" position="725,350" size="100,100">! Congratulations 👏🏻
 
 After your hard work, you finally set out what you wanted to do  — you got yourself a Fluffy! Now all that&#39;s left is to introduce $fluffyName to their new home, and see where your adventures take you from here.
 
@@ -3321,7 +3356,9 @@ Based on your Fluffy&#39;s stats and your choices, you will go through a cycle o
 
 &lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 3 $fluffyGender&gt;&gt;
 
-[[Continue on Home|Safe Room Intro]]</tw-passagedata><tw-passagedata pid="29" name="Safe Room Intro" tags="" position="1100,350" size="100,100"></tw-passagedata><tw-passagedata pid="30" name="Fluffmart" tags="" position="1225,350" size="100,100">Your local Fluffmart is a bit of a zoo. There are always people milling about and filing in and out, and it doesn&#39;t help that it&#39;s part of a bigger plaza that has a number of other stores. You always hate how hard it is to park, and you nearly get hit by a couple cars just trying to cross the parking lot.
+[[Continue on Home|Safe Room Intro]]</tw-passagedata><tw-passagedata pid="27" name="Safe Room Intro" tags="" position="850,350" size="100,100">Your adventure thus far perhaps caused you to forget about where this was all leading to: back to your home, and the Safe Room.
+
+You were going to keep $fluffyName in their carrier for a small while longer: you had to make sure that everything was just so, before you let them out into their new home.</tw-passagedata><tw-passagedata pid="28" name="Fluffmart" tags="" position="975,350" size="100,100">Your local Fluffmart is a bit of a zoo. There are always people milling about and filing in and out, and it doesn&#39;t help that it&#39;s part of a bigger plaza that has a number of other stores. You always hate how hard it is to park, and you nearly get hit by a couple cars just trying to cross the parking lot.
 
 You notice a couple employees in bright orange vests hosing down a large green dumpster in the alley beside the building; from the telltale swarming of flies you can tell there was probably some unpleasant things being disposed of; you weren&#39;t sure where you exactly stood on the &quot;Fluffies aren&#39;t animals&quot; thing, but it sure made it easier to deal with when it came to the law. 
 
@@ -3348,7 +3385,7 @@ Remember, you have $playerBudget, and a prayer. Let&#39;s see where this leads.
 
 &lt;&lt;button &quot;Change your mind, and go somewhere else @@.icon;.next-arrow;@@&quot; &quot;Day 1 Travel&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;nobr&gt;&gt;&lt;&lt;if $tvThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $tvMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $tvThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $tvMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Fluffmart - Foals" tags="" position="100,475" size="100,100">The foal cases were away from the adult pens, for good reason; even if the foals weren&#39;t the biological children of the fluffies on sale, there would probably be endless enthusiasm about them, to the detriment of making good sales. The foal area was almost like a more traditional pet store&#39;s fish, reptile and amphibian section; walls lined with glass paneling, gentle lighting, and climate-controlled tanks that gave customers a good look at what they could buy.
+&lt;&lt;nobr&gt;&gt;&lt;&lt;if $tvThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $tvMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $tvThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $tvMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Fluffmart - Foals" tags="" position="1100,350" size="100,100">The foal cases were away from the adult pens, for good reason; even if the foals weren&#39;t the biological children of the fluffies on sale, there would probably be endless enthusiasm about them, to the detriment of making good sales. The foal area was almost like a more traditional pet store&#39;s fish, reptile and amphibian section; walls lined with glass paneling, gentle lighting, and climate-controlled tanks that gave customers a good look at what they could buy.
 
 You noticed that there were milk feeders, audio speakers, and other ways of tricking the foal into thinking that they were still in a comfortable environment with their parents; there was a variety of them at different stages of life, mostly because some had spent more time waiting to be bought than others, and had opened their eyes, or started talking.
 
@@ -3359,7 +3396,7 @@ Each cage had a descriptor of the foal, their colors, the colors of their parent
 &lt;&lt;button &quot;Visit the Adult Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - Adults&quot;&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Visit the Discount Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - The Discounts&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Fluffmart - Adults" tags="" position="225,475" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;&lt;button &quot;Visit the Discount Pens @@.icon;.next-arrow;@@&quot; &quot;Fluffmart - The Discounts&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="Fluffmart - Adults" tags="" position="1225,350" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;
 
 Managing a number of adult fluffies was difficult, and trying to put them in the best environment to entice prospective customers was even harder. With ages ranging from &quot;just matured&quot; to &quot;a bit on the older side&quot;, Fluffies in the adult area were separated by gender, and in different pens to avoid overcrowding. You noticed that a couple of the dividers were clear, with a large sign proclaiming &quot;~Special Friends!~&quot;; some fluffies probably managed to pair bond despite Fluffmart&#39;s best efforts, and they probably were testing the profitability of selling twice the food, twice the equipment, and Fluffies that would have their own social entertainment.
 
@@ -3371,7 +3408,7 @@ Being seen as a potential &quot;new parent&quot; was a daunting thing for most o
 
 If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.
 
-&lt;&lt;button [[Take a look at the Fluffies on sale|Fluffmart - Adult Options]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Fluffmart - Adult Options" tags="" position="350,475" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;button [[Take a look at the Fluffies on sale|Fluffmart - Adult Options]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Fluffmart - Adult Options" tags="" position="100,475" size="100,100">&lt;&lt;silent&gt;&gt;
 &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
 &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
 &lt;&lt;set _fluffySkin = State.variables.fluffies[$currentFluffyIndex].skin&gt;&gt;
@@ -3388,14 +3425,23 @@ Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender 
 
 &lt;&lt;button &quot;Look at another&quot;&gt;&gt;&lt;&lt;if typeof $fluffies[$currentFluffyIndex + 1] === &quot;undefined&quot;&gt;&gt;&lt;&lt;goto &quot;Fluffmart - No More Fluffies&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;Fluffmart - Adult Options&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Buy this Fluffy&quot; &quot;Post Purchase&quot;&gt;&gt;&lt;&lt;lockFluffy&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Post Purchase" tags="" position="475,475" size="100,100">You decide on $fluffyName, and notify the clerk. Since they don&#39;t want you to carry your Fluffy around the store, they give you a receipt to take to the checkout, along with any other purchases you might make. You&#39;ll head over to the Fluffy Meet area, which should help you to acclimate to your Fluffy. Fluffmart will give you a free carrier, too!
+&lt;&lt;button &quot;Buy this Fluffy&quot; &quot;Post Purchase&quot;&gt;&gt;&lt;&lt;lockFluffy&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Post Purchase" tags="" position="225,475" size="100,100">You decide on $fluffyName, and notify the clerk. Since they don&#39;t want you to carry your Fluffy around the store, they give you a receipt to take to the checkout, along with any other purchases you might make. You&#39;ll head over to the Fluffy Meet area, which should help you to acclimate to your Fluffy. Fluffmart will give you a free carrier, too!
 
-Did you want to proceed to the checkout? Or did you want to check out any toys, items or things you might need?</tw-passagedata><tw-passagedata pid="35" name="Fluffmart Shop" tags="" position="600,475" size="100,100">FluffMart partners with both Hasbio-branded products, and other (approved) third-parties to provide everything a Fluffy owner might need to furnish a safe place for their new friend. From treats, to toys, to tools, it&#39;s all here (or at least, Fluffmart thinks so).
+Did you want to proceed to the checkout? Or did you want to check out any toys, items or things you might need?</tw-passagedata><tw-passagedata pid="33" name="Fluffmart Shop" tags="" position="350,475" size="100,100">&lt;&lt;set _emptyMessage to Inventory.emptyMessage&gt;&gt;
+&lt;&lt;set Inventory.emptyMessage to &quot;Your cart is empty!&quot;&gt;&gt;
+&lt;&lt;newinv _fmCart&gt;&gt;
+
+&lt;&lt;run setup.validateCart(_fmCart)&gt;&gt;
+FluffMart partners with both Hasbio-branded products, and other (approved) third-parties to provide everything a Fluffy owner might need to furnish a safe place for their new friend. From treats, to toys, to tools, it&#39;s all here (or at least, Fluffmart thinks so).
 &lt;&lt;newinv _fmCart&gt;&gt;
 
 &lt;&lt;hovertip &quot;(There&#39;s a cart after the table, too!)&quot;&gt;&gt;&#39;&#39;@@font-size:20px;Your Cart@@&#39;&#39;&lt;&lt;/hovertip&gt;&gt;
 
-&lt;div id=&quot;simple-inventory-list&quot;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;inv _fmCart inspect drop&gt;&gt;&lt;&lt;/do&gt;&gt;&lt;/div&gt;
+&lt;div id=&quot;simple-inventory-list&quot;&gt;
+    &lt;&lt;inv _fmCart inspect drop&gt;&gt;
+&lt;/div&gt;
+
+
 &lt;table class=&quot;shop&quot;&gt;
     &lt;thead&gt;
         &lt;tr&gt;
@@ -3488,7 +3534,13 @@ Did you want to proceed to the checkout? Or did you want to check out any toys, 
             &lt;td colspan=&quot;2&quot;&gt;&lt;strong&gt;Food&lt;/strong&gt;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
-            &lt;td&gt;Candy Bar&lt;br&gt;&lt;&lt;link &quot;Add to cart&quot;&gt;&gt;&lt;&lt;pickup _fmCart &quot;candybar&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/td&gt;
+            &lt;td&gt;
+                Candy Bar&lt;br&gt;
+                &lt;&lt;link &quot;Add to cart&quot;&gt;&gt;
+                    &lt;&lt;pickup _fmCart &quot;candybar&quot; 1&gt;&gt;
+                    &lt;&lt;redo&gt;&gt;
+                &lt;&lt;/link&gt;&gt;
+            &lt;/td&gt;
             &lt;td&gt;&lt;&lt;print Item.get(&quot;candybar&quot;).description&gt;&gt;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
@@ -3501,6 +3553,15 @@ Did you want to proceed to the checkout? Or did you want to check out any toys, 
         &lt;/tr&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;&lt;link &quot;Go to checkout&quot;&gt;&gt;
+    &lt;&lt;run setup.validateCart(_fmCart)&gt;&gt;
+    &lt;&lt;set _cartTotal to setup.calculateCartTotal(_fmCart)&gt;&gt;
+    &lt;&lt;if _cartTotal &gt; State.variables.money&gt;&gt;
+        /* Error message display */
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;goto &quot;Cashier&quot;&gt;&gt;
+    &lt;&lt;/if&gt;&gt;
+&lt;&lt;/link&gt;&gt;
 
 &lt;style&gt;
     .shop {
@@ -3530,15 +3591,15 @@ Did you want to proceed to the checkout? Or did you want to check out any toys, 
     .shop a:hover {
         text-decoration: underline;
     }
-&lt;/style&gt;</tw-passagedata><tw-passagedata pid="36" name="Fluffmart - No More Fluffies" tags="" position="725,475" size="100,100">&lt;&lt;set $playerBudget to $playerBudget - 10&gt;&gt;
+&lt;/style&gt;</tw-passagedata><tw-passagedata pid="34" name="Cashier" tags="" position="475,475" size="100,100"></tw-passagedata><tw-passagedata pid="35" name="Fluffmart - No More Fluffies" tags="" position="600,475" size="100,100">&lt;&lt;set $playerBudget to $playerBudget - 10&gt;&gt;
 
-After doing a circuit, you didn&#39;t see any other Fluffies you liked. With the gas it took you to get to Fluffmart, you&#39;re down to &lt;&lt;budget&gt;&gt; in your Fluffy budget.</tw-passagedata><tw-passagedata pid="37" name="Fluffmart - The Discounts" tags="" position="850,475" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
+After doing a circuit, you didn&#39;t see any other Fluffies you liked. With the gas it took you to get to Fluffmart, you&#39;re down to &lt;&lt;budget&gt;&gt; in your Fluffy budget.</tw-passagedata><tw-passagedata pid="36" name="Fluffmart - The Discounts" tags="" position="725,475" size="100,100">You couldn&#39;t help but feel a little bit of hesitation stepping into the Discount aisle; it was clear that Fluffmart had sequestered off the &quot;undesireables&quot;, mostly to keep the other Fluffies from being distracted, and also for their own sanity. The foals and adult Fluffies of the discounts were varying levels of aware of it, though, since they seemed to have a large variation in their moods. Some, particularly the older Fluffies, were more calm, quiet, or downright depressed; the foals, intermingling with the adults, were more energetic, playing with each other and &quot;doing what normal Fluffies did.&quot;
 
 Perhaps it was a greater awareness of the consequences of not being adopted, but some Fluffies looked like they lacked a specific spark. Fluffmart was not bound by any kind of ethical concern (due to the &quot;toy&quot; status of Fluffies), so there definitely was some kind of &quot;disposal&quot; date - however, in an attempt to recoup some of their losses when it came to breeding, adoption, or acquisition, these Fluffies were heavily marked down.
 
 These pens weren&#39;t //garbage//, but it was clear there was something different about them compared to the Adult Room or the Foal Area; it&#39;s like the &quot;well-used&quot; fixtures found their way here, and everything seemed a little less well-presented. Of course, this wasn&#39;t enough to disuade a sale, and for many people, the discount aisle would be their first encounter with a Fluffy before graduating to something more expensive, or finding a good pet that would defy expectations the store had for them.
 
-Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="38" name="Forest" tags="" position="975,475" size="100,100">Your local forest is adjacent to a nice park, and the government has decided that it should be a protected parcel of land. It doesn&#39;t keep the local developers from building housing to the millimeter of the boundary, and to Fluffies, this means both the safety and wonder of the forest, and some readily-available scrounging on construction sites. More than a few Fluffies have wound up drying cement overnight: if the Fluffy mafia existed, they&#39;d love to dispose some bodies there.
+Being seen as a potential &quot;new parent&quot; was a daunting thing for most of the Fluffies, and it would be easy for any potential customers to whip a group into a frenzy, so there was clear privacy glass that separated where you were standing from the Fluffies inside. There was still the distinct smell of Fluffy dung, and there wasn&#39;t much to the soundrproofing of this glass, but it also helped to take a little bit of the pressure off of you. If you were a parent and a Fluffy &quot;bonded&quot; with your kid, it would probably be hard to say no to them in their demands in this moment; perhaps FluffMart had had enough complaints and threats of consumer protection lawsuits to put the glass up in the first place. Perhaps they were just tired of dealing with the depressed Fluffies when they weren&#39;t picked.</tw-passagedata><tw-passagedata pid="37" name="Forest" tags="" position="850,475" size="100,100">Your local forest is adjacent to a nice park, and the government has decided that it should be a protected parcel of land. It doesn&#39;t keep the local developers from building housing to the millimeter of the boundary, and to Fluffies, this means both the safety and wonder of the forest, and some readily-available scrounging on construction sites. More than a few Fluffies have wound up drying cement overnight: if the Fluffy mafia existed, they&#39;d love to dispose some bodies there.
 
 Fluffies have plenty of places to explore, forage and hide in the actual woods: they compete for burrowing space with other small game, and enjoy the occasional uprooting of a tree for safe shelter.
 
@@ -3551,21 +3612,21 @@ Fluffy hunting was an interesting art: you &lt;&lt;cycle &quot;$baitSet&quot;&gt
 &lt;&lt;option &quot;&lt;&lt;print &#39;&lt;&lt;hovertip \&quot;This will cost you $5 from your budget (currently $&lt;&lt;print $playerBudget&gt;&gt;)\&quot;&gt;&gt;came prepared with a candy bar&lt;&lt;/hovertip&gt;&gt;&#39;&gt;&gt;&quot; &quot;candy&quot;&gt;&gt;
 &lt;&lt;/cycle&gt;&gt; as you approach a common area that most Fluffies would need eventually: a babbling brook.
 
-&lt;&lt;button &quot;Go to the creek @@.icon;.next-arrow;@@&quot; &quot;Forest Creek&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;set $playerBudget to $playerBudget - 5&gt;&gt;&lt;&lt;pickup $bag &quot;candybar&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Forest Creek" tags="" position="1100,475" size="100,100">Approaching the creek, there was no sign of any humans or Fluffies: perfect. You saw a particularly shallow part of the stream, and figured that this was the best chance of finding a Fluffy who wasn&#39;t going to drown itself.
+&lt;&lt;button &quot;Go to the creek @@.icon;.next-arrow;@@&quot; &quot;Forest Creek&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;newFluffy&gt;&gt;&lt;&lt;/silent&gt;&gt;&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;set $playerBudget to $playerBudget - 5&gt;&gt;&lt;&lt;pickup $bag &quot;candybar&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Forest Creek" tags="" position="975,475" size="100,100">Approaching the creek, there was no sign of any humans or Fluffies: perfect. You saw a particularly shallow part of the stream, and figured that this was the best chance of finding a Fluffy who wasn&#39;t going to drown itself.
 
-&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Candy Bar Bait&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;include &quot;Forest - Wait For Fluffy&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="Forest - Candy Bar Bait" tags="" position="1225,475" size="100,100">You decided to place your candy bar, partially unwrapped, near a particularly shallow part of the creek, and sat down on a nearby log, behind a shrub that hid you from view.  You thought that your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
+&lt;&lt;if $baitSet is &quot;candy&quot;&gt;&gt;&lt;&lt;include &quot;Forest - Candy Bar Bait&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;include &quot;Forest - Wait For Fluffy&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="Forest - Candy Bar Bait" tags="" position="1100,475" size="100,100">You decided to place your candy bar, partially unwrapped, near a particularly shallow part of the creek, and sat down on a nearby log, behind a shrub that hid you from view.  You thought that your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
 
 &lt;&lt;button [[Wait for a Fluffy|Forest - Fluffy Meet 1]]&gt;&gt;
     &lt;&lt;drop $bag &quot;candybar&quot; 1&gt;&gt;
     &lt;&lt;set $fluffiesLeft to 4&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Forest - Wait For Fluffy" tags="" position="100,600" size="100,100">You then sat down on a nearby log, behind a shrub that hid you from view. You thought that your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="Forest - Wait For Fluffy" tags="" position="1225,475" size="100,100">You then sat down on a nearby log, behind a shrub that hid you from view. You thought that your best chance of making a good impression on a Fluffy was by approaching them gently, making it clear you weren&#39;t there to harm them, and making the best case you could for adopting them.
 
 &lt;&lt;button [[Wait for a Fluffy|Forest - Fluffy Meet 1]]&gt;&gt;
     &lt;&lt;include &quot;Forest - Fluffy Meet 1&quot;&gt;&gt;
     &lt;&lt;set $fluffiesLeft to 3&gt;&gt;
     &lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Forest - Fluffy Meet 1" tags="" position="225,600" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Forest - Fluffy Meet 1" tags="" position="100,600" size="100,100">&lt;&lt;silent&gt;&gt;
     &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
     &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
     &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
@@ -3586,7 +3647,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &lt;&lt;button &quot;Introduce Yourself&quot; &quot;Forest - Fluffy Intro&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Wait for Another&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="Forest - Alicorn Intro" tags="" position="350,600" size="100,100">You noticed the telltale horn of a unicorn, but also a pair of wings; you felt a bit lucky, since an alicorn in the wild either didn&#39;t live for long, or got snatched up by enterprising owners.</tw-passagedata><tw-passagedata pid="44" name="Forest - Earthie Intro" tags="" position="475,600" size="100,100">It had no horn, and no wings; earthie ponies tended to stand a little taller and stronger than &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; brothers and sisters. Someone could easily see an earthie as &quot;boring,&quot; but as a first-time owner, an earthie might be a little more... durable.</tw-passagedata><tw-passagedata pid="45" name="Forest - Unicorn Intro" tags="" position="600,600" size="100,100">You noticed the telltale horn of a unicorn, and a small part of your brain hoped to see a pair of wings. However, &quot;sadly&quot;, it was a unicorn Fluffy, which usually signalled a slightly higher intelligence, for however that counted among Fluffies.</tw-passagedata><tw-passagedata pid="46" name="Forest - Pegasus Intro" tags="" position="725,600" size="100,100">The pony unfurled its wings, almost to help slow itself; it wasn&#39;t going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy, and they could be found speeding around whatever environment they were in.</tw-passagedata><tw-passagedata pid="47" name="Fluffy Quality Descriptions" tags="" position="850,600" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;button &quot;Wait for Another&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="Forest - Alicorn Intro" tags="" position="225,600" size="100,100">You noticed the telltale horn of a unicorn, but also a pair of wings; you felt a bit lucky, since an alicorn in the wild either didn&#39;t live for long, or got snatched up by enterprising owners.</tw-passagedata><tw-passagedata pid="43" name="Forest - Earthie Intro" tags="" position="350,600" size="100,100">It had no horn, and no wings; earthie ponies tended to stand a little taller and stronger than &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; brothers and sisters. Someone could easily see an earthie as &quot;boring,&quot; but as a first-time owner, an earthie might be a little more... durable.</tw-passagedata><tw-passagedata pid="44" name="Forest - Unicorn Intro" tags="" position="475,600" size="100,100">You noticed the telltale horn of a unicorn, and a small part of your brain hoped to see a pair of wings. However, &quot;sadly&quot;, it was a unicorn Fluffy, which usually signalled a slightly higher intelligence, for however that counted among Fluffies.</tw-passagedata><tw-passagedata pid="45" name="Forest - Pegasus Intro" tags="" position="600,600" size="100,100">The pony unfurled its wings, almost to help slow itself; it wasn&#39;t going especially fast, but it was probably a reflex at this point. Pegasus ponies had their share of energy, and they could be found speeding around whatever environment they were in.</tw-passagedata><tw-passagedata pid="46" name="Fluffy Quality Descriptions" tags="" position="725,600" size="100,100">&lt;&lt;nobr&gt;&gt;
     &lt;&lt;if _fluffyFlavor is &quot;Stubborn&quot;&gt;&gt;
         &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; looked around and huffed, seemingly impatient for Fluffies (or perhaps life in general) that you couldn&#39;t see. You could see &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;them&quot;&gt;&gt; muttering to &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;themself&quot;&gt;&gt;, and when &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; saw the water, you could see &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; looked satisfied with &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;their&quot;&gt;&gt; choice.
     &lt;&lt;elseif _fluffyFlavor is &quot;Greedy&quot;&gt;&gt;
@@ -3597,7 +3658,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
         The Fluffy cooed as &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot;&gt;&gt; noticed a nearby bird at a branch, babbling out something about &quot;birdie friend.&quot; The bird looked at it quizzically, not exactly sure what to make of the miniature horse, and flew away. The Fluffy smiled in turn, bidding the bird goodbye and wishing it &quot;aw da most fun sky times&quot; before turning back to the &quot;tasty wawa.&quot;
     &lt;&lt;elseif _fluffyFlavor is &quot;Cautious&quot;&gt;&gt;
         The Fluffy seemed a bit skittish, looking around carefully; it almost looked like it expected a tiger to burst out of the bushes at any second. Every step seemed to prompt another set of internal calculations: was the mud too sticky? The water too deep? &lt;&lt;dynamicPronoun $currentFluffyIndex &quot;they&quot; &quot;upper&quot;&gt;&gt; dipped a hoof into the water, testing the temperature, and deemed it alright.
-&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="Forest - Interlude" tags="" position="975,600" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/silent&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="Forest - Interlude" tags="" position="850,600" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/silent&gt;&gt;
 You decided to pass on the Fluffy, and after a couple minutes, you saw &lt;&lt;dynamicPronoun $currentFluffyIndex-1 &quot;them&quot;&gt;&gt; &lt;&lt;print either(&quot;get distracted by a passing butterfly, and trotted away in chase.&quot;,&quot;bolt away after hearing a bird take off by a nearby branch. Forest life must be scary for a fluffy.&quot;,&quot;test the temperature of the river, nearly slip and fall, and trot away with a few \&quot;huu huus\&quot; for good measure.&quot;)&gt;&gt;&lt;&lt;if $fluffiesLeft &gt; 0&gt;&gt;
 &lt;&lt;include &quot;Forest Fluffy Meet TwoThree&quot;&gt;&gt;&lt;&lt;else&gt;&gt;
 
@@ -3608,7 +3669,7 @@ You had a couple choices from here:
 * You could [[head to your local shelter|Shelter]] to check out the options for Fluffies that were either pulled off the street or put up for adoption.
 * You could [[head downtown|City]] and see if you would have more luck with the more urban Fluffies
 * You could [[head home for the day]] and put off the decision until tomorrow.
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Forest Fluffy Meet TwoThree" tags="" position="1100,600" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="Forest Fluffy Meet TwoThree" tags="" position="975,600" size="100,100">&lt;&lt;silent&gt;&gt;
     &lt;&lt;set _fluffyRace = State.variables.fluffies[$currentFluffyIndex].race&gt;&gt;
     &lt;&lt;set _fluffyGender = State.variables.fluffies[$currentFluffyIndex].gender&gt;&gt;
     &lt;&lt;set _fluffyMane = State.variables.fluffies[$currentFluffyIndex].mane&gt;&gt;
@@ -3627,7 +3688,7 @@ Will you introduce yourself to the &lt;span @style=&quot;&#39;color:&#39; + _flu
 
 &lt;&lt;button &quot;Approach the Fluffy&quot; &quot;Forest - Fluffy Intro&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="Forest - Fluffy Intro" tags="" position="1225,600" size="100,100">&lt;&lt;lockFluffy&gt;&gt;You mustered up a small amount of courage, and decided to take the leap. You moved from your hiding spot, illiciting a small jump from the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;.
+&lt;&lt;button &quot;Wait for others&quot; &quot;Forest - Interlude&quot;&gt;&gt;&lt;&lt;set $fluffiesLeft to $fluffiesLeft - 1&gt;&gt;&lt;&lt;set $currentFluffyIndex to 4 - $fluffiesLeft&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="Forest - Fluffy Intro" tags="" position="1100,600" size="100,100">&lt;&lt;lockFluffy&gt;&gt;You mustered up a small amount of courage, and decided to take the leap. You moved from your hiding spot, illiciting a small jump from the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;.
 
 &lt;&lt;fluffyDialog&gt;&gt;&quot;Eep!&quot; said the &lt;&lt;print $fluffyRace.toLowerCase()&gt;&gt;. &quot;Who you?&quot;&lt;&lt;/fluffyDialog&gt;&gt;
 
@@ -3635,7 +3696,7 @@ The &lt;&lt;=$fluffyRace.toLowerCase()&gt;&gt; was a bit surprised, and a bit de
 
 &lt;span class=&quot;blink&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;
 
-&lt;&lt;linkreplace &quot;Introduce yourself&quot; t8n&gt;&gt;&lt;&lt;include &quot;Intro Conversation&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="Intro Conversation" tags="" position="100,725" size="100,100">You decided to introduce yourself. &quot;Hey there, buddy,&quot; you said, taking a small pause. &quot;My name is $playerName, and I&#39;m looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?&quot;
+&lt;&lt;linkreplace &quot;Introduce yourself&quot; t8n&gt;&gt;&lt;&lt;include &quot;Intro Conversation&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="50" name="Intro Conversation" tags="" position="1225,600" size="100,100">You decided to introduce yourself. &quot;Hey there, buddy,&quot; you said, taking a small pause. &quot;My name is $playerName, and I&#39;m looking for a good Fluffy to be my new friend. I was wondering if you knew any good Fluffies around?&quot;
 
 You were purposefully being a bit obtuse, but this was a test: you wanted to see if this Fluffy was smart enough to advocate for itself.
 
@@ -3651,14 +3712,14 @@ You thought to yourself, and wondered: was &#39;&#39;$fluffyName.human&#39;&#39;
 
 &lt;&lt;buttonreplace &quot;Yes please!&quot;&gt;&gt;&lt;&lt;textbox &quot;$fluffyName.human&quot; $fluffyName.human&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;button [[Confirm|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;remove #confirmbutton&gt;&gt;&lt;&lt;/buttonreplace&gt;&gt;
 
-&lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[&quot;No, I&#39;m fine&quot;|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="52" name="Confirm" tags="" position="225,725" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _skinName to &quot;$fluffySkin.name.toLowerCase()&quot;&gt;&gt;
+&lt;span id=&quot;confirmbutton&quot;&gt;&lt;&lt;button [[&quot;No, I&#39;m fine&quot;|Confirm]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="51" name="Confirm" tags="" position="100,725" size="100,100">&lt;&lt;silent&gt;&gt;&lt;&lt;set _skinName to &quot;$fluffySkin.name.toLowerCase()&quot;&gt;&gt;
 &lt;&lt;set _article to setup.articles.find(_skinName)&gt;&gt;&lt;&lt;/silent&gt;&gt;
 &lt;&lt;set _colorSpan to &quot;&lt;span style=&#39;color:&quot; + $fluffySkin.colorname + &quot;&#39;&gt;&quot; + $fluffySkin.name.toLowerCase() + &quot;&lt;/span&gt;&quot;&gt;&gt;
 Congrats! You made it to a test ending. Your Fluffy&#39;s name is $fluffyName.human, _article &lt;&lt;colorname $fluffySkin&gt;&gt; $fluffyRace with a &lt;&lt;colorname $fluffyMane&gt;&gt; mane.
 
 &lt;span class=&quot;blink walking&quot;&gt;&lt;&lt;FluffySVG $fluffySkin.colorname $fluffyMane.colorname $fluffyName $fluffyRace 2 _fluffyGender&gt;&gt;&lt;/span&gt;
 
-If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="53" name="Human Home (First Visit)" tags="" position="350,725" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+If you got to this ending, [[give the devs some feedback here|https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395]].</tw-passagedata><tw-passagedata pid="52" name="Human Home (First Visit)" tags="" position="225,725" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $knobThought to [&#39;This might be something you\&#39;d think about later.&#39;, &#39;You thought nothing more of it&#39;, &#39;Perhaps this would be someting you\&#39;d come back to another time. Or find out the hard way.&#39;]&gt;&gt;&lt;&lt;set $playerFoodDish to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerSketties to &quot;true&quot;&gt;&gt;&lt;&lt;set $playerLitterbox to &quot;true&quot;&gt;&gt;&lt;&lt;set $maneColor to &quot;yellow&quot;&gt;&gt;&lt;&lt;set $fluffyName to &quot;@@color:&quot; + $maneColor + &quot;;Sparky@@&quot;&gt;&gt;&lt;&lt;/nobr&gt;&gt;
 ! Welcome Home
 You arrive home to your &lt;&lt;cycle &quot;$houseType&quot;&gt;&gt;&lt;&lt;option &quot;detached house&quot;&gt;&gt;&lt;&lt;option &quot;apartment&quot;&gt;&gt;&lt;&lt;option &quot;townhome&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt;, which was pretty modest, all things considered. You had previously used an office during the pandemic for a work-from-home environment, but you realized that it was spending a lot of time gathering dust. You decided to move your desk, bookshelves and your stuff for your &lt;&lt;cycle &quot;$hobbyType&quot;&gt;&gt;&lt;&lt;option &quot;sewing&quot;&gt;&gt;&lt;&lt;option &quot;plants&quot;&gt;&gt;&lt;&lt;option &quot;guitar&quot;&gt;&gt;&lt;&lt;option &quot;language&quot;&gt;&gt;&lt;&lt;option &quot;calligraphy&quot;&gt;&gt;&lt;&lt;option &quot;leatherwork&quot;&gt;&gt;&lt;&lt;option &quot;yoga&quot;&gt;&gt;&lt;&lt;/cycle&gt;&gt; hobby out into the living room; it didn&#39;t cramp the space that much, and you had a good opportunity to make the room more suitable for your new Fluffy.
 
@@ -3670,9 +3731,9 @@ You dumped all the things you got from Fluffmart into the room.
 
 &lt;&lt;if $playerSketties is &quot;true&quot;&gt;&gt;Your supply of canned spaghetti also went in one of your kitchen cupboards, which was starting to become &quot;the one where all your Fluffy junk is going.&quot; You wondered if Fluffies could be strong enough to pull knobs. &lt;&lt;set _randomThought to $knobThought.random()&gt;&gt;&lt;&lt;hovertip &quot;Things underlined in @@color:orange;orange@@ will be randomly generated, and remembered to influence events.&quot;&gt;&gt;&lt;&lt;print _randomThought&gt;&gt;&lt;&lt;/hovertip&gt;&gt;.&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;nobr&gt;&gt;&lt;&lt;if $knobThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $knobMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $knobThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $knobMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="Shelter" tags="" position="475,725" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="55" name="Smarty Start" tags="" position="600,725" size="100,100">This is the Smarty Start page. 
+&lt;&lt;nobr&gt;&gt;&lt;&lt;if $knobThought.indexOf(_randomThought) === 0&gt;&gt;&lt;&lt;set $knobMemory to &quot;0&quot;&gt;&gt;&lt;&lt;elseif $knobThought.indexOf(_randomThought) === 2&gt;&gt;&lt;&lt;set $knobMemory to &quot;3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="Shelter" tags="" position="350,725" size="100,100">Nothing to see here, yet.</tw-passagedata><tw-passagedata pid="54" name="Smarty Start" tags="" position="475,725" size="100,100">This is the Smarty Start page. 
 
-You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot. Your mane is $playerMane, and your skin is $playerColor.</tw-passagedata><tw-passagedata pid="56" name="PassageFooter" tags="" position="725,725" size="100,100">&lt;&lt;script&gt;&gt;
+You are &lt;&lt;print $playerName.toUpperFirst()&gt;&gt;, a $playerGender &lt;&lt;print $playerRace.toUpperFirst()&gt;&gt; pony, and you are a //very// smart pony, indeed. You&#39;ve been trying to make your way in the world, because well, the world owes you a lot. Your mane is $playerMane, and your skin is $playerColor.</tw-passagedata><tw-passagedata pid="55" name="PassageFooter" tags="" position="600,725" size="100,100">&lt;&lt;script&gt;&gt;
 // Wait for the passage to finish rendering
 $(document).on(&quot;:passageend&quot;, function() {
   // Add a click event listener to the bug icon
@@ -3682,14 +3743,14 @@ $(document).on(&quot;:passageend&quot;, function() {
     footergray.classList.toggle(&quot;hidden&quot;);
   });
 });
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="StoryCaption" tags="" position="850,725" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="StoryCaption" tags="" position="725,725" size="100,100">&lt;&lt;if $playerRace is &quot;human&quot; and $firstLoad isnot true&gt;&gt;&lt;div class=&quot;simple-inventory-list&quot; id=&quot;Inventory Title&quot;&gt;
 &#39;&#39;Money&#39;&#39;: $&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;
 &lt;h3&gt;&lt;u&gt;Player Inventory&lt;/u&gt;&lt;/h3&gt;&lt;/div&gt;&lt;&lt;inv $bag inspect&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;div id=&quot;bug-section&quot;&gt;
   &lt;div id=&quot;bug-button&quot;&gt;&lt;span class=&quot;icon bug&quot;&gt;&lt;/span&gt;&lt;div id=&quot;footergray&quot; class=&quot;hidden&quot;&gt;Page ID: &lt;span id=&quot;page-id&quot;&gt;&lt;&lt;print passage()&gt;&gt;&lt;/span&gt; &lt;&lt;link &quot;(Copy to Clipboard)&quot;&gt;&gt;&lt;&lt;run setup.copyToClipboard(passage())&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;Found a bug? Submit it to &lt;a href=&quot;https://fluffy-community.com/t/prototype-dev-thread-choose-your-own-adventure-in-twine/69395&quot; target=&quot;_none&quot;&gt;the bug tracker&lt;/a&gt;.
   The license for this work is [[Attribution-NonCommercial-ShareAlike 4.0 International|https://creativecommons.org/licenses/by-nc-sa/4.0/]].
-  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="58" name="StoryMenu" tags="" position="975,725" size="100,100"></tw-passagedata><tw-passagedata pid="59" name="StoryInit" tags="" position="1100,725" size="100,100">/* Player Variables */
+  &lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="57" name="StoryMenu" tags="" position="850,725" size="100,100"></tw-passagedata><tw-passagedata pid="58" name="StoryInit" tags="" position="975,725" size="100,100">/* Player Variables */
 
 &lt;&lt;set $firstLoad to &quot;true&quot;&gt;&gt;
 &lt;&lt;set $playerBudget to 500&gt;&gt;
@@ -4328,8 +4389,37 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 &lt;&lt;item &quot;yourFluffy&quot; &quot;Your new Fluffy&quot;&gt;&gt;
 &lt;&lt;description&gt;&gt;\
 This is the Fluffy you chose to buy! You&#39;re keeping it in your inventory for now - the store doesn&#39;t want you to carry it around the store, so it&#39;s going to chill here for now.
-&lt;&lt;/item&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="inventory.strings" tags="" position="1225,725" size="100,100">empty: Your inventory is empty!
-drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tags="nobr" position="100,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;&lt;/item&gt;&gt;
+
+&lt;&lt;set setup.fmPrices = new Map([
+    // Tools
+    [&quot;brush&quot;, 0],
+    [&quot;sorrystick&quot;, 0],
+    [&quot;pillowkit&quot;, 0],
+    [&quot;geldingkit&quot;, 0],
+    
+    // Appliances
+    [&quot;foodbowl&quot;, 0],
+    [&quot;autofeeder&quot;, 0],
+    [&quot;litterbox&quot;, 0],
+    [&quot;autolitter&quot;, 0],
+    [&quot;smellstation&quot;, 0],
+    [&quot;flufftv&quot;, 0],
+    [&quot;sorrybox&quot;, 0],
+    
+    // Toys
+    [&quot;stuffytoy&quot;, 0],
+    [&quot;enfytoy&quot;, 0],
+    [&quot;blocks&quot;, 0],
+    [&quot;smallball&quot;, 0],
+    [&quot;bigball&quot;, 0],
+    
+    // Food
+    [&quot;candybar&quot;, 0],
+    [&quot;sketties8&quot;, 0],
+    [&quot;sketties24&quot;, 0]
+])&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="inventory.strings" tags="" position="1100,725" size="100,100">empty: Your inventory is empty!
+drop: Discard</tw-passagedata><tw-passagedata pid="60" name="Female Alicorn" tags="nobr" position="1225,725" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4410,7 +4500,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
 		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="62" name="Female Earthie" tags="nobr" position="225,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="61" name="Female Earthie" tags="nobr" position="100,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4476,7 +4566,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
 		  &lt;/g&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="63" name="Female Pegasus" tags="nobr" position="350,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="62" name="Female Pegasus" tags="nobr" position="225,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4548,7 +4638,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
 		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="64" name="Female Unicorn" tags="nobr" position="475,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="63" name="Female Unicorn" tags="nobr" position="350,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4623,7 +4713,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
 			&lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="65" name="Male Alicorn" tags="nobr" position="600,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="64" name="Male Alicorn" tags="nobr" position="475,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4694,7 +4784,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
 		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="66" name="Male Earthie" tags="nobr" position="725,850" size="100,100">&lt;&lt;capture _SVGskin, _SVGmane&gt;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="65" name="Male Earthie" tags="nobr" position="600,850" size="100,100">&lt;&lt;capture _SVGskin, _SVGmane&gt;&gt;
 &lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
@@ -4752,7 +4842,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
 		&lt;/g&gt;
 	&lt;/g&gt;
 &lt;/svg&gt;
-&lt;&lt;/capture&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="Male Pegasus" tags="nobr" position="850,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;&lt;/capture&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="Male Pegasus" tags="nobr" position="725,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4814,7 +4904,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
 		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="68" name="Male Unicorn" tags="nobr" position="975,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="67" name="Male Unicorn" tags="nobr" position="850,850" size="100,100">&lt;svg id=&quot;SVGfluffy-svg&quot; viewBox=&quot;0 0 180 100&quot; height=&quot;100px&quot; width=&quot;180px&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;SVGf1&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;0.2&quot; flood-opacity=&quot;0.1&quot; /&gt;&lt;/filter&gt;
     &lt;filter id=&quot;SVGf2&quot;&gt;&lt;feDropShadow dx=&quot;2&quot; dy=&quot;2&quot; stdDeviation=&quot;1&quot; flood-opacity=&quot;0.6&quot; /&gt;&lt;/filter&gt;
@@ -4879,7 +4969,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
 			&lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;
 		&lt;/g&gt;
 	&lt;/g&gt;
-&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="69" name="FluffyCSS" tags="widget nobr" position="1100,850" size="100,100">&lt;&lt;widget &quot;FluffyCSS&quot;&gt;&gt;
+&lt;/svg&gt;</tw-passagedata><tw-passagedata pid="68" name="FluffyCSS" tags="widget nobr" position="975,850" size="100,100">&lt;&lt;widget &quot;FluffyCSS&quot;&gt;&gt;
   &lt;&lt;set _scale to _args[2] || 1&gt;&gt;
   &lt;&lt;set _baseWidth to 185&gt;&gt; /* your art&#39;s base width */
   &lt;&lt;set _baseHeight to 92&gt;&gt; /* your art&#39;s base height */
@@ -4941,7 +5031,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
     &lt;div class=&quot;tail&quot; @style=&quot;&#39;background-color: &#39; + _args[1] +&#39;;&#39;&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Fluffy SVG" tags="widget nobr" position="1225,850" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Fluffy SVG" tags="widget nobr" position="1100,850" size="100,100">&lt;&lt;widget &quot;FluffySVG&quot;&gt;&gt;&lt;&lt;silent&gt;&gt;
   &lt;&lt;set _SVGskin to _args[0] || &quot;red&quot;&gt;&gt;
   &lt;&lt;set _SVGmane to _args[1] || &quot;blue&quot;&gt;&gt;
   &lt;&lt;set _SVGname to _args[2] || &quot;Unnamed&quot;&gt;&gt;
@@ -5562,7 +5652,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
   // Trigger blinking check on the newly created Fluffy
   setTimeout(window.makeFluffyBlink, 100);
 &lt;&lt;/script&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Fluffy in Tank" tags="widget" position="100,975" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="Fluffy in Tank" tags="widget" position="1225,850" size="100,100">&lt;&lt;widget &quot;FluffTank&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;
   &lt;&lt;set _fluffyTankSkin to _args[0]&gt;&gt;
   &lt;&lt;set _fluffyTankMane to _args[1]&gt;&gt;
   &lt;&lt;set _fluffyTankName to _args[2]&gt;&gt;
@@ -5611,9 +5701,9 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
             &lt;/div&gt;
           &lt;/div&gt;
           &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="Print Player Budget" tags="widget nobr" position="225,975" size="100,100">&lt;&lt;widget &quot;budget&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="Print Player Budget" tags="widget nobr" position="100,975" size="100,100">&lt;&lt;widget &quot;budget&quot;&gt;&gt;
     &#39;&#39;$&lt;&lt;print $playerBudget.toFixed(2)&gt;&gt;&#39;&#39;
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="ButtonReplace" tags="widget" position="350,975" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="ButtonReplace" tags="widget" position="225,975" size="100,100">/* Use &lt;&lt;buttonreplace &quot;Button Text&quot;&gt;&gt;What will show up in place of the button.&lt;&lt;/buttonreplace&gt;&gt; in order to make a button that is replaced on click. The widget will auto-generate an ID, surround the button with a span with that ID, and then the button click will replace that ID. The $buttonreplaceCounter is set up in :: StoryInit */
 
 &lt;&lt;widget &quot;buttonreplace&quot; container&gt;&gt;&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set _buttonText to $args[0]&gt;&gt;
@@ -5628,7 +5718,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
         &#39;&lt;&lt;/replace&gt;&gt;&#39; +
     &#39;&lt;&lt;/button&gt;&gt;&#39; +
 &#39;&lt;/span&gt;&#39;&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="Clouds" tags="widget nobr" position="475,975" size="100,100">&lt;&lt;widget &quot;clouds&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="Clouds" tags="widget nobr" position="350,975" size="100,100">&lt;&lt;widget &quot;clouds&quot;&gt;&gt;
     &lt;div class=&quot;sunholder&quot;&gt;
         &lt;div class=&quot;sun&quot;&gt;
             &lt;div class=&quot;raybase ray1&quot;&gt;&lt;div class=&quot;ray&quot;&gt;&lt;/div&gt;&lt;/div&gt;
@@ -5661,7 +5751,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
         &lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="ColorName" tags="widget nobr" position="600,975" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Fluffy Dialog" tags="widget nobr" position="725,975" size="100,100">&lt;&lt;widget &quot;fluffyDialog&quot; container&gt;&gt;&lt;&lt;set _borderColor = $fluffySkin.colorname&gt;&gt;&lt;p sc-eval:style=&quot;&#39;margin: 1em 0px 1em 0.25em; padding-left: 1em; border-left: 5px solid &#39; + _borderColor + &#39;;&#39;&quot;&gt;_contents&lt;/p&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="Icon Widget" tags="widget nobr" position="850,975" size="100,100">&lt;&lt;widget &quot;scIcon&quot; container&gt;&gt;&lt;span @class=&quot;&#39;sc-icon &#39; + _contents&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="Check Widget" tags="widget" position="975,975" size="100,100">&lt;&lt;widget &quot;iconCheck&quot;&gt;&gt;&lt;span class=&quot;sc-icon sc-circle-check&quot; style=&quot;color: lime;&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="X Widget" tags="widget" position="1100,975" size="100,100">&lt;&lt;widget &quot;iconX&quot;&gt;&gt;&lt;span class=&quot;sc-icon sc-circle-times&quot; style=&quot;color: red;&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="New Fluffy" tags="widget nobr" position="1225,975" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
+    &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="74" name="ColorName" tags="widget nobr" position="475,975" size="100,100">&lt;&lt;widget &quot;colorname&quot;&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;set _color to _args[0]&gt;&gt;&lt;span @style=&quot;&#39;color: &#39; + _color.colorname + &#39;;filter: contrast(9999) greyscale();&#39;&quot;&gt;_color.name&lt;/span&gt;&lt;&lt;/nobr&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="Fluffy Dialog" tags="widget nobr" position="600,975" size="100,100">&lt;&lt;widget &quot;fluffyDialog&quot; container&gt;&gt;&lt;&lt;set _borderColor = $fluffySkin.colorname&gt;&gt;&lt;p sc-eval:style=&quot;&#39;margin: 1em 0px 1em 0.25em; padding-left: 1em; border-left: 5px solid &#39; + _borderColor + &#39;;&#39;&quot;&gt;_contents&lt;/p&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="Icon Widget" tags="widget nobr" position="725,975" size="100,100">&lt;&lt;widget &quot;scIcon&quot; container&gt;&gt;&lt;span @class=&quot;&#39;sc-icon &#39; + _contents&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="Check Widget" tags="widget" position="850,975" size="100,100">&lt;&lt;widget &quot;iconCheck&quot;&gt;&gt;&lt;span class=&quot;sc-icon sc-circle-check&quot; style=&quot;color: lime;&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="78" name="X Widget" tags="widget" position="975,975" size="100,100">&lt;&lt;widget &quot;iconX&quot;&gt;&gt;&lt;span class=&quot;sc-icon sc-circle-times&quot; style=&quot;color: red;&quot;&gt;&lt;/span&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="New Fluffy" tags="widget nobr" position="1100,975" size="100,100">&lt;&lt;widget &quot;newFluffy&quot;&gt;&gt;
   &lt;&lt;set _gender = $randomGender.random()&gt;&gt;
   &lt;&lt;set _mane = $randomMane.random()&gt;&gt;
   &lt;&lt;set _skin = $randomSkin.random()&gt;&gt;
@@ -5723,9 +5813,9 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
   }&gt;&gt;
 
   &lt;&lt;run $fluffies.push(_fluffy)&gt;&gt; &lt;!-- Add the new Fluffy to the $fluffies array --&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="RefreshSidebar" tags="widget nobr" position="100,1100" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="RefreshSidebar" tags="widget nobr" position="1225,975" size="100,100">&lt;&lt;widget &quot;reloadCaption&quot;&gt;&gt;
     &lt;&lt;replace &quot;#story-caption&quot;&gt;&gt;&lt;&lt;include &quot;StoryCaption&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Roll" tags="widget" position="225,1100" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="Roll" tags="widget" position="100,1100" size="100,100">&lt;&lt;widget &quot;calcBonus&quot;&gt;&gt;
   &lt;&lt;capture _stat&gt;&gt;
   &lt;&lt;if _stat === &quot;ob&quot;&gt;&gt;
     &lt;&lt;set _bonus = Math.floor(($fluffyOb - $fluffyIm) /2 )&gt;&gt; &lt;!-- Obedience - Impulsiveness --&gt;
@@ -5768,7 +5858,7 @@ drop: Discard</tw-passagedata><tw-passagedata pid="61" name="Female Alicorn" tag
   &lt;&lt;/if&gt;&gt;
 
   &lt;&lt;run State.setVar(_tempVarName, _result)&gt;&gt; &lt;!-- Store the result in the specified temporary variable --&gt;
-&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="Test Widget SVG" tags="widget" position="350,1100" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
+&lt;&lt;/silent&gt;&gt;&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="82" name="Test Widget SVG" tags="widget" position="225,1100" size="100,100">&lt;&lt;widget &quot;SVGperson&quot;&gt;&gt;
 &lt;&lt;set _fill to &quot;blue&quot;&gt;&gt;
 &lt;&lt;= &#39;&lt;svg viewBox=&quot;0 0 10 10&quot; height=&quot;120px&quot; width=&quot;120px&quot; fill=&quot;&#39; + _fill + &#39;&quot;&gt;&lt;circle cx=&quot;5&quot; cy=&quot;5&quot; r=&quot;4&quot; /&gt;&lt;/svg&gt;&#39;&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>

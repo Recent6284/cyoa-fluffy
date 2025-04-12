@@ -641,6 +641,35 @@ Bigger, softer, and more imposing: this bigger ball is more akin to a 75% deflat
 This is the Fluffy you chose to buy! You're keeping it in your inventory for now - the store doesn't want you to carry it around the store, so it's going to chill here for now.
 <</item>>
 
+<<set setup.fmPrices = new Map([
+    // Tools
+    ["brush", 0],
+    ["sorrystick", 0],
+    ["pillowkit", 0],
+    ["geldingkit", 0],
+    
+    // Appliances
+    ["foodbowl", 0],
+    ["autofeeder", 0],
+    ["litterbox", 0],
+    ["autolitter", 0],
+    ["smellstation", 0],
+    ["flufftv", 0],
+    ["sorrybox", 0],
+    
+    // Toys
+    ["stuffytoy", 0],
+    ["enfytoy", 0],
+    ["blocks", 0],
+    ["smallball", 0],
+    ["bigball", 0],
+    
+    // Food
+    ["candybar", 0],
+    ["sketties8", 0],
+    ["sketties24", 0]
+])>>
+
 :: inventory.strings
 
 empty: Your inventory is empty!

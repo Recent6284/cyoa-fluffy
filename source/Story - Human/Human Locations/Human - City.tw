@@ -8,20 +8,7 @@ Many an alleyway and cardboard box has been used by Fluffies to live their entir
 
 You've decided that a walk through downtown is worth the risk tonight, mostly because of the possibility of being able to.... commandeer... a good Fluffy from their otherwise difficult life on the streets. After some pondering, you've decided that there's only so many places that they could congregate.
 
-<<button [[Visit the Restaurant|Alley]]>><<set $cityScape to "restaurant">><</button>>
-
 <<button [[Visit the Industrial Park|Alley]]>><<set $cityScape to "industrial">><</button>>
-
-:: Alley
-
-This <<if $cityScape is "restaurant">>restaurant<<elseif $cityScape is "industrial">>Industrial Park<</if>> had seen better days, and that's probably why you thought you could find some Fluffies — eventually, with enough apathy, the circumstances for favorable feral festivities flourished.
-
-<<if $cityScape is "restaurant">><<nobr>><<include [[Restaurant]]>><</nobr>><<elseif $cityScape is "industrial">><<nobr>><<include [[Industrial Park]]>><</nobr>><</if>>
-
-:: Restaurant
-You kicked yourself a little bit for being stereotypical — really? @@color:green;An@@ Italian @@color:red;restaurant@@? You didn't know if it would be this easy, or a Fluffy's sense of smell would be that good. Pasquale's was a local joint that people either loved to death or turned their noses up at; the 90-year-old proprietor had lost his wife years ago, but there were weathered newspaper articles clipped and carefully preserved on the wall. You could've sworn you even saw a blessing from the Pope up there — an Italian wouldn't lie about that, would they?
-
-You weren't sure if old man Pasquale was even //aware// of what Fluffies were, but you were sure they'd probably have something in the garbage that Fluffies would find delectable. From your research, almost all humans didn't think Fluffy "skettis" were appetizing, and it felt almost insulting to see a Fluffy-themed vending machine next door, hawking Fluffy merch. You saw a giant sticker, promising that "Foals in a Can will return!"; you'd heard some scuttlebutt on Reddit about the temperature units failing on the cans, and man, that can't be pleasant to clean up. You took a look at the rest of the products anyways.
 
 <<button [[Visit the Vending Machine|City Vending Machine]]>><</button>>
 
@@ -70,7 +57,7 @@ Your choices:
 
 :: The Fence
 
-The fence of the old <<hovertip "They didn't make beans - it was owned by the Bean Family">>Bean Factory<</hovertip>> was rickety, but it did the job of making it look pretty darned hard to get over or under. There were numerous snagged pieces of wool on the barbed wire on the top, as looters or scavengers tried their luck at the picking at the carcass of the building.
+The fence of <<hovertip "They didn't make beans - it was owned by the Bean Family">>The Old Bean Factory<</hovertip>> was rickety, but it did the job of making it look pretty darned hard to get over or under. There were numerous snagged pieces of wool on the barbed wire on the top, as looters or scavengers tried their luck at the picking at the carcass of the building.
 
 There was a darker part of the fence, though, where the security lamps seemed to stop; perhaps they'd just burned out one day and the owners never really bothered to get them replaced. You decided to take your phone out and shine it over in that direction. <<set _fenceRoll to random(1,20)>>
 

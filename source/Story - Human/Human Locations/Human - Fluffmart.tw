@@ -257,6 +257,8 @@ FluffMart partners with both Hasbio-branded products, and other (approved) third
 
 :: Cashier
 
+This is a test.
+
 :: Fluffmart - No More Fluffies
 
 <<set $playerBudget to $playerBudget - 10>>

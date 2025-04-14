@@ -3425,7 +3425,7 @@ Based on their size, you made the guess that they were &lt;&lt;if _fluffyGender 
 
 &lt;&lt;button &quot;Look at another&quot;&gt;&gt;&lt;&lt;if typeof $fluffies[$currentFluffyIndex + 1] === &quot;undefined&quot;&gt;&gt;&lt;&lt;goto &quot;Fluffmart - No More Fluffies&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;Fluffmart - Adult Options&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;set $currentFluffyIndex to $currentFluffyIndex + 1&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Buy this Fluffy&quot; &quot;Post Purchase&quot;&gt;&gt;&lt;&lt;lockFluffy&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Post Purchase" tags="" position="225,475" size="100,100">You decide on $fluffyName, and notify the clerk. Since they don&#39;t want you to carry your Fluffy around the store, they give you a receipt to take to the checkout, along with any other purchases you might make. You&#39;ll head over to the Fluffy Meet area, which should help you to acclimate to your Fluffy. Fluffmart will give you a free carrier, too!
+&lt;&lt;button &quot;Buy this Fluffy&quot; &quot;Post Purchase&quot;&gt;&gt;&lt;&lt;lockFluffy&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Post Purchase" tags="" position="225,475" size="100,100">You decide on $fluffyName.human, and notify the clerk. Since they don&#39;t want you to carry your Fluffy around the store, they give you a receipt to take to the checkout, along with any other purchases you might make. You&#39;ll head over to the Fluffy Meet area, which should help you to acclimate to your Fluffy. Fluffmart will give you a free carrier, too!
 
 Did you want to proceed to the checkout? Or did you want to check out any toys, items or things you might need?</tw-passagedata><tw-passagedata pid="33" name="Fluffmart Shop" tags="" position="350,475" size="100,100">&lt;&lt;set _emptyMessage to Inventory.emptyMessage&gt;&gt;
 &lt;&lt;set Inventory.emptyMessage to &quot;Your cart is empty!&quot;&gt;&gt;
@@ -5153,12 +5153,6 @@ drop: Discard</tw-passagedata><tw-passagedata pid="60" name="Female Alicorn" tag
 			&lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
 		  &lt;/g&gt;
 		&lt;/g&gt;
-		&lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGskin + `&quot;&gt;
-		  &lt;path id=&quot;SVGwings-border&quot; d=&quot;M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0&quot; filter=&quot;url(#SVGf2)&quot; /&gt;
-		  &lt;line id=&quot;SVGwing-line-1&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;53.5&quot; y1=&quot;10&quot; x2=&quot;38&quot; y2=&quot;12&quot; /&gt;
-		  &lt;line id=&quot;SVGwing-line-2&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;55&quot; y1=&quot;13&quot; x2=&quot;36&quot; y2=&quot;15&quot; /&gt;
-		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
-		&lt;/g&gt;
 		&lt;g id=&quot;SVGhorn-container&quot; transform=&quot;translate(8, 17)&quot;&gt;
 			&lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;
 		&lt;/g&gt;
@@ -5442,12 +5436,6 @@ drop: Discard</tw-passagedata><tw-passagedata pid="60" name="Female Alicorn" tag
 			&lt;path id=&quot;SVGmane2&quot; d=&quot;M25 0 Q 27 -10 38 -10 L 35 -5 Q 38 -8 45 -8 L 40 0 Q 42 -6 50 -3 L 48 0&quot; /&gt;
 			&lt;path id=&quot;SVGmane3&quot; d=&quot;M25 -1 Q28 5 28 15 L30 3 L31 16 Q34 2 34 5 Q35 4 36 15 Q37 4 40 3 Q 43 5 40 17 Q45 10 53 5 L 48 15 L58 5 L 65 3 Q 60 -1 30 -1&quot; /&gt;
 		  &lt;/g&gt;
-		&lt;/g&gt;
-		&lt;g id=&quot;SVGwings-container&quot; transform=&quot;translate(65,20)&quot; fill=&quot;` + _SVGskin + `&quot;&gt;
-		  &lt;path id=&quot;SVGwings-border&quot; d=&quot;M20 3 Q 0 15 25 25 Q 38 28 55 15 Q 52 0 30 0&quot; filter=&quot;url(#SVGf2)&quot; /&gt;
-		  &lt;line id=&quot;SVGwing-line-1&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;53.5&quot; y1=&quot;10&quot; x2=&quot;38&quot; y2=&quot;12&quot; /&gt;
-		  &lt;line id=&quot;SVGwing-line-2&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;55&quot; y1=&quot;13&quot; x2=&quot;36&quot; y2=&quot;15&quot; /&gt;
-		  &lt;line id=&quot;SVGwing-line-3&quot; stroke=&quot;black&quot; opacity=&quot;0.5&quot; stroke-width=&quot;0.5&quot; x1=&quot;52.5&quot; y1=&quot;17&quot; x2=&quot;38&quot; y2=&quot;18&quot; /&gt;
 		&lt;/g&gt;
 		&lt;g id=&quot;SVGhorn-container&quot; transform=&quot;translate(8, 17)&quot;&gt;
 			&lt;path id=&quot;SVGhorn&quot; d=&quot;M6.5 0 L3.5 14 L9.5 14 Z&quot; transform=&quot;rotate(-52)&quot; fill=&quot;white&quot; stroke=&quot;black&quot; stroke-opacity=&quot;0.4&quot; stroke-width=&quot;0.6&quot; /&gt;

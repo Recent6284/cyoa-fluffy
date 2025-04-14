@@ -8,7 +8,7 @@ Many an alleyway and cardboard box has been used by Fluffies to live their entir
 
 You've decided that a walk through downtown is worth the risk tonight, mostly because of the possibility of being able to.... commandeer... a good Fluffy from their otherwise difficult life on the streets. After some pondering, you've decided that there's only so many places that they could congregate.
 
-<<button [[Visit the Industrial Park|Alley]]>><<set $cityScape to "industrial">><</button>>
+<<button [[Visit the Industrial Park|Industrial Park]]>><<set $cityScape to "industrial">><</button>>
 
 <<button [[Visit the Vending Machine|City Vending Machine]]>><</button>>
 

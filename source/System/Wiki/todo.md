@@ -31,8 +31,18 @@ Part 1: Getting Your Fluffy
 
 This part is to explain how you get your Fluffy, and how you'll set it up for its life with you.
 
-```mermaidjs
+```mermaid
 flowchart TD
+
+A1[Character Creation]
+
+B1[FluffMart]
+
+C1[Shelter]
+
+D1[Forest]
+
+E1[City]
 ```
 
 Part 2: Living With Your Fluffy

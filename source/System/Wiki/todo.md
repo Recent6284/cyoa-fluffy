@@ -49,8 +49,6 @@ C[The Shelter]
 
 D[The Forest]
 D1[Candy Bar Choice]
-D11[Three Chances]
-D12[Two Chances]
 D2[Creek Bait]
 D3[Meet Fluffy]
 D4[Fluffy Acquired]
@@ -74,8 +72,7 @@ B2 --> B1 & B3
 B5 --> D4
 
 D --> D1
-D1 --> D11 & D12
-D11 & D12 --> D2
+D1 --> D2
 D2 --> D3
 D3 --> D4
 

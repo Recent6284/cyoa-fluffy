@@ -22,3 +22,17 @@
 |Bug|Affects|Reproducible?|Status|
 |---|---|---|---|
 ||||
+
+# Story Structure Checklist
+
+## Human Branch
+
+Part 1: Getting Your Fluffy
+
+This part is to explain how you get your Fluffy, and how you'll set it up for its life with you.
+
+```mermaidjs
+flowchart TD
+```
+
+Part 2: Living With Your Fluffy

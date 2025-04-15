@@ -27,7 +27,7 @@
 
 ## Human Branch
 
-Part 1: Getting Your Fluffy
+### Part 1: Getting Your Fluffy
 
 This part is to explain how you get your Fluffy, and how you'll set it up for its life with you.
 
@@ -85,4 +85,4 @@ D4 --> Items
 Items --> Home
 ```
 
-Part 2: Living With Your Fluffy
+### Part 2: Living With Your Fluffy

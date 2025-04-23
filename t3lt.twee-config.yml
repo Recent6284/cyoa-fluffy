@@ -3,3 +3,54 @@ sugarcube-2:
     hovertip:
       name: hovertip
       container: true
+    inv:
+      name: inv
+    pickup:
+      name: pickup
+    newFluffy:
+      name: newFluffy
+    drop:
+      name: drop
+    dynamicPronoun:
+      name: dynamicPronoun
+    FluffySVG:
+      name: FluffySVG
+    dynamicFluffyProperty:
+      name: dynamicFluffyProperty
+    fluffyDialog:
+      name: fluffyDialog
+      container: true
+    lockFluffy:
+      name: lockFluffy
+    buttonreplace:
+      name: buttonreplace
+      container: true
+    colorname:
+      name: colorname
+    newinv:
+      name: newinv
+    description:
+      name: description
+    item:
+      name: item
+      container: true
+    calcBonus:
+      name: calcBonus
+    clouds:
+      name: clouds
+    budget:
+      name: budget
+    FluffTank:
+      name: FluffTank
+    iconCheck:
+      name: iconCheck
+    iconX:
+      name: iconX
+    reloadCaption:
+      name: reloadCaption
+    rollwidgets:
+      name: rollwidgets
+    animatedroll:
+      name: animatedroll
+    roll:
+      name: roll
